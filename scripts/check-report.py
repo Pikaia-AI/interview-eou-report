@@ -198,6 +198,39 @@ def verify_ablation() -> dict:
     return {"ablation_paired_results": count}
 
 
+def verify_frontiers() -> dict:
+    figures = json.loads((ROOT / "public/report/figure-data.json").read_text())
+    report = json.loads((ROOT / "app/report-data.json").read_text())
+    datasets = {"pikaia": "v1_paired_1700", "livekit": "livekit_clean_paired_842"}
+    budgets = [0.5 + i * 0.25 for i in range(79)]
+    count = 0
+    assert {d["id"] for d in figures["frontiers"]} == set(datasets)
+    for dataset in figures["frontiers"]:
+        cascade = report["cascades"][datasets[dataset["id"]]]
+        assert dataset["n"] == cascade["n"]
+        assert len(dataset["models"]) == len(cascade["models"]) == 6
+        source = {m["name"]: m for m in cascade["models"]}
+        for model in dataset["models"]:
+            points = model["points"]
+            assert [p["budget"] for p in points] == budgets, "Missing or duplicate sampled budgets"
+            for point in points:
+                assert 300 <= point["wait"] <= 1000
+                assert 0 <= point["error"] <= point["budget"]
+                count += 1
+            for previous, current in zip(points, points[1:]):
+                assert current["wait"] <= previous["wait"], "Relaxing a budget should not increase minimum wait"
+            for budget in (1, 2, 3, 5, 10):
+                point = next(p for p in points if p["budget"] == budget)
+                operating = source[model["name"]]["operating"][f"{budget}pct"]
+                assert point["wait"] == operating["mean_wait_ms"]
+                assert point["error"] == operating["cum_fir_pct"]
+                if budget == 5:
+                    assert point["wait"] == model["at5"]["wait"] and point["error"] == model["at5"]["error"]
+    assert count == 948
+    print("Frontiers verified: 948 empirical points, complete 0.25 pp budget grid, 60 report operating-point matches.")
+    return {"frontier_points": count, "frontier_budget_steps_per_model": len(budgets)}
+
+
 class PageParser(HTMLParser):
     def __init__(self):
         super().__init__()
@@ -385,6 +418,7 @@ def main():
     scanned_files = verify_hygiene()
     data_summary = verify_data()
     ablation_summary = verify_ablation()
+    frontier_summary = verify_frontiers()
 
     server_summary = {}
     if origin:
@@ -394,6 +428,7 @@ def main():
         "scanned_files": scanned_files,
         **data_summary,
         **ablation_summary,
+        **frontier_summary,
         **server_summary,
     }
 

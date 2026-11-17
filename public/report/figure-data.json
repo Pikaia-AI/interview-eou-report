@@ -26,319 +26,398 @@
           "points": [
             {
               "wait": 714.5,
-              "error": 0.48
+              "error": 0.48,
+              "budget": 0.5
             },
             {
               "wait": 646.7,
-              "error": 0.73
+              "error": 0.73,
+              "budget": 0.75
             },
             {
               "wait": 613.4,
-              "error": 0.97
+              "error": 0.97,
+              "budget": 1.0
             },
             {
               "wait": 514.9,
-              "error": 1.21
+              "error": 1.21,
+              "budget": 1.25
             },
             {
               "wait": 513.3,
-              "error": 1.45
+              "error": 1.45,
+              "budget": 1.5
             },
             {
               "wait": 508.9,
-              "error": 1.69
+              "error": 1.69,
+              "budget": 1.75
             },
             {
               "wait": 496.5,
-              "error": 1.94
+              "error": 1.94,
+              "budget": 2.0
             },
             {
               "wait": 461.8,
-              "error": 2.18
+              "error": 2.18,
+              "budget": 2.25
             },
             {
               "wait": 452.4,
-              "error": 2.42
+              "error": 2.42,
+              "budget": 2.5
             },
             {
               "wait": 449.3,
-              "error": 2.66
+              "error": 2.66,
+              "budget": 2.75
             },
             {
               "wait": 442.9,
-              "error": 2.91
+              "error": 2.91,
+              "budget": 3.0
             },
             {
               "wait": 436.4,
-              "error": 3.15
+              "error": 3.15,
+              "budget": 3.25
             },
             {
               "wait": 432.6,
-              "error": 3.39
+              "error": 3.39,
+              "budget": 3.5
             },
             {
               "wait": 427.3,
-              "error": 3.63
+              "error": 3.63,
+              "budget": 3.75
             },
             {
               "wait": 421.8,
-              "error": 3.87
+              "error": 3.87,
+              "budget": 4.0
             },
             {
               "wait": 420.1,
-              "error": 4.12
+              "error": 4.12,
+              "budget": 4.25
             },
             {
               "wait": 416.0,
-              "error": 4.36
+              "error": 4.36,
+              "budget": 4.5
             },
             {
               "wait": 413.2,
-              "error": 4.6
+              "error": 4.6,
+              "budget": 4.75
             },
             {
               "wait": 406.8,
-              "error": 4.84
+              "error": 4.84,
+              "budget": 5.0
             },
             {
               "wait": 391.3,
-              "error": 5.08
+              "error": 5.08,
+              "budget": 5.25
             },
             {
               "wait": 386.3,
-              "error": 5.33
+              "error": 5.33,
+              "budget": 5.5
             },
             {
               "wait": 384.8,
-              "error": 5.57
+              "error": 5.57,
+              "budget": 5.75
             },
             {
               "wait": 378.6,
-              "error": 5.81
+              "error": 5.81,
+              "budget": 6.0
             },
             {
               "wait": 377.5,
-              "error": 6.05
+              "error": 6.05,
+              "budget": 6.25
             },
             {
               "wait": 371.4,
-              "error": 6.3
+              "error": 6.3,
+              "budget": 6.5
             },
             {
               "wait": 363.6,
-              "error": 6.54
+              "error": 6.54,
+              "budget": 6.75
             },
             {
               "wait": 363.1,
-              "error": 6.78
+              "error": 6.78,
+              "budget": 7.0
             },
             {
               "wait": 360.2,
-              "error": 7.02
+              "error": 7.02,
+              "budget": 7.25
             },
             {
               "wait": 358.9,
-              "error": 7.26
+              "error": 7.26,
+              "budget": 7.5
             },
             {
               "wait": 356.6,
-              "error": 7.75
+              "error": 7.75,
+              "budget": 7.75
             },
             {
               "wait": 354.1,
-              "error": 7.99
+              "error": 7.99,
+              "budget": 8.0
             },
             {
               "wait": 351.0,
-              "error": 8.23
+              "error": 8.23,
+              "budget": 8.25
             },
             {
               "wait": 351.0,
-              "error": 8.47
+              "error": 8.47,
+              "budget": 8.5
             },
             {
               "wait": 350.0,
-              "error": 8.72
+              "error": 8.72,
+              "budget": 8.75
             },
             {
               "wait": 349.1,
-              "error": 8.96
+              "error": 8.96,
+              "budget": 9.0
             },
             {
               "wait": 343.7,
-              "error": 9.2
+              "error": 9.2,
+              "budget": 9.25
             },
             {
               "wait": 339.4,
-              "error": 9.44
+              "error": 9.44,
+              "budget": 9.5
             },
             {
               "wait": 339.4,
-              "error": 9.69
+              "error": 9.69,
+              "budget": 9.75
             },
             {
               "wait": 338.9,
-              "error": 9.93
+              "error": 9.93,
+              "budget": 10.0
             },
             {
               "wait": 338.4,
-              "error": 10.17
+              "error": 10.17,
+              "budget": 10.25
             },
             {
               "wait": 338.4,
-              "error": 10.41
+              "error": 10.41,
+              "budget": 10.5
             },
             {
               "wait": 337.8,
-              "error": 10.65
+              "error": 10.65,
+              "budget": 10.75
             },
             {
               "wait": 337.8,
-              "error": 10.9
+              "error": 10.9,
+              "budget": 11.0
             },
             {
               "wait": 337.5,
-              "error": 11.14
+              "error": 11.14,
+              "budget": 11.25
             },
             {
               "wait": 337.1,
-              "error": 11.38
+              "error": 11.38,
+              "budget": 11.5
             },
             {
               "wait": 336.9,
-              "error": 11.62
+              "error": 11.62,
+              "budget": 11.75
             },
             {
               "wait": 336.0,
-              "error": 11.86
+              "error": 11.86,
+              "budget": 12.0
             },
             {
               "wait": 335.4,
-              "error": 12.11
+              "error": 12.11,
+              "budget": 12.25
             },
             {
               "wait": 334.9,
-              "error": 12.35
+              "error": 12.35,
+              "budget": 12.5
             },
             {
               "wait": 333.8,
-              "error": 12.59
+              "error": 12.59,
+              "budget": 12.75
             },
             {
               "wait": 333.5,
-              "error": 12.83
+              "error": 12.83,
+              "budget": 13.0
             },
             {
               "wait": 333.2,
-              "error": 13.08
+              "error": 13.08,
+              "budget": 13.25
             },
             {
               "wait": 332.9,
-              "error": 13.32
+              "error": 13.32,
+              "budget": 13.5
             },
             {
               "wait": 332.6,
-              "error": 13.56
+              "error": 13.56,
+              "budget": 13.75
             },
             {
               "wait": 332.2,
-              "error": 13.8
+              "error": 13.8,
+              "budget": 14.0
             },
             {
               "wait": 330.7,
-              "error": 14.04
+              "error": 14.04,
+              "budget": 14.25
             },
             {
               "wait": 329.6,
-              "error": 14.29
+              "error": 14.29,
+              "budget": 14.5
             },
             {
               "wait": 329.3,
-              "error": 14.53
+              "error": 14.53,
+              "budget": 14.75
             },
             {
               "wait": 327.4,
-              "error": 14.77
+              "error": 14.77,
+              "budget": 15.0
             },
             {
               "wait": 327.1,
-              "error": 15.01
+              "error": 15.01,
+              "budget": 15.25
             },
             {
               "wait": 324.2,
-              "error": 15.5
+              "error": 15.5,
+              "budget": 15.5
             },
             {
               "wait": 323.6,
-              "error": 15.74
+              "error": 15.74,
+              "budget": 15.75
             },
             {
               "wait": 323.6,
-              "error": 15.98
+              "error": 15.98,
+              "budget": 16.0
             },
             {
               "wait": 323.1,
-              "error": 16.22
+              "error": 16.22,
+              "budget": 16.25
             },
             {
               "wait": 323.1,
-              "error": 16.46
+              "error": 16.46,
+              "budget": 16.5
             },
             {
               "wait": 322.0,
-              "error": 16.71
+              "error": 16.71,
+              "budget": 16.75
             },
             {
               "wait": 322.0,
-              "error": 16.95
+              "error": 16.95,
+              "budget": 17.0
             },
             {
               "wait": 322.0,
-              "error": 17.19
+              "error": 17.19,
+              "budget": 17.25
             },
             {
               "wait": 321.7,
-              "error": 17.43
+              "error": 17.43,
+              "budget": 17.5
             },
             {
               "wait": 321.4,
-              "error": 17.68
+              "error": 17.68,
+              "budget": 17.75
             },
             {
               "wait": 321.1,
-              "error": 17.92
+              "error": 17.92,
+              "budget": 18.0
             },
             {
               "wait": 320.9,
-              "error": 18.16
+              "error": 18.16,
+              "budget": 18.25
             },
             {
               "wait": 320.6,
-              "error": 18.4
+              "error": 18.4,
+              "budget": 18.5
             },
             {
               "wait": 319.8,
-              "error": 18.64
+              "error": 18.64,
+              "budget": 18.75
             },
             {
               "wait": 319.3,
-              "error": 18.89
+              "error": 18.89,
+              "budget": 19.0
             },
             {
               "wait": 318.7,
-              "error": 19.13
+              "error": 19.13,
+              "budget": 19.25
             },
             {
               "wait": 317.6,
-              "error": 19.37
+              "error": 19.37,
+              "budget": 19.5
             },
             {
               "wait": 317.1,
-              "error": 19.61
+              "error": 19.61,
+              "budget": 19.75
             },
             {
               "wait": 316.8,
-              "error": 19.85
+              "error": 19.85,
+              "budget": 20.0
             }
           ],
           "at5": {
@@ -355,319 +434,398 @@
           "points": [
             {
               "wait": 846.9,
-              "error": 0.48
+              "error": 0.48,
+              "budget": 0.5
             },
             {
               "wait": 755.9,
-              "error": 0.73
+              "error": 0.73,
+              "budget": 0.75
             },
             {
               "wait": 712.0,
-              "error": 0.97
+              "error": 0.97,
+              "budget": 1.0
             },
             {
               "wait": 646.7,
-              "error": 1.21
+              "error": 1.21,
+              "budget": 1.25
             },
             {
               "wait": 623.4,
-              "error": 1.45
+              "error": 1.45,
+              "budget": 1.5
             },
             {
               "wait": 600.0,
-              "error": 1.69
+              "error": 1.69,
+              "budget": 1.75
             },
             {
               "wait": 581.0,
-              "error": 1.94
+              "error": 1.94,
+              "budget": 2.0
             },
             {
               "wait": 573.2,
-              "error": 2.18
+              "error": 2.18,
+              "budget": 2.25
             },
             {
               "wait": 560.5,
-              "error": 2.42
+              "error": 2.42,
+              "budget": 2.5
             },
             {
               "wait": 528.9,
-              "error": 2.66
+              "error": 2.66,
+              "budget": 2.75
             },
             {
               "wait": 492.4,
-              "error": 2.91
+              "error": 2.91,
+              "budget": 3.0
             },
             {
               "wait": 435.0,
-              "error": 3.15
+              "error": 3.15,
+              "budget": 3.25
             },
             {
               "wait": 428.7,
-              "error": 3.39
+              "error": 3.39,
+              "budget": 3.5
             },
             {
               "wait": 424.1,
-              "error": 3.63
+              "error": 3.63,
+              "budget": 3.75
             },
             {
               "wait": 419.8,
-              "error": 3.87
+              "error": 3.87,
+              "budget": 4.0
             },
             {
               "wait": 414.2,
-              "error": 4.12
+              "error": 4.12,
+              "budget": 4.25
             },
             {
               "wait": 402.7,
-              "error": 4.36
+              "error": 4.36,
+              "budget": 4.5
             },
             {
               "wait": 398.4,
-              "error": 4.6
+              "error": 4.6,
+              "budget": 4.75
             },
             {
               "wait": 395.3,
-              "error": 4.84
+              "error": 4.84,
+              "budget": 5.0
             },
             {
               "wait": 392.5,
-              "error": 5.08
+              "error": 5.08,
+              "budget": 5.25
             },
             {
               "wait": 390.0,
-              "error": 5.33
+              "error": 5.33,
+              "budget": 5.5
             },
             {
               "wait": 386.7,
-              "error": 5.57
+              "error": 5.57,
+              "budget": 5.75
             },
             {
               "wait": 378.6,
-              "error": 5.81
+              "error": 5.81,
+              "budget": 6.0
             },
             {
               "wait": 376.7,
-              "error": 6.05
+              "error": 6.05,
+              "budget": 6.25
             },
             {
               "wait": 374.2,
-              "error": 6.3
+              "error": 6.3,
+              "budget": 6.5
             },
             {
               "wait": 373.6,
-              "error": 6.54
+              "error": 6.54,
+              "budget": 6.75
             },
             {
               "wait": 372.6,
-              "error": 6.78
+              "error": 6.78,
+              "budget": 7.0
             },
             {
               "wait": 370.9,
-              "error": 7.02
+              "error": 7.02,
+              "budget": 7.25
             },
             {
               "wait": 367.8,
-              "error": 7.26
+              "error": 7.26,
+              "budget": 7.5
             },
             {
               "wait": 362.9,
-              "error": 7.75
+              "error": 7.75,
+              "budget": 7.75
             },
             {
               "wait": 360.5,
-              "error": 7.99
+              "error": 7.99,
+              "budget": 8.0
             },
             {
               "wait": 359.5,
-              "error": 8.23
+              "error": 8.23,
+              "budget": 8.25
             },
             {
               "wait": 357.0,
-              "error": 8.47
+              "error": 8.47,
+              "budget": 8.5
             },
             {
               "wait": 356.0,
-              "error": 8.72
+              "error": 8.72,
+              "budget": 8.75
             },
             {
               "wait": 355.0,
-              "error": 8.96
+              "error": 8.96,
+              "budget": 9.0
             },
             {
               "wait": 352.4,
-              "error": 9.2
+              "error": 9.2,
+              "budget": 9.25
             },
             {
               "wait": 350.6,
-              "error": 9.44
+              "error": 9.44,
+              "budget": 9.5
             },
             {
               "wait": 349.6,
-              "error": 9.69
+              "error": 9.69,
+              "budget": 9.75
             },
             {
               "wait": 348.0,
-              "error": 9.93
+              "error": 9.93,
+              "budget": 10.0
             },
             {
               "wait": 346.4,
-              "error": 10.17
+              "error": 10.17,
+              "budget": 10.25
             },
             {
               "wait": 344.8,
-              "error": 10.41
+              "error": 10.41,
+              "budget": 10.5
             },
             {
               "wait": 343.9,
-              "error": 10.65
+              "error": 10.65,
+              "budget": 10.75
             },
             {
               "wait": 342.3,
-              "error": 10.9
+              "error": 10.9,
+              "budget": 11.0
             },
             {
               "wait": 340.8,
-              "error": 11.14
+              "error": 11.14,
+              "budget": 11.25
             },
             {
               "wait": 338.9,
-              "error": 11.38
+              "error": 11.38,
+              "budget": 11.5
             },
             {
               "wait": 336.5,
-              "error": 11.62
+              "error": 11.62,
+              "budget": 11.75
             },
             {
               "wait": 335.3,
-              "error": 11.86
+              "error": 11.86,
+              "budget": 12.0
             },
             {
               "wait": 334.1,
-              "error": 12.11
+              "error": 12.11,
+              "budget": 12.25
             },
             {
               "wait": 331.8,
-              "error": 12.35
+              "error": 12.35,
+              "budget": 12.5
             },
             {
               "wait": 331.0,
-              "error": 12.59
+              "error": 12.59,
+              "budget": 12.75
             },
             {
               "wait": 331.0,
-              "error": 12.83
+              "error": 12.83,
+              "budget": 13.0
             },
             {
               "wait": 330.7,
-              "error": 13.08
+              "error": 13.08,
+              "budget": 13.25
             },
             {
               "wait": 330.5,
-              "error": 13.32
+              "error": 13.32,
+              "budget": 13.5
             },
             {
               "wait": 329.9,
-              "error": 13.56
+              "error": 13.56,
+              "budget": 13.75
             },
             {
               "wait": 328.4,
-              "error": 13.8
+              "error": 13.8,
+              "budget": 14.0
             },
             {
               "wait": 326.6,
-              "error": 14.04
+              "error": 14.04,
+              "budget": 14.25
             },
             {
               "wait": 326.0,
-              "error": 14.29
+              "error": 14.29,
+              "budget": 14.5
             },
             {
               "wait": 324.4,
-              "error": 14.53
+              "error": 14.53,
+              "budget": 14.75
             },
             {
               "wait": 324.4,
-              "error": 14.77
+              "error": 14.77,
+              "budget": 15.0
             },
             {
               "wait": 324.1,
-              "error": 15.01
+              "error": 15.01,
+              "budget": 15.25
             },
             {
               "wait": 322.8,
-              "error": 15.5
+              "error": 15.5,
+              "budget": 15.5
             },
             {
               "wait": 322.8,
-              "error": 15.74
+              "error": 15.74,
+              "budget": 15.75
             },
             {
               "wait": 322.5,
-              "error": 15.98
+              "error": 15.98,
+              "budget": 16.0
             },
             {
               "wait": 321.9,
-              "error": 16.22
+              "error": 16.22,
+              "budget": 16.25
             },
             {
               "wait": 321.9,
-              "error": 16.46
+              "error": 16.46,
+              "budget": 16.5
             },
             {
               "wait": 321.5,
-              "error": 16.71
+              "error": 16.71,
+              "budget": 16.75
             },
             {
               "wait": 321.1,
-              "error": 16.95
+              "error": 16.95,
+              "budget": 17.0
             },
             {
               "wait": 320.9,
-              "error": 17.19
+              "error": 17.19,
+              "budget": 17.25
             },
             {
               "wait": 320.4,
-              "error": 17.43
+              "error": 17.43,
+              "budget": 17.5
             },
             {
               "wait": 319.8,
-              "error": 17.68
+              "error": 17.68,
+              "budget": 17.75
             },
             {
               "wait": 319.1,
-              "error": 17.92
+              "error": 17.92,
+              "budget": 18.0
             },
             {
               "wait": 317.6,
-              "error": 18.16
+              "error": 18.16,
+              "budget": 18.25
             },
             {
               "wait": 317.1,
-              "error": 18.4
+              "error": 18.4,
+              "budget": 18.5
             },
             {
               "wait": 316.6,
-              "error": 18.64
+              "error": 18.64,
+              "budget": 18.75
             },
             {
               "wait": 314.9,
-              "error": 18.89
+              "error": 18.89,
+              "budget": 19.0
             },
             {
               "wait": 314.3,
-              "error": 19.13
+              "error": 19.13,
+              "budget": 19.25
             },
             {
               "wait": 314.3,
-              "error": 19.37
+              "error": 19.37,
+              "budget": 19.5
             },
             {
               "wait": 313.8,
-              "error": 19.61
+              "error": 19.61,
+              "budget": 19.75
             },
             {
               "wait": 313.8,
-              "error": 19.85
+              "error": 19.85,
+              "budget": 20.0
             }
           ],
           "at5": {
@@ -684,319 +842,398 @@
           "points": [
             {
               "wait": 901.8,
-              "error": 0.48
+              "error": 0.48,
+              "budget": 0.5
             },
             {
               "wait": 863.6,
-              "error": 0.73
+              "error": 0.73,
+              "budget": 0.75
             },
             {
               "wait": 854.9,
-              "error": 0.97
+              "error": 0.97,
+              "budget": 1.0
             },
             {
               "wait": 851.1,
-              "error": 1.21
+              "error": 1.21,
+              "budget": 1.25
             },
             {
               "wait": 844.4,
-              "error": 1.45
+              "error": 1.45,
+              "budget": 1.5
             },
             {
               "wait": 791.0,
-              "error": 1.69
+              "error": 1.69,
+              "budget": 1.75
             },
             {
               "wait": 784.5,
-              "error": 1.94
+              "error": 1.94,
+              "budget": 2.0
             },
             {
               "wait": 754.7,
-              "error": 2.18
+              "error": 2.18,
+              "budget": 2.25
             },
             {
               "wait": 746.9,
-              "error": 2.42
+              "error": 2.42,
+              "budget": 2.5
             },
             {
               "wait": 746.6,
-              "error": 2.66
+              "error": 2.66,
+              "budget": 2.75
             },
             {
               "wait": 745.4,
-              "error": 2.91
+              "error": 2.91,
+              "budget": 3.0
             },
             {
               "wait": 738.5,
-              "error": 3.15
+              "error": 3.15,
+              "budget": 3.25
             },
             {
               "wait": 738.2,
-              "error": 3.39
+              "error": 3.39,
+              "budget": 3.5
             },
             {
               "wait": 723.5,
-              "error": 3.63
+              "error": 3.63,
+              "budget": 3.75
             },
             {
               "wait": 716.2,
-              "error": 3.87
+              "error": 3.87,
+              "budget": 4.0
             },
             {
               "wait": 686.6,
-              "error": 4.12
+              "error": 4.12,
+              "budget": 4.25
             },
             {
               "wait": 659.4,
-              "error": 4.36
+              "error": 4.36,
+              "budget": 4.5
             },
             {
               "wait": 658.8,
-              "error": 4.6
+              "error": 4.6,
+              "budget": 4.75
             },
             {
               "wait": 657.0,
-              "error": 4.84
+              "error": 4.84,
+              "budget": 5.0
             },
             {
               "wait": 656.3,
-              "error": 5.08
+              "error": 5.08,
+              "budget": 5.25
             },
             {
               "wait": 643.3,
-              "error": 5.33
+              "error": 5.33,
+              "budget": 5.5
             },
             {
               "wait": 640.6,
-              "error": 5.57
+              "error": 5.57,
+              "budget": 5.75
             },
             {
               "wait": 630.3,
-              "error": 5.81
+              "error": 5.81,
+              "budget": 6.0
             },
             {
               "wait": 628.7,
-              "error": 6.05
+              "error": 6.05,
+              "budget": 6.25
             },
             {
               "wait": 623.5,
-              "error": 6.3
+              "error": 6.3,
+              "budget": 6.5
             },
             {
               "wait": 618.1,
-              "error": 6.54
+              "error": 6.54,
+              "budget": 6.75
             },
             {
               "wait": 608.3,
-              "error": 6.78
+              "error": 6.78,
+              "budget": 7.0
             },
             {
               "wait": 607.8,
-              "error": 7.02
+              "error": 7.02,
+              "budget": 7.25
             },
             {
               "wait": 605.1,
-              "error": 7.26
+              "error": 7.26,
+              "budget": 7.5
             },
             {
               "wait": 598.5,
-              "error": 7.75
+              "error": 7.75,
+              "budget": 7.75
             },
             {
               "wait": 593.6,
-              "error": 7.99
+              "error": 7.99,
+              "budget": 8.0
             },
             {
               "wait": 590.4,
-              "error": 8.23
+              "error": 8.23,
+              "budget": 8.25
             },
             {
               "wait": 577.9,
-              "error": 8.47
+              "error": 8.47,
+              "budget": 8.5
             },
             {
               "wait": 558.3,
-              "error": 8.72
+              "error": 8.72,
+              "budget": 8.75
             },
             {
               "wait": 552.1,
-              "error": 8.96
+              "error": 8.96,
+              "budget": 9.0
             },
             {
               "wait": 547.8,
-              "error": 9.2
+              "error": 9.2,
+              "budget": 9.25
             },
             {
               "wait": 542.9,
-              "error": 9.44
+              "error": 9.44,
+              "budget": 9.5
             },
             {
               "wait": 534.0,
-              "error": 9.69
+              "error": 9.69,
+              "budget": 9.75
             },
             {
               "wait": 528.0,
-              "error": 9.93
+              "error": 9.93,
+              "budget": 10.0
             },
             {
               "wait": 526.3,
-              "error": 10.17
+              "error": 10.17,
+              "budget": 10.25
             },
             {
               "wait": 519.8,
-              "error": 10.41
+              "error": 10.41,
+              "budget": 10.5
             },
             {
               "wait": 516.0,
-              "error": 10.65
+              "error": 10.65,
+              "budget": 10.75
             },
             {
               "wait": 513.3,
-              "error": 10.9
+              "error": 10.9,
+              "budget": 11.0
             },
             {
               "wait": 512.7,
-              "error": 11.14
+              "error": 11.14,
+              "budget": 11.25
             },
             {
               "wait": 510.6,
-              "error": 11.38
+              "error": 11.38,
+              "budget": 11.5
             },
             {
               "wait": 510.0,
-              "error": 11.62
+              "error": 11.62,
+              "budget": 11.75
             },
             {
               "wait": 507.8,
-              "error": 11.86
+              "error": 11.86,
+              "budget": 12.0
             },
             {
               "wait": 506.8,
-              "error": 12.11
+              "error": 12.11,
+              "budget": 12.25
             },
             {
               "wait": 502.4,
-              "error": 12.35
+              "error": 12.35,
+              "budget": 12.5
             },
             {
               "wait": 500.2,
-              "error": 12.59
+              "error": 12.59,
+              "budget": 12.75
             },
             {
               "wait": 495.1,
-              "error": 12.83
+              "error": 12.83,
+              "budget": 13.0
             },
             {
               "wait": 490.8,
-              "error": 13.08
+              "error": 13.08,
+              "budget": 13.25
             },
             {
               "wait": 490.1,
-              "error": 13.32
+              "error": 13.32,
+              "budget": 13.5
             },
             {
               "wait": 484.0,
-              "error": 13.56
+              "error": 13.56,
+              "budget": 13.75
             },
             {
               "wait": 481.0,
-              "error": 13.8
+              "error": 13.8,
+              "budget": 14.0
             },
             {
               "wait": 480.4,
-              "error": 14.04
+              "error": 14.04,
+              "budget": 14.25
             },
             {
               "wait": 479.8,
-              "error": 14.29
+              "error": 14.29,
+              "budget": 14.5
             },
             {
               "wait": 478.9,
-              "error": 14.53
+              "error": 14.53,
+              "budget": 14.75
             },
             {
               "wait": 478.2,
-              "error": 14.77
+              "error": 14.77,
+              "budget": 15.0
             },
             {
               "wait": 477.2,
-              "error": 15.01
+              "error": 15.01,
+              "budget": 15.25
             },
             {
               "wait": 471.7,
-              "error": 15.5
+              "error": 15.5,
+              "budget": 15.5
             },
             {
               "wait": 466.4,
-              "error": 15.74
+              "error": 15.74,
+              "budget": 15.75
             },
             {
               "wait": 465.7,
-              "error": 15.98
+              "error": 15.98,
+              "budget": 16.0
             },
             {
               "wait": 465.1,
-              "error": 16.22
+              "error": 16.22,
+              "budget": 16.25
             },
             {
               "wait": 465.1,
-              "error": 16.46
+              "error": 16.46,
+              "budget": 16.5
             },
             {
               "wait": 462.5,
-              "error": 16.71
+              "error": 16.71,
+              "budget": 16.75
             },
             {
               "wait": 454.4,
-              "error": 16.95
+              "error": 16.95,
+              "budget": 17.0
             },
             {
               "wait": 444.4,
-              "error": 17.19
+              "error": 17.19,
+              "budget": 17.25
             },
             {
               "wait": 442.2,
-              "error": 17.43
+              "error": 17.43,
+              "budget": 17.5
             },
             {
               "wait": 441.6,
-              "error": 17.68
+              "error": 17.68,
+              "budget": 17.75
             },
             {
               "wait": 438.4,
-              "error": 17.92
+              "error": 17.92,
+              "budget": 18.0
             },
             {
               "wait": 437.8,
-              "error": 18.16
+              "error": 18.16,
+              "budget": 18.25
             },
             {
               "wait": 434.6,
-              "error": 18.4
+              "error": 18.4,
+              "budget": 18.5
             },
             {
               "wait": 426.4,
-              "error": 18.64
+              "error": 18.64,
+              "budget": 18.75
             },
             {
               "wait": 424.8,
-              "error": 18.89
+              "error": 18.89,
+              "budget": 19.0
             },
             {
               "wait": 422.6,
-              "error": 19.13
+              "error": 19.13,
+              "budget": 19.25
             },
             {
               "wait": 422.3,
-              "error": 19.37
+              "error": 19.37,
+              "budget": 19.5
             },
             {
               "wait": 419.3,
-              "error": 19.61
+              "error": 19.61,
+              "budget": 19.75
             },
             {
               "wait": 416.1,
-              "error": 19.85
+              "error": 19.85,
+              "budget": 20.0
             }
           ],
           "at5": {
@@ -1013,319 +1250,398 @@
           "points": [
             {
               "wait": 742.2,
-              "error": 0.48
+              "error": 0.48,
+              "budget": 0.5
             },
             {
               "wait": 707.6,
-              "error": 0.73
+              "error": 0.73,
+              "budget": 0.75
             },
             {
               "wait": 683.8,
-              "error": 0.97
+              "error": 0.97,
+              "budget": 1.0
             },
             {
               "wait": 646.0,
-              "error": 1.21
+              "error": 1.21,
+              "budget": 1.25
             },
             {
               "wait": 636.4,
-              "error": 1.45
+              "error": 1.45,
+              "budget": 1.5
             },
             {
               "wait": 583.2,
-              "error": 1.69
+              "error": 1.69,
+              "budget": 1.75
             },
             {
               "wait": 532.6,
-              "error": 1.94
+              "error": 1.94,
+              "budget": 2.0
             },
             {
               "wait": 507.8,
-              "error": 2.18
+              "error": 2.18,
+              "budget": 2.25
             },
             {
               "wait": 465.5,
-              "error": 2.42
+              "error": 2.42,
+              "budget": 2.5
             },
             {
               "wait": 459.9,
-              "error": 2.66
+              "error": 2.66,
+              "budget": 2.75
             },
             {
               "wait": 449.0,
-              "error": 2.91
+              "error": 2.91,
+              "budget": 3.0
             },
             {
               "wait": 439.9,
-              "error": 3.15
+              "error": 3.15,
+              "budget": 3.25
             },
             {
               "wait": 432.8,
-              "error": 3.39
+              "error": 3.39,
+              "budget": 3.5
             },
             {
               "wait": 429.4,
-              "error": 3.63
+              "error": 3.63,
+              "budget": 3.75
             },
             {
               "wait": 425.7,
-              "error": 3.87
+              "error": 3.87,
+              "budget": 4.0
             },
             {
               "wait": 422.9,
-              "error": 4.12
+              "error": 4.12,
+              "budget": 4.25
             },
             {
               "wait": 419.5,
-              "error": 4.36
+              "error": 4.36,
+              "budget": 4.5
             },
             {
               "wait": 418.2,
-              "error": 4.6
+              "error": 4.6,
+              "budget": 4.75
             },
             {
               "wait": 411.4,
-              "error": 4.84
+              "error": 4.84,
+              "budget": 5.0
             },
             {
               "wait": 400.7,
-              "error": 5.08
+              "error": 5.08,
+              "budget": 5.25
             },
             {
               "wait": 390.8,
-              "error": 5.33
+              "error": 5.33,
+              "budget": 5.5
             },
             {
               "wait": 390.1,
-              "error": 5.57
+              "error": 5.57,
+              "budget": 5.75
             },
             {
               "wait": 389.0,
-              "error": 5.81
+              "error": 5.81,
+              "budget": 6.0
             },
             {
               "wait": 382.4,
-              "error": 6.05
+              "error": 6.05,
+              "budget": 6.25
             },
             {
               "wait": 377.9,
-              "error": 6.3
+              "error": 6.3,
+              "budget": 6.5
             },
             {
               "wait": 373.0,
-              "error": 6.54
+              "error": 6.54,
+              "budget": 6.75
             },
             {
               "wait": 371.1,
-              "error": 6.78
+              "error": 6.78,
+              "budget": 7.0
             },
             {
               "wait": 369.2,
-              "error": 7.02
+              "error": 7.02,
+              "budget": 7.25
             },
             {
               "wait": 368.1,
-              "error": 7.26
+              "error": 7.26,
+              "budget": 7.5
             },
             {
               "wait": 361.9,
-              "error": 7.75
+              "error": 7.75,
+              "budget": 7.75
             },
             {
               "wait": 359.1,
-              "error": 7.99
+              "error": 7.99,
+              "budget": 8.0
             },
             {
               "wait": 359.1,
-              "error": 8.23
+              "error": 8.23,
+              "budget": 8.25
             },
             {
               "wait": 357.8,
-              "error": 8.47
+              "error": 8.47,
+              "budget": 8.5
             },
             {
               "wait": 356.2,
-              "error": 8.72
+              "error": 8.72,
+              "budget": 8.75
             },
             {
               "wait": 355.4,
-              "error": 8.96
+              "error": 8.96,
+              "budget": 9.0
             },
             {
               "wait": 354.9,
-              "error": 9.2
+              "error": 9.2,
+              "budget": 9.25
             },
             {
               "wait": 352.4,
-              "error": 9.44
+              "error": 9.44,
+              "budget": 9.5
             },
             {
               "wait": 351.2,
-              "error": 9.69
+              "error": 9.69,
+              "budget": 9.75
             },
             {
               "wait": 350.3,
-              "error": 9.93
+              "error": 9.93,
+              "budget": 10.0
             },
             {
               "wait": 349.2,
-              "error": 10.17
+              "error": 10.17,
+              "budget": 10.25
             },
             {
               "wait": 348.3,
-              "error": 10.41
+              "error": 10.41,
+              "budget": 10.5
             },
             {
               "wait": 348.3,
-              "error": 10.65
+              "error": 10.65,
+              "budget": 10.75
             },
             {
               "wait": 348.3,
-              "error": 10.9
+              "error": 10.9,
+              "budget": 11.0
             },
             {
               "wait": 347.0,
-              "error": 11.14
+              "error": 11.14,
+              "budget": 11.25
             },
             {
               "wait": 346.1,
-              "error": 11.38
+              "error": 11.38,
+              "budget": 11.5
             },
             {
               "wait": 346.1,
-              "error": 11.62
+              "error": 11.62,
+              "budget": 11.75
             },
             {
               "wait": 344.8,
-              "error": 11.86
+              "error": 11.86,
+              "budget": 12.0
             },
             {
               "wait": 343.5,
-              "error": 12.11
+              "error": 12.11,
+              "budget": 12.25
             },
             {
               "wait": 342.9,
-              "error": 12.35
+              "error": 12.35,
+              "budget": 12.5
             },
             {
               "wait": 342.9,
-              "error": 12.59
+              "error": 12.59,
+              "budget": 12.75
             },
             {
               "wait": 342.9,
-              "error": 12.83
+              "error": 12.83,
+              "budget": 13.0
             },
             {
               "wait": 342.6,
-              "error": 13.08
+              "error": 13.08,
+              "budget": 13.25
             },
             {
               "wait": 341.9,
-              "error": 13.32
+              "error": 13.32,
+              "budget": 13.5
             },
             {
               "wait": 339.9,
-              "error": 13.56
+              "error": 13.56,
+              "budget": 13.75
             },
             {
               "wait": 338.9,
-              "error": 13.8
+              "error": 13.8,
+              "budget": 14.0
             },
             {
               "wait": 337.8,
-              "error": 14.04
+              "error": 14.04,
+              "budget": 14.25
             },
             {
               "wait": 337.2,
-              "error": 14.29
+              "error": 14.29,
+              "budget": 14.5
             },
             {
               "wait": 337.2,
-              "error": 14.53
+              "error": 14.53,
+              "budget": 14.75
             },
             {
               "wait": 336.7,
-              "error": 14.77
+              "error": 14.77,
+              "budget": 15.0
             },
             {
               "wait": 332.3,
-              "error": 15.01
+              "error": 15.01,
+              "budget": 15.25
             },
             {
               "wait": 331.2,
-              "error": 15.5
+              "error": 15.5,
+              "budget": 15.5
             },
             {
               "wait": 329.6,
-              "error": 15.74
+              "error": 15.74,
+              "budget": 15.75
             },
             {
               "wait": 328.8,
-              "error": 15.98
+              "error": 15.98,
+              "budget": 16.0
             },
             {
               "wait": 328.8,
-              "error": 16.22
+              "error": 16.22,
+              "budget": 16.25
             },
             {
               "wait": 327.2,
-              "error": 16.46
+              "error": 16.46,
+              "budget": 16.5
             },
             {
               "wait": 327.2,
-              "error": 16.71
+              "error": 16.71,
+              "budget": 16.75
             },
             {
               "wait": 326.9,
-              "error": 16.95
+              "error": 16.95,
+              "budget": 17.0
             },
             {
               "wait": 326.7,
-              "error": 17.19
+              "error": 17.19,
+              "budget": 17.25
             },
             {
               "wait": 326.6,
-              "error": 17.43
+              "error": 17.43,
+              "budget": 17.5
             },
             {
               "wait": 326.1,
-              "error": 17.68
+              "error": 17.68,
+              "budget": 17.75
             },
             {
               "wait": 325.6,
-              "error": 17.92
+              "error": 17.92,
+              "budget": 18.0
             },
             {
               "wait": 325.0,
-              "error": 18.16
+              "error": 18.16,
+              "budget": 18.25
             },
             {
               "wait": 325.0,
-              "error": 18.4
+              "error": 18.4,
+              "budget": 18.5
             },
             {
               "wait": 323.9,
-              "error": 18.64
+              "error": 18.64,
+              "budget": 18.75
             },
             {
               "wait": 322.8,
-              "error": 18.89
+              "error": 18.89,
+              "budget": 19.0
             },
             {
               "wait": 322.3,
-              "error": 19.13
+              "error": 19.13,
+              "budget": 19.25
             },
             {
               "wait": 322.0,
-              "error": 19.37
+              "error": 19.37,
+              "budget": 19.5
             },
             {
               "wait": 321.2,
-              "error": 19.61
+              "error": 19.61,
+              "budget": 19.75
             },
             {
               "wait": 320.7,
-              "error": 19.85
+              "error": 19.85,
+              "budget": 20.0
             }
           ],
           "at5": {
@@ -1342,319 +1658,398 @@
           "points": [
             {
               "wait": 972.6,
-              "error": 0.48
+              "error": 0.48,
+              "budget": 0.5
             },
             {
               "wait": 946.3,
-              "error": 0.73
+              "error": 0.73,
+              "budget": 0.75
             },
             {
               "wait": 888.4,
-              "error": 0.97
+              "error": 0.97,
+              "budget": 1.0
             },
             {
               "wait": 882.5,
-              "error": 1.21
+              "error": 1.21,
+              "budget": 1.25
             },
             {
               "wait": 878.5,
-              "error": 1.45
+              "error": 1.45,
+              "budget": 1.5
             },
             {
               "wait": 871.6,
-              "error": 1.69
+              "error": 1.69,
+              "budget": 1.75
             },
             {
               "wait": 848.3,
-              "error": 1.94
+              "error": 1.94,
+              "budget": 2.0
             },
             {
               "wait": 841.2,
-              "error": 2.18
+              "error": 2.18,
+              "budget": 2.25
             },
             {
               "wait": 805.2,
-              "error": 2.42
+              "error": 2.42,
+              "budget": 2.5
             },
             {
               "wait": 801.5,
-              "error": 2.66
+              "error": 2.66,
+              "budget": 2.75
             },
             {
               "wait": 799.0,
-              "error": 2.91
+              "error": 2.91,
+              "budget": 3.0
             },
             {
               "wait": 794.4,
-              "error": 3.15
+              "error": 3.15,
+              "budget": 3.25
             },
             {
               "wait": 784.9,
-              "error": 3.39
+              "error": 3.39,
+              "budget": 3.5
             },
             {
               "wait": 778.4,
-              "error": 3.63
+              "error": 3.63,
+              "budget": 3.75
             },
             {
               "wait": 768.3,
-              "error": 3.87
+              "error": 3.87,
+              "budget": 4.0
             },
             {
               "wait": 757.6,
-              "error": 4.12
+              "error": 4.12,
+              "budget": 4.25
             },
             {
               "wait": 740.5,
-              "error": 4.36
+              "error": 4.36,
+              "budget": 4.5
             },
             {
               "wait": 738.9,
-              "error": 4.6
+              "error": 4.6,
+              "budget": 4.75
             },
             {
               "wait": 735.2,
-              "error": 4.84
+              "error": 4.84,
+              "budget": 5.0
             },
             {
               "wait": 733.9,
-              "error": 5.08
+              "error": 5.08,
+              "budget": 5.25
             },
             {
               "wait": 730.8,
-              "error": 5.33
+              "error": 5.33,
+              "budget": 5.5
             },
             {
               "wait": 727.3,
-              "error": 5.57
+              "error": 5.57,
+              "budget": 5.75
             },
             {
               "wait": 718.7,
-              "error": 5.81
+              "error": 5.81,
+              "budget": 6.0
             },
             {
               "wait": 709.4,
-              "error": 6.05
+              "error": 6.05,
+              "budget": 6.25
             },
             {
               "wait": 702.6,
-              "error": 6.3
+              "error": 6.3,
+              "budget": 6.5
             },
             {
               "wait": 700.3,
-              "error": 6.54
+              "error": 6.54,
+              "budget": 6.75
             },
             {
               "wait": 695.9,
-              "error": 6.78
+              "error": 6.78,
+              "budget": 7.0
             },
             {
               "wait": 691.1,
-              "error": 7.02
+              "error": 7.02,
+              "budget": 7.25
             },
             {
               "wait": 687.8,
-              "error": 7.26
+              "error": 7.26,
+              "budget": 7.5
             },
             {
               "wait": 666.7,
-              "error": 7.75
+              "error": 7.75,
+              "budget": 7.75
             },
             {
               "wait": 658.4,
-              "error": 7.99
+              "error": 7.99,
+              "budget": 8.0
             },
             {
               "wait": 652.1,
-              "error": 8.23
+              "error": 8.23,
+              "budget": 8.25
             },
             {
               "wait": 648.9,
-              "error": 8.47
+              "error": 8.47,
+              "budget": 8.5
             },
             {
               "wait": 647.6,
-              "error": 8.72
+              "error": 8.72,
+              "budget": 8.75
             },
             {
               "wait": 639.6,
-              "error": 8.96
+              "error": 8.96,
+              "budget": 9.0
             },
             {
               "wait": 637.8,
-              "error": 9.2
+              "error": 9.2,
+              "budget": 9.25
             },
             {
               "wait": 634.8,
-              "error": 9.44
+              "error": 9.44,
+              "budget": 9.5
             },
             {
               "wait": 633.3,
-              "error": 9.69
+              "error": 9.69,
+              "budget": 9.75
             },
             {
               "wait": 628.0,
-              "error": 9.93
+              "error": 9.93,
+              "budget": 10.0
             },
             {
               "wait": 626.9,
-              "error": 10.17
+              "error": 10.17,
+              "budget": 10.25
             },
             {
               "wait": 623.2,
-              "error": 10.41
+              "error": 10.41,
+              "budget": 10.5
             },
             {
               "wait": 616.3,
-              "error": 10.65
+              "error": 10.65,
+              "budget": 10.75
             },
             {
               "wait": 613.4,
-              "error": 10.9
+              "error": 10.9,
+              "budget": 11.0
             },
             {
               "wait": 613.4,
-              "error": 11.14
+              "error": 11.14,
+              "budget": 11.25
             },
             {
               "wait": 607.8,
-              "error": 11.38
+              "error": 11.38,
+              "budget": 11.5
             },
             {
               "wait": 605.4,
-              "error": 11.62
+              "error": 11.62,
+              "budget": 11.75
             },
             {
               "wait": 600.8,
-              "error": 11.86
+              "error": 11.86,
+              "budget": 12.0
             },
             {
               "wait": 598.3,
-              "error": 12.11
+              "error": 12.11,
+              "budget": 12.25
             },
             {
               "wait": 596.4,
-              "error": 12.35
+              "error": 12.35,
+              "budget": 12.5
             },
             {
               "wait": 593.8,
-              "error": 12.59
+              "error": 12.59,
+              "budget": 12.75
             },
             {
               "wait": 588.7,
-              "error": 12.83
+              "error": 12.83,
+              "budget": 13.0
             },
             {
               "wait": 581.1,
-              "error": 13.08
+              "error": 13.08,
+              "budget": 13.25
             },
             {
               "wait": 577.3,
-              "error": 13.32
+              "error": 13.32,
+              "budget": 13.5
             },
             {
               "wait": 573.9,
-              "error": 13.56
+              "error": 13.56,
+              "budget": 13.75
             },
             {
               "wait": 567.0,
-              "error": 13.8
+              "error": 13.8,
+              "budget": 14.0
             },
             {
               "wait": 564.2,
-              "error": 14.04
+              "error": 14.04,
+              "budget": 14.25
             },
             {
               "wait": 563.2,
-              "error": 14.29
+              "error": 14.29,
+              "budget": 14.5
             },
             {
               "wait": 560.5,
-              "error": 14.53
+              "error": 14.53,
+              "budget": 14.75
             },
             {
               "wait": 557.1,
-              "error": 14.77
+              "error": 14.77,
+              "budget": 15.0
             },
             {
               "wait": 556.4,
-              "error": 15.01
+              "error": 15.01,
+              "budget": 15.25
             },
             {
               "wait": 549.3,
-              "error": 15.5
+              "error": 15.5,
+              "budget": 15.5
             },
             {
               "wait": 546.5,
-              "error": 15.74
+              "error": 15.74,
+              "budget": 15.75
             },
             {
               "wait": 546.0,
-              "error": 15.98
+              "error": 15.98,
+              "budget": 16.0
             },
             {
               "wait": 546.0,
-              "error": 16.22
+              "error": 16.22,
+              "budget": 16.25
             },
             {
               "wait": 539.8,
-              "error": 16.46
+              "error": 16.46,
+              "budget": 16.5
             },
             {
               "wait": 535.4,
-              "error": 16.71
+              "error": 16.71,
+              "budget": 16.75
             },
             {
               "wait": 533.9,
-              "error": 16.95
+              "error": 16.95,
+              "budget": 17.0
             },
             {
               "wait": 532.0,
-              "error": 17.19
+              "error": 17.19,
+              "budget": 17.25
             },
             {
               "wait": 526.4,
-              "error": 17.43
+              "error": 17.43,
+              "budget": 17.5
             },
             {
               "wait": 523.6,
-              "error": 17.68
+              "error": 17.68,
+              "budget": 17.75
             },
             {
               "wait": 523.6,
-              "error": 17.92
+              "error": 17.92,
+              "budget": 18.0
             },
             {
               "wait": 523.4,
-              "error": 18.16
+              "error": 18.16,
+              "budget": 18.25
             },
             {
               "wait": 519.3,
-              "error": 18.4
+              "error": 18.4,
+              "budget": 18.5
             },
             {
               "wait": 519.0,
-              "error": 18.64
+              "error": 18.64,
+              "budget": 18.75
             },
             {
               "wait": 511.8,
-              "error": 18.89
+              "error": 18.89,
+              "budget": 19.0
             },
             {
               "wait": 508.0,
-              "error": 19.13
+              "error": 19.13,
+              "budget": 19.25
             },
             {
               "wait": 506.4,
-              "error": 19.37
+              "error": 19.37,
+              "budget": 19.5
             },
             {
               "wait": 505.4,
-              "error": 19.61
+              "error": 19.61,
+              "budget": 19.75
             },
             {
               "wait": 504.4,
-              "error": 19.85
+              "error": 19.85,
+              "budget": 20.0
             }
           ],
           "at5": {
@@ -1671,319 +2066,398 @@
           "points": [
             {
               "wait": 969.9,
-              "error": 0.48
+              "error": 0.48,
+              "budget": 0.5
             },
             {
               "wait": 960.2,
-              "error": 0.73
+              "error": 0.73,
+              "budget": 0.75
             },
             {
               "wait": 949.5,
-              "error": 0.97
+              "error": 0.97,
+              "budget": 1.0
             },
             {
               "wait": 948.9,
-              "error": 1.21
+              "error": 1.21,
+              "budget": 1.25
             },
             {
               "wait": 943.0,
-              "error": 1.45
+              "error": 1.45,
+              "budget": 1.5
             },
             {
               "wait": 939.9,
-              "error": 1.69
+              "error": 1.69,
+              "budget": 1.75
             },
             {
               "wait": 932.2,
-              "error": 1.94
+              "error": 1.94,
+              "budget": 2.0
             },
             {
               "wait": 925.0,
-              "error": 2.18
+              "error": 2.18,
+              "budget": 2.25
             },
             {
               "wait": 908.2,
-              "error": 2.42
+              "error": 2.42,
+              "budget": 2.5
             },
             {
               "wait": 904.4,
-              "error": 2.66
+              "error": 2.66,
+              "budget": 2.75
             },
             {
               "wait": 896.4,
-              "error": 2.91
+              "error": 2.91,
+              "budget": 3.0
             },
             {
               "wait": 891.7,
-              "error": 3.15
+              "error": 3.15,
+              "budget": 3.25
             },
             {
               "wait": 878.1,
-              "error": 3.39
+              "error": 3.39,
+              "budget": 3.5
             },
             {
               "wait": 873.4,
-              "error": 3.63
+              "error": 3.63,
+              "budget": 3.75
             },
             {
               "wait": 864.8,
-              "error": 3.87
+              "error": 3.87,
+              "budget": 4.0
             },
             {
               "wait": 861.5,
-              "error": 4.12
+              "error": 4.12,
+              "budget": 4.25
             },
             {
               "wait": 851.7,
-              "error": 4.36
+              "error": 4.36,
+              "budget": 4.5
             },
             {
               "wait": 849.3,
-              "error": 4.6
+              "error": 4.6,
+              "budget": 4.75
             },
             {
               "wait": 849.3,
-              "error": 4.84
+              "error": 4.84,
+              "budget": 5.0
             },
             {
               "wait": 837.8,
-              "error": 5.08
+              "error": 5.08,
+              "budget": 5.25
             },
             {
               "wait": 826.9,
-              "error": 5.33
+              "error": 5.33,
+              "budget": 5.5
             },
             {
               "wait": 817.6,
-              "error": 5.57
+              "error": 5.57,
+              "budget": 5.75
             },
             {
               "wait": 807.0,
-              "error": 5.81
+              "error": 5.81,
+              "budget": 6.0
             },
             {
               "wait": 800.5,
-              "error": 6.05
+              "error": 6.05,
+              "budget": 6.25
             },
             {
               "wait": 795.5,
-              "error": 6.3
+              "error": 6.3,
+              "budget": 6.5
             },
             {
               "wait": 784.0,
-              "error": 6.54
+              "error": 6.54,
+              "budget": 6.75
             },
             {
               "wait": 779.0,
-              "error": 6.78
+              "error": 6.78,
+              "budget": 7.0
             },
             {
               "wait": 772.2,
-              "error": 7.02
+              "error": 7.02,
+              "budget": 7.25
             },
             {
               "wait": 766.0,
-              "error": 7.26
+              "error": 7.26,
+              "budget": 7.5
             },
             {
               "wait": 750.3,
-              "error": 7.75
+              "error": 7.75,
+              "budget": 7.75
             },
             {
               "wait": 747.2,
-              "error": 7.99
+              "error": 7.99,
+              "budget": 8.0
             },
             {
               "wait": 740.8,
-              "error": 8.23
+              "error": 8.23,
+              "budget": 8.25
             },
             {
               "wait": 735.4,
-              "error": 8.47
+              "error": 8.47,
+              "budget": 8.5
             },
             {
               "wait": 732.6,
-              "error": 8.72
+              "error": 8.72,
+              "budget": 8.75
             },
             {
               "wait": 727.4,
-              "error": 8.96
+              "error": 8.96,
+              "budget": 9.0
             },
             {
               "wait": 720.5,
-              "error": 9.2
+              "error": 9.2,
+              "budget": 9.25
             },
             {
               "wait": 716.5,
-              "error": 9.44
+              "error": 9.44,
+              "budget": 9.5
             },
             {
               "wait": 715.9,
-              "error": 9.69
+              "error": 9.69,
+              "budget": 9.75
             },
             {
               "wait": 713.6,
-              "error": 9.93
+              "error": 9.93,
+              "budget": 10.0
             },
             {
               "wait": 708.3,
-              "error": 10.17
+              "error": 10.17,
+              "budget": 10.25
             },
             {
               "wait": 703.8,
-              "error": 10.41
+              "error": 10.41,
+              "budget": 10.5
             },
             {
               "wait": 699.5,
-              "error": 10.65
+              "error": 10.65,
+              "budget": 10.75
             },
             {
               "wait": 696.7,
-              "error": 10.9
+              "error": 10.9,
+              "budget": 11.0
             },
             {
               "wait": 694.6,
-              "error": 11.14
+              "error": 11.14,
+              "budget": 11.25
             },
             {
               "wait": 692.5,
-              "error": 11.38
+              "error": 11.38,
+              "budget": 11.5
             },
             {
               "wait": 692.2,
-              "error": 11.62
+              "error": 11.62,
+              "budget": 11.75
             },
             {
               "wait": 678.5,
-              "error": 11.86
+              "error": 11.86,
+              "budget": 12.0
             },
             {
               "wait": 669.4,
-              "error": 12.11
+              "error": 12.11,
+              "budget": 12.25
             },
             {
               "wait": 665.2,
-              "error": 12.35
+              "error": 12.35,
+              "budget": 12.5
             },
             {
               "wait": 663.0,
-              "error": 12.59
+              "error": 12.59,
+              "budget": 12.75
             },
             {
               "wait": 661.4,
-              "error": 12.83
+              "error": 12.83,
+              "budget": 13.0
             },
             {
               "wait": 645.5,
-              "error": 13.08
+              "error": 13.08,
+              "budget": 13.25
             },
             {
               "wait": 641.1,
-              "error": 13.32
+              "error": 13.32,
+              "budget": 13.5
             },
             {
               "wait": 621.4,
-              "error": 13.56
+              "error": 13.56,
+              "budget": 13.75
             },
             {
               "wait": 617.9,
-              "error": 13.8
+              "error": 13.8,
+              "budget": 14.0
             },
             {
               "wait": 612.0,
-              "error": 14.04
+              "error": 14.04,
+              "budget": 14.25
             },
             {
               "wait": 603.3,
-              "error": 14.29
+              "error": 14.29,
+              "budget": 14.5
             },
             {
               "wait": 599.5,
-              "error": 14.53
+              "error": 14.53,
+              "budget": 14.75
             },
             {
               "wait": 591.1,
-              "error": 14.77
+              "error": 14.77,
+              "budget": 15.0
             },
             {
               "wait": 584.1,
-              "error": 15.01
+              "error": 15.01,
+              "budget": 15.25
             },
             {
               "wait": 581.3,
-              "error": 15.5
+              "error": 15.5,
+              "budget": 15.5
             },
             {
               "wait": 573.8,
-              "error": 15.74
+              "error": 15.74,
+              "budget": 15.75
             },
             {
               "wait": 567.9,
-              "error": 15.98
+              "error": 15.98,
+              "budget": 16.0
             },
             {
               "wait": 564.5,
-              "error": 16.22
+              "error": 16.22,
+              "budget": 16.25
             },
             {
               "wait": 563.2,
-              "error": 16.46
+              "error": 16.46,
+              "budget": 16.5
             },
             {
               "wait": 562.3,
-              "error": 16.71
+              "error": 16.71,
+              "budget": 16.75
             },
             {
               "wait": 555.3,
-              "error": 16.95
+              "error": 16.95,
+              "budget": 17.0
             },
             {
               "wait": 534.2,
-              "error": 17.19
+              "error": 17.19,
+              "budget": 17.25
             },
             {
               "wait": 529.6,
-              "error": 17.43
+              "error": 17.43,
+              "budget": 17.5
             },
             {
               "wait": 526.3,
-              "error": 17.68
+              "error": 17.68,
+              "budget": 17.75
             },
             {
               "wait": 513.1,
-              "error": 17.92
+              "error": 17.92,
+              "budget": 18.0
             },
             {
               "wait": 509.2,
-              "error": 18.16
+              "error": 18.16,
+              "budget": 18.25
             },
             {
               "wait": 508.0,
-              "error": 18.4
+              "error": 18.4,
+              "budget": 18.5
             },
             {
               "wait": 507.4,
-              "error": 18.64
+              "error": 18.64,
+              "budget": 18.75
             },
             {
               "wait": 506.8,
-              "error": 18.89
+              "error": 18.89,
+              "budget": 19.0
             },
             {
               "wait": 505.6,
-              "error": 19.13
+              "error": 19.13,
+              "budget": 19.25
             },
             {
               "wait": 505.3,
-              "error": 19.37
+              "error": 19.37,
+              "budget": 19.5
             },
             {
               "wait": 505.0,
-              "error": 19.61
+              "error": 19.61,
+              "budget": 19.75
             },
             {
               "wait": 504.1,
-              "error": 19.85
+              "error": 19.85,
+              "budget": 20.0
             }
           ],
           "at5": {
@@ -2007,319 +2481,398 @@
           "points": [
             {
               "wait": 757.1,
-              "error": 0.0
+              "error": 0.0,
+              "budget": 0.5
             },
             {
               "wait": 717.3,
-              "error": 0.7
+              "error": 0.7,
+              "budget": 0.75
             },
             {
               "wait": 717.3,
-              "error": 0.7
+              "error": 0.7,
+              "budget": 1.0
             },
             {
               "wait": 717.3,
-              "error": 0.7
+              "error": 0.7,
+              "budget": 1.25
             },
             {
               "wait": 593.3,
-              "error": 1.4
+              "error": 1.4,
+              "budget": 1.5
             },
             {
               "wait": 593.3,
-              "error": 1.4
+              "error": 1.4,
+              "budget": 1.75
             },
             {
               "wait": 593.3,
-              "error": 1.4
+              "error": 1.4,
+              "budget": 2.0
             },
             {
               "wait": 573.1,
-              "error": 2.1
+              "error": 2.1,
+              "budget": 2.25
             },
             {
               "wait": 573.1,
-              "error": 2.1
+              "error": 2.1,
+              "budget": 2.5
             },
             {
               "wait": 573.1,
-              "error": 2.1
+              "error": 2.1,
+              "budget": 2.75
             },
             {
               "wait": 507.4,
-              "error": 2.8
+              "error": 2.8,
+              "budget": 3.0
             },
             {
               "wait": 507.4,
-              "error": 2.8
+              "error": 2.8,
+              "budget": 3.25
             },
             {
               "wait": 484.5,
-              "error": 3.5
+              "error": 3.5,
+              "budget": 3.5
             },
             {
               "wait": 484.5,
-              "error": 3.5
+              "error": 3.5,
+              "budget": 3.75
             },
             {
               "wait": 484.5,
-              "error": 3.5
+              "error": 3.5,
+              "budget": 4.0
             },
             {
               "wait": 420.9,
-              "error": 4.2
+              "error": 4.2,
+              "budget": 4.25
             },
             {
               "wait": 420.9,
-              "error": 4.2
+              "error": 4.2,
+              "budget": 4.5
             },
             {
               "wait": 420.9,
-              "error": 4.2
+              "error": 4.2,
+              "budget": 4.75
             },
             {
               "wait": 394.4,
-              "error": 4.9
+              "error": 4.9,
+              "budget": 5.0
             },
             {
               "wait": 394.4,
-              "error": 4.9
+              "error": 4.9,
+              "budget": 5.25
             },
             {
               "wait": 394.4,
-              "error": 4.9
+              "error": 4.9,
+              "budget": 5.5
             },
             {
               "wait": 389.1,
-              "error": 5.59
+              "error": 5.59,
+              "budget": 5.75
             },
             {
               "wait": 389.1,
-              "error": 5.59
+              "error": 5.59,
+              "budget": 6.0
             },
             {
               "wait": 389.1,
-              "error": 5.59
+              "error": 5.59,
+              "budget": 6.25
             },
             {
               "wait": 389.1,
-              "error": 6.29
+              "error": 6.29,
+              "budget": 6.5
             },
             {
               "wait": 389.1,
-              "error": 6.29
+              "error": 6.29,
+              "budget": 6.75
             },
             {
               "wait": 384.8,
-              "error": 6.99
+              "error": 6.99,
+              "budget": 7.0
             },
             {
               "wait": 384.8,
-              "error": 6.99
+              "error": 6.99,
+              "budget": 7.25
             },
             {
               "wait": 384.8,
-              "error": 6.99
+              "error": 6.99,
+              "budget": 7.5
             },
             {
               "wait": 370.0,
-              "error": 7.69
+              "error": 7.69,
+              "budget": 7.75
             },
             {
               "wait": 370.0,
-              "error": 7.69
+              "error": 7.69,
+              "budget": 8.0
             },
             {
               "wait": 370.0,
-              "error": 7.69
+              "error": 7.69,
+              "budget": 8.25
             },
             {
               "wait": 367.1,
-              "error": 8.39
+              "error": 8.39,
+              "budget": 8.5
             },
             {
               "wait": 367.1,
-              "error": 8.39
+              "error": 8.39,
+              "budget": 8.75
             },
             {
               "wait": 367.1,
-              "error": 8.39
+              "error": 8.39,
+              "budget": 9.0
             },
             {
               "wait": 365.7,
-              "error": 9.09
+              "error": 9.09,
+              "budget": 9.25
             },
             {
               "wait": 365.7,
-              "error": 9.09
+              "error": 9.09,
+              "budget": 9.5
             },
             {
               "wait": 365.7,
-              "error": 9.09
+              "error": 9.09,
+              "budget": 9.75
             },
             {
               "wait": 365.2,
-              "error": 9.79
+              "error": 9.79,
+              "budget": 10.0
             },
             {
               "wait": 365.2,
-              "error": 9.79
+              "error": 9.79,
+              "budget": 10.25
             },
             {
               "wait": 362.8,
-              "error": 10.49
+              "error": 10.49,
+              "budget": 10.5
             },
             {
               "wait": 362.8,
-              "error": 10.49
+              "error": 10.49,
+              "budget": 10.75
             },
             {
               "wait": 362.8,
-              "error": 10.49
+              "error": 10.49,
+              "budget": 11.0
             },
             {
               "wait": 362.4,
-              "error": 11.19
+              "error": 11.19,
+              "budget": 11.25
             },
             {
               "wait": 362.4,
-              "error": 11.19
+              "error": 11.19,
+              "budget": 11.5
             },
             {
               "wait": 362.4,
-              "error": 11.19
+              "error": 11.19,
+              "budget": 11.75
             },
             {
               "wait": 359.4,
-              "error": 11.89
+              "error": 11.89,
+              "budget": 12.0
             },
             {
               "wait": 359.4,
-              "error": 11.89
+              "error": 11.89,
+              "budget": 12.25
             },
             {
               "wait": 359.4,
-              "error": 11.89
+              "error": 11.89,
+              "budget": 12.5
             },
             {
               "wait": 356.4,
-              "error": 12.59
+              "error": 12.59,
+              "budget": 12.75
             },
             {
               "wait": 356.4,
-              "error": 12.59
+              "error": 12.59,
+              "budget": 13.0
             },
             {
               "wait": 356.4,
-              "error": 12.59
+              "error": 12.59,
+              "budget": 13.25
             },
             {
               "wait": 353.5,
-              "error": 13.29
+              "error": 13.29,
+              "budget": 13.5
             },
             {
               "wait": 353.5,
-              "error": 13.29
+              "error": 13.29,
+              "budget": 13.75
             },
             {
               "wait": 352.4,
-              "error": 13.99
+              "error": 13.99,
+              "budget": 14.0
             },
             {
               "wait": 352.4,
-              "error": 13.99
+              "error": 13.99,
+              "budget": 14.25
             },
             {
               "wait": 352.4,
-              "error": 13.99
+              "error": 13.99,
+              "budget": 14.5
             },
             {
               "wait": 345.4,
-              "error": 14.69
+              "error": 14.69,
+              "budget": 14.75
             },
             {
               "wait": 345.4,
-              "error": 14.69
+              "error": 14.69,
+              "budget": 15.0
             },
             {
               "wait": 345.4,
-              "error": 14.69
+              "error": 14.69,
+              "budget": 15.25
             },
             {
               "wait": 343.6,
-              "error": 15.38
+              "error": 15.38,
+              "budget": 15.5
             },
             {
               "wait": 343.6,
-              "error": 15.38
+              "error": 15.38,
+              "budget": 15.75
             },
             {
               "wait": 343.6,
-              "error": 15.38
+              "error": 15.38,
+              "budget": 16.0
             },
             {
               "wait": 337.2,
-              "error": 16.08
+              "error": 16.08,
+              "budget": 16.25
             },
             {
               "wait": 337.2,
-              "error": 16.08
+              "error": 16.08,
+              "budget": 16.5
             },
             {
               "wait": 337.2,
-              "error": 16.08
+              "error": 16.08,
+              "budget": 16.75
             },
             {
               "wait": 331.3,
-              "error": 16.78
+              "error": 16.78,
+              "budget": 17.0
             },
             {
               "wait": 331.3,
-              "error": 16.78
+              "error": 16.78,
+              "budget": 17.25
             },
             {
               "wait": 327.9,
-              "error": 17.48
+              "error": 17.48,
+              "budget": 17.5
             },
             {
               "wait": 327.9,
-              "error": 17.48
+              "error": 17.48,
+              "budget": 17.75
             },
             {
               "wait": 327.9,
-              "error": 17.48
+              "error": 17.48,
+              "budget": 18.0
             },
             {
               "wait": 325.5,
-              "error": 18.18
+              "error": 18.18,
+              "budget": 18.25
             },
             {
               "wait": 325.5,
-              "error": 18.18
+              "error": 18.18,
+              "budget": 18.5
             },
             {
               "wait": 325.5,
-              "error": 18.18
+              "error": 18.18,
+              "budget": 18.75
             },
             {
               "wait": 323.3,
-              "error": 18.88
+              "error": 18.88,
+              "budget": 19.0
             },
             {
               "wait": 323.3,
-              "error": 18.88
+              "error": 18.88,
+              "budget": 19.25
             },
             {
               "wait": 323.3,
-              "error": 18.88
+              "error": 18.88,
+              "budget": 19.5
             },
             {
               "wait": 322.0,
-              "error": 19.58
+              "error": 19.58,
+              "budget": 19.75
             },
             {
               "wait": 322.0,
-              "error": 19.58
+              "error": 19.58,
+              "budget": 20.0
             }
           ],
           "at5": {
@@ -2336,319 +2889,398 @@
           "points": [
             {
               "wait": 930.8,
-              "error": 0.0
+              "error": 0.0,
+              "budget": 0.5
             },
             {
               "wait": 903.3,
-              "error": 0.7
+              "error": 0.7,
+              "budget": 0.75
             },
             {
               "wait": 903.3,
-              "error": 0.7
+              "error": 0.7,
+              "budget": 1.0
             },
             {
               "wait": 903.3,
-              "error": 0.7
+              "error": 0.7,
+              "budget": 1.25
             },
             {
               "wait": 800.9,
-              "error": 1.4
+              "error": 1.4,
+              "budget": 1.5
             },
             {
               "wait": 800.9,
-              "error": 1.4
+              "error": 1.4,
+              "budget": 1.75
             },
             {
               "wait": 800.9,
-              "error": 1.4
+              "error": 1.4,
+              "budget": 2.0
             },
             {
               "wait": 698.0,
-              "error": 2.1
+              "error": 2.1,
+              "budget": 2.25
             },
             {
               "wait": 698.0,
-              "error": 2.1
+              "error": 2.1,
+              "budget": 2.5
             },
             {
               "wait": 698.0,
-              "error": 2.1
+              "error": 2.1,
+              "budget": 2.75
             },
             {
               "wait": 648.4,
-              "error": 2.8
+              "error": 2.8,
+              "budget": 3.0
             },
             {
               "wait": 648.4,
-              "error": 2.8
+              "error": 2.8,
+              "budget": 3.25
             },
             {
               "wait": 584.0,
-              "error": 3.5
+              "error": 3.5,
+              "budget": 3.5
             },
             {
               "wait": 584.0,
-              "error": 3.5
+              "error": 3.5,
+              "budget": 3.75
             },
             {
               "wait": 584.0,
-              "error": 3.5
+              "error": 3.5,
+              "budget": 4.0
             },
             {
               "wait": 530.9,
-              "error": 4.2
+              "error": 4.2,
+              "budget": 4.25
             },
             {
               "wait": 530.9,
-              "error": 4.2
+              "error": 4.2,
+              "budget": 4.5
             },
             {
               "wait": 530.9,
-              "error": 4.2
+              "error": 4.2,
+              "budget": 4.75
             },
             {
               "wait": 473.8,
-              "error": 4.9
+              "error": 4.9,
+              "budget": 5.0
             },
             {
               "wait": 473.8,
-              "error": 4.9
+              "error": 4.9,
+              "budget": 5.25
             },
             {
               "wait": 473.8,
-              "error": 4.9
+              "error": 4.9,
+              "budget": 5.5
             },
             {
               "wait": 450.6,
-              "error": 5.59
+              "error": 5.59,
+              "budget": 5.75
             },
             {
               "wait": 450.6,
-              "error": 5.59
+              "error": 5.59,
+              "budget": 6.0
             },
             {
               "wait": 450.6,
-              "error": 5.59
+              "error": 5.59,
+              "budget": 6.25
             },
             {
               "wait": 431.8,
-              "error": 6.29
+              "error": 6.29,
+              "budget": 6.5
             },
             {
               "wait": 431.8,
-              "error": 6.29
+              "error": 6.29,
+              "budget": 6.75
             },
             {
               "wait": 423.7,
-              "error": 6.99
+              "error": 6.99,
+              "budget": 7.0
             },
             {
               "wait": 423.7,
-              "error": 6.99
+              "error": 6.99,
+              "budget": 7.25
             },
             {
               "wait": 423.7,
-              "error": 6.99
+              "error": 6.99,
+              "budget": 7.5
             },
             {
               "wait": 411.2,
-              "error": 7.69
+              "error": 7.69,
+              "budget": 7.75
             },
             {
               "wait": 411.2,
-              "error": 7.69
+              "error": 7.69,
+              "budget": 8.0
             },
             {
               "wait": 411.2,
-              "error": 7.69
+              "error": 7.69,
+              "budget": 8.25
             },
             {
               "wait": 410.7,
-              "error": 8.39
+              "error": 8.39,
+              "budget": 8.5
             },
             {
               "wait": 410.7,
-              "error": 8.39
+              "error": 8.39,
+              "budget": 8.75
             },
             {
               "wait": 410.7,
-              "error": 8.39
+              "error": 8.39,
+              "budget": 9.0
             },
             {
               "wait": 410.2,
-              "error": 9.09
+              "error": 9.09,
+              "budget": 9.25
             },
             {
               "wait": 410.2,
-              "error": 9.09
+              "error": 9.09,
+              "budget": 9.5
             },
             {
               "wait": 410.2,
-              "error": 9.09
+              "error": 9.09,
+              "budget": 9.75
             },
             {
               "wait": 407.4,
-              "error": 9.79
+              "error": 9.79,
+              "budget": 10.0
             },
             {
               "wait": 407.4,
-              "error": 9.79
+              "error": 9.79,
+              "budget": 10.25
             },
             {
               "wait": 382.7,
-              "error": 10.49
+              "error": 10.49,
+              "budget": 10.5
             },
             {
               "wait": 382.7,
-              "error": 10.49
+              "error": 10.49,
+              "budget": 10.75
             },
             {
               "wait": 382.7,
-              "error": 10.49
+              "error": 10.49,
+              "budget": 11.0
             },
             {
               "wait": 369.0,
-              "error": 11.19
+              "error": 11.19,
+              "budget": 11.25
             },
             {
               "wait": 369.0,
-              "error": 11.19
+              "error": 11.19,
+              "budget": 11.5
             },
             {
               "wait": 369.0,
-              "error": 11.19
+              "error": 11.19,
+              "budget": 11.75
             },
             {
               "wait": 345.2,
-              "error": 11.89
+              "error": 11.89,
+              "budget": 12.0
             },
             {
               "wait": 345.2,
-              "error": 11.89
+              "error": 11.89,
+              "budget": 12.25
             },
             {
               "wait": 345.2,
-              "error": 11.89
+              "error": 11.89,
+              "budget": 12.5
             },
             {
               "wait": 342.3,
-              "error": 12.59
+              "error": 12.59,
+              "budget": 12.75
             },
             {
               "wait": 342.3,
-              "error": 12.59
+              "error": 12.59,
+              "budget": 13.0
             },
             {
               "wait": 342.3,
-              "error": 12.59
+              "error": 12.59,
+              "budget": 13.25
             },
             {
               "wait": 336.3,
-              "error": 13.29
+              "error": 13.29,
+              "budget": 13.5
             },
             {
               "wait": 336.3,
-              "error": 13.29
+              "error": 13.29,
+              "budget": 13.75
             },
             {
               "wait": 330.8,
-              "error": 13.99
+              "error": 13.99,
+              "budget": 14.0
             },
             {
               "wait": 330.8,
-              "error": 13.99
+              "error": 13.99,
+              "budget": 14.25
             },
             {
               "wait": 330.8,
-              "error": 13.99
+              "error": 13.99,
+              "budget": 14.5
             },
             {
               "wait": 326.2,
-              "error": 14.69
+              "error": 14.69,
+              "budget": 14.75
             },
             {
               "wait": 326.2,
-              "error": 14.69
+              "error": 14.69,
+              "budget": 15.0
             },
             {
               "wait": 326.2,
-              "error": 14.69
+              "error": 14.69,
+              "budget": 15.25
             },
             {
               "wait": 323.5,
-              "error": 15.38
+              "error": 15.38,
+              "budget": 15.5
             },
             {
               "wait": 323.5,
-              "error": 15.38
+              "error": 15.38,
+              "budget": 15.75
             },
             {
               "wait": 323.5,
-              "error": 15.38
+              "error": 15.38,
+              "budget": 16.0
             },
             {
               "wait": 321.3,
-              "error": 16.08
+              "error": 16.08,
+              "budget": 16.25
             },
             {
               "wait": 321.3,
-              "error": 16.08
+              "error": 16.08,
+              "budget": 16.5
             },
             {
               "wait": 321.3,
-              "error": 16.08
+              "error": 16.08,
+              "budget": 16.75
             },
             {
               "wait": 321.3,
-              "error": 16.78
+              "error": 16.78,
+              "budget": 17.0
             },
             {
               "wait": 321.3,
-              "error": 16.78
+              "error": 16.78,
+              "budget": 17.25
             },
             {
               "wait": 319.3,
-              "error": 17.48
+              "error": 17.48,
+              "budget": 17.5
             },
             {
               "wait": 319.3,
-              "error": 17.48
+              "error": 17.48,
+              "budget": 17.75
             },
             {
               "wait": 319.3,
-              "error": 17.48
+              "error": 17.48,
+              "budget": 18.0
             },
             {
               "wait": 318.5,
-              "error": 18.18
+              "error": 18.18,
+              "budget": 18.25
             },
             {
               "wait": 318.5,
-              "error": 18.18
+              "error": 18.18,
+              "budget": 18.5
             },
             {
               "wait": 318.5,
-              "error": 18.18
+              "error": 18.18,
+              "budget": 18.75
             },
             {
               "wait": 316.5,
-              "error": 18.88
+              "error": 18.88,
+              "budget": 19.0
             },
             {
               "wait": 316.5,
-              "error": 18.88
+              "error": 18.88,
+              "budget": 19.25
             },
             {
               "wait": 316.5,
-              "error": 18.88
+              "error": 18.88,
+              "budget": 19.5
             },
             {
               "wait": 315.3,
-              "error": 19.58
+              "error": 19.58,
+              "budget": 19.75
             },
             {
               "wait": 315.3,
-              "error": 19.58
+              "error": 19.58,
+              "budget": 20.0
             }
           ],
           "at5": {
@@ -2665,319 +3297,398 @@
           "points": [
             {
               "wait": 907.3,
-              "error": 0.0
+              "error": 0.0,
+              "budget": 0.5
             },
             {
               "wait": 861.2,
-              "error": 0.7
+              "error": 0.7,
+              "budget": 0.75
             },
             {
               "wait": 861.2,
-              "error": 0.7
+              "error": 0.7,
+              "budget": 1.0
             },
             {
               "wait": 861.2,
-              "error": 0.7
+              "error": 0.7,
+              "budget": 1.25
             },
             {
               "wait": 836.8,
-              "error": 1.4
+              "error": 1.4,
+              "budget": 1.5
             },
             {
               "wait": 836.8,
-              "error": 1.4
+              "error": 1.4,
+              "budget": 1.75
             },
             {
               "wait": 836.8,
-              "error": 1.4
+              "error": 1.4,
+              "budget": 2.0
             },
             {
               "wait": 821.9,
-              "error": 2.1
+              "error": 2.1,
+              "budget": 2.25
             },
             {
               "wait": 821.9,
-              "error": 2.1
+              "error": 2.1,
+              "budget": 2.5
             },
             {
               "wait": 821.9,
-              "error": 2.1
+              "error": 2.1,
+              "budget": 2.75
             },
             {
               "wait": 736.2,
-              "error": 2.8
+              "error": 2.8,
+              "budget": 3.0
             },
             {
               "wait": 736.2,
-              "error": 2.8
+              "error": 2.8,
+              "budget": 3.25
             },
             {
               "wait": 720.5,
-              "error": 3.5
+              "error": 3.5,
+              "budget": 3.5
             },
             {
               "wait": 720.5,
-              "error": 3.5
+              "error": 3.5,
+              "budget": 3.75
             },
             {
               "wait": 720.5,
-              "error": 3.5
+              "error": 3.5,
+              "budget": 4.0
             },
             {
               "wait": 718.0,
-              "error": 4.2
+              "error": 4.2,
+              "budget": 4.25
             },
             {
               "wait": 718.0,
-              "error": 4.2
+              "error": 4.2,
+              "budget": 4.5
             },
             {
               "wait": 718.0,
-              "error": 4.2
+              "error": 4.2,
+              "budget": 4.75
             },
             {
               "wait": 692.7,
-              "error": 4.9
+              "error": 4.9,
+              "budget": 5.0
             },
             {
               "wait": 692.7,
-              "error": 4.9
+              "error": 4.9,
+              "budget": 5.25
             },
             {
               "wait": 692.7,
-              "error": 4.9
+              "error": 4.9,
+              "budget": 5.5
             },
             {
               "wait": 669.1,
-              "error": 5.59
+              "error": 5.59,
+              "budget": 5.75
             },
             {
               "wait": 669.1,
-              "error": 5.59
+              "error": 5.59,
+              "budget": 6.0
             },
             {
               "wait": 669.1,
-              "error": 5.59
+              "error": 5.59,
+              "budget": 6.25
             },
             {
               "wait": 650.5,
-              "error": 6.29
+              "error": 6.29,
+              "budget": 6.5
             },
             {
               "wait": 650.5,
-              "error": 6.29
+              "error": 6.29,
+              "budget": 6.75
             },
             {
               "wait": 628.9,
-              "error": 6.99
+              "error": 6.99,
+              "budget": 7.0
             },
             {
               "wait": 628.9,
-              "error": 6.99
+              "error": 6.99,
+              "budget": 7.25
             },
             {
               "wait": 628.9,
-              "error": 6.99
+              "error": 6.99,
+              "budget": 7.5
             },
             {
               "wait": 604.0,
-              "error": 7.69
+              "error": 7.69,
+              "budget": 7.75
             },
             {
               "wait": 604.0,
-              "error": 7.69
+              "error": 7.69,
+              "budget": 8.0
             },
             {
               "wait": 604.0,
-              "error": 7.69
+              "error": 7.69,
+              "budget": 8.25
             },
             {
               "wait": 565.7,
-              "error": 8.39
+              "error": 8.39,
+              "budget": 8.5
             },
             {
               "wait": 565.7,
-              "error": 8.39
+              "error": 8.39,
+              "budget": 8.75
             },
             {
               "wait": 565.7,
-              "error": 8.39
+              "error": 8.39,
+              "budget": 9.0
             },
             {
               "wait": 549.2,
-              "error": 9.09
+              "error": 9.09,
+              "budget": 9.25
             },
             {
               "wait": 549.2,
-              "error": 9.09
+              "error": 9.09,
+              "budget": 9.5
             },
             {
               "wait": 549.2,
-              "error": 9.09
+              "error": 9.09,
+              "budget": 9.75
             },
             {
               "wait": 540.8,
-              "error": 9.79
+              "error": 9.79,
+              "budget": 10.0
             },
             {
               "wait": 540.8,
-              "error": 9.79
+              "error": 9.79,
+              "budget": 10.25
             },
             {
               "wait": 536.6,
-              "error": 10.49
+              "error": 10.49,
+              "budget": 10.5
             },
             {
               "wait": 536.6,
-              "error": 10.49
+              "error": 10.49,
+              "budget": 10.75
             },
             {
               "wait": 536.6,
-              "error": 10.49
+              "error": 10.49,
+              "budget": 11.0
             },
             {
               "wait": 521.7,
-              "error": 11.19
+              "error": 11.19,
+              "budget": 11.25
             },
             {
               "wait": 521.7,
-              "error": 11.19
+              "error": 11.19,
+              "budget": 11.5
             },
             {
               "wait": 521.7,
-              "error": 11.19
+              "error": 11.19,
+              "budget": 11.75
             },
             {
               "wait": 507.4,
-              "error": 11.89
+              "error": 11.89,
+              "budget": 12.0
             },
             {
               "wait": 507.4,
-              "error": 11.89
+              "error": 11.89,
+              "budget": 12.25
             },
             {
               "wait": 507.4,
-              "error": 11.89
+              "error": 11.89,
+              "budget": 12.5
             },
             {
               "wait": 500.4,
-              "error": 12.59
+              "error": 12.59,
+              "budget": 12.75
             },
             {
               "wait": 500.4,
-              "error": 12.59
+              "error": 12.59,
+              "budget": 13.0
             },
             {
               "wait": 500.4,
-              "error": 12.59
+              "error": 12.59,
+              "budget": 13.25
             },
             {
               "wait": 471.5,
-              "error": 13.29
+              "error": 13.29,
+              "budget": 13.5
             },
             {
               "wait": 471.5,
-              "error": 13.29
+              "error": 13.29,
+              "budget": 13.75
             },
             {
               "wait": 457.8,
-              "error": 13.99
+              "error": 13.99,
+              "budget": 14.0
             },
             {
               "wait": 457.8,
-              "error": 13.99
+              "error": 13.99,
+              "budget": 14.25
             },
             {
               "wait": 457.8,
-              "error": 13.99
+              "error": 13.99,
+              "budget": 14.5
             },
             {
               "wait": 435.5,
-              "error": 14.69
+              "error": 14.69,
+              "budget": 14.75
             },
             {
               "wait": 435.5,
-              "error": 14.69
+              "error": 14.69,
+              "budget": 15.0
             },
             {
               "wait": 435.5,
-              "error": 14.69
+              "error": 14.69,
+              "budget": 15.25
             },
             {
               "wait": 433.3,
-              "error": 15.38
+              "error": 15.38,
+              "budget": 15.5
             },
             {
               "wait": 433.3,
-              "error": 15.38
+              "error": 15.38,
+              "budget": 15.75
             },
             {
               "wait": 433.3,
-              "error": 15.38
+              "error": 15.38,
+              "budget": 16.0
             },
             {
               "wait": 427.8,
-              "error": 16.08
+              "error": 16.08,
+              "budget": 16.25
             },
             {
               "wait": 427.8,
-              "error": 16.08
+              "error": 16.08,
+              "budget": 16.5
             },
             {
               "wait": 427.8,
-              "error": 16.08
+              "error": 16.08,
+              "budget": 16.75
             },
             {
               "wait": 427.2,
-              "error": 16.78
+              "error": 16.78,
+              "budget": 17.0
             },
             {
               "wait": 427.2,
-              "error": 16.78
+              "error": 16.78,
+              "budget": 17.25
             },
             {
               "wait": 424.9,
-              "error": 17.48
+              "error": 17.48,
+              "budget": 17.5
             },
             {
               "wait": 424.9,
-              "error": 17.48
+              "error": 17.48,
+              "budget": 17.75
             },
             {
               "wait": 424.9,
-              "error": 17.48
+              "error": 17.48,
+              "budget": 18.0
             },
             {
               "wait": 423.7,
-              "error": 18.18
+              "error": 18.18,
+              "budget": 18.25
             },
             {
               "wait": 423.7,
-              "error": 18.18
+              "error": 18.18,
+              "budget": 18.5
             },
             {
               "wait": 423.7,
-              "error": 18.18
+              "error": 18.18,
+              "budget": 18.75
             },
             {
               "wait": 413.6,
-              "error": 18.88
+              "error": 18.88,
+              "budget": 19.0
             },
             {
               "wait": 413.6,
-              "error": 18.88
+              "error": 18.88,
+              "budget": 19.25
             },
             {
               "wait": 413.6,
-              "error": 18.88
+              "error": 18.88,
+              "budget": 19.5
             },
             {
               "wait": 404.9,
-              "error": 19.58
+              "error": 19.58,
+              "budget": 19.75
             },
             {
               "wait": 404.9,
-              "error": 19.58
+              "error": 19.58,
+              "budget": 20.0
             }
           ],
           "at5": {
@@ -2994,319 +3705,398 @@
           "points": [
             {
               "wait": 867.5,
-              "error": 0.0
+              "error": 0.0,
+              "budget": 0.5
             },
             {
               "wait": 766.8,
-              "error": 0.7
+              "error": 0.7,
+              "budget": 0.75
             },
             {
               "wait": 766.8,
-              "error": 0.7
+              "error": 0.7,
+              "budget": 1.0
             },
             {
               "wait": 766.8,
-              "error": 0.7
+              "error": 0.7,
+              "budget": 1.25
             },
             {
               "wait": 618.9,
-              "error": 1.4
+              "error": 1.4,
+              "budget": 1.5
             },
             {
               "wait": 618.9,
-              "error": 1.4
+              "error": 1.4,
+              "budget": 1.75
             },
             {
               "wait": 618.9,
-              "error": 1.4
+              "error": 1.4,
+              "budget": 2.0
             },
             {
               "wait": 585.8,
-              "error": 2.1
+              "error": 2.1,
+              "budget": 2.25
             },
             {
               "wait": 585.8,
-              "error": 2.1
+              "error": 2.1,
+              "budget": 2.5
             },
             {
               "wait": 585.8,
-              "error": 2.1
+              "error": 2.1,
+              "budget": 2.75
             },
             {
               "wait": 519.5,
-              "error": 2.8
+              "error": 2.8,
+              "budget": 3.0
             },
             {
               "wait": 519.5,
-              "error": 2.8
+              "error": 2.8,
+              "budget": 3.25
             },
             {
               "wait": 496.6,
-              "error": 3.5
+              "error": 3.5,
+              "budget": 3.5
             },
             {
               "wait": 496.6,
-              "error": 3.5
+              "error": 3.5,
+              "budget": 3.75
             },
             {
               "wait": 496.6,
-              "error": 3.5
+              "error": 3.5,
+              "budget": 4.0
             },
             {
               "wait": 476.7,
-              "error": 4.2
+              "error": 4.2,
+              "budget": 4.25
             },
             {
               "wait": 476.7,
-              "error": 4.2
+              "error": 4.2,
+              "budget": 4.5
             },
             {
               "wait": 476.7,
-              "error": 4.2
+              "error": 4.2,
+              "budget": 4.75
             },
             {
               "wait": 476.1,
-              "error": 4.9
+              "error": 4.9,
+              "budget": 5.0
             },
             {
               "wait": 476.1,
-              "error": 4.9
+              "error": 4.9,
+              "budget": 5.25
             },
             {
               "wait": 476.1,
-              "error": 4.9
+              "error": 4.9,
+              "budget": 5.5
             },
             {
               "wait": 429.5,
-              "error": 5.59
+              "error": 5.59,
+              "budget": 5.75
             },
             {
               "wait": 429.5,
-              "error": 5.59
+              "error": 5.59,
+              "budget": 6.0
             },
             {
               "wait": 429.5,
-              "error": 5.59
+              "error": 5.59,
+              "budget": 6.25
             },
             {
               "wait": 420.9,
-              "error": 6.29
+              "error": 6.29,
+              "budget": 6.5
             },
             {
               "wait": 420.9,
-              "error": 6.29
+              "error": 6.29,
+              "budget": 6.75
             },
             {
               "wait": 408.6,
-              "error": 6.99
+              "error": 6.99,
+              "budget": 7.0
             },
             {
               "wait": 408.6,
-              "error": 6.99
+              "error": 6.99,
+              "budget": 7.25
             },
             {
               "wait": 408.6,
-              "error": 6.99
+              "error": 6.99,
+              "budget": 7.5
             },
             {
               "wait": 404.6,
-              "error": 7.69
+              "error": 7.69,
+              "budget": 7.75
             },
             {
               "wait": 404.6,
-              "error": 7.69
+              "error": 7.69,
+              "budget": 8.0
             },
             {
               "wait": 404.6,
-              "error": 7.69
+              "error": 7.69,
+              "budget": 8.25
             },
             {
               "wait": 401.0,
-              "error": 8.39
+              "error": 8.39,
+              "budget": 8.5
             },
             {
               "wait": 401.0,
-              "error": 8.39
+              "error": 8.39,
+              "budget": 8.75
             },
             {
               "wait": 401.0,
-              "error": 8.39
+              "error": 8.39,
+              "budget": 9.0
             },
             {
               "wait": 388.4,
-              "error": 9.09
+              "error": 9.09,
+              "budget": 9.25
             },
             {
               "wait": 388.4,
-              "error": 9.09
+              "error": 9.09,
+              "budget": 9.5
             },
             {
               "wait": 388.4,
-              "error": 9.09
+              "error": 9.09,
+              "budget": 9.75
             },
             {
               "wait": 384.4,
-              "error": 9.79
+              "error": 9.79,
+              "budget": 10.0
             },
             {
               "wait": 384.4,
-              "error": 9.79
+              "error": 9.79,
+              "budget": 10.25
             },
             {
               "wait": 379.3,
-              "error": 10.49
+              "error": 10.49,
+              "budget": 10.5
             },
             {
               "wait": 379.3,
-              "error": 10.49
+              "error": 10.49,
+              "budget": 10.75
             },
             {
               "wait": 379.3,
-              "error": 10.49
+              "error": 10.49,
+              "budget": 11.0
             },
             {
               "wait": 376.4,
-              "error": 11.19
+              "error": 11.19,
+              "budget": 11.25
             },
             {
               "wait": 376.4,
-              "error": 11.19
+              "error": 11.19,
+              "budget": 11.5
             },
             {
               "wait": 376.4,
-              "error": 11.19
+              "error": 11.19,
+              "budget": 11.75
             },
             {
               "wait": 374.1,
-              "error": 11.89
+              "error": 11.89,
+              "budget": 12.0
             },
             {
               "wait": 374.1,
-              "error": 11.89
+              "error": 11.89,
+              "budget": 12.25
             },
             {
               "wait": 374.1,
-              "error": 11.89
+              "error": 11.89,
+              "budget": 12.5
             },
             {
               "wait": 369.1,
-              "error": 12.59
+              "error": 12.59,
+              "budget": 12.75
             },
             {
               "wait": 369.1,
-              "error": 12.59
+              "error": 12.59,
+              "budget": 13.0
             },
             {
               "wait": 369.1,
-              "error": 12.59
+              "error": 12.59,
+              "budget": 13.25
             },
             {
               "wait": 365.7,
-              "error": 13.29
+              "error": 13.29,
+              "budget": 13.5
             },
             {
               "wait": 365.7,
-              "error": 13.29
+              "error": 13.29,
+              "budget": 13.75
             },
             {
               "wait": 363.1,
-              "error": 13.99
+              "error": 13.99,
+              "budget": 14.0
             },
             {
               "wait": 363.1,
-              "error": 13.99
+              "error": 13.99,
+              "budget": 14.25
             },
             {
               "wait": 363.1,
-              "error": 13.99
+              "error": 13.99,
+              "budget": 14.5
             },
             {
               "wait": 360.8,
-              "error": 14.69
+              "error": 14.69,
+              "budget": 14.75
             },
             {
               "wait": 360.8,
-              "error": 14.69
+              "error": 14.69,
+              "budget": 15.0
             },
             {
               "wait": 360.8,
-              "error": 14.69
+              "error": 14.69,
+              "budget": 15.25
             },
             {
               "wait": 355.8,
-              "error": 15.38
+              "error": 15.38,
+              "budget": 15.5
             },
             {
               "wait": 355.8,
-              "error": 15.38
+              "error": 15.38,
+              "budget": 15.75
             },
             {
               "wait": 355.8,
-              "error": 15.38
+              "error": 15.38,
+              "budget": 16.0
             },
             {
               "wait": 354.1,
-              "error": 16.08
+              "error": 16.08,
+              "budget": 16.25
             },
             {
               "wait": 354.1,
-              "error": 16.08
+              "error": 16.08,
+              "budget": 16.5
             },
             {
               "wait": 354.1,
-              "error": 16.08
+              "error": 16.08,
+              "budget": 16.75
             },
             {
               "wait": 351.8,
-              "error": 16.78
+              "error": 16.78,
+              "budget": 17.0
             },
             {
               "wait": 351.8,
-              "error": 16.78
+              "error": 16.78,
+              "budget": 17.25
             },
             {
               "wait": 348.4,
-              "error": 17.48
+              "error": 17.48,
+              "budget": 17.5
             },
             {
               "wait": 348.4,
-              "error": 17.48
+              "error": 17.48,
+              "budget": 17.75
             },
             {
               "wait": 348.4,
-              "error": 17.48
+              "error": 17.48,
+              "budget": 18.0
             },
             {
               "wait": 347.8,
-              "error": 18.18
+              "error": 18.18,
+              "budget": 18.25
             },
             {
               "wait": 347.8,
-              "error": 18.18
+              "error": 18.18,
+              "budget": 18.5
             },
             {
               "wait": 347.8,
-              "error": 18.18
+              "error": 18.18,
+              "budget": 18.75
             },
             {
               "wait": 344.5,
-              "error": 18.88
+              "error": 18.88,
+              "budget": 19.0
             },
             {
               "wait": 344.5,
-              "error": 18.88
+              "error": 18.88,
+              "budget": 19.25
             },
             {
               "wait": 344.5,
-              "error": 18.88
+              "error": 18.88,
+              "budget": 19.5
             },
             {
               "wait": 341.5,
-              "error": 19.58
+              "error": 19.58,
+              "budget": 19.75
             },
             {
               "wait": 341.5,
-              "error": 19.58
+              "error": 19.58,
+              "budget": 20.0
             }
           ],
           "at5": {
@@ -3323,319 +4113,398 @@
           "points": [
             {
               "wait": 953.4,
-              "error": 0.0
+              "error": 0.0,
+              "budget": 0.5
             },
             {
               "wait": 937.2,
-              "error": 0.7
+              "error": 0.7,
+              "budget": 0.75
             },
             {
               "wait": 937.2,
-              "error": 0.7
+              "error": 0.7,
+              "budget": 1.0
             },
             {
               "wait": 937.2,
-              "error": 0.7
+              "error": 0.7,
+              "budget": 1.25
             },
             {
               "wait": 894.8,
-              "error": 1.4
+              "error": 1.4,
+              "budget": 1.5
             },
             {
               "wait": 894.8,
-              "error": 1.4
+              "error": 1.4,
+              "budget": 1.75
             },
             {
               "wait": 894.8,
-              "error": 1.4
+              "error": 1.4,
+              "budget": 2.0
             },
             {
               "wait": 851.9,
-              "error": 2.1
+              "error": 2.1,
+              "budget": 2.25
             },
             {
               "wait": 851.9,
-              "error": 2.1
+              "error": 2.1,
+              "budget": 2.5
             },
             {
               "wait": 851.9,
-              "error": 2.1
+              "error": 2.1,
+              "budget": 2.75
             },
             {
               "wait": 830.9,
-              "error": 2.8
+              "error": 2.8,
+              "budget": 3.0
             },
             {
               "wait": 830.9,
-              "error": 2.8
+              "error": 2.8,
+              "budget": 3.25
             },
             {
               "wait": 826.5,
-              "error": 3.5
+              "error": 3.5,
+              "budget": 3.5
             },
             {
               "wait": 826.5,
-              "error": 3.5
+              "error": 3.5,
+              "budget": 3.75
             },
             {
               "wait": 826.5,
-              "error": 3.5
+              "error": 3.5,
+              "budget": 4.0
             },
             {
               "wait": 804.1,
-              "error": 4.2
+              "error": 4.2,
+              "budget": 4.25
             },
             {
               "wait": 804.1,
-              "error": 4.2
+              "error": 4.2,
+              "budget": 4.5
             },
             {
               "wait": 804.1,
-              "error": 4.2
+              "error": 4.2,
+              "budget": 4.75
             },
             {
               "wait": 789.8,
-              "error": 4.9
+              "error": 4.9,
+              "budget": 5.0
             },
             {
               "wait": 789.8,
-              "error": 4.9
+              "error": 4.9,
+              "budget": 5.25
             },
             {
               "wait": 789.8,
-              "error": 4.9
+              "error": 4.9,
+              "budget": 5.5
             },
             {
               "wait": 786.6,
-              "error": 5.59
+              "error": 5.59,
+              "budget": 5.75
             },
             {
               "wait": 786.6,
-              "error": 5.59
+              "error": 5.59,
+              "budget": 6.0
             },
             {
               "wait": 786.6,
-              "error": 5.59
+              "error": 5.59,
+              "budget": 6.25
             },
             {
               "wait": 754.9,
-              "error": 6.29
+              "error": 6.29,
+              "budget": 6.5
             },
             {
               "wait": 754.9,
-              "error": 6.29
+              "error": 6.29,
+              "budget": 6.75
             },
             {
               "wait": 736.8,
-              "error": 6.99
+              "error": 6.99,
+              "budget": 7.0
             },
             {
               "wait": 736.8,
-              "error": 6.99
+              "error": 6.99,
+              "budget": 7.25
             },
             {
               "wait": 736.8,
-              "error": 6.99
+              "error": 6.99,
+              "budget": 7.5
             },
             {
               "wait": 708.2,
-              "error": 7.69
+              "error": 7.69,
+              "budget": 7.75
             },
             {
               "wait": 708.2,
-              "error": 7.69
+              "error": 7.69,
+              "budget": 8.0
             },
             {
               "wait": 708.2,
-              "error": 7.69
+              "error": 7.69,
+              "budget": 8.25
             },
             {
               "wait": 670.0,
-              "error": 8.39
+              "error": 8.39,
+              "budget": 8.5
             },
             {
               "wait": 670.0,
-              "error": 8.39
+              "error": 8.39,
+              "budget": 8.75
             },
             {
               "wait": 670.0,
-              "error": 8.39
+              "error": 8.39,
+              "budget": 9.0
             },
             {
               "wait": 660.9,
-              "error": 9.09
+              "error": 9.09,
+              "budget": 9.25
             },
             {
               "wait": 660.9,
-              "error": 9.09
+              "error": 9.09,
+              "budget": 9.5
             },
             {
               "wait": 660.9,
-              "error": 9.09
+              "error": 9.09,
+              "budget": 9.75
             },
             {
               "wait": 641.6,
-              "error": 9.79
+              "error": 9.79,
+              "budget": 10.0
             },
             {
               "wait": 641.6,
-              "error": 9.79
+              "error": 9.79,
+              "budget": 10.25
             },
             {
               "wait": 632.8,
-              "error": 10.49
+              "error": 10.49,
+              "budget": 10.5
             },
             {
               "wait": 632.8,
-              "error": 10.49
+              "error": 10.49,
+              "budget": 10.75
             },
             {
               "wait": 632.8,
-              "error": 10.49
+              "error": 10.49,
+              "budget": 11.0
             },
             {
               "wait": 625.9,
-              "error": 11.19
+              "error": 11.19,
+              "budget": 11.25
             },
             {
               "wait": 625.9,
-              "error": 11.19
+              "error": 11.19,
+              "budget": 11.5
             },
             {
               "wait": 625.9,
-              "error": 11.19
+              "error": 11.19,
+              "budget": 11.75
             },
             {
               "wait": 599.1,
-              "error": 11.89
+              "error": 11.89,
+              "budget": 12.0
             },
             {
               "wait": 599.1,
-              "error": 11.89
+              "error": 11.89,
+              "budget": 12.25
             },
             {
               "wait": 599.1,
-              "error": 11.89
+              "error": 11.89,
+              "budget": 12.5
             },
             {
               "wait": 595.9,
-              "error": 12.59
+              "error": 12.59,
+              "budget": 12.75
             },
             {
               "wait": 595.9,
-              "error": 12.59
+              "error": 12.59,
+              "budget": 13.0
             },
             {
               "wait": 595.9,
-              "error": 12.59
+              "error": 12.59,
+              "budget": 13.25
             },
             {
               "wait": 586.7,
-              "error": 13.29
+              "error": 13.29,
+              "budget": 13.5
             },
             {
               "wait": 586.7,
-              "error": 13.29
+              "error": 13.29,
+              "budget": 13.75
             },
             {
               "wait": 573.5,
-              "error": 13.99
+              "error": 13.99,
+              "budget": 14.0
             },
             {
               "wait": 573.5,
-              "error": 13.99
+              "error": 13.99,
+              "budget": 14.25
             },
             {
               "wait": 573.5,
-              "error": 13.99
+              "error": 13.99,
+              "budget": 14.5
             },
             {
               "wait": 541.5,
-              "error": 14.69
+              "error": 14.69,
+              "budget": 14.75
             },
             {
               "wait": 541.5,
-              "error": 14.69
+              "error": 14.69,
+              "budget": 15.0
             },
             {
               "wait": 541.5,
-              "error": 14.69
+              "error": 14.69,
+              "budget": 15.25
             },
             {
               "wait": 524.3,
-              "error": 15.38
+              "error": 15.38,
+              "budget": 15.5
             },
             {
               "wait": 524.3,
-              "error": 15.38
+              "error": 15.38,
+              "budget": 15.75
             },
             {
               "wait": 524.3,
-              "error": 15.38
+              "error": 15.38,
+              "budget": 16.0
             },
             {
               "wait": 509.6,
-              "error": 16.08
+              "error": 16.08,
+              "budget": 16.25
             },
             {
               "wait": 509.6,
-              "error": 16.08
+              "error": 16.08,
+              "budget": 16.5
             },
             {
               "wait": 509.6,
-              "error": 16.08
+              "error": 16.08,
+              "budget": 16.75
             },
             {
               "wait": 504.4,
-              "error": 16.78
+              "error": 16.78,
+              "budget": 17.0
             },
             {
               "wait": 504.4,
-              "error": 16.78
+              "error": 16.78,
+              "budget": 17.25
             },
             {
               "wait": 495.9,
-              "error": 17.48
+              "error": 17.48,
+              "budget": 17.5
             },
             {
               "wait": 495.9,
-              "error": 17.48
+              "error": 17.48,
+              "budget": 17.75
             },
             {
               "wait": 495.9,
-              "error": 17.48
+              "error": 17.48,
+              "budget": 18.0
             },
             {
               "wait": 478.7,
-              "error": 18.18
+              "error": 18.18,
+              "budget": 18.25
             },
             {
               "wait": 478.7,
-              "error": 18.18
+              "error": 18.18,
+              "budget": 18.5
             },
             {
               "wait": 478.7,
-              "error": 18.18
+              "error": 18.18,
+              "budget": 18.75
             },
             {
               "wait": 466.5,
-              "error": 18.88
+              "error": 18.88,
+              "budget": 19.0
             },
             {
               "wait": 466.5,
-              "error": 18.88
+              "error": 18.88,
+              "budget": 19.25
             },
             {
               "wait": 466.5,
-              "error": 18.88
+              "error": 18.88,
+              "budget": 19.5
             },
             {
               "wait": 458.4,
-              "error": 19.58
+              "error": 19.58,
+              "budget": 19.75
             },
             {
               "wait": 458.4,
-              "error": 19.58
+              "error": 19.58,
+              "budget": 20.0
             }
           ],
           "at5": {
@@ -3652,319 +4521,398 @@
           "points": [
             {
               "wait": 946.4,
-              "error": 0.0
+              "error": 0.0,
+              "budget": 0.5
             },
             {
               "wait": 864.2,
-              "error": 0.7
+              "error": 0.7,
+              "budget": 0.75
             },
             {
               "wait": 864.2,
-              "error": 0.7
+              "error": 0.7,
+              "budget": 1.0
             },
             {
               "wait": 864.2,
-              "error": 0.7
+              "error": 0.7,
+              "budget": 1.25
             },
             {
               "wait": 842.2,
-              "error": 1.4
+              "error": 1.4,
+              "budget": 1.5
             },
             {
               "wait": 842.2,
-              "error": 1.4
+              "error": 1.4,
+              "budget": 1.75
             },
             {
               "wait": 842.2,
-              "error": 1.4
+              "error": 1.4,
+              "budget": 2.0
             },
             {
               "wait": 821.7,
-              "error": 2.1
+              "error": 2.1,
+              "budget": 2.25
             },
             {
               "wait": 821.7,
-              "error": 2.1
+              "error": 2.1,
+              "budget": 2.5
             },
             {
               "wait": 821.7,
-              "error": 2.1
+              "error": 2.1,
+              "budget": 2.75
             },
             {
               "wait": 798.7,
-              "error": 2.8
+              "error": 2.8,
+              "budget": 3.0
             },
             {
               "wait": 798.7,
-              "error": 2.8
+              "error": 2.8,
+              "budget": 3.25
             },
             {
               "wait": 793.1,
-              "error": 3.5
+              "error": 3.5,
+              "budget": 3.5
             },
             {
               "wait": 793.1,
-              "error": 3.5
+              "error": 3.5,
+              "budget": 3.75
             },
             {
               "wait": 793.1,
-              "error": 3.5
+              "error": 3.5,
+              "budget": 4.0
             },
             {
               "wait": 761.7,
-              "error": 4.2
+              "error": 4.2,
+              "budget": 4.25
             },
             {
               "wait": 761.7,
-              "error": 4.2
+              "error": 4.2,
+              "budget": 4.5
             },
             {
               "wait": 761.7,
-              "error": 4.2
+              "error": 4.2,
+              "budget": 4.75
             },
             {
               "wait": 744.5,
-              "error": 4.9
+              "error": 4.9,
+              "budget": 5.0
             },
             {
               "wait": 744.5,
-              "error": 4.9
+              "error": 4.9,
+              "budget": 5.25
             },
             {
               "wait": 744.5,
-              "error": 4.9
+              "error": 4.9,
+              "budget": 5.5
             },
             {
               "wait": 704.6,
-              "error": 5.59
+              "error": 5.59,
+              "budget": 5.75
             },
             {
               "wait": 704.6,
-              "error": 5.59
+              "error": 5.59,
+              "budget": 6.0
             },
             {
               "wait": 704.6,
-              "error": 5.59
+              "error": 5.59,
+              "budget": 6.25
             },
             {
               "wait": 660.5,
-              "error": 6.29
+              "error": 6.29,
+              "budget": 6.5
             },
             {
               "wait": 660.5,
-              "error": 6.29
+              "error": 6.29,
+              "budget": 6.75
             },
             {
               "wait": 630.2,
-              "error": 6.99
+              "error": 6.99,
+              "budget": 7.0
             },
             {
               "wait": 630.2,
-              "error": 6.99
+              "error": 6.99,
+              "budget": 7.25
             },
             {
               "wait": 630.2,
-              "error": 6.99
+              "error": 6.99,
+              "budget": 7.5
             },
             {
               "wait": 622.2,
-              "error": 7.69
+              "error": 7.69,
+              "budget": 7.75
             },
             {
               "wait": 622.2,
-              "error": 7.69
+              "error": 7.69,
+              "budget": 8.0
             },
             {
               "wait": 622.2,
-              "error": 7.69
+              "error": 7.69,
+              "budget": 8.25
             },
             {
               "wait": 615.9,
-              "error": 8.39
+              "error": 8.39,
+              "budget": 8.5
             },
             {
               "wait": 615.9,
-              "error": 8.39
+              "error": 8.39,
+              "budget": 8.75
             },
             {
               "wait": 615.9,
-              "error": 8.39
+              "error": 8.39,
+              "budget": 9.0
             },
             {
               "wait": 606.4,
-              "error": 9.09
+              "error": 9.09,
+              "budget": 9.25
             },
             {
               "wait": 606.4,
-              "error": 9.09
+              "error": 9.09,
+              "budget": 9.5
             },
             {
               "wait": 606.4,
-              "error": 9.09
+              "error": 9.09,
+              "budget": 9.75
             },
             {
               "wait": 597.9,
-              "error": 9.79
+              "error": 9.79,
+              "budget": 10.0
             },
             {
               "wait": 597.9,
-              "error": 9.79
+              "error": 9.79,
+              "budget": 10.25
             },
             {
               "wait": 578.5,
-              "error": 10.49
+              "error": 10.49,
+              "budget": 10.5
             },
             {
               "wait": 578.5,
-              "error": 10.49
+              "error": 10.49,
+              "budget": 10.75
             },
             {
               "wait": 578.5,
-              "error": 10.49
+              "error": 10.49,
+              "budget": 11.0
             },
             {
               "wait": 569.5,
-              "error": 11.19
+              "error": 11.19,
+              "budget": 11.25
             },
             {
               "wait": 569.5,
-              "error": 11.19
+              "error": 11.19,
+              "budget": 11.5
             },
             {
               "wait": 569.5,
-              "error": 11.19
+              "error": 11.19,
+              "budget": 11.75
             },
             {
               "wait": 546.5,
-              "error": 11.89
+              "error": 11.89,
+              "budget": 12.0
             },
             {
               "wait": 546.5,
-              "error": 11.89
+              "error": 11.89,
+              "budget": 12.25
             },
             {
               "wait": 546.5,
-              "error": 11.89
+              "error": 11.89,
+              "budget": 12.5
             },
             {
               "wait": 542.3,
-              "error": 12.59
+              "error": 12.59,
+              "budget": 12.75
             },
             {
               "wait": 542.3,
-              "error": 12.59
+              "error": 12.59,
+              "budget": 13.0
             },
             {
               "wait": 542.3,
-              "error": 12.59
+              "error": 12.59,
+              "budget": 13.25
             },
             {
               "wait": 532.2,
-              "error": 13.29
+              "error": 13.29,
+              "budget": 13.5
             },
             {
               "wait": 532.2,
-              "error": 13.29
+              "error": 13.29,
+              "budget": 13.75
             },
             {
               "wait": 510.2,
-              "error": 13.99
+              "error": 13.99,
+              "budget": 14.0
             },
             {
               "wait": 510.2,
-              "error": 13.99
+              "error": 13.99,
+              "budget": 14.25
             },
             {
               "wait": 510.2,
-              "error": 13.99
+              "error": 13.99,
+              "budget": 14.5
             },
             {
               "wait": 498.1,
-              "error": 14.69
+              "error": 14.69,
+              "budget": 14.75
             },
             {
               "wait": 498.1,
-              "error": 14.69
+              "error": 14.69,
+              "budget": 15.0
             },
             {
               "wait": 498.1,
-              "error": 14.69
+              "error": 14.69,
+              "budget": 15.25
             },
             {
               "wait": 485.4,
-              "error": 15.38
+              "error": 15.38,
+              "budget": 15.5
             },
             {
               "wait": 485.4,
-              "error": 15.38
+              "error": 15.38,
+              "budget": 15.75
             },
             {
               "wait": 485.4,
-              "error": 15.38
+              "error": 15.38,
+              "budget": 16.0
             },
             {
               "wait": 480.3,
-              "error": 16.08
+              "error": 16.08,
+              "budget": 16.25
             },
             {
               "wait": 480.3,
-              "error": 16.08
+              "error": 16.08,
+              "budget": 16.5
             },
             {
               "wait": 480.3,
-              "error": 16.08
+              "error": 16.08,
+              "budget": 16.75
             },
             {
               "wait": 463.1,
-              "error": 16.78
+              "error": 16.78,
+              "budget": 17.0
             },
             {
               "wait": 463.1,
-              "error": 16.78
+              "error": 16.78,
+              "budget": 17.25
             },
             {
               "wait": 459.7,
-              "error": 17.48
+              "error": 17.48,
+              "budget": 17.5
             },
             {
               "wait": 459.7,
-              "error": 17.48
+              "error": 17.48,
+              "budget": 17.75
             },
             {
               "wait": 459.7,
-              "error": 17.48
+              "error": 17.48,
+              "budget": 18.0
             },
             {
               "wait": 458.8,
-              "error": 18.18
+              "error": 18.18,
+              "budget": 18.25
             },
             {
               "wait": 458.8,
-              "error": 18.18
+              "error": 18.18,
+              "budget": 18.5
             },
             {
               "wait": 458.8,
-              "error": 18.18
+              "error": 18.18,
+              "budget": 18.75
             },
             {
               "wait": 449.9,
-              "error": 18.88
+              "error": 18.88,
+              "budget": 19.0
             },
             {
               "wait": 449.9,
-              "error": 18.88
+              "error": 18.88,
+              "budget": 19.25
             },
             {
               "wait": 449.9,
-              "error": 18.88
+              "error": 18.88,
+              "budget": 19.5
             },
             {
               "wait": 447.4,
-              "error": 19.58
+              "error": 19.58,
+              "budget": 19.75
             },
             {
               "wait": 447.4,
-              "error": 19.58
+              "error": 19.58,
+              "budget": 20.0
             }
           ],
           "at5": {
