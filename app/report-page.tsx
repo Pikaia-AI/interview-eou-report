@@ -2,6 +2,7 @@
 import { ArrowUpRight, ArrowRight, Download, ChevronDown } from 'lucide-react';
 import data from './report-data.json';
 import { Header, Contents, Timeline, ResultsExplorer, CascadeExplorer, Citation, DisclosureLinks } from './report-ui';
+import { ContextAblation } from './context-ablation';
 
 type Reference = { id:string; title:string; URL?:string; DOI?:string; author?:{literal?:string;given?:string;family?:string}[]; issued?:{'date-parts':number[][]} };
 const references:Reference[] = data.references;
@@ -78,6 +79,7 @@ export default function Home() {
   <SectionTitle number="08" label="Data × architecture">Where the gains<br/>come from.</SectionTitle><p className="section-intro">The controlled study varies data scale and architecture independently: zero-shot, 2,025 curated clips and 3,195 expanded clips, with unmodified baselines and the Pikaia-Turn family.</p>
   <div className="ablation-narrative"><article><span className="detail-index">SERVER</span><h3>More data needs the right readout.</h3><p>Unmodified Turn-1 with expanded training falls from 83.8% to 60.7% in LiveKit response-ready 600 ms R@5%. Expanded Pikaia-Turn reaches 87.5% cascade recall at the same cumulative budget, with 394.4 ms mean wait.</p></article><article><span className="detail-index">CPU</span><h3>Context survives the pause.</h3><p>On Pikaia, expanded audio-only training reduces wait from 849.3 to 729.8 ms. Prosody and utterance state reduce it to 706.9 ms; prompt conditioning reaches 657.0 ms.</p></article><article><span className="detail-index">OPEN-SOURCE ADAPTATION</span><h3>The supervision transfers.</h3><p>Unmodified Smart Turn improves full-benchmark AUC from 0.8444 to 0.8928 and LiveKit floor-end AUC from 0.7998 to 0.8474. Its expanded strict training arm uses 3,891 clips and three seeds.</p></article></div><Table number={8}/>
   <div className="subsection-heading"><h3>What happens without the question?</h3><p>EasyTurn-800 supplies no preceding agent context. Curated fine-tuning improves All-600 AUC from 0.9435 to 0.9472 for unmodified Turn-1 and from 0.6626 to 0.7103 for unmodified Turn-1-Mini.</p></div><p className="body-note">The gains are not uniform. Expanded Pikaia-Turn-Nano improves real-speech AUC but regresses on synthetic speech relative to its curated checkpoint. Explicit “wait” commands remain difficult for the large models. Pikaia-Turn-Mini holds on 97% of backchannels and 67% of wait commands at the matched operating point.</p><Table number={9}/><Figure number={4}/>
+  <ContextAblation/>
  </section>
  <section id="discussion" className="report-section">
   <SectionTitle number="09" label="Discussion">Better timing starts<br/>with the right target.</SectionTitle><p className="section-intro">The benchmark offers an interview-specific complement to existing turn-taking suites. Causal response-ready labels, realistic thinking pauses and preceding agent context all influence which detector works best.</p>

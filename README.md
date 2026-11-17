@@ -28,6 +28,14 @@ The results section shows two charts with shared language, audio-cutoff and metr
 
 Each chart displays the current slice size and supports exact values and CSV export. Paired subsets contain 788 Tier 2 items and 1,700 full-pool items before language filtering. Private-holdout values remain available in a separate disclosure. This presentation update retains the existing Pikaia-Turn, Mini and Nano models and the report's baseline comparisons.
 
+## Preceding-question text ablation
+
+The end of the ablation section (`#context-ablation`) compares the same three Pikaia family checkpoints with and without the preceding agent question. Neither condition uses user ASR, and weights and audio remain fixed.
+
+The main chart shows **Response-ready** on 842 LiveKit items. **Floor-end** on 1,058 items is collapsed under supplementary details. A shared 300 / 600 ms control and a symmetric −30 to +30 percentage-point axis keep comparisons consistent. Points show audio-only minus with-question recall at an empirical ≤5% HOLD FPR; whiskers show paired session-cluster 95% percentile bootstrap intervals (2,000 resamples, seed 20261115, no language stratification). Thresholds are selected separately for each input condition and cutoff. All six recall-difference intervals per cohort cross zero; this does not establish either a reliable context benefit or input equivalence.
+
+`public/report/context-ablation.json` contains the 12 paired results, observed operating points and original summary checksum from the 15 November 2026 experiment. This additional web analysis is separate from the bundled report PDF. Exact recalls, differences and interval bounds are rendered as text alongside the chart, including before client hydration; on narrow screens, labels and values sit above each interval.
+
 ## Run & Verify Locally
 
 Requires Node.js 22.13 or newer and Python 3.
@@ -59,6 +67,7 @@ python3 scripts/check-report.py http://127.0.0.1:5188
 - `public/report/`: Bundled research artifacts:
   - `pikaia-interview-eou-benchmark.pdf`: 17-page benchmark paper.
   - `metrics.json`: Full aggregate metrics and cascade operating points.
+  - `context-ablation.json`: Paired question-text ablation results and confidence intervals.
   - `citation.bib`: Companion BibTeX citations.
   - `fig1`..`fig4`: High-resolution figures (PDF and PNG).
 - `scripts/`:

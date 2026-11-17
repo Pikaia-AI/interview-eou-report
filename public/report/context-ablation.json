@@ -1,0 +1,396 @@
+{
+  "title": "Preceding-question text ablation",
+  "snapshot": "2026-11-15",
+  "source": {
+    "file": "livekit_audio_only_ablation_summary.json",
+    "sha256": "40d561caf6e81cda7901162d155a70f42a7e6e12649658b04af5e6bc503a567a"
+  },
+  "protocol": {
+    "intervention": "Clear the preceding agent question text; keep model weights and user audio fixed. Neither condition uses user ASR.",
+    "metric": "Recall at an empirical HOLD false-positive rate of at most 5%. Each condition and cutoff selects its own ROC threshold.",
+    "delta": "Audio-only recall minus recall with the preceding question, in percentage points.",
+    "confidence_interval": {
+      "level": 0.95,
+      "method": "Paired session-cluster percentile bootstrap",
+      "resamples": 2000,
+      "seed": 20261115,
+      "language_stratified": false
+    }
+  },
+  "cohorts": {
+    "response_ready": {
+      "title": "Response-ready",
+      "source_key": "livekit_response_ready_842",
+      "n": 842,
+      "eot": 699,
+      "hold": 143,
+      "cutoffs": {
+        "300ms": [
+          {
+            "model": "Pikaia-Turn",
+            "checkpoint": "Pikaia_Turn_17B_split2085",
+            "with_text": {
+              "recall_pct": 85.12,
+              "fpr_pct": 4.9,
+              "tp": 595,
+              "fp": 7,
+              "allowed_fp": 7,
+              "eot": 699,
+              "hold": 143,
+              "threshold": 0.926063060760498
+            },
+            "audio_only": {
+              "recall_pct": 80.4,
+              "fpr_pct": 4.9,
+              "tp": 562,
+              "fp": 7,
+              "allowed_fp": 7,
+              "eot": 699,
+              "hold": 143,
+              "threshold": 0.9311622381210327
+            },
+            "delta_recall_pp": -4.72,
+            "ci95_pp": [
+              -13.22,
+              25.65
+            ]
+          },
+          {
+            "model": "Pikaia-Turn-Mini",
+            "checkpoint": "Pikaia_Turn_Mini_06B_split2085",
+            "with_text": {
+              "recall_pct": 73.53,
+              "fpr_pct": 4.9,
+              "tp": 514,
+              "fp": 7,
+              "allowed_fp": 7,
+              "eot": 699,
+              "hold": 143,
+              "threshold": 0.9882609248161316
+            },
+            "audio_only": {
+              "recall_pct": 72.68,
+              "fpr_pct": 4.9,
+              "tp": 508,
+              "fp": 7,
+              "allowed_fp": 7,
+              "eot": 699,
+              "hold": 143,
+              "threshold": 0.9764561653137207
+            },
+            "delta_recall_pp": -0.85,
+            "ci95_pp": [
+              -14.01,
+              29.79
+            ]
+          },
+          {
+            "model": "Pikaia-Turn-Nano",
+            "checkpoint": "Pikaia_Turn_Nano_Ctx1ep_6.7M",
+            "with_text": {
+              "recall_pct": 41.77,
+              "fpr_pct": 4.9,
+              "tp": 292,
+              "fp": 7,
+              "allowed_fp": 7,
+              "eot": 699,
+              "hold": 143,
+              "threshold": 0.8913094401359558
+            },
+            "audio_only": {
+              "recall_pct": 42.49,
+              "fpr_pct": 4.9,
+              "tp": 297,
+              "fp": 7,
+              "allowed_fp": 7,
+              "eot": 699,
+              "hold": 143,
+              "threshold": 0.8889634013175964
+            },
+            "delta_recall_pp": 0.72,
+            "ci95_pp": [
+              -3.79,
+              6.33
+            ]
+          }
+        ],
+        "600ms": [
+          {
+            "model": "Pikaia-Turn",
+            "checkpoint": "Pikaia_Turn_17B_split2085",
+            "with_text": {
+              "recall_pct": 81.55,
+              "fpr_pct": 4.2,
+              "tp": 570,
+              "fp": 6,
+              "allowed_fp": 7,
+              "eot": 699,
+              "hold": 143,
+              "threshold": 0.9631028771400452
+            },
+            "audio_only": {
+              "recall_pct": 71.39,
+              "fpr_pct": 4.9,
+              "tp": 499,
+              "fp": 7,
+              "allowed_fp": 7,
+              "eot": 699,
+              "hold": 143,
+              "threshold": 0.9682318568229675
+            },
+            "delta_recall_pp": -10.16,
+            "ci95_pp": [
+              -18.29,
+              5.03
+            ]
+          },
+          {
+            "model": "Pikaia-Turn-Mini",
+            "checkpoint": "Pikaia_Turn_Mini_06B_split2085",
+            "with_text": {
+              "recall_pct": 79.11,
+              "fpr_pct": 4.9,
+              "tp": 553,
+              "fp": 7,
+              "allowed_fp": 7,
+              "eot": 699,
+              "hold": 143,
+              "threshold": 0.9945865869522095
+            },
+            "audio_only": {
+              "recall_pct": 71.39,
+              "fpr_pct": 4.2,
+              "tp": 499,
+              "fp": 6,
+              "allowed_fp": 7,
+              "eot": 699,
+              "hold": 143,
+              "threshold": 0.9917218089103699
+            },
+            "delta_recall_pp": -7.72,
+            "ci95_pp": [
+              -19.0,
+              11.43
+            ]
+          },
+          {
+            "model": "Pikaia-Turn-Nano",
+            "checkpoint": "Pikaia_Turn_Nano_Ctx1ep_6.7M",
+            "with_text": {
+              "recall_pct": 37.05,
+              "fpr_pct": 4.2,
+              "tp": 259,
+              "fp": 6,
+              "allowed_fp": 7,
+              "eot": 699,
+              "hold": 143,
+              "threshold": 0.9519333243370056
+            },
+            "audio_only": {
+              "recall_pct": 36.48,
+              "fpr_pct": 4.9,
+              "tp": 255,
+              "fp": 7,
+              "allowed_fp": 7,
+              "eot": 699,
+              "hold": 143,
+              "threshold": 0.9555691480636597
+            },
+            "delta_recall_pp": -0.57,
+            "ci95_pp": [
+              -9.1,
+              6.74
+            ]
+          }
+        ]
+      }
+    },
+    "floor_end": {
+      "title": "Floor-end",
+      "source_key": "livekit_floor_end_1058",
+      "n": 1058,
+      "eot": 716,
+      "hold": 342,
+      "cutoffs": {
+        "300ms": [
+          {
+            "model": "Pikaia-Turn",
+            "checkpoint": "Pikaia_Turn_17B_split2085",
+            "with_text": {
+              "recall_pct": 46.65,
+              "fpr_pct": 4.97,
+              "tp": 334,
+              "fp": 17,
+              "allowed_fp": 17,
+              "eot": 716,
+              "hold": 342,
+              "threshold": 0.9926296472549438
+            },
+            "audio_only": {
+              "recall_pct": 52.79,
+              "fpr_pct": 4.97,
+              "tp": 378,
+              "fp": 17,
+              "allowed_fp": 17,
+              "eot": 716,
+              "hold": 342,
+              "threshold": 0.9873051643371582
+            },
+            "delta_recall_pp": 6.14,
+            "ci95_pp": [
+              -4.39,
+              18.84
+            ]
+          },
+          {
+            "model": "Pikaia-Turn-Mini",
+            "checkpoint": "Pikaia_Turn_Mini_06B_split2085",
+            "with_text": {
+              "recall_pct": 50.7,
+              "fpr_pct": 4.97,
+              "tp": 363,
+              "fp": 17,
+              "allowed_fp": 17,
+              "eot": 716,
+              "hold": 342,
+              "threshold": 0.9960708618164062
+            },
+            "audio_only": {
+              "recall_pct": 38.83,
+              "fpr_pct": 4.97,
+              "tp": 278,
+              "fp": 17,
+              "allowed_fp": 17,
+              "eot": 716,
+              "hold": 342,
+              "threshold": 0.9956165552139282
+            },
+            "delta_recall_pp": -11.87,
+            "ci95_pp": [
+              -16.67,
+              2.9
+            ]
+          },
+          {
+            "model": "Pikaia-Turn-Nano",
+            "checkpoint": "Pikaia_Turn_Nano_Ctx1ep_6.7M",
+            "with_text": {
+              "recall_pct": 34.08,
+              "fpr_pct": 4.97,
+              "tp": 244,
+              "fp": 17,
+              "allowed_fp": 17,
+              "eot": 716,
+              "hold": 342,
+              "threshold": 0.9090626239776611
+            },
+            "audio_only": {
+              "recall_pct": 33.94,
+              "fpr_pct": 4.97,
+              "tp": 243,
+              "fp": 17,
+              "allowed_fp": 17,
+              "eot": 716,
+              "hold": 342,
+              "threshold": 0.9095053672790527
+            },
+            "delta_recall_pp": -0.14,
+            "ci95_pp": [
+              -5.4,
+              3.22
+            ]
+          }
+        ],
+        "600ms": [
+          {
+            "model": "Pikaia-Turn",
+            "checkpoint": "Pikaia_Turn_17B_split2085",
+            "with_text": {
+              "recall_pct": 38.27,
+              "fpr_pct": 4.68,
+              "tp": 274,
+              "fp": 16,
+              "allowed_fp": 17,
+              "eot": 716,
+              "hold": 342,
+              "threshold": 0.9950335621833801
+            },
+            "audio_only": {
+              "recall_pct": 51.68,
+              "fpr_pct": 4.97,
+              "tp": 370,
+              "fp": 17,
+              "allowed_fp": 17,
+              "eot": 716,
+              "hold": 342,
+              "threshold": 0.990185022354126
+            },
+            "delta_recall_pp": 13.41,
+            "ci95_pp": [
+              -3.84,
+              19.88
+            ]
+          },
+          {
+            "model": "Pikaia-Turn-Mini",
+            "checkpoint": "Pikaia_Turn_Mini_06B_split2085",
+            "with_text": {
+              "recall_pct": 55.87,
+              "fpr_pct": 4.97,
+              "tp": 400,
+              "fp": 17,
+              "allowed_fp": 17,
+              "eot": 716,
+              "hold": 342,
+              "threshold": 0.9986467957496643
+            },
+            "audio_only": {
+              "recall_pct": 46.37,
+              "fpr_pct": 4.68,
+              "tp": 332,
+              "fp": 16,
+              "allowed_fp": 17,
+              "eot": 716,
+              "hold": 342,
+              "threshold": 0.9979094862937927
+            },
+            "delta_recall_pp": -9.5,
+            "ci95_pp": [
+              -15.48,
+              0.66
+            ]
+          },
+          {
+            "model": "Pikaia-Turn-Nano",
+            "checkpoint": "Pikaia_Turn_Nano_Ctx1ep_6.7M",
+            "with_text": {
+              "recall_pct": 38.41,
+              "fpr_pct": 4.97,
+              "tp": 275,
+              "fp": 17,
+              "allowed_fp": 17,
+              "eot": 716,
+              "hold": 342,
+              "threshold": 0.9531130194664001
+            },
+            "audio_only": {
+              "recall_pct": 37.43,
+              "fpr_pct": 4.68,
+              "tp": 268,
+              "fp": 16,
+              "allowed_fp": 17,
+              "eot": 716,
+              "hold": 342,
+              "threshold": 0.9567097425460815
+            },
+            "delta_recall_pp": -0.98,
+            "ci95_pp": [
+              -6.13,
+              3.08
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
