@@ -1,0 +1,47 @@
+{
+  "title": "Pikaia-Turn report V2 \u2014 source manifest",
+  "snapshot": "November 2026",
+  "edition": "Focused presentation of existing experiments; no model rerun or changed prediction values.",
+  "sources": [
+    {
+      "url": "/report/metrics.json",
+      "sha256": "fbc82a8facea57d038928772de8b9336f531f9ebaec4bc60f257982c28eb907d",
+      "scope": "Main fixed-cutoff results and archived report tables; legacy chapters remain in the archive."
+    },
+    {
+      "url": "/report/figure-data.json",
+      "sha256": "b2cd65603efe72db0c47143aa6dfd4e3af6877adfc179564ea5d2a7ab5663b9f",
+      "scope": "Sampled six-model cascade curves, provenance and objective comparisons."
+    },
+    {
+      "url": "/report/context-ablation.json",
+      "sha256": "66505bd80a0cb3cce2acbb1d63fcea132f631312573eeee75e5cbbf00748ff2e",
+      "scope": "15 November paired input ablation with bootstrap intervals."
+    },
+    {
+      "url": "/report/training-data-summary.json",
+      "sha256": "08d26641439954fbc1b727b092fc298fc07bd724ef5cf089159ddbc988410fe3",
+      "scope": "Private training corpus aggregate summary."
+    },
+    {
+      "url": "/report/v2-supplementary.json",
+      "sha256": "7c9044300d8c35d95b2a9d584d168cf1a5b5787cadb00ecedf9231e45a4be87f",
+      "scope": "Calibration, architecture and transfer controls and additional cascade cohorts."
+    },
+    {
+      "url": "/report/pikaia-interview-eou-benchmark.pdf",
+      "sha256": "3fa14b8da524b3d5699f46e87559ac28ec13c911fca4bdec864f26a494567d67",
+      "scope": "Public benchmark paper: 1200 public items and open-weight baselines; separate numbering from technical-report tables."
+    }
+  ],
+  "known_archive_discrepancies": [
+    {
+      "model": "Turn-1",
+      "metric": "Full-pool cascade Wait@5% (ms)",
+      "main_table_3": 412.7,
+      "sampled_curve": 411.4,
+      "display_source": "figure-data.json; same curve used by both report editions",
+      "status": "Unresolved archive discrepancy; values preserved pending source reconciliation."
+    }
+  ]
+}

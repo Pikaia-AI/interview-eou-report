@@ -1,0 +1,1362 @@
+{
+  "title": "Pikaia-Turn technical report \u2014 supplementary experiments",
+  "snapshot": "November 2026",
+  "scope": "Archived companion technical-report experiments. Table numbers below belong to the experiment archive, not the public benchmark PDF.",
+  "tables": [
+    {
+      "number": 4,
+      "title": "Frozen calibration transfer",
+      "headers": [
+        "Model",
+        "Dev 0 FP \u2192 T2 recall",
+        "T2 FPR",
+        "T3 recall",
+        "T3 FPR",
+        "Dev \u22641 FP \u2192 T2 recall",
+        "T2 FPR",
+        "T3 recall",
+        "T3 FPR",
+        "Internal-Val \u2192 T2 recall",
+        "T2 FPR"
+      ],
+      "rows": [
+        [
+          "Smart Turn v3.2 (Zero-Shot, 8M)",
+          "25.72",
+          "3.22",
+          "17.94",
+          "2.30",
+          "65.09",
+          "12.62",
+          "56.63",
+          "9.46",
+          "\u2014",
+          "\u2014"
+        ],
+        [
+          "Turn-1-Mini (Zero-Shot, 5.3M)",
+          "30.32",
+          "3.96",
+          "33.60",
+          "5.63",
+          "39.66",
+          "6.68",
+          "40.70",
+          "6.91",
+          "20.11",
+          "4.21"
+        ],
+        [
+          "Turn-1 (Zero-Shot, 2.3B)",
+          "21.55",
+          "0.50",
+          "18.61",
+          "0.26",
+          "70.40",
+          "3.96",
+          "66.27",
+          "5.88",
+          "68.10",
+          "1.73"
+        ],
+        [
+          "Pikaia-Turn-Nano (6.7M)",
+          "43.25",
+          "2.72",
+          "37.08",
+          "4.86",
+          "61.78",
+          "7.67",
+          "57.16",
+          "8.18",
+          "34.05",
+          "1.24"
+        ],
+        [
+          "Pikaia-Turn-Mini (0.6B)",
+          "42.96",
+          "1.73",
+          "38.55",
+          "1.53",
+          "73.13",
+          "4.21",
+          "66.53",
+          "3.84",
+          "60.92",
+          "2.48"
+        ],
+        [
+          "Pikaia-Turn (2.3B)",
+          "51.29",
+          "0.74",
+          "43.51",
+          "1.02",
+          "77.73",
+          "5.20",
+          "72.69",
+          "6.14",
+          "67.10",
+          "0.74"
+        ]
+      ],
+      "source": "tab3_calibration_transfer.tex",
+      "label": "tab:calibration_transfer"
+    },
+    {
+      "number": 5,
+      "title": "Provenance and objective shifts",
+      "headers": [
+        "Model",
+        "Gold AUC (77)",
+        "Causal AUC (956)",
+        "Historical AUC (1,382)",
+        "LiveKit FE AUC",
+        "FE wait / rank",
+        "RR R@5%",
+        "RR wait / rank",
+        "Pikaia wait / rank"
+      ],
+      "rows": [
+        [
+          "Smart Turn v3.2 (8M)",
+          ".8556",
+          ".7845",
+          ".8922",
+          ".7998",
+          "780.4 (#6)",
+          "28.47",
+          "789.8 (#6)",
+          "735.2 (#5\u2191)"
+        ],
+        [
+          "Turn-1-Mini (5.3M)",
+          ".8367",
+          ".7027",
+          ".9022",
+          ".8374",
+          "772.8 (#5)",
+          "36.34",
+          "744.5 (#5)",
+          "849.3 (#6\u2193)"
+        ],
+        [
+          "Turn-1 (2.3B)",
+          ".9568",
+          ".9233",
+          ".9789",
+          ".9109",
+          "583.2 (#1)",
+          "71.82",
+          "476.1 (#3\u2193)",
+          "411.4 (#3)"
+        ],
+        [
+          "Pikaia-Turn-Nano (6.7M)",
+          ".9163",
+          ".7802",
+          ".9341",
+          ".8733",
+          "736.3 (#4)",
+          "41.77",
+          "692.7 (#4)",
+          "657.0 (#4)"
+        ],
+        [
+          "Pikaia-Turn-Mini (0.6B)",
+          ".9771",
+          ".9478",
+          ".9707",
+          ".9000",
+          "631.1 (#2)",
+          "73.53",
+          "473.8 (#2)",
+          "395.3 (#1\u2191)"
+        ],
+        [
+          "Pikaia-Turn (2.3B)",
+          ".9696",
+          ".9427",
+          ".9795",
+          ".9038",
+          "666.8 (#3)",
+          "85.12",
+          "394.4 (#1\u2191)",
+          "406.8 (#2)"
+        ]
+      ],
+      "source": "tab4_ablation_and_external.tex",
+      "label": "tab:ablation_external"
+    },
+    {
+      "number": 6,
+      "title": "LiveKit reference rankings",
+      "headers": [
+        "System",
+        "Type",
+        "EN \u22642% wait / rank",
+        "EN \u22645% wait / rank",
+        "EN \u226410% wait / rank",
+        "EN AUC200",
+        "ZH \u22645% wait / rank",
+        "ZH \u226410% wait / rank",
+        "ZH AUC200",
+        "Pikaia T2 R@5% / AUC"
+      ],
+      "rows": [
+        [
+          "LiveKit Turn Detector v1",
+          "Cloud Model",
+          "991 (#2)",
+          "543 (#1)",
+          "295 (#1)",
+          "\u2014",
+          "799 (#1)",
+          "577 (#2)",
+          "\u2014",
+          "\u2014"
+        ],
+        [
+          "JoinIn AI Baton",
+          "Cloud API",
+          "875 (#1)",
+          "577 (#2)",
+          "350 (#2)",
+          "\u2014",
+          "\u2014",
+          "\u2014",
+          "\u2014",
+          "\u2014"
+        ],
+        [
+          "Soniox",
+          "Cloud API",
+          "2,500 (#11)",
+          "647 (#3)",
+          "512 (#3)",
+          "\u2014",
+          "886 (#2)",
+          "548 (#1)",
+          "\u2014",
+          "\u2014"
+        ],
+        [
+          "Deepgram Flux",
+          "Cloud API",
+          "1,833 (#7)",
+          "1,151 (#12)",
+          "548 (#4)",
+          "\u2014",
+          "\u2014",
+          "\u2014",
+          "\u2014",
+          "\u2014"
+        ],
+        [
+          "Gradium",
+          "Cloud API",
+          "1,683 (#4)",
+          "913 (#5)",
+          "656 (#5)",
+          "\u2014",
+          "1,012 (#8)",
+          "748 (#8)",
+          "\u2014",
+          "\u2014"
+        ],
+        [
+          "ultraVAD",
+          "Open Audio",
+          "1,556 (#3)",
+          "899 (#4)",
+          "663 (#6)",
+          "\u2014",
+          "926 (#4)",
+          "688 (#5)",
+          "\u2014",
+          "\u2014"
+        ],
+        [
+          "LiveKit Turn Detector v1-mini",
+          "Local CPU",
+          "1,829 (#6)",
+          "1,070 (#9)",
+          "698 (#7)",
+          "\u2014",
+          "919 (#3)",
+          "691 (#7)",
+          "\u2014",
+          "\u2014"
+        ],
+        [
+          "AssemblyAI",
+          "Cloud API",
+          "1,957 (#8)",
+          "1,049 (#6)",
+          "713 (#8)",
+          "\u2014",
+          "\u2014",
+          "\u2014",
+          "\u2014",
+          "\u2014"
+        ],
+        [
+          "Smart Turn v3.2 (Published Slot)",
+          "Open 8M",
+          "1,685 (#5)",
+          "1,051 (#7)",
+          "739 (#9)",
+          "\u2014",
+          "959 (#7)",
+          "679 (#4)",
+          "\u2014",
+          "40.23 (.8414)"
+        ],
+        [
+          "VAP (silent agent)",
+          "Open Duplex",
+          "1,991 (#9)",
+          "1,131 (#10)",
+          "749 (#10)",
+          "\u2014",
+          "941 (#6)",
+          "689 (#6)",
+          "\u2014",
+          "\u2014"
+        ],
+        [
+          "OpenAI GPT Realtime 2",
+          "Duplex API",
+          "2,500 (#11)",
+          "1,143 (#11)",
+          "824 (#11)",
+          "\u2014",
+          "941 (#5)",
+          "666 (#3)",
+          "\u2014",
+          "\u2014"
+        ],
+        [
+          "Cartesia Ink 2",
+          "Cloud API",
+          "2,500 (#11)",
+          "1,056 (#8)",
+          "911 (#12)",
+          "\u2014",
+          "\u2014",
+          "\u2014",
+          "\u2014",
+          "\u2014"
+        ],
+        [
+          "VAD baseline",
+          "Static Timer",
+          "2,200 (#10)",
+          "1,600 (#13)",
+          "1,000 (#13)",
+          "\u2014",
+          "1,100 (#9)",
+          "800 (#9)",
+          "\u2014",
+          "\u2014"
+        ],
+        [
+          "Smart Turn v3.2 (Local Pinned Repro)",
+          "Open 8M",
+          "1,762.8 (#5)",
+          "1,045.3 (#6)",
+          "723.3 (#9)",
+          ".8446",
+          "890.5 (#3)",
+          "658.4 (#3)",
+          ".7454",
+          "40.23 (.8414)"
+        ],
+        [
+          "Smart Turn v3.2 + Curated response-ready FT",
+          "3-Seed Mean",
+          "1,545.7 (#3\u2191)",
+          "933.9 (#6)",
+          "656.8 (#6\u2191)",
+          ".8901",
+          "861.9 (#2\u2191)",
+          "611.9 (#3)",
+          ".8324",
+          "\u2014"
+        ],
+        [
+          "Smart Turn v3.2 + Expanded Unan. FT",
+          "3-Seed Mean",
+          "2,015.5 (#9)",
+          "977.3 (#6)",
+          "641.3 (#5\u2191)",
+          "\u2014",
+          "916.4 (#3)",
+          "617.2 (#3)",
+          "\u2014",
+          "60.20 (.9012)"
+        ],
+        [
+          "Smart Turn v3.2 + Expanded Strict FT",
+          "3-Seed Mean",
+          "1,852.8 (#7)",
+          "970.4 (#6)",
+          "674.2 (#7\u2191)",
+          "\u2014",
+          "900.3 (#3)",
+          "597.8 (#3)",
+          "\u2014",
+          "63.79 (.9001)"
+        ],
+        [
+          "Turn-1-Mini (Zero-Shot)",
+          "Open 5.3M",
+          "1,349.8 (eq. #3)",
+          "848.8 (eq. #4)",
+          "581.0 (eq. #5)",
+          ".9017",
+          "\u2014",
+          "\u2014",
+          "\u2014",
+          "20.26 (.8221)"
+        ],
+        [
+          "p99lab/turn-1 (Zero-Shot)",
+          "Open 2.3B",
+          "953.8 (eq. #2)",
+          "552.8 (eq. #2)",
+          "321.2 (eq. #2)",
+          ".9647",
+          "\u2014",
+          "\u2014",
+          "\u2014",
+          "82.33 (.9597)"
+        ]
+      ],
+      "source": "tab_livekit_leaderboard_ranks.tex",
+      "label": "tab:livekit_leaderboard"
+    },
+    {
+      "number": 7,
+      "title": "TurnBench Dev stress test",
+      "headers": [
+        "Model",
+        "Legacy Dev recall",
+        "Legacy OOF recall",
+        "+ Partner ASR Dev (OOF)",
+        "Legacy p50 ms",
+        "Duplex Dev recall",
+        "Duplex OOF recall",
+        "+ Partner ASR OOF",
+        "Duplex OOF p50 ms",
+        "\u22645% recall (FPR)"
+      ],
+      "rows": [
+        [
+          "Smart Turn v3.2 (8M)",
+          "80.09",
+          "\u2014",
+          "\u2014",
+          "\u2014",
+          "\u2014",
+          "\u2014",
+          "\u2014",
+          "\u2014",
+          "\u2014"
+        ],
+        [
+          "Turn-1-Mini (5.3M)",
+          "82.93",
+          "82.35",
+          "\u2014",
+          "1,056.0",
+          "91.33",
+          "90.39",
+          "\u2014",
+          "629.0",
+          "84.61 (4.42)"
+        ],
+        [
+          "Turn-1 (2.3B)",
+          "85.14",
+          "\u2014",
+          "\u2014",
+          "1,055.0",
+          "\u2014",
+          "\u2014",
+          "\u2014",
+          "\u2014",
+          "\u2014"
+        ],
+        [
+          "Pikaia-Turn-Nano (6.7M)",
+          "81.25",
+          "79.99",
+          "81.72 (80.62)",
+          "1,055.0",
+          "90.60",
+          "89.81",
+          "89.65",
+          "597.0",
+          "84.09 (4.42)"
+        ],
+        [
+          "Pikaia-Turn-Mini (0.6B)",
+          "86.19",
+          "84.51",
+          "86.08 (83.82)",
+          "1,056.0",
+          "91.70",
+          "91.28",
+          "91.28",
+          "617.5",
+          "84.72 (4.42)"
+        ]
+      ],
+      "source": "tab6_turnbench_duplex.tex",
+      "label": "tab:turnbench_duplex"
+    },
+    {
+      "number": 8,
+      "title": "Data \u00d7 architecture ablation",
+      "headers": [
+        "Model / variant",
+        "Training clips",
+        "Pikaia 300 Acc/Rec",
+        "Pikaia 600 Acc/Rec",
+        "Pikaia 300 R@5%",
+        "Pikaia 600 R@5%",
+        "Pikaia cascade R@5%",
+        "Pikaia wait ms",
+        "LiveKit 300 Acc/Rec",
+        "LiveKit 600 Acc/Rec",
+        "LiveKit 300/600 R@5%",
+        "LiveKit cascade R@5%",
+        "LiveKit wait ms",
+        "LiveKit FE AUC"
+      ],
+      "rows": [
+        [
+          "Turn-1 (Unmodified Baseline)",
+          "Zero-Shot",
+          "56.2 / 32.4",
+          "54.1 / 39.8",
+          "80.5",
+          "83.8",
+          "84.4",
+          "411.4",
+          "74.8 / 70.5",
+          "77.3 / 73.4",
+          "71.8 / 83.8",
+          "77.1",
+          "476.1",
+          ".9109"
+        ],
+        [
+          "Turn-1 + Curated FT (Unmodified)",
+          "2,025 Cur.",
+          "86.6 / 82.5",
+          "87.2 / 84.5",
+          "79.6",
+          "85.8",
+          "86.2",
+          "398.4",
+          "93.3 / 95.4",
+          "93.1 / 94.8",
+          "80.1 / 80.4",
+          "83.5",
+          "425.5",
+          ".8955"
+        ],
+        [
+          "Turn-1 + Expanded FT (Unmodified)",
+          "3,195 Exp.",
+          "89.1 / 88.1",
+          "91.3 / 91.6",
+          "80.8",
+          "83.6",
+          "84.8",
+          "413.3",
+          "94.9 / 97.7",
+          "94.5 / 98.0",
+          "72.2 / 60.7",
+          "72.2",
+          "494.3",
+          ".8687"
+        ],
+        [
+          "Pikaia-Turn + Curated FT (Modified)",
+          "2,025 Cur.",
+          "87.6 / 84.6",
+          "89.5 / 88.0",
+          "80.8",
+          "86.2",
+          "88.7",
+          "387.8",
+          "93.2 / 95.7",
+          "93.7 / 96.6",
+          "79.5 / 81.8",
+          "82.1",
+          "432.9",
+          ".8984"
+        ],
+        [
+          "Pikaia-Turn + Expanded FT (Modified)",
+          "3,195 Exp.",
+          "88.6 / 86.3",
+          "91.8 / 91.5",
+          "81.0",
+          "85.2",
+          "84.8",
+          "406.8",
+          "94.1 / 97.6",
+          "94.5 / 98.1",
+          "85.1 / 81.5",
+          "87.5",
+          "394.4",
+          ".9038"
+        ],
+        [
+          "Pikaia-Turn-Mini + Curated FT (Modified)",
+          "2,025 Cur.",
+          "87.2 / 84.3",
+          "88.8 / 87.4",
+          "77.9",
+          "81.9",
+          "85.2",
+          "406.2",
+          "93.1 / 96.1",
+          "93.8 / 96.8",
+          "70.1 / 76.8",
+          "71.2",
+          "504.7",
+          ".9085"
+        ],
+        [
+          "Pikaia-Turn-Mini + Expanded FT (Modified)",
+          "3,195 Exp.",
+          "87.9 / 86.5",
+          "92.3 / 92.7",
+          "79.2",
+          "86.2",
+          "86.8",
+          "395.3",
+          "94.7 / 97.7",
+          "94.4 / 98.0",
+          "73.5 / 79.1",
+          "76.4",
+          "473.8",
+          ".9000"
+        ],
+        [
+          "Turn-1-Mini (Unmodified)",
+          "Zero-Shot",
+          "43.1 / 12.8",
+          "37.2 / 18.6",
+          "25.2",
+          "27.7",
+          "22.1",
+          "849.3",
+          "44.2 / 33.6",
+          "48.0 / 38.3",
+          "36.3 / 41.1",
+          "41.8",
+          "744.5",
+          ".8374"
+        ],
+        [
+          "Turn-1-Mini + Curated FT (Unmod.)",
+          "2,025 Cur.",
+          "75.6 / 71.2",
+          "80.4 / 80.7",
+          "38.1",
+          "31.4",
+          "32.7",
+          "771.3",
+          "82.3 / 82.5",
+          "86.5 / 87.1",
+          "39.6 / 34.5",
+          "39.6",
+          "722.6",
+          ".8723"
+        ],
+        [
+          "Turn-1-Mini + Expanded FT (Unmod.)",
+          "3,195 Exp.",
+          "77.0 / 74.0",
+          "83.8 / 87.3",
+          "41.5",
+          "36.3",
+          "38.7",
+          "729.8",
+          "86.7 / 88.7",
+          "89.2 / 92.6",
+          "39.8 / 38.6",
+          "40.8",
+          "717.6",
+          ".8727"
+        ],
+        [
+          "+ Prosody & Utterance State (Audio)",
+          "3,195 Exp.",
+          "77.6 / 75.3",
+          "84.2 / 87.3",
+          "43.0",
+          "34.3",
+          "42.0",
+          "706.9",
+          "86.5 / 88.7",
+          "89.5 / 92.8",
+          "35.8 / 36.0",
+          "40.1",
+          "733.8",
+          ".8746"
+        ],
+        [
+          "Pikaia-Turn-Nano + Curated FT (+Prompt)",
+          "2,025 Cur.",
+          "75.5 / 71.5",
+          "78.5 / 76.9",
+          "44.0",
+          "35.4",
+          "36.8",
+          "742.2",
+          "82.0 / 82.5",
+          "79.0 / 77.7",
+          "40.6 / 26.6",
+          "40.6",
+          "715.6",
+          ".8677"
+        ],
+        [
+          "Pikaia-Turn-Nano + Expanded FT (+Prompt)",
+          "3,195 Exp.",
+          "79.1 / 77.5",
+          "84.9 / 89.1",
+          "52.1",
+          "42.2",
+          "49.6",
+          "657.0",
+          "87.2 / 90.3",
+          "89.7 / 94.6",
+          "41.8 / 37.0",
+          "45.5",
+          "692.7",
+          ".8733"
+        ],
+        [
+          "Smart Turn v3.2 (Unmodified)",
+          "Zero-Shot",
+          "70.4 / 61.8",
+          "73.9 / 71.7",
+          "38.1",
+          "41.6",
+          "38.7",
+          "735.2",
+          "74.9 / 73.7",
+          "78.9 / 79.4",
+          "28.5 / 26.8",
+          "31.2",
+          "789.8",
+          ".7998"
+        ],
+        [
+          "Smart Turn v3.2 + Expanded FT",
+          "3,891 (3-Seed)",
+          "79.8 / 78.8",
+          "84.4 / 93.1",
+          "57.0",
+          "49.2",
+          "55.2",
+          "630.8",
+          "88.2 / 93.0",
+          "90.1 / 98.4",
+          "31.6 / 32.6",
+          "38.9",
+          "758.9",
+          ".8474"
+        ]
+      ],
+      "source": "tab_data_arch_ablation.tex",
+      "label": "tab:data_arch_ablation"
+    },
+    {
+      "number": 9,
+      "title": "EasyTurn-800 transfer",
+      "headers": [
+        "Model / variant",
+        "Training clips",
+        "All AUC",
+        "Real AUC",
+        "Synthetic AUC",
+        "R@1%",
+        "R@5%",
+        "Acc @0.50",
+        "Rec/FPR @0.50",
+        "ValCal Rec/FPR",
+        "Completion",
+        "Backchannel hold",
+        "Wait hold"
+      ],
+      "rows": [
+        [
+          "Turn-1 (Unmodified Baseline)",
+          "Zero-Shot",
+          ".9435",
+          ".9571",
+          ".9340",
+          "29.7",
+          "71.7",
+          "56.7",
+          "13.3 / 0.0",
+          "39.7 / 1.7",
+          "74.0",
+          "82.0",
+          "28.0"
+        ],
+        [
+          "Turn-1 + Curated FT (Unmodified)",
+          "2,025 Cur.",
+          ".9472",
+          ".9619",
+          ".9314",
+          "43.7",
+          "69.3",
+          "83.3",
+          "76.3 / 9.7",
+          "59.3 / 2.3",
+          "74.0",
+          "89.0",
+          "38.0"
+        ],
+        [
+          "Pikaia-Turn + Curated FT (Modified)",
+          "2,025 Cur.",
+          ".9493",
+          ".9606",
+          ".9353",
+          "41.3",
+          "68.3",
+          "83.5",
+          "76.0 / 9.0",
+          "64.3 / 4.7",
+          "70.7",
+          "83.0",
+          "42.0"
+        ],
+        [
+          "Pikaia-Turn + Expanded FT (Modified)",
+          "3,195 Exp.",
+          ".9383",
+          ".9573",
+          ".9150",
+          "39.0",
+          "67.3",
+          "86.3",
+          "89.0 / 16.3",
+          "61.7 / 4.7",
+          "70.0",
+          "83.0",
+          "30.0"
+        ],
+        [
+          "Pikaia-Turn-Mini + Curated FT (Modified)",
+          "2,025 Cur.",
+          ".9030",
+          ".9441",
+          ".8617",
+          "14.3",
+          "48.0",
+          "82.3",
+          "75.0 / 10.3",
+          "60.0 / 8.0",
+          "54.7",
+          "94.0",
+          "60.0"
+        ],
+        [
+          "Pikaia-Turn-Mini + Expanded FT (Modified)",
+          "3,195 Exp.",
+          ".9060",
+          ".9460",
+          ".8623",
+          "4.0",
+          "37.3",
+          "83.0",
+          "80.7 / 14.7",
+          "64.0 / 9.0",
+          "58.0",
+          "97.0",
+          "67.0"
+        ],
+        [
+          "Turn-1-Mini (Unmodified)",
+          "Zero-Shot",
+          ".6626",
+          ".6502",
+          ".6765",
+          "1.3",
+          "8.0",
+          "58.8",
+          "39.7 / 22.0",
+          "62.3 / 38.0",
+          "5.3",
+          "100.0",
+          "92.0"
+        ],
+        [
+          "Turn-1-Mini + Curated FT (Unmod.)",
+          "2,025 Cur.",
+          ".7103",
+          ".7084",
+          ".7208",
+          "0.7",
+          "13.0",
+          "67.0",
+          "72.0 / 38.0",
+          "27.3 / 12.3",
+          "14.7",
+          "98.0",
+          "81.0"
+        ],
+        [
+          "+ Prosody & Utterance State (Audio)",
+          "2,025 Cur.",
+          ".7092",
+          ".7088",
+          ".7205",
+          "0.7",
+          "13.7",
+          "67.0",
+          "71.3 / 37.3",
+          "29.7 / 14.3",
+          "15.3",
+          "97.0",
+          "81.0"
+        ],
+        [
+          "Pikaia-Turn-Nano + Curated FT (+Prompt)",
+          "2,025 Cur.",
+          ".7662",
+          ".7276",
+          ".8216",
+          "2.7",
+          "30.3",
+          "69.0",
+          "65.3 / 27.3",
+          "30.3 / 5.0",
+          "7.3",
+          "93.0",
+          "75.0"
+        ],
+        [
+          "Pikaia-Turn-Nano + Expanded FT (+Prompt)",
+          "3,195 Exp.",
+          ".6634",
+          ".7198",
+          ".6137",
+          "0.3",
+          "6.3",
+          "61.8",
+          "64.0 / 40.3",
+          "31.3 / 18.7",
+          "12.7",
+          "100.0",
+          "88.0"
+        ]
+      ],
+      "source": "tab5_easyturn_profile.tex",
+      "label": "tab:easyturn_profile"
+    }
+  ],
+  "additional_cascade_cohorts": {
+    "tier2_paired_788": {
+      "n": 788,
+      "models": [
+        {
+          "name": "Pikaia-Turn",
+          "color": "#b9a3ed",
+          "operating": {
+            "1pct": {
+              "cum_recall_pct": 17.97,
+              "cum_fir_pct": 0.53,
+              "mean_wait_ms": 901.2
+            },
+            "2pct": {
+              "cum_recall_pct": 77.04,
+              "cum_fir_pct": 1.6,
+              "mean_wait_ms": 473.7
+            },
+            "3pct": {
+              "cum_recall_pct": 87.02,
+              "cum_fir_pct": 2.67,
+              "mean_wait_ms": 411.8
+            },
+            "5pct": {
+              "cum_recall_pct": 89.68,
+              "cum_fir_pct": 4.81,
+              "mean_wait_ms": 390.2
+            },
+            "10pct": {
+              "cum_recall_pct": 95.17,
+              "cum_fir_pct": 9.63,
+              "mean_wait_ms": 334.3
+            }
+          }
+        },
+        {
+          "name": "Pikaia-Turn-Mini",
+          "color": "#a1dbe0",
+          "operating": {
+            "1pct": {
+              "cum_recall_pct": 10.15,
+              "cum_fir_pct": 0.53,
+              "mean_wait_ms": 930.9
+            },
+            "2pct": {
+              "cum_recall_pct": 63.06,
+              "cum_fir_pct": 1.6,
+              "mean_wait_ms": 558.6
+            },
+            "3pct": {
+              "cum_recall_pct": 80.7,
+              "cum_fir_pct": 2.67,
+              "mean_wait_ms": 455.1
+            },
+            "5pct": {
+              "cum_recall_pct": 88.85,
+              "cum_fir_pct": 4.81,
+              "mean_wait_ms": 383.5
+            },
+            "10pct": {
+              "cum_recall_pct": 95.34,
+              "cum_fir_pct": 9.63,
+              "mean_wait_ms": 334.6
+            }
+          }
+        },
+        {
+          "name": "Pikaia-Turn-Nano",
+          "color": "#e6baac",
+          "operating": {
+            "1pct": {
+              "cum_recall_pct": 19.47,
+              "cum_fir_pct": 0.53,
+              "mean_wait_ms": 887.2
+            },
+            "2pct": {
+              "cum_recall_pct": 26.62,
+              "cum_fir_pct": 1.6,
+              "mean_wait_ms": 823.6
+            },
+            "3pct": {
+              "cum_recall_pct": 47.59,
+              "cum_fir_pct": 2.67,
+              "mean_wait_ms": 667.4
+            },
+            "5pct": {
+              "cum_recall_pct": 58.4,
+              "cum_fir_pct": 4.81,
+              "mean_wait_ms": 591.2
+            },
+            "10pct": {
+              "cum_recall_pct": 71.88,
+              "cum_fir_pct": 9.63,
+              "mean_wait_ms": 497.3
+            }
+          }
+        },
+        {
+          "name": "Turn-1",
+          "color": "#a2a5b2",
+          "operating": {
+            "1pct": {
+              "cum_recall_pct": 15.81,
+              "cum_fir_pct": 0.53,
+              "mean_wait_ms": 900.8
+            },
+            "2pct": {
+              "cum_recall_pct": 79.53,
+              "cum_fir_pct": 1.6,
+              "mean_wait_ms": 455.2
+            },
+            "3pct": {
+              "cum_recall_pct": 85.19,
+              "cum_fir_pct": 2.67,
+              "mean_wait_ms": 423.1
+            },
+            "5pct": {
+              "cum_recall_pct": 88.85,
+              "cum_fir_pct": 4.81,
+              "mean_wait_ms": 394.0
+            },
+            "10pct": {
+              "cum_recall_pct": 93.68,
+              "cum_fir_pct": 9.63,
+              "mean_wait_ms": 345.8
+            }
+          }
+        },
+        {
+          "name": "Smart Turn v3.2",
+          "color": "#777f97",
+          "operating": {
+            "1pct": {
+              "cum_recall_pct": 11.98,
+              "cum_fir_pct": 0.53,
+              "mean_wait_ms": 921.1
+            },
+            "2pct": {
+              "cum_recall_pct": 23.13,
+              "cum_fir_pct": 1.6,
+              "mean_wait_ms": 841.6
+            },
+            "3pct": {
+              "cum_recall_pct": 33.11,
+              "cum_fir_pct": 2.67,
+              "mean_wait_ms": 770.2
+            },
+            "5pct": {
+              "cum_recall_pct": 40.93,
+              "cum_fir_pct": 4.81,
+              "mean_wait_ms": 716.5
+            },
+            "10pct": {
+              "cum_recall_pct": 57.24,
+              "cum_fir_pct": 9.63,
+              "mean_wait_ms": 613.8
+            }
+          }
+        },
+        {
+          "name": "Turn-1-Mini",
+          "color": "#a58c9b",
+          "operating": {
+            "1pct": {
+              "cum_recall_pct": 4.99,
+              "cum_fir_pct": 0.53,
+              "mean_wait_ms": 966.6
+            },
+            "2pct": {
+              "cum_recall_pct": 13.31,
+              "cum_fir_pct": 1.6,
+              "mean_wait_ms": 924.3
+            },
+            "3pct": {
+              "cum_recall_pct": 16.14,
+              "cum_fir_pct": 2.67,
+              "mean_wait_ms": 891.5
+            },
+            "5pct": {
+              "cum_recall_pct": 30.12,
+              "cum_fir_pct": 4.81,
+              "mean_wait_ms": 829.6
+            },
+            "10pct": {
+              "cum_recall_pct": 43.26,
+              "cum_fir_pct": 9.63,
+              "mean_wait_ms": 702.7
+            }
+          }
+        }
+      ]
+    },
+    "livekit_orig_paired_1058": {
+      "n": 1058,
+      "models": [
+        {
+          "name": "Pikaia-Turn",
+          "color": "#b9a3ed",
+          "operating": {
+            "1pct": {
+              "cum_recall_pct": 28.07,
+              "cum_fir_pct": 0.88,
+              "mean_wait_ms": 816.9
+            },
+            "2pct": {
+              "cum_recall_pct": 31.56,
+              "cum_fir_pct": 1.75,
+              "mean_wait_ms": 794.6
+            },
+            "3pct": {
+              "cum_recall_pct": 36.17,
+              "cum_fir_pct": 2.92,
+              "mean_wait_ms": 765.2
+            },
+            "5pct": {
+              "cum_recall_pct": 48.32,
+              "cum_fir_pct": 4.97,
+              "mean_wait_ms": 666.8
+            },
+            "10pct": {
+              "cum_recall_pct": 65.64,
+              "cum_fir_pct": 9.94,
+              "mean_wait_ms": 556.4
+            }
+          }
+        },
+        {
+          "name": "Pikaia-Turn-Mini",
+          "color": "#a1dbe0",
+          "operating": {
+            "1pct": {
+              "cum_recall_pct": 30.45,
+              "cum_fir_pct": 0.88,
+              "mean_wait_ms": 849.7
+            },
+            "2pct": {
+              "cum_recall_pct": 36.31,
+              "cum_fir_pct": 1.75,
+              "mean_wait_ms": 768.4
+            },
+            "3pct": {
+              "cum_recall_pct": 41.2,
+              "cum_fir_pct": 2.92,
+              "mean_wait_ms": 725.0
+            },
+            "5pct": {
+              "cum_recall_pct": 54.19,
+              "cum_fir_pct": 4.97,
+              "mean_wait_ms": 631.1
+            },
+            "10pct": {
+              "cum_recall_pct": 65.22,
+              "cum_fir_pct": 9.94,
+              "mean_wait_ms": 549.7
+            }
+          }
+        },
+        {
+          "name": "Pikaia-Turn-Nano",
+          "color": "#e6baac",
+          "operating": {
+            "1pct": {
+              "cum_recall_pct": 12.85,
+              "cum_fir_pct": 0.88,
+              "mean_wait_ms": 915.1
+            },
+            "2pct": {
+              "cum_recall_pct": 20.25,
+              "cum_fir_pct": 1.75,
+              "mean_wait_ms": 859.9
+            },
+            "3pct": {
+              "cum_recall_pct": 28.07,
+              "cum_fir_pct": 2.92,
+              "mean_wait_ms": 805.2
+            },
+            "5pct": {
+              "cum_recall_pct": 40.36,
+              "cum_fir_pct": 4.97,
+              "mean_wait_ms": 736.3
+            },
+            "10pct": {
+              "cum_recall_pct": 57.96,
+              "cum_fir_pct": 9.94,
+              "mean_wait_ms": 596.8
+            }
+          }
+        },
+        {
+          "name": "Turn-1",
+          "color": "#a2a5b2",
+          "operating": {
+            "1pct": {
+              "cum_recall_pct": 32.82,
+              "cum_fir_pct": 0.88,
+              "mean_wait_ms": 809.2
+            },
+            "2pct": {
+              "cum_recall_pct": 36.59,
+              "cum_fir_pct": 1.75,
+              "mean_wait_ms": 762.3
+            },
+            "3pct": {
+              "cum_recall_pct": 46.37,
+              "cum_fir_pct": 2.92,
+              "mean_wait_ms": 680.9
+            },
+            "5pct": {
+              "cum_recall_pct": 60.61,
+              "cum_fir_pct": 4.97,
+              "mean_wait_ms": 583.2
+            },
+            "10pct": {
+              "cum_recall_pct": 73.32,
+              "cum_fir_pct": 9.94,
+              "mean_wait_ms": 487.6
+            }
+          }
+        },
+        {
+          "name": "Smart Turn v3.2",
+          "color": "#777f97",
+          "operating": {
+            "1pct": {
+              "cum_recall_pct": 13.41,
+              "cum_fir_pct": 0.88,
+              "mean_wait_ms": 911.6
+            },
+            "2pct": {
+              "cum_recall_pct": 19.69,
+              "cum_fir_pct": 1.75,
+              "mean_wait_ms": 886.5
+            },
+            "3pct": {
+              "cum_recall_pct": 24.86,
+              "cum_fir_pct": 2.92,
+              "mean_wait_ms": 839.4
+            },
+            "5pct": {
+              "cum_recall_pct": 33.52,
+              "cum_fir_pct": 4.97,
+              "mean_wait_ms": 780.4
+            },
+            "10pct": {
+              "cum_recall_pct": 42.88,
+              "cum_fir_pct": 9.94,
+              "mean_wait_ms": 704.5
+            }
+          }
+        },
+        {
+          "name": "Turn-1-Mini",
+          "color": "#a58c9b",
+          "operating": {
+            "1pct": {
+              "cum_recall_pct": 8.94,
+              "cum_fir_pct": 0.88,
+              "mean_wait_ms": 945.0
+            },
+            "2pct": {
+              "cum_recall_pct": 14.8,
+              "cum_fir_pct": 1.75,
+              "mean_wait_ms": 903.1
+            },
+            "3pct": {
+              "cum_recall_pct": 23.6,
+              "cum_fir_pct": 2.92,
+              "mean_wait_ms": 838.5
+            },
+            "5pct": {
+              "cum_recall_pct": 33.66,
+              "cum_fir_pct": 4.97,
+              "mean_wait_ms": 772.8
+            },
+            "10pct": {
+              "cum_recall_pct": 54.61,
+              "cum_fir_pct": 9.94,
+              "mean_wait_ms": 622.8
+            }
+          }
+        }
+      ]
+    }
+  },
+  "interpretation": [
+    "Public paired 788 is a subset of public research test 1100; full paired 1700 also includes development and private items.",
+    "LiveKit floor-end and response-ready use different objectives and eligible cohorts.",
+    "Historical ranking substitutions are not official leaderboard submissions.",
+    "TurnBench results here use local Dev data and a causal duplex partner-VAD control layer, not held-out test rankings.",
+    "Training-size and architecture controls must be compared under their recorded experimental conditions."
+  ]
+}

@@ -1,0 +1,9 @@
+.report-version-switch{background:#0d0c11;border-bottom:1px solid #29262f;font-size:11px}
+.report-version-switch>.shell{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:48px}
+.report-version-switch>.shell>span{color:var(--muted)}
+.report-version-switch>.shell>div{display:flex;align-items:center;gap:8px}
+.report-version-switch a{display:inline-flex;align-items:center;gap:5px;min-height:38px;padding:7px 13px;border:1px solid transparent;border-radius:4px;color:var(--muted)}
+.report-version-switch a[aria-current=page]{color:var(--text);border-color:#51465f;background:#211b2c}
+.report-version-switch a:hover{color:var(--text);background:#1a1621}
+@media(max-width:600px){.report-version-switch>.shell{width:calc(100% - 36px);gap:8px;min-height:52px}.report-version-switch>.shell>span{font-size:10px}.report-version-switch a{min-height:44px;padding-inline:10px}.report-version-switch a>span{display:none}}
+@media print{.report-version-switch{display:none}}

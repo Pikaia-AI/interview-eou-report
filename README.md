@@ -4,6 +4,16 @@ Official companion technical report website for **Pikaia Interview EOU Benchmark
 
 The primary benchmark paper (*Pikaia Interview EOU Benchmark: Evaluating Response Readiness in Bilingual Spoken Interviews*) focuses on the public 1,200-item benchmark (76 speaker clusters across Tier 1 `dev` and Tier 2 `test`) and reproducible open-weight baselines. This technical report and companion website document the broader research program, full-pool metrics (2,338 items across 150 clusters), and streaming architecture designs.
 
+## Compare report editions
+
+The original edition remains at `/`. The focused edition is available at `/v2/`; the edition switch links both pages without replacing either. V1's report content and figures are preserved. V2 reuses the approved artwork, shared results, timing curves and input ablation, with six sections: family, data, main results, timing, ablations, and resources.
+
+V2 makes the timing explorer visible by default and removes the duplicate cascade controls, ranking-change banners and eight-chapter transcript from its reading path. It keeps the public/full result pair, the Response-ready ablation with confidence intervals, collapsed Floor-end details, and explicit data/threshold limitations. Model cards show comparable specifications; training history and external controls are supplementary. The original experiment values are unchanged.
+
+The benchmark PDF and companion experiment tables have separate scopes and numbering. `public/report/v2-supplementary.json` preserves calibration, transfer and training controls plus the additional paired cohorts. `public/report/v2-source-manifest.json` pins the displayed sources by checksum and records the unresolved Turn-1 full-pool Wait@5% discrepancy (archived main table: 412.7 ms; sampled curve: 411.4 ms). Both editions retain the curve source; this presentation change does not silently reconcile historical values.
+
+Run `python3 scripts/check-report-v2.py http://127.0.0.1:5188` alongside the original report check to verify the six-section route, default-visible timing plots, value parity with V1, resources and source checksums. These are HTTP/data checks, not browser visual or pointer-interaction acceptance tests.
+
 ## Benchmark Tiers & Access
 
 | Tier | Split | Access | ZH | EN | Total | Clusters | 600 ms Pairs | WAV Files | Link |
