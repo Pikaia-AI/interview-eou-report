@@ -33,6 +33,51 @@
 .holdout-values{border-top:1px solid var(--line);padding-top:12px}
 @media(max-width:760px){.explorer-controls.three{grid-template-columns:1fr 1fr}.explorer-controls.three>label:last-child{grid-column:1/-1}.result-panel{padding:30px 0;scroll-margin-top:60px}.result-panel>h3{font-size:27px}.result-scope{font-size:12px}.result-note,.comparison-guide{font-size:11px}.result-panel .chart-heading h4{font-size:18px}.result-panel .chart-heading h4 span{display:block;margin:5px 0 0}.chart-selection{font-size:10px}}
 
+.training-data{margin-top:55px;border-top:1px solid var(--strong-line);scroll-margin-top:100px}
+.training-data .subsection-heading{margin-top:40px}
+.training-data .micro-label{margin-bottom:18px}
+.training-growth{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-block:1px solid var(--line)}
+.training-growth>div{padding:26px 0}
+.training-growth>div+div{border-left:1px solid var(--line);padding-left:32px}
+.training-growth strong{display:block;font:200 clamp(30px,3.4vw,45px)/1.35 var(--display);letter-spacing:-.04em}
+.training-growth strong small{color:var(--muted);font-size:25px}
+.training-growth>div:last-child strong{color:var(--cyan)}
+.training-growth span{display:block;font-size:12px;color:var(--muted);margin-top:8px}
+.training-balance{font-size:13px;margin:22px 0 30px;color:#cec9d7}
+.training-balance>span{display:block;margin-top:5px;color:var(--muted)}
+.training-table table{min-width:540px}
+.training-table th:first-child{width:55%;white-space:normal}
+.training-table th>span{display:block;max-width:600px;font-size:12px;line-height:1.8;font-weight:400;color:var(--muted);margin-top:7px}
+.training-table td{text-align:right;font-variant-numeric:tabular-nums}
+.training-table thead th:not(:first-child){text-align:right}
+.training-table tfoot{color:var(--cyan);border-top:1px solid var(--strong-line)}
+.training-methods{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:34px;margin:35px 0}
+.training-methods h4{margin:0 0 13px;font:400 19px/1.4 var(--display)}
+.training-methods p{font-size:13px;color:var(--muted);line-height:1.9}
+.training-source{margin-top:24px}
+@media(max-width:760px){
+ .training-data{margin-top:38px;scroll-margin-top:70px}
+ .training-data .subsection-heading{margin-top:30px}
+ .training-growth>div{padding:18px 8px 18px 0}
+ .training-growth>div+div{padding-left:12px}
+ .training-growth strong{font-size:27px;letter-spacing:-.05em}
+ .training-growth strong small{font-size:16px}
+ .training-growth span{font-size:10px;line-height:1.6}
+ .training-balance{font-size:11px;line-height:1.8;margin-bottom:22px}
+ .training-table th>span{font-size:11px}
+ .training-methods{grid-template-columns:1fr;gap:24px;margin:28px 0}
+ .training-methods h4{font-size:18px;margin-bottom:9px}
+ .training-methods p{font-size:12px}
+}
+
+@media(max-width:440px){
+ .training-growth{grid-template-columns:1fr}
+ .training-growth>div,.training-growth>div+div{display:flex;align-items:baseline;gap:18px;padding:16px 0;border-left:0}
+ .training-growth>div+div{border-top:1px solid var(--line)}
+ .training-growth strong{min-width:100px}
+ .training-growth span{margin:0;font-size:11px}
+}
+
 /* Paired input ablation: a shared scale with visible confidence intervals. */
 .context-ablation{margin-top:60px;border-top:1px solid var(--strong-line);scroll-margin-top:100px}
 .context-ablation .subsection-heading{margin-top:42px}

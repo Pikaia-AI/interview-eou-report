@@ -19,6 +19,14 @@ The primary benchmark paper (*Pikaia Interview EOU Benchmark: Evaluating Respons
 - **Pikaia-Turn-Mini (0.6B)**: Standalone single-backbone server detector (~25% parameter footprint of flagship) with strong 600 ms discrimination (**0.9680** Full 600 ms ROC-AUC, **395.3 ms** Full cascade Wait@5%).
 - **Pikaia-Turn-Nano (6.7M)**: CPU streaming detector combining a turn-start prompt encoder with running utterance state (**56.03%** Tier 2 recall @ 5% FPR, **+35.77 pp** gain over Turn-1-Mini).
 
+## Training corpus
+
+The model section includes a training-data overview (`#training-data`) for the three displayed Pikaia family checkpoints: **2,025 curated examples + 1,170 new Mandarin examples = 3,195 expanded examples**. The expanded split contains 2,295 Mandarin and 900 English examples, with 2,396 EOT and 799 HOLD labels.
+
+The source mix is 167 examples from an earlier human-reviewed pool, 1,858 from a consensus-reviewed bilingual pool, and 1,170 new Mandarin examples with unanimous three-model labels. The report distinguishes machine consensus from human gold labels, explains the causal inputs and private access scope, and describes the separate 448-item internal validation and 447-item internal test splits. The larger 3,891-example Smart Turn baseline arm is identified separately and is not eligible for those internal splits.
+
+`public/report/training-data-summary.json` contains aggregate statistics and the source-manifest checksum, without individual examples, interview text, participant IDs or audio paths. This overview supplements the website; it does not revise the bundled PDF.
+
 ## Evaluation charts
 
 The results section shows two charts with shared language, audio-cutoff and metric controls, a common axis scale, and the same model order:
@@ -68,6 +76,7 @@ python3 scripts/check-report.py http://127.0.0.1:5188
   - `pikaia-interview-eou-benchmark.pdf`: 17-page benchmark paper.
   - `metrics.json`: Full aggregate metrics and cascade operating points.
   - `context-ablation.json`: Paired question-text ablation results and confidence intervals.
+  - `training-data-summary.json`: Aggregate private training-corpus statistics and provenance.
   - `citation.bib`: Companion BibTeX citations.
   - `fig1`..`fig4`: High-resolution figures (PDF and PNG).
 - `scripts/`:

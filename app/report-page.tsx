@@ -3,6 +3,7 @@ import { ArrowUpRight, ArrowRight, Download, ChevronDown } from 'lucide-react';
 import data from './report-data.json';
 import { Header, Contents, Timeline, ResultsExplorer, CascadeExplorer, Citation, DisclosureLinks } from './report-ui';
 import { ContextAblation } from './context-ablation';
+import { TrainingData } from './training-data';
 
 type Reference = { id:string; title:string; URL?:string; DOI?:string; author?:{literal?:string;given?:string;family?:string}[]; issued?:{'date-parts':number[][]} };
 const references:Reference[] = data.references;
@@ -58,6 +59,7 @@ export default function Home() {
   <SectionTitle number="04" label="The reference models">One question.<br/>Three compute budgets.</SectionTitle><p className="section-intro">The Pikaia-Turn family reads raw user audio together with the agent’s preceding question. It can use the agent’s own text without waiting for user ASR. Context dropout also permits evaluation with an empty prompt.</p>
   <div className="model-grid"><article><p className="micro-label">FLAGSHIP / SERVER</p><p className="model-size">2.3<span>B</span></p><h3>Pikaia-Turn</h3><p>Dual-backbone cross-modal adaptation, speech-boundary prosody and prompt-conditioned fusion for long-form interviews.</p><dl><dt>Tier 2 ROC-AUC</dt><dd>0.9658</dd><dt>Tier 2 recall @5% FPR</dt><dd>84.48%</dd></dl></article><article><p className="micro-label">SINGLE BACKBONE / SERVER</p><p className="model-size">0.6<span>B</span></p><h3>Pikaia-Turn-Mini</h3><p>A standalone server detector with roughly one quarter of the flagship’s parameter count and strong 600 ms discrimination.</p><dl><dt>Full 600 ms ROC-AUC</dt><dd>0.9680</dd><dt>Full cascade Wait@5%</dt><dd>395.3 ms</dd></dl></article><article><p className="micro-label">CAUSAL STREAMING / CPU</p><p className="model-size">6.7<span>M</span></p><h3>Pikaia-Turn-Nano</h3><p>A turn-start prompt encoder and running utterance state bring context to a compact, frame-synchronous audio model.</p><dl><dt>Tier 2 recall @5% FPR</dt><dd>56.03%</dd><dt>Gain over Turn-1-Mini</dt><dd>+35.77 pp</dd></dl></article></div>
   <Source>Proprietary reference models; weights and private training corpora are not open-sourced. Nano is the CPU streaming variant. Mini is a server model. <a href="#chapter-4">Architecture overview <ArrowUpRight size={13}/></a></Source>
+  <TrainingData/>
  </section>
  <section id="results" className="report-section">
   <SectionTitle number="05" label="Explore the results">Compare under<br/>the same conditions.</SectionTitle><p className="section-intro">Compare the Hugging Face research test with the full evaluation pool in two aligned views. Language, audio cutoff and metric filters apply to both. The research-test chart excludes the development split; full-pool results include all three tiers.</p>
