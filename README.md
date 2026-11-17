@@ -36,6 +36,16 @@ The results section shows two charts with shared language, audio-cutoff and metr
 
 Each chart displays the current slice size and supports exact values and CSV export. Paired subsets contain 788 Tier 2 items and 1,700 full-pool items before language filtering. Private-holdout values remain available in a separate disclosure. This presentation update retains the existing Pikaia-Turn, Mini and Nano models and the report's baseline comparisons.
 
+## Native research figures
+
+Figure 2 (`#figure-2`) renders two native SVG waiting-time / false-cut-off frontiers, with shared scales, family/baseline line styles, model highlighting across both cohorts, and exact ≤5% operating points. HTML owns the axes and labels so text stays readable as the geometry resizes. The display clips at 15% false cut-offs; the downloadable data retains all 948 sampled frontier points. These are empirical waiting-time trade-offs, including the 1,000 ms fallback, not model inference latency.
+
+Figure 3 (`#figure-3`) is in the collapsed appendix. It uses an AUC matrix for the four overlapping provenance groups and paired recall bars for the two LiveKit objectives, with an explicit explanation that both labels and eligible samples change. The matrix does not connect categorical groups with a trend line. The causal column is described as the report's mixed provenance group, rather than claiming uniform annotation conditions.
+
+`public/report/figure-data.json` records source checksums and the aggregate values. Frontier operating points and provenance-subset values were matched to the current report. The full-benchmark AUC column uses the current `metrics.json`: the old supplement's Turn-1 AUC of 0.955024 is aligned to 0.954290, with that adjustment recorded in the data provenance. No model is rerun.
+
+All original paper figures remain available as PDF/PNG downloads; paper rasters are no longer embedded in the website. Figure 1's ROC attachment and Figure 4's EasyTurn attachment remain in the appendix alongside the full source tables.
+
 ## Preceding-question text ablation
 
 The main narrative uses the final Pikaia-Turn / Mini / Nano names. The complete training-size controls (Table 8), EasyTurn-800 transfer table (Table 9) and original EasyTurn figure (Figure 4) are retained in the collapsed **Supplementary experiments** appendix under Paper & resources (`#supplementary-experiments`). Links to their original anchors automatically reveal the appendix. This keeps the primary story focused while preserving the intermediate checkpoints and out-of-domain limitations.
@@ -79,6 +89,7 @@ python3 scripts/check-report.py http://127.0.0.1:5188
   - `metrics.json`: Full aggregate metrics and cascade operating points.
   - `context-ablation.json`: Paired question-text ablation results and confidence intervals.
   - `training-data-summary.json`: Aggregate private training-corpus statistics and provenance.
+  - `figure-data.json`: Native frontier, provenance and objective-shift chart data with source checksums.
   - `citation.bib`: Companion BibTeX citations.
   - `fig1`..`fig4`: High-resolution figures (PDF and PNG).
 - `scripts/`:

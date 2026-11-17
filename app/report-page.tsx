@@ -4,6 +4,7 @@ import data from './report-data.json';
 import { Header, Contents, Timeline, ResultsExplorer, CascadeExplorer, Citation, DisclosureLinks } from './report-ui';
 import { ContextAblation } from './context-ablation';
 import { TrainingData } from './training-data';
+import { CascadeFrontiers, ProvenanceAndObjectives } from './research-figures';
 
 type Reference = { id:string; title:string; URL?:string; DOI?:string; author?:{literal?:string;given?:string;family?:string}[]; issued?:{'date-parts':number[][]} };
 const references:Reference[] = data.references;
@@ -12,8 +13,8 @@ const PDF = '/report/pikaia-interview-eou-benchmark.pdf';
 const chapters = ['Introduction', 'Related work', 'The benchmark', 'The model family', 'Evaluation and results', 'Cross-benchmark evaluation', 'Data × architecture ablations', 'Conclusion and limitations'];
 const figures = [
  ['fig1_roc_curves', 'Language-stratified ROC curves', '300 ms causal cutoffs · Mandarin N=978, English N=1,360 · low-FPR region and full-ROC insets.'],
- ['fig2_livekit_pareto_frontier', 'Waiting-time / false-cutoff frontiers', 'Two-stage 300 → 600 → 1,000 ms cascades. Pikaia N=1,700 pairs; causal LiveKit N=842. Lower left is better.'],
- ['fig3_provenance_and_livekit_shift', 'Label provenance and objective shifts', 'Stratified evidence and changes under retrospective floor-end versus causal response-ready evaluation.'],
+ ['fig2_livekit_pareto_frontier', 'Speed versus interruptions', 'Two-stage 300 → 600 → 1,000 ms cascades. Pikaia N=1,700 pairs; response-ready LiveKit N=842.'],
+ ['fig3_provenance_and_livekit_shift', 'Why evaluation choices change the scores', 'Label-provenance groups and retrospective floor-end versus causal response-ready evaluation.'],
  ['fig4_easyturn_benchmark', 'EasyTurn-800: transfer and failure modes', 'Four-state turn-taking and human versus synthetic speech. All models receive empty agent context.'],
 ];
 function Source({children}: {children: React.ReactNode}) { return <p className="source-note">{children}</p>; }
@@ -22,7 +23,14 @@ function Table({number}: {number:number}) {
  const table = data.tables[number-1];
  return <details className="report-detail" id={`table-${number}`}><summary><span><span className="detail-index">TABLE {number.toString().padStart(2,'0')}</span>{table.title}</span><ChevronDown size={18}/></summary><div className="table-scroll" role="region" aria-label={table.title} tabIndex={0}><table><caption>{table.title} · Technical report, Table {number}</caption><thead><tr>{table.headers.map((h,i)=><th key={i} scope="col">{h}</th>)}</tr></thead><tbody>{table.rows.map((row,i)=><tr key={i}>{row.map((value,j)=>j===0?<th scope="row" key={j}>{value}</th>:<td key={j}>{value}</td>)}</tr>)}</tbody></table></div><Source>Transcribed from the verified November 2026 report. Percentages and milliseconds retain the table’s original evaluation conditions. <a href={PDF} target="_blank" rel="noreferrer">Read the full table caption <ArrowUpRight size={13}/></a></Source></details>;
 }
-function Figure({number}: {number:number}) { const [file,title,caption]=figures[number-1]; return <details className="report-detail figure-detail" id={`figure-${number}`}><summary><span><span className="detail-index">FIGURE {number.toString().padStart(2,'0')}</span>{title}</span><ChevronDown size={18}/></summary><figure><a href={`/report/${file}.pdf`} target="_blank" rel="noreferrer" aria-label={`Open ${title} as a PDF`}><img src={`/report/${file}.png`} alt={title} loading="lazy" width="1600" height="720"/></a><figcaption>{caption} <a href={`/report/${file}.pdf`} target="_blank" rel="noreferrer">Open original PDF <ArrowUpRight size={13}/></a></figcaption></figure></details>; }
+function Figure({number}: {number:number}) {
+ const [file,title,caption]=figures[number-1];
+ return <details className="report-detail figure-detail" id={`figure-${number}`}>
+  <summary><span><span className="detail-index">FIGURE {number.toString().padStart(2,'0')}</span>{title}</span><ChevronDown size={18}/></summary>
+  {number===2?<CascadeFrontiers/>:number===3?<ProvenanceAndObjectives/>:<p className="figure-attachment-note">{caption} The original paper figure is available as a downloadable attachment.</p>}
+  <div className="figure-downloads"><a className="quiet-button" href={`/report/${file}.pdf`} download>Original PDF <Download size={14}/></a><a className="text-link" href={`/report/${file}.png`} download>Original PNG <Download size={14}/></a>{(number===2||number===3)&&<a className="text-link" href="/report/figure-data.json" download>Chart data <Download size={14}/></a>}</div>
+ </details>;
+}
 
 export default function Home() {
  return <>
@@ -63,7 +71,7 @@ export default function Home() {
  </section>
  <section id="results" className="report-section">
   <SectionTitle number="05" label="Explore the results">Compare under<br/>the same conditions.</SectionTitle><p className="section-intro">Compare the Hugging Face research test with the full evaluation pool in two aligned views. Language, audio cutoff and metric filters apply to both. The research-test chart excludes the development split; full-pool results include all three tiers.</p>
-  <ResultsExplorer models={data.models}/><Table number={3}/><Figure number={1}/>
+  <ResultsExplorer models={data.models}/><Table number={3}/>
   <div className="subsection-heading"><h3>The cost of waiting.</h3><p>A two-stage cascade decides at 300 ms, rechecks at 600 ms, then falls back to 1,000 ms. Compare average wait at the same cumulative false-cutoff budget.</p></div><CascadeExplorer data={data.cascades}/><Figure number={2}/>
  </section>
  <section id="protocol" className="report-section">
@@ -74,7 +82,7 @@ export default function Home() {
  <section id="transfer" className="report-section">
   <SectionTitle number="07" label="Beyond one benchmark">Change the question.<br/>Change the ranking.</SectionTitle><p className="section-intro">Task-oriented agent turns, open-ended interviews, isolated utterances and spontaneous human conversation test different capabilities. The report keeps those evaluation regimes distinct.</p>
   <div className="shift-grid"><div><p className="micro-label">LIVEKIT · FLOOR-END → RESPONSE-READY</p><p className="shift-number">#3 <ArrowRight/> #1</p><h3>Pikaia-Turn</h3><p>On audited causal pairs, mean cascade wait falls to 394.4 ms. The underlying model probabilities are unchanged; the evaluation labels and eligible subset change.</p></div><div><p className="micro-label">SAME MODEL · INTERVIEW ADAPTATION</p><p className="shift-number">#9 <ArrowRight/> #6</p><h3>Smart Turn v3.2 · English</h3><p>At ≤10% cutoff, interview fine-tuning reduces official-harness mean wait from 723.3 to 656.8 ms. Training-data controls are documented in the complete report.</p></div></div>
-  <Source>Tables 5–6. Reference rankings substitute a model into fixed peer curves from the report’s snapshot, not official new leaderboard entries. Published and locally reproduced baseline curves are reported separately.</Source><Table number={1}/><Table number={5}/><Table number={6}/><Figure number={3}/>
+  <Source>Tables 5–6. Reference rankings substitute a model into fixed peer curves from the report’s snapshot, not official new leaderboard entries. Published and locally reproduced baseline curves are reported separately. <a href="#figure-3">How evaluation choices change the scores <ArrowUpRight size={13}/></a></Source><Table number={1}/><Table number={5}/><Table number={6}/>
   <div className="subsection-heading"><h3>A different test: two people talking.</h3><p>TurnBench Dev contains 38 studio English dyads. With the same frozen model weights and a causal duplex partner-VAD control layer, Pikaia-Turn-Mini achieves 91.70% Dev recall and 91.28% conversation-grouped out-of-fold recall at a ≤10% FPR budget.</p></div><p className="body-note">The out-of-fold median event latency is 617.5 ms; at the stricter observed 4.42% FPR, recall is 84.72%. Adding partner ASR yields no gain in this setup. These are local Dev stress-test results, not a held-out TurnBench test ranking.</p><Table number={7}/>
  </section>
  <section id="ablations" className="report-section">
@@ -91,8 +99,9 @@ export default function Home() {
  <section id="paper" className="report-section paper-section">
   <SectionTitle number="10" label="Paper & resources">The complete research.</SectionTitle><div className="paper-heading"><p className="micro-label">PIKAIA AI RESEARCH · NOVEMBER 2026</p><h3>Pikaia Interview EOU Benchmark: Evaluating Response Readiness in Bilingual Spoken Interviews</h3><p className="paper-positioning">The primary benchmark paper focuses on the public 1,200-item benchmark (76 clusters across Tier 1 dev and Tier 2 test) and reproducible open-weight baselines, while this companion technical report documents the Pikaia-Turn detector family (Pikaia-Turn, Pikaia-Turn-Mini, Pikaia-Turn-Nano), controlled Data × Architecture ablations, interview fine-tuning of open-weight models, and external benchmark transfer (LiveKit eot-bench, TurnBench Dev, EasyTurn-800).</p><div className="hero-actions"><a className="button primary" href={PDF} download>Benchmark paper (PDF) <Download size={17}/></a><a className="text-link" href="https://huggingface.co/datasets/pikaia-ai/interview-eou-benchmark" target="_blank" rel="noreferrer">Hugging Face benchmark <ArrowUpRight size={16}/></a><a className="text-link" href="https://github.com/Pikaia-AI/interview-eou-report" target="_blank" rel="noreferrer">GitHub repository <ArrowUpRight size={16}/></a><a className="text-link" href="/report/metrics.json" download>Download metrics JSON <Download size={16}/></a></div></div>
   <details className="report-detail supplementary-experiments" id="supplementary-experiments">
-   <summary><span><span className="detail-index">APPENDIX</span>Training-size controls & supplementary evaluations</span><ChevronDown size={18}/></summary>
+   <summary><span><span className="detail-index">APPENDIX</span>Supporting analyses & complete experiment controls</span><ChevronDown size={18}/></summary>
    <div className="supplementary-body">
+    <Figure number={3}/><Figure number={1}/>
     <div className="subsection-heading"><h3>Complete training controls.</h3><p>The original experiment labels are retained for reproducibility: Curated FT uses 2,025 examples; Expanded FT uses 3,195 examples for the Pikaia family. These are training controls within each architecture.</p></div><Table number={8}/>
     <div className="subsection-heading"><h3>EasyTurn-800.</h3><p>A supplementary transfer test with no preceding agent context. It separates real and synthetic speech and includes backchannels and explicit wait requests.</p></div>
     <p className="body-note">Results are mixed. Pikaia-Turn-Nano’s 3,195-example checkpoint has lower synthetic-speech AUC than its 2,025-example control. Explicit “wait” commands remain difficult for the large models. Pikaia-Turn-Mini holds on 97% of backchannels and 67% of wait commands at the matched operating point. The complete table and original figure retain these limitations.</p><Table number={9}/><Figure number={4}/>
