@@ -6,7 +6,7 @@ import data from '../public/report/context-ablation.json';
 
 type Cutoff = '300ms' | '600ms';
 type Cohort = keyof typeof data.cohorts;
-const ticks = [-30, -20, -10, 0, 10, 20, 30];
+const ticks = [-30, 0, 30];
 // One symmetric scale for both cutoffs and both label objectives.
 const position = (value: number) => ((value + 30) / 60) * 100;
 const signed = (value: number) => `${value > 0 ? '+' : value < 0 ? '−' : ''}${Math.abs(value).toFixed(2)}`;
@@ -21,38 +21,29 @@ function IntervalChart({ cohortKey, cutoff }: { cohortKey: Cohort; cutoff: Cutof
       <h4 id={titleId}>{cohort.title}<span>{cutoff === '300ms' ? '300 ms' : '600 ms'} audio cutoff</span></h4>
       <p>LiveKit · N={cohort.n.toLocaleString('en-US')} · {cohort.eot} EOT / {cohort.hold} HOLD · Mandarin + English</p>
     </figcaption>
-    <div className="ablation-key">
-      <span><i className="ablation-key-dot" aria-hidden="true"/>Point estimate</span>
-      <span><i className="ablation-key-line" aria-hidden="true"/>95% confidence interval</span>
-      <span>Recall: with question → audio only</span>
-    </div>
-    <p className="ablation-axis-title">Change in recall · audio only − with question · percentage points</p>
-    <div className="ablation-grid ablation-axis" aria-hidden="true">
-      <div className="ablation-ticks">{ticks.map(tick => <span key={tick} style={{ left: `${position(tick)}%` }}>{tick > 0 ? '+' : ''}{tick}</span>)}</div>
-    </div>
+    <p className="ablation-metric">Recall at ≤5% false-positive rate <span>Higher is better</span></p>
     <div className="ablation-rows">
-      {rows.map(row => <div className="ablation-grid ablation-row" key={row.model} data-ablation-model={row.model}>
-        <div className="ablation-model">
-          <strong>{row.model}</strong>
-          <span><span className="sr-only">Recall with question: </span>{row.with_text.recall_pct.toFixed(2)}% <span aria-hidden="true">→</span> <span className="sr-only">Recall with audio only: </span>{row.audio_only.recall_pct.toFixed(2)}%</span>
+      {rows.map(row => <div className="ablation-row" key={row.model} data-ablation-model={row.model}>
+        <div className="ablation-model"><strong>{row.model}</strong></div>
+        <div className="ablation-comparison">
+          <div className="ablation-series with-question"><span>Audio + question</span><div className="ablation-bar-track" aria-hidden="true"><i style={{ width: `${row.with_text.recall_pct}%` }}/></div><b>{row.with_text.recall_pct.toFixed(2)}%</b></div>
+          <div className="ablation-series audio-only"><span>Audio only</span><div className="ablation-bar-track" aria-hidden="true"><i style={{ width: `${row.audio_only.recall_pct}%` }}/></div><b>{row.audio_only.recall_pct.toFixed(2)}%</b></div>
         </div>
-        <div className="ablation-interval" aria-hidden="true">
-          <svg viewBox="0 0 600 44" preserveAspectRatio="none" focusable="false">
-            {ticks.map(tick => <line key={tick} x1={position(tick) * 6} x2={position(tick) * 6} y1="0" y2="44" className={tick === 0 ? 'ablation-zero' : 'ablation-gridline'}/>)}
-            <line x1={position(row.ci95_pp[0]) * 6} x2={position(row.ci95_pp[1]) * 6} y1="22" y2="22" className="ablation-ci"/>
-            {row.ci95_pp.map((bound, i) => <line key={i} x1={position(bound) * 6} x2={position(bound) * 6} y1="16" y2="28" className="ablation-ci"/>)}
-          </svg>
-          <span className="ablation-point" style={{ left: `${position(row.delta_recall_pp)}%` }}/>
-        </div>
-        <div className="ablation-estimate">
-          <strong><span className="sr-only">Change in recall: </span>{signed(row.delta_recall_pp)} <small>pp</small></strong>
-          <span><span className="sr-only">95% confidence interval: </span>[{signed(row.ci95_pp[0])}, {signed(row.ci95_pp[1])}]</span>
+        <div className="ablation-effect">
+          <div className="ablation-effect-summary"><span>Change without question</span><strong>{signed(row.delta_recall_pp)} <small>pp</small></strong></div>
+          <div className="ablation-interval" aria-hidden="true">
+            <svg viewBox="0 0 600 44" preserveAspectRatio="none" focusable="false">
+              {ticks.map(tick => <line key={tick} x1={position(tick) * 6} x2={position(tick) * 6} y1="7" y2="37" className={tick === 0 ? 'ablation-zero' : 'ablation-gridline'}/>)}
+              <line x1={position(row.ci95_pp[0]) * 6} x2={position(row.ci95_pp[1]) * 6} y1="22" y2="22" className="ablation-ci"/>
+              {row.ci95_pp.map((bound, i) => <line key={i} x1={position(bound) * 6} x2={position(bound) * 6} y1="16" y2="28" className="ablation-ci"/>)}
+            </svg>
+            <span className="ablation-point" style={{ left: `${position(row.delta_recall_pp)}%` }}/>
+          </div>
+          <div className="ablation-interval-label"><span>95% CI</span><span>[{signed(row.ci95_pp[0])}, {signed(row.ci95_pp[1])}]</span></div>
         </div>
       </div>)}
     </div>
-    <div className="ablation-grid ablation-axis-footer" aria-hidden="true">
-      <div><span>← Higher recall with question</span><span>Higher recall with audio only →</span></div>
-    </div>
+    <p className="ablation-reading-guide">Bars start at zero on the same 0–100% scale. Change = audio only − audio + question; a negative value favors keeping the question. The small interval plots share a −30 to +30 pp scale, with zero marked at the center.</p>
   </figure>;
 }
 

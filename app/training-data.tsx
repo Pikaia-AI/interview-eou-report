@@ -7,23 +7,23 @@ export function TrainingData() {
   return <section className="training-data" id="training-data" aria-labelledby="training-data-title">
     <div className="subsection-heading">
       <div><p className="micro-label">TRAINING DATA / PRIVATE INTERVIEW CORPUS</p><h3 id="training-data-title">Learning from real<br/>interview moments.</h3></div>
-      <p>The Pikaia-Turn, Mini and Nano checkpoints presented here use an expanded corpus of {count(data.expanded_count)} real Mandarin and English interview examples. The controlled data ablation compares this split with its {count(data.curated_count)}-example curated base.</p>
+      <p>Pikaia-Turn, Mini and Nano share a private training corpus of {count(data.expanded_count)} real Mandarin and English interview examples. Each model name refers to the final configuration used in the results above and below.</p>
     </div>
     <div className="training-growth" aria-label="Training corpus expansion">
-      <div><strong>{count(data.curated_count)}</strong><span>Curated bilingual base</span></div>
+      <div><strong>{count(data.curated_count)}</strong><span>Bilingual base</span></div>
       <div><strong><small>+</small> {count(data.added_mandarin_count)}</strong><span>Additional Mandarin examples</span></div>
-      <div><strong><small>=</small> {count(data.expanded_count)}</strong><span>Expanded training examples</span></div>
+      <div><strong><small>=</small> {count(data.expanded_count)}</strong><span>Training examples</span></div>
     </div>
     <p className="training-balance">{count(data.languages.zh)} Mandarin · {count(data.languages.en)} English<span>{count(data.labels.EOT)} EOT / response-ready · {count(data.labels.HOLD)} HOLD / keep listening</span></p>
     <div className="table-scroll training-table" role="region" aria-label="Training source composition" tabIndex={0}>
       <table>
-        <caption>Source composition of the expanded training split</caption>
+        <caption>Source composition of the training corpus</caption>
         <thead><tr><th scope="col">Source pool</th><th scope="col">Examples</th><th scope="col">Mandarin</th><th scope="col">English</th></tr></thead>
         <tbody>{data.sources.map(source => <tr key={source.name}>
           <th scope="row">{source.name}<span>{source.description}</span></th>
           <td>{count(source.n)}</td><td>{count(source.zh)}</td><td>{count(source.en)}</td>
         </tr>)}</tbody>
-        <tfoot><tr><th scope="row">Expanded total</th><td>{count(data.expanded_count)}</td><td>{count(data.languages.zh)}</td><td>{count(data.languages.en)}</td></tr></tfoot>
+        <tfoot><tr><th scope="row">Training total</th><td>{count(data.expanded_count)}</td><td>{count(data.languages.zh)}</td><td>{count(data.languages.en)}</td></tr></tfoot>
       </table>
     </div>
     <div className="training-methods">
