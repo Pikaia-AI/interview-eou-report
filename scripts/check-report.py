@@ -174,9 +174,20 @@ class PageParser(HTMLParser):
         self.assets: List[str] = []
         self.skip = 0
         self.text: List[str] = []
+        self.result_tables = {}
+        self.result_split = None
+        self.result_row = None
+        self.result_cell = None
 
     def handle_starttag(self, tag: str, attrs: List[tuple[str, str | None]]) -> None:
         a = dict(attrs)
+        if tag == "table" and a.get("data-results-split"):
+            self.result_split = a["data-results-split"]
+            self.result_tables[self.result_split] = []
+        if self.result_split and tag == "tr":
+            self.result_row = []
+        if self.result_split and tag in ("td", "th"):
+            self.result_cell = []
         if tag in ["script", "style"]:
             self.skip += 1
         if "id" in a and a["id"]:
@@ -187,10 +198,21 @@ class PageParser(HTMLParser):
             self.assets.append(a["src"])
 
     def handle_endtag(self, tag: str) -> None:
+        if self.result_split:
+            if tag in ("td", "th") and self.result_cell is not None:
+                self.result_row.append("".join(self.result_cell).strip())
+                self.result_cell = None
+            elif tag == "tr" and self.result_row is not None:
+                self.result_tables[self.result_split].append(self.result_row)
+                self.result_row = None
+            elif tag == "table":
+                self.result_split = None
         if tag in ["script", "style"]:
             self.skip = max(0, self.skip - 1)
 
     def handle_data(self, data: str) -> None:
+        if self.result_cell is not None:
+            self.result_cell.append(data)
         if not self.skip:
             self.text.append(data)
 
@@ -231,6 +253,21 @@ def verify_server(origin: str) -> Dict[str, Any]:
     for i in range(1, 5):
         assert f"figure-{i}" in id_set, f"Missing figure-{i} in page IDs"
 
+    # Two visible cohort panels and the retained private-holdout table must
+    # render the source values for their own split, in the same model order.
+    for panel in ("results-research-test", "results-full-pool"):
+        assert panel in id_set, f"Missing evaluation chart panel: {panel}"
+    assert "100 development items" in full_text
+    source = json.loads((ROOT / "app/report-data.json").read_text())
+    models = sorted(source["models"], key=lambda m: -m["splits"]["test_1100"]["300ms"]["overall"]["operating"]["5"]["recall"])
+    for split in ("test_1100", "full_2338", "test_private_1138"):
+        expected = []
+        for model in models:
+            point = model["splits"][split]["300ms"]["overall"]
+            op = point["operating"]["5"]
+            expected.append([model["name"], f"{point['auc']:.4f}", f"{op['recall'] * 100:.2f}%", f"{op['fpr'] * 100:.2f}%"])
+        assert parser.result_tables.get(split, [])[1:] == expected, f"Rendered result values or model order differ for {split}"
+
     # 5. Check all assets
     assets = set(parser.assets + [h for h in parser.links if h.startswith("/report/") or h.startswith("/fonts/") or h.startswith("/art/")])
     # Add explicit assets
@@ -262,6 +299,8 @@ def verify_server(origin: str) -> Dict[str, Any]:
     return {
         "origin": origin,
         "assets_verified": len(assets),
+        "evaluation_chart_panels": 2,
+        "result_tables_verified": len(parser.result_tables),
         "duplicate_ids": 0,
         "broken_internal_links": 0,
     }

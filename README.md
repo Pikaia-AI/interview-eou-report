@@ -19,6 +19,15 @@ The primary benchmark paper (*Pikaia Interview EOU Benchmark: Evaluating Respons
 - **Pikaia-Turn-Mini (0.6B)**: Standalone single-backbone server detector (~25% parameter footprint of flagship) with strong 600 ms discrimination (**0.9680** Full 600 ms ROC-AUC, **395.3 ms** Full cascade Wait@5%).
 - **Pikaia-Turn-Nano (6.7M)**: CPU streaming detector combining a turn-start prompt encoder with running utterance state (**56.03%** Tier 2 recall @ 5% FPR, **+35.77 pp** gain over Turn-1-Mini).
 
+## Evaluation charts
+
+The results section shows two charts with shared language, audio-cutoff and metric controls, a common axis scale, and the same model order:
+
+- **Public research test:** Tier 2, 1,100 items, available through academic gated access on Hugging Face. The 100 development/calibration items are excluded.
+- **Full evaluation pool:** 2,338 items across all three tiers, including development and the private holdout. This is aggregate analysis, not an independent held-out test or a fully public dataset.
+
+Each chart displays the current slice size and supports exact values and CSV export. Paired subsets contain 788 Tier 2 items and 1,700 full-pool items before language filtering. Private-holdout values remain available in a separate disclosure. This presentation update retains the existing Pikaia-Turn, Mini and Nano models and the report's baseline comparisons.
+
 ## Run & Verify Locally
 
 Requires Node.js 22.13 or newer and Python 3.

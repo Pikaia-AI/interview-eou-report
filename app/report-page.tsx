@@ -59,7 +59,7 @@ export default function Home() {
   <Source>Proprietary reference models; weights and private training corpora are not open-sourced. Nano is the CPU streaming variant. Mini is a server model. <a href="#chapter-4">Architecture overview <ArrowUpRight size={13}/></a></Source>
  </section>
  <section id="results" className="report-section">
-  <SectionTitle number="05" label="Explore the results">Compare under<br/>the same conditions.</SectionTitle><p className="section-intro">Select the split, language, audio cutoff and metric. Low-FPR recall uses an empirical operating point for each model; frozen-threshold deployment transfer is reported separately.</p>
+  <SectionTitle number="05" label="Explore the results">Compare under<br/>the same conditions.</SectionTitle><p className="section-intro">Compare the Hugging Face research test with the full evaluation pool in two aligned views. Language, audio cutoff and metric filters apply to both. The research-test chart excludes the development split; full-pool results include all three tiers.</p>
   <ResultsExplorer models={data.models}/><Table number={3}/><Figure number={1}/>
   <div className="subsection-heading"><h3>The cost of waiting.</h3><p>A two-stage cascade decides at 300 ms, rechecks at 600 ms, then falls back to 1,000 ms. Compare average wait at the same cumulative false-cutoff budget.</p></div><CascadeExplorer data={data.cascades}/><Figure number={2}/>
  </section>
