@@ -1,26 +1,106 @@
-import { ArrowUpRight, Download } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Download } from 'lucide-react';
 
-const results = [
+type Metric = {
+  title: string;
+  scope: string;
+  unit: '%' | 'ms';
+  original: number;
+  fineTuned: number;
+  rank?: { title: string; original: number; fineTuned: number; systems: number };
+  note?: string;
+};
+
+const results: { dataset: string; scope: string; metrics: Metric[] }[] = [
   {
     dataset: 'Pikaia Interview EOU Benchmark',
     scope: 'Our benchmark · Real Mandarin and English research interviews',
-    rows: [
-      ['Research test recall at ≤5% FPR', '300 ms · 1,100 decisions', '40.23%', '63.79%', '+23.56 pp'],
-      ['Research test rank by recall', 'Same test and operating point · six report systems', '#5 of 6', '#4 of 6', 'Up 1 place'],
-      ['Full-pool mean cascade wait at ≤5% false cut-offs', '1,700 paired decisions', '735.2 ms', '630.8 ms', '−104.4 ms'],
+    metrics: [
+      {
+        title: 'Research test recall',
+        scope: '300 ms · 1,100 decisions · ≤5% false-positive rate',
+        unit: '%', original: 40.23, fineTuned: 63.79,
+        rank: { title: 'Report rank by recall', original: 5, fineTuned: 4, systems: 6 },
+      },
+      {
+        title: 'Mean cascade wait',
+        scope: '1,700 full-pool pairs · ≤5% false cut-offs',
+        unit: 'ms', original: 735.2, fineTuned: 630.8,
+      },
     ],
   },
   {
     dataset: 'LiveKit EOT Bench',
     scope: 'External benchmark · Task-oriented conversations with voice agents',
-    rows: [
-      ['ROC-AUC with original Floor-end labels', '300 ms · 1,058 decisions', '0.7998', '0.8474', '+0.0476'],
-      ['English mean wait at ≤10% false cut-offs', 'LiveKit evaluation protocol', '723.3 ms', '674.2 ms', '−49.1 ms'],
-      ['English reference rank by mean wait', 'Same language and budget · fixed LiveKit snapshot', '#9 of 13', '#7 of 13', 'Up 2 places'],
-      ['Mandarin mean wait at ≤10% false cut-offs', 'LiveKit evaluation protocol · rank #3 of 9 in both runs', '658.4 ms', '597.8 ms', '−60.6 ms'],
+    metrics: [
+      {
+        title: 'Recall on original Floor-end labels',
+        scope: '300 ms · 1,058 decisions · ≤5% false-positive rate',
+        unit: '%', original: 29.19, fineTuned: 33.24,
+        note: 'ROC-AUC on the same decisions improved from 0.7998 to 0.8474.',
+      },
+      {
+        title: 'English mean wait',
+        scope: 'LiveKit evaluation protocol · ≤10% false cut-offs',
+        unit: 'ms', original: 723.3, fineTuned: 674.2,
+        rank: { title: 'Reference rank by mean wait', original: 9, fineTuned: 7, systems: 13 },
+      },
+      {
+        title: 'Mandarin mean wait',
+        scope: 'LiveKit evaluation protocol · ≤10% false cut-offs',
+        unit: 'ms', original: 658.4, fineTuned: 597.8,
+        rank: { title: 'Reference rank by mean wait', original: 3, fineTuned: 3, systems: 9 },
+      },
     ],
   },
 ];
+
+function TransferMetric({ title, scope, unit, original, fineTuned, rank, note }: Metric) {
+  const isRecall = unit === '%';
+  const axisMax = isRecall ? 100 : 1000;
+  const digits = isRecall ? 2 : 1;
+  const numberUnit = isRecall ? '%' : ' ms';
+  const change = fineTuned - original;
+  const delta = `${change > 0 ? '+' : '−'}${Math.abs(change).toFixed(digits)} ${isRecall ? 'pp' : 'ms'}`;
+  const rankGain = rank ? rank.original - rank.fineTuned : 0;
+
+  return (
+    <div className="v2-transfer-metric">
+      <div className="v2-transfer-metric-heading">
+        <div><h5>{title}</h5><p>{scope}</p></div>
+        <strong>{delta}</strong>
+      </div>
+      <dl className="v2-transfer-bars">
+        {([['Original', original], ['Fine-tuned', fineTuned]] as const).map(([variant, value]) => (
+          <div className="v2-transfer-bar" key={variant}>
+            <dt>{variant}</dt>
+            <dd>
+              <span className="v2-transfer-track" aria-hidden="true">
+                <i style={{ width: `${value / axisMax * 100}%` }}/>
+              </span>
+              <span className="v2-transfer-value">{value.toFixed(digits)}{numberUnit}</span>
+            </dd>
+          </div>
+        ))}
+      </dl>
+      <div className="v2-transfer-axis" aria-hidden="true">
+        <span>0</span><span>{isRecall ? '100%' : '1,000 ms'}</span>
+      </div>
+      {rank && (
+        <div className="v2-transfer-rank">
+          <div className="v2-transfer-rank-label"><span>{rank.title}</span>
+            <span>{rankGain ? `Up ${rankGain} ${rankGain === 1 ? 'place' : 'places'}` : 'Same rank'}</span>
+          </div>
+          <div className="v2-transfer-rank-flow">
+            <span><b>#{rank.original}</b> of {rank.systems}<small>Original</small></span>
+            <ArrowRight size={17} aria-hidden="true"/>
+            <span><b>#{rank.fineTuned}</b> of {rank.systems}<small>Fine-tuned</small></span>
+          </div>
+        </div>
+      )}
+      {note && <p className="v2-transfer-metric-note">{note}</p>}
+    </div>
+  );
+}
 
 export function SmartTurnTransfer() {
   return (
@@ -32,24 +112,15 @@ export function SmartTurnTransfer() {
         audio-only input fixed, then evaluated on Pikaia and LiveKit data held out from training.
       </p>
       <div className="v2-transfer-grid">
-        {results.map(({ dataset, scope, rows }) => (
-          <div className="table-scroll" key={dataset}>
-            <table>
-              <caption><strong>{dataset}</strong><span>{scope}</span></caption>
-              <thead><tr><th scope="col">Metric</th><th scope="col">Original</th><th scope="col">Fine-tuned</th><th scope="col">Change</th></tr></thead>
-              <tbody>
-                {rows.map(([metric, detail, original, adapted, change]) => (
-                  <tr key={metric}>
-                    <th scope="row">{metric}<small>{detail}</small></th>
-                    <td>{original}</td><td>{adapted}</td><td>{change}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+        {results.map(({ dataset, scope, metrics }) => (
+          <figure className="v2-transfer-figure" key={dataset}>
+            <figcaption><h4>{dataset}</h4><p>{scope}</p></figcaption>
+            {metrics.map(metric => <TransferMetric key={metric.title} {...metric}/>)}
+          </figure>
         ))}
       </div>
       <p className="source-note">
+        Higher recall and shorter waits are better. Ranks use the metric and budget shown above each rank.
         The offline Pikaia and Floor-end results average the three checkpoints’ prediction scores.
         The LiveKit harness averages waiting times across those same training seeds.
         Each reference rank replaces the original Smart Turn score while holding the other systems fixed.
