@@ -10,8 +10,8 @@
     },
     {
       "url": "/report/figure-data.json",
-      "sha256": "b2cd65603efe72db0c47143aa6dfd4e3af6877adfc179564ea5d2a7ab5663b9f",
-      "scope": "Sampled six-model cascade curves, provenance and objective comparisons."
+      "sha256": "ac2fe8b2c82dd419f2a6f0731508eca8fecfc7205cc2810d7328e17e9fcc3fcd",
+      "scope": "Sampled six-model cascade curves for the Pikaia benchmark and both LiveKit label sets, plus provenance and objective comparisons."
     },
     {
       "url": "/report/context-ablation.json",

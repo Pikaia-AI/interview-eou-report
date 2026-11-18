@@ -2469,6 +2469,2461 @@
       ]
     },
     {
+      "id": "livekit_floor_end",
+      "label": "LiveKit \u00b7 original Floor-end",
+      "n": 1058,
+      "models": [
+        {
+          "tag": "p99_v2_exp_split2085_exp",
+          "name": "Pikaia-Turn",
+          "color": "#b9a3ed",
+          "family": true,
+          "points": [
+            {
+              "wait": 865.6,
+              "error": 0.29,
+              "budget": 0.5
+            },
+            {
+              "wait": 832.0,
+              "error": 0.58,
+              "budget": 0.75
+            },
+            {
+              "wait": 816.9,
+              "error": 0.88,
+              "budget": 1.0
+            },
+            {
+              "wait": 809.8,
+              "error": 1.17,
+              "budget": 1.25
+            },
+            {
+              "wait": 799.6,
+              "error": 1.46,
+              "budget": 1.5
+            },
+            {
+              "wait": 799.6,
+              "error": 1.46,
+              "budget": 1.75
+            },
+            {
+              "wait": 794.6,
+              "error": 1.75,
+              "budget": 2.0
+            },
+            {
+              "wait": 777.4,
+              "error": 2.05,
+              "budget": 2.25
+            },
+            {
+              "wait": 772.6,
+              "error": 2.34,
+              "budget": 2.5
+            },
+            {
+              "wait": 767.5,
+              "error": 2.63,
+              "budget": 2.75
+            },
+            {
+              "wait": 765.2,
+              "error": 2.92,
+              "budget": 3.0
+            },
+            {
+              "wait": 756.0,
+              "error": 3.22,
+              "budget": 3.25
+            },
+            {
+              "wait": 756.0,
+              "error": 3.22,
+              "budget": 3.5
+            },
+            {
+              "wait": 747.3,
+              "error": 3.51,
+              "budget": 3.75
+            },
+            {
+              "wait": 741.9,
+              "error": 3.8,
+              "budget": 4.0
+            },
+            {
+              "wait": 725.4,
+              "error": 4.09,
+              "budget": 4.25
+            },
+            {
+              "wait": 709.6,
+              "error": 4.39,
+              "budget": 4.5
+            },
+            {
+              "wait": 688.5,
+              "error": 4.68,
+              "budget": 4.75
+            },
+            {
+              "wait": 666.8,
+              "error": 4.97,
+              "budget": 5.0
+            },
+            {
+              "wait": 666.8,
+              "error": 4.97,
+              "budget": 5.25
+            },
+            {
+              "wait": 666.3,
+              "error": 5.26,
+              "budget": 5.5
+            },
+            {
+              "wait": 652.2,
+              "error": 5.56,
+              "budget": 5.75
+            },
+            {
+              "wait": 649.3,
+              "error": 5.85,
+              "budget": 6.0
+            },
+            {
+              "wait": 648.9,
+              "error": 6.14,
+              "budget": 6.25
+            },
+            {
+              "wait": 606.1,
+              "error": 6.43,
+              "budget": 6.5
+            },
+            {
+              "wait": 602.2,
+              "error": 6.73,
+              "budget": 6.75
+            },
+            {
+              "wait": 602.2,
+              "error": 6.73,
+              "budget": 7.0
+            },
+            {
+              "wait": 599.3,
+              "error": 7.02,
+              "budget": 7.25
+            },
+            {
+              "wait": 599.3,
+              "error": 7.31,
+              "budget": 7.5
+            },
+            {
+              "wait": 591.5,
+              "error": 7.6,
+              "budget": 7.75
+            },
+            {
+              "wait": 581.7,
+              "error": 7.89,
+              "budget": 8.0
+            },
+            {
+              "wait": 579.7,
+              "error": 8.19,
+              "budget": 8.25
+            },
+            {
+              "wait": 574.9,
+              "error": 8.48,
+              "budget": 8.5
+            },
+            {
+              "wait": 574.9,
+              "error": 8.48,
+              "budget": 8.75
+            },
+            {
+              "wait": 574.9,
+              "error": 8.77,
+              "budget": 9.0
+            },
+            {
+              "wait": 572.8,
+              "error": 9.06,
+              "budget": 9.25
+            },
+            {
+              "wait": 567.7,
+              "error": 9.36,
+              "budget": 9.5
+            },
+            {
+              "wait": 562.4,
+              "error": 9.65,
+              "budget": 9.75
+            },
+            {
+              "wait": 556.4,
+              "error": 9.94,
+              "budget": 10.0
+            },
+            {
+              "wait": 555.9,
+              "error": 10.23,
+              "budget": 10.25
+            },
+            {
+              "wait": 555.9,
+              "error": 10.23,
+              "budget": 10.5
+            },
+            {
+              "wait": 551.4,
+              "error": 10.53,
+              "budget": 10.75
+            },
+            {
+              "wait": 545.5,
+              "error": 10.82,
+              "budget": 11.0
+            },
+            {
+              "wait": 539.7,
+              "error": 11.11,
+              "budget": 11.25
+            },
+            {
+              "wait": 533.5,
+              "error": 11.4,
+              "budget": 11.5
+            },
+            {
+              "wait": 522.8,
+              "error": 11.7,
+              "budget": 11.75
+            },
+            {
+              "wait": 516.9,
+              "error": 11.99,
+              "budget": 12.0
+            },
+            {
+              "wait": 516.9,
+              "error": 11.99,
+              "budget": 12.25
+            },
+            {
+              "wait": 506.1,
+              "error": 12.28,
+              "budget": 12.5
+            },
+            {
+              "wait": 504.2,
+              "error": 12.57,
+              "budget": 12.75
+            },
+            {
+              "wait": 498.9,
+              "error": 12.87,
+              "budget": 13.0
+            },
+            {
+              "wait": 490.9,
+              "error": 13.16,
+              "budget": 13.25
+            },
+            {
+              "wait": 486.2,
+              "error": 13.45,
+              "budget": 13.5
+            },
+            {
+              "wait": 470.5,
+              "error": 13.74,
+              "budget": 13.75
+            },
+            {
+              "wait": 470.5,
+              "error": 13.74,
+              "budget": 14.0
+            },
+            {
+              "wait": 461.7,
+              "error": 14.04,
+              "budget": 14.25
+            },
+            {
+              "wait": 451.0,
+              "error": 14.33,
+              "budget": 14.5
+            },
+            {
+              "wait": 447.6,
+              "error": 14.62,
+              "budget": 14.75
+            },
+            {
+              "wait": 443.3,
+              "error": 14.91,
+              "budget": 15.0
+            },
+            {
+              "wait": 431.4,
+              "error": 15.2,
+              "budget": 15.25
+            },
+            {
+              "wait": 428.6,
+              "error": 15.5,
+              "budget": 15.5
+            },
+            {
+              "wait": 428.6,
+              "error": 15.5,
+              "budget": 15.75
+            },
+            {
+              "wait": 420.7,
+              "error": 15.79,
+              "budget": 16.0
+            },
+            {
+              "wait": 417.9,
+              "error": 16.08,
+              "budget": 16.25
+            },
+            {
+              "wait": 413.8,
+              "error": 16.37,
+              "budget": 16.5
+            },
+            {
+              "wait": 411.6,
+              "error": 16.67,
+              "budget": 16.75
+            },
+            {
+              "wait": 410.6,
+              "error": 16.96,
+              "budget": 17.0
+            },
+            {
+              "wait": 410.6,
+              "error": 16.96,
+              "budget": 17.25
+            },
+            {
+              "wait": 407.1,
+              "error": 17.25,
+              "budget": 17.5
+            },
+            {
+              "wait": 406.0,
+              "error": 17.54,
+              "budget": 17.75
+            },
+            {
+              "wait": 402.7,
+              "error": 17.84,
+              "budget": 18.0
+            },
+            {
+              "wait": 399.4,
+              "error": 18.13,
+              "budget": 18.25
+            },
+            {
+              "wait": 397.8,
+              "error": 18.42,
+              "budget": 18.5
+            },
+            {
+              "wait": 394.4,
+              "error": 18.71,
+              "budget": 18.75
+            },
+            {
+              "wait": 394.4,
+              "error": 18.71,
+              "budget": 19.0
+            },
+            {
+              "wait": 394.4,
+              "error": 19.01,
+              "budget": 19.25
+            },
+            {
+              "wait": 392.2,
+              "error": 19.3,
+              "budget": 19.5
+            },
+            {
+              "wait": 387.8,
+              "error": 19.59,
+              "budget": 19.75
+            },
+            {
+              "wait": 384.4,
+              "error": 19.88,
+              "budget": 20.0
+            }
+          ],
+          "at5": {
+            "wait": 666.8,
+            "error": 4.97,
+            "recall": 48.32
+          }
+        },
+        {
+          "tag": "qwen_v2_exp_split2085_exp",
+          "name": "Pikaia-Turn-Mini",
+          "color": "#a1dbe0",
+          "family": true,
+          "points": [
+            {
+              "wait": 899.0,
+              "error": 0.29,
+              "budget": 0.5
+            },
+            {
+              "wait": 881.1,
+              "error": 0.58,
+              "budget": 0.75
+            },
+            {
+              "wait": 849.7,
+              "error": 0.88,
+              "budget": 1.0
+            },
+            {
+              "wait": 838.0,
+              "error": 1.17,
+              "budget": 1.25
+            },
+            {
+              "wait": 789.1,
+              "error": 1.46,
+              "budget": 1.5
+            },
+            {
+              "wait": 789.1,
+              "error": 1.46,
+              "budget": 1.75
+            },
+            {
+              "wait": 768.4,
+              "error": 1.75,
+              "budget": 2.0
+            },
+            {
+              "wait": 760.6,
+              "error": 2.05,
+              "budget": 2.25
+            },
+            {
+              "wait": 754.5,
+              "error": 2.34,
+              "budget": 2.5
+            },
+            {
+              "wait": 746.5,
+              "error": 2.63,
+              "budget": 2.75
+            },
+            {
+              "wait": 725.0,
+              "error": 2.92,
+              "budget": 3.0
+            },
+            {
+              "wait": 715.6,
+              "error": 3.22,
+              "budget": 3.25
+            },
+            {
+              "wait": 715.6,
+              "error": 3.22,
+              "budget": 3.5
+            },
+            {
+              "wait": 695.0,
+              "error": 3.51,
+              "budget": 3.75
+            },
+            {
+              "wait": 679.9,
+              "error": 3.8,
+              "budget": 4.0
+            },
+            {
+              "wait": 672.9,
+              "error": 4.09,
+              "budget": 4.25
+            },
+            {
+              "wait": 658.0,
+              "error": 4.39,
+              "budget": 4.5
+            },
+            {
+              "wait": 647.9,
+              "error": 4.68,
+              "budget": 4.75
+            },
+            {
+              "wait": 631.1,
+              "error": 4.97,
+              "budget": 5.0
+            },
+            {
+              "wait": 631.1,
+              "error": 4.97,
+              "budget": 5.25
+            },
+            {
+              "wait": 627.5,
+              "error": 5.26,
+              "budget": 5.5
+            },
+            {
+              "wait": 617.7,
+              "error": 5.56,
+              "budget": 5.75
+            },
+            {
+              "wait": 609.2,
+              "error": 5.85,
+              "budget": 6.0
+            },
+            {
+              "wait": 606.3,
+              "error": 6.14,
+              "budget": 6.25
+            },
+            {
+              "wait": 603.5,
+              "error": 6.43,
+              "budget": 6.5
+            },
+            {
+              "wait": 600.3,
+              "error": 6.73,
+              "budget": 6.75
+            },
+            {
+              "wait": 600.3,
+              "error": 6.73,
+              "budget": 7.0
+            },
+            {
+              "wait": 596.2,
+              "error": 7.02,
+              "budget": 7.25
+            },
+            {
+              "wait": 594.8,
+              "error": 7.31,
+              "budget": 7.5
+            },
+            {
+              "wait": 591.5,
+              "error": 7.6,
+              "budget": 7.75
+            },
+            {
+              "wait": 590.6,
+              "error": 7.89,
+              "budget": 8.0
+            },
+            {
+              "wait": 588.1,
+              "error": 8.19,
+              "budget": 8.25
+            },
+            {
+              "wait": 579.7,
+              "error": 8.48,
+              "budget": 8.5
+            },
+            {
+              "wait": 579.7,
+              "error": 8.48,
+              "budget": 8.75
+            },
+            {
+              "wait": 575.4,
+              "error": 8.77,
+              "budget": 9.0
+            },
+            {
+              "wait": 569.7,
+              "error": 9.06,
+              "budget": 9.25
+            },
+            {
+              "wait": 559.2,
+              "error": 9.36,
+              "budget": 9.5
+            },
+            {
+              "wait": 556.3,
+              "error": 9.65,
+              "budget": 9.75
+            },
+            {
+              "wait": 549.7,
+              "error": 9.94,
+              "budget": 10.0
+            },
+            {
+              "wait": 547.5,
+              "error": 10.23,
+              "budget": 10.25
+            },
+            {
+              "wait": 547.5,
+              "error": 10.23,
+              "budget": 10.5
+            },
+            {
+              "wait": 546.4,
+              "error": 10.53,
+              "budget": 10.75
+            },
+            {
+              "wait": 540.9,
+              "error": 10.82,
+              "budget": 11.0
+            },
+            {
+              "wait": 522.1,
+              "error": 11.11,
+              "budget": 11.25
+            },
+            {
+              "wait": 514.9,
+              "error": 11.4,
+              "budget": 11.5
+            },
+            {
+              "wait": 509.1,
+              "error": 11.7,
+              "budget": 11.75
+            },
+            {
+              "wait": 501.5,
+              "error": 11.99,
+              "budget": 12.0
+            },
+            {
+              "wait": 501.5,
+              "error": 11.99,
+              "budget": 12.25
+            },
+            {
+              "wait": 499.9,
+              "error": 12.28,
+              "budget": 12.5
+            },
+            {
+              "wait": 495.7,
+              "error": 12.57,
+              "budget": 12.75
+            },
+            {
+              "wait": 494.6,
+              "error": 12.87,
+              "budget": 13.0
+            },
+            {
+              "wait": 493.6,
+              "error": 13.16,
+              "budget": 13.25
+            },
+            {
+              "wait": 493.4,
+              "error": 13.45,
+              "budget": 13.5
+            },
+            {
+              "wait": 489.8,
+              "error": 13.74,
+              "budget": 13.75
+            },
+            {
+              "wait": 489.8,
+              "error": 13.74,
+              "budget": 14.0
+            },
+            {
+              "wait": 478.8,
+              "error": 14.04,
+              "budget": 14.25
+            },
+            {
+              "wait": 460.3,
+              "error": 14.33,
+              "budget": 14.5
+            },
+            {
+              "wait": 454.5,
+              "error": 14.62,
+              "budget": 14.75
+            },
+            {
+              "wait": 454.5,
+              "error": 14.91,
+              "budget": 15.0
+            },
+            {
+              "wait": 451.5,
+              "error": 15.2,
+              "budget": 15.25
+            },
+            {
+              "wait": 451.5,
+              "error": 15.5,
+              "budget": 15.5
+            },
+            {
+              "wait": 451.5,
+              "error": 15.5,
+              "budget": 15.75
+            },
+            {
+              "wait": 446.4,
+              "error": 15.79,
+              "budget": 16.0
+            },
+            {
+              "wait": 445.4,
+              "error": 16.08,
+              "budget": 16.25
+            },
+            {
+              "wait": 441.6,
+              "error": 16.37,
+              "budget": 16.5
+            },
+            {
+              "wait": 439.4,
+              "error": 16.67,
+              "budget": 16.75
+            },
+            {
+              "wait": 437.7,
+              "error": 16.96,
+              "budget": 17.0
+            },
+            {
+              "wait": 437.7,
+              "error": 16.96,
+              "budget": 17.25
+            },
+            {
+              "wait": 434.4,
+              "error": 17.25,
+              "budget": 17.5
+            },
+            {
+              "wait": 433.1,
+              "error": 17.54,
+              "budget": 17.75
+            },
+            {
+              "wait": 427.9,
+              "error": 17.84,
+              "budget": 18.0
+            },
+            {
+              "wait": 427.4,
+              "error": 18.13,
+              "budget": 18.25
+            },
+            {
+              "wait": 424.6,
+              "error": 18.42,
+              "budget": 18.5
+            },
+            {
+              "wait": 418.0,
+              "error": 18.71,
+              "budget": 18.75
+            },
+            {
+              "wait": 418.0,
+              "error": 18.71,
+              "budget": 19.0
+            },
+            {
+              "wait": 413.1,
+              "error": 19.01,
+              "budget": 19.25
+            },
+            {
+              "wait": 409.2,
+              "error": 19.3,
+              "budget": 19.5
+            },
+            {
+              "wait": 407.3,
+              "error": 19.59,
+              "budget": 19.75
+            },
+            {
+              "wait": 400.6,
+              "error": 19.88,
+              "budget": 20.0
+            }
+          ],
+          "at5": {
+            "wait": 631.1,
+            "error": 4.97,
+            "recall": 54.19
+          }
+        },
+        {
+          "tag": "p99_mini_ctx_exp_split2085_exp",
+          "name": "Pikaia-Turn-Nano",
+          "color": "#e6baac",
+          "family": true,
+          "points": [
+            {
+              "wait": 967.3,
+              "error": 0.29,
+              "budget": 0.5
+            },
+            {
+              "wait": 919.0,
+              "error": 0.58,
+              "budget": 0.75
+            },
+            {
+              "wait": 915.1,
+              "error": 0.88,
+              "budget": 1.0
+            },
+            {
+              "wait": 873.5,
+              "error": 1.17,
+              "budget": 1.25
+            },
+            {
+              "wait": 872.5,
+              "error": 1.46,
+              "budget": 1.5
+            },
+            {
+              "wait": 872.5,
+              "error": 1.46,
+              "budget": 1.75
+            },
+            {
+              "wait": 859.9,
+              "error": 1.75,
+              "budget": 2.0
+            },
+            {
+              "wait": 853.8,
+              "error": 2.05,
+              "budget": 2.25
+            },
+            {
+              "wait": 827.0,
+              "error": 2.34,
+              "budget": 2.5
+            },
+            {
+              "wait": 824.7,
+              "error": 2.63,
+              "budget": 2.75
+            },
+            {
+              "wait": 805.2,
+              "error": 2.92,
+              "budget": 3.0
+            },
+            {
+              "wait": 787.6,
+              "error": 3.22,
+              "budget": 3.25
+            },
+            {
+              "wait": 787.6,
+              "error": 3.22,
+              "budget": 3.5
+            },
+            {
+              "wait": 765.9,
+              "error": 3.51,
+              "budget": 3.75
+            },
+            {
+              "wait": 758.7,
+              "error": 3.8,
+              "budget": 4.0
+            },
+            {
+              "wait": 744.7,
+              "error": 4.09,
+              "budget": 4.25
+            },
+            {
+              "wait": 744.3,
+              "error": 4.39,
+              "budget": 4.5
+            },
+            {
+              "wait": 739.7,
+              "error": 4.68,
+              "budget": 4.75
+            },
+            {
+              "wait": 736.3,
+              "error": 4.97,
+              "budget": 5.0
+            },
+            {
+              "wait": 736.3,
+              "error": 4.97,
+              "budget": 5.25
+            },
+            {
+              "wait": 727.4,
+              "error": 5.26,
+              "budget": 5.5
+            },
+            {
+              "wait": 719.7,
+              "error": 5.56,
+              "budget": 5.75
+            },
+            {
+              "wait": 711.6,
+              "error": 5.85,
+              "budget": 6.0
+            },
+            {
+              "wait": 701.0,
+              "error": 6.14,
+              "budget": 6.25
+            },
+            {
+              "wait": 696.2,
+              "error": 6.43,
+              "budget": 6.5
+            },
+            {
+              "wait": 696.2,
+              "error": 6.73,
+              "budget": 6.75
+            },
+            {
+              "wait": 696.2,
+              "error": 6.73,
+              "budget": 7.0
+            },
+            {
+              "wait": 679.7,
+              "error": 7.02,
+              "budget": 7.25
+            },
+            {
+              "wait": 673.5,
+              "error": 7.31,
+              "budget": 7.5
+            },
+            {
+              "wait": 661.5,
+              "error": 7.6,
+              "budget": 7.75
+            },
+            {
+              "wait": 629.9,
+              "error": 7.89,
+              "budget": 8.0
+            },
+            {
+              "wait": 627.9,
+              "error": 8.19,
+              "budget": 8.25
+            },
+            {
+              "wait": 626.0,
+              "error": 8.48,
+              "budget": 8.5
+            },
+            {
+              "wait": 626.0,
+              "error": 8.48,
+              "budget": 8.75
+            },
+            {
+              "wait": 624.0,
+              "error": 8.77,
+              "budget": 9.0
+            },
+            {
+              "wait": 619.7,
+              "error": 9.06,
+              "budget": 9.25
+            },
+            {
+              "wait": 614.5,
+              "error": 9.36,
+              "budget": 9.5
+            },
+            {
+              "wait": 608.4,
+              "error": 9.65,
+              "budget": 9.75
+            },
+            {
+              "wait": 596.8,
+              "error": 9.94,
+              "budget": 10.0
+            },
+            {
+              "wait": 579.2,
+              "error": 10.23,
+              "budget": 10.25
+            },
+            {
+              "wait": 579.2,
+              "error": 10.23,
+              "budget": 10.5
+            },
+            {
+              "wait": 577.0,
+              "error": 10.53,
+              "budget": 10.75
+            },
+            {
+              "wait": 550.6,
+              "error": 10.82,
+              "budget": 11.0
+            },
+            {
+              "wait": 548.9,
+              "error": 11.11,
+              "budget": 11.25
+            },
+            {
+              "wait": 542.7,
+              "error": 11.4,
+              "budget": 11.5
+            },
+            {
+              "wait": 537.8,
+              "error": 11.7,
+              "budget": 11.75
+            },
+            {
+              "wait": 533.9,
+              "error": 11.99,
+              "budget": 12.0
+            },
+            {
+              "wait": 533.9,
+              "error": 11.99,
+              "budget": 12.25
+            },
+            {
+              "wait": 529.6,
+              "error": 12.28,
+              "budget": 12.5
+            },
+            {
+              "wait": 522.8,
+              "error": 12.57,
+              "budget": 12.75
+            },
+            {
+              "wait": 521.4,
+              "error": 12.87,
+              "budget": 13.0
+            },
+            {
+              "wait": 515.5,
+              "error": 13.16,
+              "budget": 13.25
+            },
+            {
+              "wait": 513.5,
+              "error": 13.45,
+              "budget": 13.5
+            },
+            {
+              "wait": 508.5,
+              "error": 13.74,
+              "budget": 13.75
+            },
+            {
+              "wait": 508.5,
+              "error": 13.74,
+              "budget": 14.0
+            },
+            {
+              "wait": 504.6,
+              "error": 14.04,
+              "budget": 14.25
+            },
+            {
+              "wait": 501.8,
+              "error": 14.33,
+              "budget": 14.5
+            },
+            {
+              "wait": 497.8,
+              "error": 14.62,
+              "budget": 14.75
+            },
+            {
+              "wait": 490.5,
+              "error": 14.91,
+              "budget": 15.0
+            },
+            {
+              "wait": 483.8,
+              "error": 15.2,
+              "budget": 15.25
+            },
+            {
+              "wait": 482.4,
+              "error": 15.5,
+              "budget": 15.5
+            },
+            {
+              "wait": 482.4,
+              "error": 15.5,
+              "budget": 15.75
+            },
+            {
+              "wait": 474.7,
+              "error": 15.79,
+              "budget": 16.0
+            },
+            {
+              "wait": 468.9,
+              "error": 16.08,
+              "budget": 16.25
+            },
+            {
+              "wait": 464.0,
+              "error": 16.37,
+              "budget": 16.5
+            },
+            {
+              "wait": 464.0,
+              "error": 16.67,
+              "budget": 16.75
+            },
+            {
+              "wait": 461.2,
+              "error": 16.96,
+              "budget": 17.0
+            },
+            {
+              "wait": 461.2,
+              "error": 16.96,
+              "budget": 17.25
+            },
+            {
+              "wait": 458.7,
+              "error": 17.25,
+              "budget": 17.5
+            },
+            {
+              "wait": 455.3,
+              "error": 17.54,
+              "budget": 17.75
+            },
+            {
+              "wait": 451.0,
+              "error": 17.84,
+              "budget": 18.0
+            },
+            {
+              "wait": 448.7,
+              "error": 18.13,
+              "budget": 18.25
+            },
+            {
+              "wait": 447.1,
+              "error": 18.42,
+              "budget": 18.5
+            },
+            {
+              "wait": 445.4,
+              "error": 18.71,
+              "budget": 18.75
+            },
+            {
+              "wait": 445.4,
+              "error": 18.71,
+              "budget": 19.0
+            },
+            {
+              "wait": 441.8,
+              "error": 19.01,
+              "budget": 19.25
+            },
+            {
+              "wait": 439.5,
+              "error": 19.3,
+              "budget": 19.5
+            },
+            {
+              "wait": 434.9,
+              "error": 19.59,
+              "budget": 19.75
+            },
+            {
+              "wait": 432.7,
+              "error": 19.88,
+              "budget": 20.0
+            }
+          ],
+          "at5": {
+            "wait": 736.3,
+            "error": 4.97,
+            "recall": 40.36
+          }
+        },
+        {
+          "tag": "native_p99",
+          "name": "Turn-1",
+          "color": "#a2a5b2",
+          "family": false,
+          "points": [
+            {
+              "wait": 848.3,
+              "error": 0.29,
+              "budget": 0.5
+            },
+            {
+              "wait": 826.0,
+              "error": 0.58,
+              "budget": 0.75
+            },
+            {
+              "wait": 809.2,
+              "error": 0.88,
+              "budget": 1.0
+            },
+            {
+              "wait": 794.4,
+              "error": 1.17,
+              "budget": 1.25
+            },
+            {
+              "wait": 783.0,
+              "error": 1.46,
+              "budget": 1.5
+            },
+            {
+              "wait": 783.0,
+              "error": 1.46,
+              "budget": 1.75
+            },
+            {
+              "wait": 762.3,
+              "error": 1.75,
+              "budget": 2.0
+            },
+            {
+              "wait": 749.6,
+              "error": 2.05,
+              "budget": 2.25
+            },
+            {
+              "wait": 736.7,
+              "error": 2.34,
+              "budget": 2.5
+            },
+            {
+              "wait": 716.1,
+              "error": 2.63,
+              "budget": 2.75
+            },
+            {
+              "wait": 680.9,
+              "error": 2.92,
+              "budget": 3.0
+            },
+            {
+              "wait": 658.2,
+              "error": 3.22,
+              "budget": 3.25
+            },
+            {
+              "wait": 658.2,
+              "error": 3.22,
+              "budget": 3.5
+            },
+            {
+              "wait": 644.3,
+              "error": 3.51,
+              "budget": 3.75
+            },
+            {
+              "wait": 628.6,
+              "error": 3.8,
+              "budget": 4.0
+            },
+            {
+              "wait": 608.2,
+              "error": 4.09,
+              "budget": 4.25
+            },
+            {
+              "wait": 598.7,
+              "error": 4.39,
+              "budget": 4.5
+            },
+            {
+              "wait": 593.4,
+              "error": 4.68,
+              "budget": 4.75
+            },
+            {
+              "wait": 583.2,
+              "error": 4.97,
+              "budget": 5.0
+            },
+            {
+              "wait": 583.2,
+              "error": 4.97,
+              "budget": 5.25
+            },
+            {
+              "wait": 566.1,
+              "error": 5.26,
+              "budget": 5.5
+            },
+            {
+              "wait": 562.7,
+              "error": 5.56,
+              "budget": 5.75
+            },
+            {
+              "wait": 555.4,
+              "error": 5.85,
+              "budget": 6.0
+            },
+            {
+              "wait": 551.5,
+              "error": 6.14,
+              "budget": 6.25
+            },
+            {
+              "wait": 546.5,
+              "error": 6.43,
+              "budget": 6.5
+            },
+            {
+              "wait": 541.2,
+              "error": 6.73,
+              "budget": 6.75
+            },
+            {
+              "wait": 541.2,
+              "error": 6.73,
+              "budget": 7.0
+            },
+            {
+              "wait": 532.0,
+              "error": 7.02,
+              "budget": 7.25
+            },
+            {
+              "wait": 529.7,
+              "error": 7.31,
+              "budget": 7.5
+            },
+            {
+              "wait": 527.0,
+              "error": 7.6,
+              "budget": 7.75
+            },
+            {
+              "wait": 519.8,
+              "error": 7.89,
+              "budget": 8.0
+            },
+            {
+              "wait": 513.0,
+              "error": 8.19,
+              "budget": 8.25
+            },
+            {
+              "wait": 508.1,
+              "error": 8.48,
+              "budget": 8.5
+            },
+            {
+              "wait": 508.1,
+              "error": 8.48,
+              "budget": 8.75
+            },
+            {
+              "wait": 507.5,
+              "error": 8.77,
+              "budget": 9.0
+            },
+            {
+              "wait": 506.8,
+              "error": 9.06,
+              "budget": 9.25
+            },
+            {
+              "wait": 503.1,
+              "error": 9.36,
+              "budget": 9.5
+            },
+            {
+              "wait": 491.5,
+              "error": 9.65,
+              "budget": 9.75
+            },
+            {
+              "wait": 487.6,
+              "error": 9.94,
+              "budget": 10.0
+            },
+            {
+              "wait": 487.0,
+              "error": 10.23,
+              "budget": 10.25
+            },
+            {
+              "wait": 487.0,
+              "error": 10.23,
+              "budget": 10.5
+            },
+            {
+              "wait": 478.8,
+              "error": 10.53,
+              "budget": 10.75
+            },
+            {
+              "wait": 474.4,
+              "error": 10.82,
+              "budget": 11.0
+            },
+            {
+              "wait": 473.5,
+              "error": 11.11,
+              "budget": 11.25
+            },
+            {
+              "wait": 463.7,
+              "error": 11.4,
+              "budget": 11.5
+            },
+            {
+              "wait": 463.1,
+              "error": 11.7,
+              "budget": 11.75
+            },
+            {
+              "wait": 462.0,
+              "error": 11.99,
+              "budget": 12.0
+            },
+            {
+              "wait": 462.0,
+              "error": 11.99,
+              "budget": 12.25
+            },
+            {
+              "wait": 460.8,
+              "error": 12.28,
+              "budget": 12.5
+            },
+            {
+              "wait": 457.0,
+              "error": 12.57,
+              "budget": 12.75
+            },
+            {
+              "wait": 455.9,
+              "error": 12.87,
+              "budget": 13.0
+            },
+            {
+              "wait": 450.8,
+              "error": 13.16,
+              "budget": 13.25
+            },
+            {
+              "wait": 450.4,
+              "error": 13.45,
+              "budget": 13.5
+            },
+            {
+              "wait": 449.6,
+              "error": 13.74,
+              "budget": 13.75
+            },
+            {
+              "wait": 449.6,
+              "error": 13.74,
+              "budget": 14.0
+            },
+            {
+              "wait": 447.1,
+              "error": 14.04,
+              "budget": 14.25
+            },
+            {
+              "wait": 442.6,
+              "error": 14.33,
+              "budget": 14.5
+            },
+            {
+              "wait": 439.8,
+              "error": 14.62,
+              "budget": 14.75
+            },
+            {
+              "wait": 437.0,
+              "error": 14.91,
+              "budget": 15.0
+            },
+            {
+              "wait": 435.6,
+              "error": 15.2,
+              "budget": 15.25
+            },
+            {
+              "wait": 432.8,
+              "error": 15.5,
+              "budget": 15.5
+            },
+            {
+              "wait": 432.8,
+              "error": 15.5,
+              "budget": 15.75
+            },
+            {
+              "wait": 424.7,
+              "error": 15.79,
+              "budget": 16.0
+            },
+            {
+              "wait": 424.7,
+              "error": 16.08,
+              "budget": 16.25
+            },
+            {
+              "wait": 421.8,
+              "error": 16.37,
+              "budget": 16.5
+            },
+            {
+              "wait": 420.8,
+              "error": 16.67,
+              "budget": 16.75
+            },
+            {
+              "wait": 419.1,
+              "error": 16.96,
+              "budget": 17.0
+            },
+            {
+              "wait": 419.1,
+              "error": 16.96,
+              "budget": 17.25
+            },
+            {
+              "wait": 416.9,
+              "error": 17.25,
+              "budget": 17.5
+            },
+            {
+              "wait": 413.1,
+              "error": 17.54,
+              "budget": 17.75
+            },
+            {
+              "wait": 411.7,
+              "error": 17.84,
+              "budget": 18.0
+            },
+            {
+              "wait": 410.2,
+              "error": 18.13,
+              "budget": 18.25
+            },
+            {
+              "wait": 410.1,
+              "error": 18.42,
+              "budget": 18.5
+            },
+            {
+              "wait": 408.4,
+              "error": 18.71,
+              "budget": 18.75
+            },
+            {
+              "wait": 408.4,
+              "error": 18.71,
+              "budget": 19.0
+            },
+            {
+              "wait": 407.4,
+              "error": 19.01,
+              "budget": 19.25
+            },
+            {
+              "wait": 404.7,
+              "error": 19.3,
+              "budget": 19.5
+            },
+            {
+              "wait": 402.0,
+              "error": 19.59,
+              "budget": 19.75
+            },
+            {
+              "wait": 400.6,
+              "error": 19.88,
+              "budget": 20.0
+            }
+          ],
+          "at5": {
+            "wait": 583.2,
+            "error": 4.97,
+            "recall": 60.61
+          }
+        },
+        {
+          "tag": "smart_turn_v32_original",
+          "name": "Smart Turn v3.2",
+          "color": "#777f97",
+          "family": false,
+          "points": [
+            {
+              "wait": 947.5,
+              "error": 0.29,
+              "budget": 0.5
+            },
+            {
+              "wait": 916.3,
+              "error": 0.58,
+              "budget": 0.75
+            },
+            {
+              "wait": 911.6,
+              "error": 0.88,
+              "budget": 1.0
+            },
+            {
+              "wait": 907.1,
+              "error": 1.17,
+              "budget": 1.25
+            },
+            {
+              "wait": 900.4,
+              "error": 1.46,
+              "budget": 1.5
+            },
+            {
+              "wait": 900.4,
+              "error": 1.46,
+              "budget": 1.75
+            },
+            {
+              "wait": 886.5,
+              "error": 1.75,
+              "budget": 2.0
+            },
+            {
+              "wait": 882.0,
+              "error": 2.05,
+              "budget": 2.25
+            },
+            {
+              "wait": 874.0,
+              "error": 2.34,
+              "budget": 2.5
+            },
+            {
+              "wait": 841.6,
+              "error": 2.63,
+              "budget": 2.75
+            },
+            {
+              "wait": 839.4,
+              "error": 2.92,
+              "budget": 3.0
+            },
+            {
+              "wait": 821.6,
+              "error": 3.22,
+              "budget": 3.25
+            },
+            {
+              "wait": 821.6,
+              "error": 3.22,
+              "budget": 3.5
+            },
+            {
+              "wait": 813.4,
+              "error": 3.51,
+              "budget": 3.75
+            },
+            {
+              "wait": 807.3,
+              "error": 3.8,
+              "budget": 4.0
+            },
+            {
+              "wait": 793.3,
+              "error": 4.09,
+              "budget": 4.25
+            },
+            {
+              "wait": 788.8,
+              "error": 4.39,
+              "budget": 4.5
+            },
+            {
+              "wait": 788.3,
+              "error": 4.68,
+              "budget": 4.75
+            },
+            {
+              "wait": 780.4,
+              "error": 4.97,
+              "budget": 5.0
+            },
+            {
+              "wait": 780.4,
+              "error": 4.97,
+              "budget": 5.25
+            },
+            {
+              "wait": 777.1,
+              "error": 5.26,
+              "budget": 5.5
+            },
+            {
+              "wait": 775.1,
+              "error": 5.56,
+              "budget": 5.75
+            },
+            {
+              "wait": 767.6,
+              "error": 5.85,
+              "budget": 6.0
+            },
+            {
+              "wait": 764.5,
+              "error": 6.14,
+              "budget": 6.25
+            },
+            {
+              "wait": 760.8,
+              "error": 6.43,
+              "budget": 6.5
+            },
+            {
+              "wait": 759.6,
+              "error": 6.73,
+              "budget": 6.75
+            },
+            {
+              "wait": 759.6,
+              "error": 6.73,
+              "budget": 7.0
+            },
+            {
+              "wait": 757.1,
+              "error": 7.02,
+              "budget": 7.25
+            },
+            {
+              "wait": 748.7,
+              "error": 7.31,
+              "budget": 7.5
+            },
+            {
+              "wait": 747.6,
+              "error": 7.6,
+              "budget": 7.75
+            },
+            {
+              "wait": 741.6,
+              "error": 7.89,
+              "budget": 8.0
+            },
+            {
+              "wait": 734.4,
+              "error": 8.19,
+              "budget": 8.25
+            },
+            {
+              "wait": 732.4,
+              "error": 8.48,
+              "budget": 8.5
+            },
+            {
+              "wait": 732.4,
+              "error": 8.48,
+              "budget": 8.75
+            },
+            {
+              "wait": 725.6,
+              "error": 8.77,
+              "budget": 9.0
+            },
+            {
+              "wait": 716.8,
+              "error": 9.06,
+              "budget": 9.25
+            },
+            {
+              "wait": 711.7,
+              "error": 9.36,
+              "budget": 9.5
+            },
+            {
+              "wait": 708.9,
+              "error": 9.65,
+              "budget": 9.75
+            },
+            {
+              "wait": 704.5,
+              "error": 9.94,
+              "budget": 10.0
+            },
+            {
+              "wait": 703.1,
+              "error": 10.23,
+              "budget": 10.25
+            },
+            {
+              "wait": 703.1,
+              "error": 10.23,
+              "budget": 10.5
+            },
+            {
+              "wait": 698.6,
+              "error": 10.53,
+              "budget": 10.75
+            },
+            {
+              "wait": 697.5,
+              "error": 10.82,
+              "budget": 11.0
+            },
+            {
+              "wait": 693.3,
+              "error": 11.11,
+              "budget": 11.25
+            },
+            {
+              "wait": 692.2,
+              "error": 11.4,
+              "budget": 11.5
+            },
+            {
+              "wait": 691.1,
+              "error": 11.7,
+              "budget": 11.75
+            },
+            {
+              "wait": 686.6,
+              "error": 11.99,
+              "budget": 12.0
+            },
+            {
+              "wait": 686.6,
+              "error": 11.99,
+              "budget": 12.25
+            },
+            {
+              "wait": 685.6,
+              "error": 12.28,
+              "budget": 12.5
+            },
+            {
+              "wait": 680.2,
+              "error": 12.57,
+              "budget": 12.75
+            },
+            {
+              "wait": 676.3,
+              "error": 12.87,
+              "budget": 13.0
+            },
+            {
+              "wait": 674.6,
+              "error": 13.16,
+              "budget": 13.25
+            },
+            {
+              "wait": 670.0,
+              "error": 13.45,
+              "budget": 13.5
+            },
+            {
+              "wait": 668.0,
+              "error": 13.74,
+              "budget": 13.75
+            },
+            {
+              "wait": 668.0,
+              "error": 13.74,
+              "budget": 14.0
+            },
+            {
+              "wait": 666.1,
+              "error": 14.04,
+              "budget": 14.25
+            },
+            {
+              "wait": 661.2,
+              "error": 14.33,
+              "budget": 14.5
+            },
+            {
+              "wait": 658.2,
+              "error": 14.62,
+              "budget": 14.75
+            },
+            {
+              "wait": 647.1,
+              "error": 14.91,
+              "budget": 15.0
+            },
+            {
+              "wait": 645.1,
+              "error": 15.2,
+              "budget": 15.25
+            },
+            {
+              "wait": 633.4,
+              "error": 15.5,
+              "budget": 15.5
+            },
+            {
+              "wait": 633.4,
+              "error": 15.5,
+              "budget": 15.75
+            },
+            {
+              "wait": 632.3,
+              "error": 15.79,
+              "budget": 16.0
+            },
+            {
+              "wait": 629.5,
+              "error": 16.08,
+              "budget": 16.25
+            },
+            {
+              "wait": 628.9,
+              "error": 16.37,
+              "budget": 16.5
+            },
+            {
+              "wait": 628.4,
+              "error": 16.67,
+              "budget": 16.75
+            },
+            {
+              "wait": 622.8,
+              "error": 16.96,
+              "budget": 17.0
+            },
+            {
+              "wait": 622.8,
+              "error": 16.96,
+              "budget": 17.25
+            },
+            {
+              "wait": 621.1,
+              "error": 17.25,
+              "budget": 17.5
+            },
+            {
+              "wait": 619.7,
+              "error": 17.54,
+              "budget": 17.75
+            },
+            {
+              "wait": 619.1,
+              "error": 17.84,
+              "budget": 18.0
+            },
+            {
+              "wait": 616.3,
+              "error": 18.13,
+              "budget": 18.25
+            },
+            {
+              "wait": 614.9,
+              "error": 18.42,
+              "budget": 18.5
+            },
+            {
+              "wait": 610.6,
+              "error": 18.71,
+              "budget": 18.75
+            },
+            {
+              "wait": 610.6,
+              "error": 18.71,
+              "budget": 19.0
+            },
+            {
+              "wait": 607.1,
+              "error": 19.01,
+              "budget": 19.25
+            },
+            {
+              "wait": 605.7,
+              "error": 19.3,
+              "budget": 19.5
+            },
+            {
+              "wait": 600.1,
+              "error": 19.59,
+              "budget": 19.75
+            },
+            {
+              "wait": 590.6,
+              "error": 19.88,
+              "budget": 20.0
+            }
+          ],
+          "at5": {
+            "wait": 780.4,
+            "error": 4.97,
+            "recall": 33.52
+          }
+        },
+        {
+          "tag": "p99_mini_zero",
+          "name": "Turn-1-Mini",
+          "color": "#a58c9b",
+          "family": false,
+          "points": [
+            {
+              "wait": 966.5,
+              "error": 0.29,
+              "budget": 0.5
+            },
+            {
+              "wait": 945.5,
+              "error": 0.58,
+              "budget": 0.75
+            },
+            {
+              "wait": 945.0,
+              "error": 0.88,
+              "budget": 1.0
+            },
+            {
+              "wait": 940.8,
+              "error": 1.17,
+              "budget": 1.25
+            },
+            {
+              "wait": 924.2,
+              "error": 1.46,
+              "budget": 1.5
+            },
+            {
+              "wait": 924.2,
+              "error": 1.46,
+              "budget": 1.75
+            },
+            {
+              "wait": 903.1,
+              "error": 1.75,
+              "budget": 2.0
+            },
+            {
+              "wait": 890.8,
+              "error": 2.05,
+              "budget": 2.25
+            },
+            {
+              "wait": 864.0,
+              "error": 2.34,
+              "budget": 2.5
+            },
+            {
+              "wait": 855.9,
+              "error": 2.63,
+              "budget": 2.75
+            },
+            {
+              "wait": 838.5,
+              "error": 2.92,
+              "budget": 3.0
+            },
+            {
+              "wait": 829.7,
+              "error": 3.22,
+              "budget": 3.25
+            },
+            {
+              "wait": 829.7,
+              "error": 3.22,
+              "budget": 3.5
+            },
+            {
+              "wait": 814.5,
+              "error": 3.51,
+              "budget": 3.75
+            },
+            {
+              "wait": 808.0,
+              "error": 3.8,
+              "budget": 4.0
+            },
+            {
+              "wait": 801.8,
+              "error": 4.09,
+              "budget": 4.25
+            },
+            {
+              "wait": 782.8,
+              "error": 4.39,
+              "budget": 4.5
+            },
+            {
+              "wait": 777.5,
+              "error": 4.68,
+              "budget": 4.75
+            },
+            {
+              "wait": 772.8,
+              "error": 4.97,
+              "budget": 5.0
+            },
+            {
+              "wait": 772.8,
+              "error": 4.97,
+              "budget": 5.25
+            },
+            {
+              "wait": 749.6,
+              "error": 5.26,
+              "budget": 5.5
+            },
+            {
+              "wait": 736.2,
+              "error": 5.56,
+              "budget": 5.75
+            },
+            {
+              "wait": 730.0,
+              "error": 5.85,
+              "budget": 6.0
+            },
+            {
+              "wait": 727.2,
+              "error": 6.14,
+              "budget": 6.25
+            },
+            {
+              "wait": 702.1,
+              "error": 6.43,
+              "budget": 6.5
+            },
+            {
+              "wait": 679.3,
+              "error": 6.73,
+              "budget": 6.75
+            },
+            {
+              "wait": 679.3,
+              "error": 6.73,
+              "budget": 7.0
+            },
+            {
+              "wait": 672.1,
+              "error": 7.02,
+              "budget": 7.25
+            },
+            {
+              "wait": 654.7,
+              "error": 7.31,
+              "budget": 7.5
+            },
+            {
+              "wait": 654.3,
+              "error": 7.6,
+              "budget": 7.75
+            },
+            {
+              "wait": 649.9,
+              "error": 7.89,
+              "budget": 8.0
+            },
+            {
+              "wait": 645.1,
+              "error": 8.19,
+              "budget": 8.25
+            },
+            {
+              "wait": 637.7,
+              "error": 8.48,
+              "budget": 8.5
+            },
+            {
+              "wait": 637.7,
+              "error": 8.48,
+              "budget": 8.75
+            },
+            {
+              "wait": 632.7,
+              "error": 8.77,
+              "budget": 9.0
+            },
+            {
+              "wait": 631.7,
+              "error": 9.06,
+              "budget": 9.25
+            },
+            {
+              "wait": 628.9,
+              "error": 9.36,
+              "budget": 9.5
+            },
+            {
+              "wait": 626.1,
+              "error": 9.65,
+              "budget": 9.75
+            },
+            {
+              "wait": 622.8,
+              "error": 9.94,
+              "budget": 10.0
+            },
+            {
+              "wait": 613.8,
+              "error": 10.23,
+              "budget": 10.25
+            },
+            {
+              "wait": 613.8,
+              "error": 10.23,
+              "budget": 10.5
+            },
+            {
+              "wait": 611.6,
+              "error": 10.53,
+              "budget": 10.75
+            },
+            {
+              "wait": 609.5,
+              "error": 10.82,
+              "budget": 11.0
+            },
+            {
+              "wait": 607.1,
+              "error": 11.11,
+              "budget": 11.25
+            },
+            {
+              "wait": 602.7,
+              "error": 11.4,
+              "budget": 11.5
+            },
+            {
+              "wait": 599.7,
+              "error": 11.7,
+              "budget": 11.75
+            },
+            {
+              "wait": 597.8,
+              "error": 11.99,
+              "budget": 12.0
+            },
+            {
+              "wait": 597.8,
+              "error": 11.99,
+              "budget": 12.25
+            },
+            {
+              "wait": 593.9,
+              "error": 12.28,
+              "budget": 12.5
+            },
+            {
+              "wait": 590.5,
+              "error": 12.57,
+              "budget": 12.75
+            },
+            {
+              "wait": 587.2,
+              "error": 12.87,
+              "budget": 13.0
+            },
+            {
+              "wait": 581.4,
+              "error": 13.16,
+              "budget": 13.25
+            },
+            {
+              "wait": 577.5,
+              "error": 13.45,
+              "budget": 13.5
+            },
+            {
+              "wait": 572.1,
+              "error": 13.74,
+              "budget": 13.75
+            },
+            {
+              "wait": 572.1,
+              "error": 13.74,
+              "budget": 14.0
+            },
+            {
+              "wait": 569.8,
+              "error": 14.04,
+              "budget": 14.25
+            },
+            {
+              "wait": 568.0,
+              "error": 14.33,
+              "budget": 14.5
+            },
+            {
+              "wait": 564.8,
+              "error": 14.62,
+              "budget": 14.75
+            },
+            {
+              "wait": 560.3,
+              "error": 14.91,
+              "budget": 15.0
+            },
+            {
+              "wait": 554.2,
+              "error": 15.2,
+              "budget": 15.25
+            },
+            {
+              "wait": 549.9,
+              "error": 15.5,
+              "budget": 15.5
+            },
+            {
+              "wait": 549.9,
+              "error": 15.5,
+              "budget": 15.75
+            },
+            {
+              "wait": 546.9,
+              "error": 15.79,
+              "budget": 16.0
+            },
+            {
+              "wait": 542.5,
+              "error": 16.08,
+              "budget": 16.25
+            },
+            {
+              "wait": 538.7,
+              "error": 16.37,
+              "budget": 16.5
+            },
+            {
+              "wait": 536.5,
+              "error": 16.67,
+              "budget": 16.75
+            },
+            {
+              "wait": 534.6,
+              "error": 16.96,
+              "budget": 17.0
+            },
+            {
+              "wait": 534.6,
+              "error": 16.96,
+              "budget": 17.25
+            },
+            {
+              "wait": 531.1,
+              "error": 17.25,
+              "budget": 17.5
+            },
+            {
+              "wait": 526.4,
+              "error": 17.54,
+              "budget": 17.75
+            },
+            {
+              "wait": 523.6,
+              "error": 17.84,
+              "budget": 18.0
+            },
+            {
+              "wait": 516.8,
+              "error": 18.13,
+              "budget": 18.25
+            },
+            {
+              "wait": 516.2,
+              "error": 18.42,
+              "budget": 18.5
+            },
+            {
+              "wait": 511.2,
+              "error": 18.71,
+              "budget": 18.75
+            },
+            {
+              "wait": 511.2,
+              "error": 18.71,
+              "budget": 19.0
+            },
+            {
+              "wait": 510.5,
+              "error": 19.01,
+              "budget": 19.25
+            },
+            {
+              "wait": 508.4,
+              "error": 19.3,
+              "budget": 19.5
+            },
+            {
+              "wait": 504.9,
+              "error": 19.59,
+              "budget": 19.75
+            },
+            {
+              "wait": 499.3,
+              "error": 19.88,
+              "budget": 20.0
+            }
+          ],
+          "at5": {
+            "wait": 772.8,
+            "error": 4.97,
+            "recall": 33.66
+          }
+        }
+      ]
+    },
+    {
       "id": "livekit",
       "label": "LiveKit \u00b7 response-ready",
       "n": 842,

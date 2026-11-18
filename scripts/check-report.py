@@ -201,7 +201,11 @@ def verify_ablation() -> dict:
 def verify_frontiers() -> dict:
     figures = json.loads((ROOT / "public/report/figure-data.json").read_text())
     report = json.loads((ROOT / "app/report-data.json").read_text())
-    datasets = {"pikaia": "v1_paired_1700", "livekit": "livekit_clean_paired_842"}
+    datasets = {
+        "pikaia": "v1_paired_1700",
+        "livekit_floor_end": "livekit_orig_paired_1058",
+        "livekit": "livekit_clean_paired_842",
+    }
     budgets = [0.5 + i * 0.25 for i in range(79)]
     count = 0
     assert {d["id"] for d in figures["frontiers"]} == set(datasets)
@@ -226,8 +230,8 @@ def verify_frontiers() -> dict:
                 assert point["error"] == operating["cum_fir_pct"]
                 if budget == 5:
                     assert point["wait"] == model["at5"]["wait"] and point["error"] == model["at5"]["error"]
-    assert count == 948
-    print("Frontiers verified: 948 empirical points, complete 0.25 pp budget grid, 60 report operating-point matches.")
+    assert count == 1422
+    print("Frontiers verified: 1,422 empirical points, complete 0.25 pp budget grid, 90 report operating-point matches.")
     return {"frontier_points": count, "frontier_budget_steps_per_model": len(budgets)}
 
 

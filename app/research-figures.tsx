@@ -14,12 +14,13 @@ const snapBudget = (value: number) => Math.min(maxBudget, Math.max(minBudget, Ma
 const xPercent = (wait: number) => (wait - 300) / 7;
 const yPercent = (error: number) => 100 - error / 15 * 100;
 
-function FrontierPanel({ dataset, active, budget, onBudgetChange, scope }: {
+function FrontierPanel({ dataset, active, budget, onBudgetChange, scope, chartGroup = 'both charts' }: {
   dataset: Frontier;
   active: string | null;
   budget: number;
   onBudgetChange: (value: number) => void;
   scope?: FrontierScope;
+  chartGroup?: string;
 }) {
   const stage = useRef<HTMLDivElement>(null);
   const dragOffset = useRef(0);
@@ -61,7 +62,7 @@ function FrontierPanel({ dataset, active, budget, onBudgetChange, scope }: {
   return <figure className="frontier-panel" data-frontier={dataset.id} data-budget={budget}>
     <figcaption><h4>{scope?.title ?? dataset.label}</h4><p>N={dataset.n.toLocaleString('en-US')} paired decision points</p>{scope && <p className="frontier-scope-note">{scope.note}</p>}</figcaption>
     <p className="frontier-y-title">False cut-off rate · % of HOLD decisions</p>
-    <div className="frontier-geometry" role="group" aria-label={`${dataset.label}: waiting-time versus false-cut-off curves. Exact operating points follow below.`}>
+      <div className="frontier-geometry" role="group" aria-label={`${scope?.title ?? dataset.label}: waiting-time versus false-cut-off curves. Exact operating points follow below.`}>
       <div className="frontier-y-axis" aria-hidden="true">{yTicks.map(tick => <span key={tick} style={{ top: `${yPercent(tick)}%` }}>{tick}%</span>)}</div>
       <div className="frontier-stage" ref={stage}>
         <svg viewBox="0 0 700 300" preserveAspectRatio="none" focusable="false" aria-hidden="true">
@@ -80,9 +81,9 @@ function FrontierPanel({ dataset, active, budget, onBudgetChange, scope }: {
         </svg>
         {operating.map(({ model, point }) => <i key={model.name} className="frontier-marker" aria-hidden="true" data-frontier-marker={model.name} style={{ left: `${xPercent(point.wait)}%`, top: `${yPercent(point.error)}%`, background: model.color, opacity: !active || active === model.name ? 1 : 0.14 }}/>) }
         <div className="frontier-budget-handle" role="slider" tabIndex={0}
-          aria-label={`${dataset.label}: false cut-off budget`} aria-describedby="frontier-budget-help"
+          aria-label={`${scope?.title ?? dataset.label}: false cut-off budget`} aria-describedby="frontier-budget-help"
           aria-orientation="vertical" aria-valuemin={minBudget} aria-valuemax={maxBudget}
-          aria-valuenow={budget} aria-valuetext={`${budget.toFixed(2)}% false cut-off budget; updates both charts`}
+          aria-valuenow={budget} aria-valuetext={`${budget.toFixed(2)}% false cut-off budget; updates ${chartGroup}`}
           style={{ top: `${yPercent(budget)}%` }}
           onPointerDown={beginDrag} onPointerMove={dragBudget} onPointerUp={endDrag} onPointerCancel={endDrag} onKeyDown={keyBudget}>
           <span className="frontier-budget-label" aria-hidden="true"><span>↕</span> {budget.toFixed(2)}% budget</span>
@@ -104,11 +105,17 @@ function FrontierPanel({ dataset, active, budget, onBudgetChange, scope }: {
   </figure>;
 }
 
-export function CascadeFrontiers({ compact = false, scopes }: { compact?: boolean; scopes?: Record<string, FrontierScope> } = {}) {
+export function CascadeFrontiers({ compact = false, scopes, includeOriginalLiveKit = false }: {
+  compact?: boolean;
+  scopes?: Record<string, FrontierScope>;
+  includeOriginalLiveKit?: boolean;
+} = {}) {
   const [active, setActive] = useState<string | null>(null);
   const [budget, setBudget] = useState(5);
   const [budgetDraft, setBudgetDraft] = useState<string | null>(null);
   const changeBudget = (value: number) => setBudget(snapBudget(value));
+  const datasets = data.frontiers.filter(dataset => includeOriginalLiveKit || dataset.id !== 'livekit_floor_end');
+  const chartGroup = includeOriginalLiveKit ? 'all three charts' : 'both charts';
   return <div className="native-research-figure">
     {!compact && <div className="native-figure-intro"><h3>Less waiting.<br/>Fewer interruptions.</h3><p>How quickly can a model respond at the interruption risk you allow? Drag the budget line in either chart to explore the trade-off. Both charts update together; lower-left is better.</p></div>}
     <div className="frontier-budget-controls">
@@ -124,7 +131,7 @@ export function CascadeFrontiers({ compact = false, scopes }: { compact?: boolea
           onKeyDown={event => { if (event.key === 'Enter') event.currentTarget.blur(); }}/><span>%</span></div>
       </div>
       <div className="frontier-budget-range">
-        <label className="sr-only" htmlFor="frontier-budget-slider">Adjust false cut-off budget for both charts</label>
+        <label className="sr-only" htmlFor="frontier-budget-slider">Adjust false cut-off budget for {chartGroup}</label>
         <input id="frontier-budget-slider" type="range" min={minBudget} max={maxBudget} step={budgetStep} value={budget}
           aria-valuetext={`${budget.toFixed(2)}% false cut-off budget`} aria-describedby="frontier-budget-help"
           onChange={event => changeBudget(event.target.valueAsNumber)}/>
@@ -135,12 +142,12 @@ export function CascadeFrontiers({ compact = false, scopes }: { compact?: boolea
       </div>}
     </div>
     <p id="frontier-budget-help" className="native-chart-hint">Drag the horizontal line or use the slider. Budget steps: 0.25 percentage points. Arrow keys also adjust the focused line; press Enter to apply a typed value.</p>
-    <div className="frontier-models" role="group" aria-label="Highlight a model in both frontier charts">
+    <div className="frontier-models" role="group" aria-label={`Highlight a model in ${chartGroup}`}>
       <button type="button" aria-pressed={active === null} onClick={() => setActive(null)}>All models</button>
       {data.frontiers[0].models.map(model => <button type="button" key={model.name} aria-pressed={active === model.name} onClick={() => setActive(active === model.name ? null : model.name)}><i style={{ background: model.color }} aria-hidden="true"/>{model.name}</button>)}
     </div>
-    <p className="native-chart-hint">Select a model to highlight it in both charts. Solid lines: Pikaia family. Dashed lines: reference baselines.</p>
-    <div className="frontier-panels">{data.frontiers.map(dataset => <FrontierPanel key={dataset.id} dataset={dataset} active={active} budget={budget} onBudgetChange={changeBudget} scope={scopes?.[dataset.id]}/>)}</div>
+    <p className="native-chart-hint">Select a model to highlight it in {chartGroup}. Solid lines: Pikaia family. Dashed lines: reference baselines.</p>
+    <div className="frontier-panels">{datasets.map(dataset => <FrontierPanel key={dataset.id} dataset={dataset} active={active} budget={budget} onBudgetChange={changeBudget} scope={scopes?.[dataset.id]} chartGroup={chartGroup}/>)}</div>
     <p className="native-chart-note">A decision is made at 300 ms, reconsidered at 600 ms, then falls back to 1,000 ms. Mean waiting time is measured on true EOT examples and includes fallback. Each budget uses its recorded operating point; values are not interpolated. Actual cut-offs can be below the budget, and some steps share the same result because each dataset has a finite number of HOLD examples. The downloadable data includes all sampled budgets up to 20%.</p>
   </div>;
 }

@@ -17,6 +17,7 @@
 .report-v2 .v2-data-roles strong{font:200 42px/1.3 var(--display);letter-spacing:-.045em;font-variant-numeric:tabular-nums;color:var(--accent)}
 .report-v2 .v2-data-roles article:nth-child(2) strong{color:var(--cyan)}
 .report-v2 .v2-data-roles article>p{font-size:12px;line-height:1.85;color:var(--muted)}
+.report-v2 .v2-data-link{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
 .report-v2 .v2-methods{margin-top:24px}
 .report-v2 .v2-methods+ .v2-methods{margin-top:0}
 .report-v2 .v2-methods summary{font-size:13px;min-height:58px;padding-block:18px}
@@ -31,6 +32,18 @@
 .report-v2 .result-panel{padding-block:28px}
 .report-v2 .result-panel>h3{font-size:29px;margin-block:9px}
 .report-v2 .result-note{max-width:940px}
+.report-v2 .v2-transfer{margin-top:44px;padding-top:32px;border-top:1px solid var(--line)}
+.report-v2 .v2-transfer h3{font-size:clamp(24px,3vw,34px);margin-bottom:12px}
+.report-v2 .v2-transfer-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+.report-v2 .v2-transfer-grid table{min-width:0;width:100%;line-height:1.5}
+.report-v2 .v2-transfer-grid caption{text-align:left;padding:0 0 14px;border-bottom:1px solid var(--strong-line)}
+.report-v2 .v2-transfer-grid caption strong{display:block;color:var(--text);font-size:17px;font-weight:500}
+.report-v2 .v2-transfer-grid caption span,.report-v2 .v2-transfer-grid th small{display:block;color:var(--muted);font-size:11px;margin-top:5px}
+.report-v2 .v2-transfer-grid th,.report-v2 .v2-transfer-grid td{padding:12px 8px;font-size:12px;vertical-align:top}
+.report-v2 .v2-transfer-grid th:first-child{padding-left:0}
+.report-v2 .v2-transfer-grid th:not(:first-child),.report-v2 .v2-transfer-grid td{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.report-v2 .v2-transfer-grid td:last-child{color:var(--cyan);white-space:normal}
+.report-v2 .v2-transfer .v2-inline-links{margin-top:5px}
 .report-v2 .frontier-budget-controls{grid-template-columns:170px minmax(0,1fr);gap:32px}
 .report-v2 .native-research-figure{padding-top:0}
 .report-v2 .frontier-panel figcaption{min-height:118px;margin-bottom:20px}
@@ -55,6 +68,11 @@
 .report-v2 .v2-resource-grid h3{display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:20px;line-height:1.45;margin:12px 0}
 .report-v2 .v2-resource-grid h3 svg{color:var(--accent)}
 .report-v2 .v2-resource-grid p{font-size:12px;line-height:1.85;color:var(--muted);max-width:430px}
+@media(min-width:1180px){
+ .report-v2 .frontier-panels{grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}
+ .report-v2 .frontier-panel figcaption{min-height:142px}
+}
+@media(max-width:1000px){.report-v2 .v2-transfer-grid{grid-template-columns:1fr}}
 @media(max-width:950px){.report-v2 .v2-section-lead{gap:30px}.report-v2 .v2-data-roles article{grid-template-columns:1fr 115px 1.3fr;gap:20px}.report-v2 .frontier-panel figcaption{min-height:0}.report-v2 .v2-models h3{font-size:20px}.report-v2 .v2-models h3+p{min-height:100px}}
 @media(max-width:760px){
  .report-v2 .report-section{padding-block:52px}
@@ -84,6 +102,8 @@
  .report-v2 .v2-chart-source p{font-size:10px}
  .report-v2 .v2-chart-source>a{margin-top:8px}
  .report-v2 .result-panel>h3{font-size:26px}
+ .report-v2 .v2-transfer-grid th,.report-v2 .v2-transfer-grid td{padding-inline:5px;font-size:11px}
+ .report-v2 .v2-transfer-grid th small,.report-v2 .v2-transfer-grid caption span{font-size:10px}
  .report-v2 .context-ablation>.subsection-heading h3{font-size:23px}
  .report-v2 .v2-limits{grid-template-columns:1fr;gap:18px;margin:24px 0 28px}
  .report-v2 .v2-limits p{padding-top:14px}

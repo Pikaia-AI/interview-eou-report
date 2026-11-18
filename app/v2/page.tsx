@@ -8,6 +8,7 @@ import { Header, Contents, DisclosureLinks, ResultsExplorer } from '../report-ui
 import { CascadeFrontiers } from '../research-figures';
 import { ContextAblation } from '../context-ablation';
 import { ReportVersionSwitch } from '../report-version-switch';
+import { SmartTurnTransfer } from './smart-turn-transfer';
 import '../report-v2.css';
 
 export const metadata: Metadata = {
@@ -15,12 +16,13 @@ export const metadata: Metadata = {
   description: 'Meet the Pikaia-Turn family, explore public and full-pool results, and compare waiting time, interruptions and input ablations.',
 };
 
-const navigation = [['models', 'The family'], ['benchmark', 'Data'], ['results', 'Results'], ['latency', 'Timing'], ['ablations', 'Ablations'], ['paper', 'Resources']];
+const navigation = [['models', 'The family'], ['benchmark', 'Data'], ['results', 'Results'], ['smart-turn-transfer', 'Transfer'], ['latency', 'Timing'], ['ablations', 'Ablations'], ['paper', 'Resources']];
 const headerLinks = [['models', 'The family'], ['results', 'Results'], ['latency', 'Timing']];
 const PDF = '/report/pikaia-interview-eou-benchmark.pdf';
 const scopes = {
-  pikaia: { title: 'Pikaia · full-pool paired subset', note: 'From 2,338 evaluation points: 75 development + 788 public research test + 837 private holdout. Includes the development split.' },
-  livekit: { title: 'LiveKit · response-ready subset', note: '842 eligible Mandarin and English points from the external benchmark, evaluated with response-ready labels. Separate from the Pikaia pool.' },
+  pikaia: { title: 'Our Pikaia benchmark', note: 'From our Pikaia Interview EOU Benchmark v1.0.0: 75 development, 788 public research test and 837 private holdout pairs.' },
+  livekit_floor_end: { title: 'LiveKit · original Floor-end', note: 'External LiveKit EOT Bench pairs with LiveKit’s original labels for whether the speaker finished their turn.' },
+  livekit: { title: 'LiveKit · Response-ready', note: 'Eligible LiveKit pairs relabeled by Pikaia for whether a listener could naturally respond at the decision point.' },
 };
 const family = [
   { name: 'Pikaia-Turn', size: '2.3', unit: 'B', role: 'FLAGSHIP / SERVER', description: 'Dual-backbone audio and question-text fusion for long-form interviews.', architecture: 'Dual backbone', runtime: 'Server' },
@@ -68,9 +70,9 @@ export default function FocusedReport() {
       <section className="report-section" id="benchmark">
         <div className="v2-section-lead"><Title index="02" label="Data & scope">Know what is being measured.</Title><p>Training examples, public research tests and full-pool analyses have different roles. The two result charts below keep those evaluation scopes visible.</p></div>
         <div className="v2-data-roles">
-          <article id="training-data"><div><span className="micro-label">PRIVATE / TRAINING</span><h3>Family training corpus</h3></div><strong>{number(training.expanded_count)}</strong><p>{number(training.languages.zh)} Mandarin + {number(training.languages.en)} English examples. Earlier human-reviewed material and machine-consensus labels.</p></article>
-          <article><div><span className="micro-label">HUGGING FACE / EVALUATION</span><h3>Public research test</h3></div><strong>1,100</strong><p>500 Mandarin + 600 English points; 65 speaker clusters. Academic gated access. Excludes the 100 development/calibration points.</p></article>
-          <article><div><span className="micro-label">ALL TIERS / EVALUATION</span><h3>Full evaluation pool</h3></div><strong>2,338</strong><p>100 development + 1,100 research test + 1,138 private holdout points. Contains the public test; the two charts are not independent replications.</p></article>
+          <article id="training-data"><div><span className="micro-label">PRIVATE / TRAINING</span><h3>Pikaia family training corpus</h3></div><strong>{number(training.expanded_count)}</strong><p>Pauses from our own real interviews: {number(training.languages.zh)} Mandarin and {number(training.languages.en)} English. Includes human-reviewed and machine-consensus labels for when a listener can respond. <a className="v2-data-link" href="#smart-turn-transfer">See the separate Smart Turn training run</a>.</p></article>
+          <article><div><span className="micro-label">HUGGING FACE / EVALUATION</span><h3>Pikaia research test</h3></div><strong>1,100</strong><p>500 Mandarin and 600 English decisions from 65 speaker clusters. This gated test comes from our benchmark and excludes development and calibration points.</p></article>
+          <article><div><span className="micro-label">ALL TIERS / EVALUATION</span><h3>Pikaia full evaluation pool</h3></div><strong>2,338</strong><p>Our benchmark combines 100 development, 1,100 research test and 1,138 private holdout decisions across 150 speaker clusters. The public test is part of this pool.</p></article>
         </div>
         <details className="report-detail v2-methods" id="protocol">
           <summary><span>Labels, training sources & evaluation protocol</span><ChevronDown size={18}/></summary>
@@ -90,13 +92,14 @@ export default function FocusedReport() {
         <Title index="03" label="Main results">Compare on the same terms.</Title>
         <p className="v2-intro">Public research test and full evaluation pool, with shared filters and model order. Recall measures how often a true response opportunity is detected within the selected false-positive budget.</p>
         <ResultsExplorer models={report.models}/>
+        <SmartTurnTransfer/>
       </section>
 
       <section className="report-section" id="latency">
         <Title index="04" label="Waiting time & interruptions">How fast, at what risk?</Title>
-        <p className="v2-intro">Set the false-cut-off budget and compare mean waiting time. Drag either horizontal line to update both charts. Lower-left is better.</p>
-        <div id="figure-2"><CascadeFrontiers compact scopes={scopes}/></div>
-        <div className="v2-chart-source"><p>Mean wait is measured on true EOT points; false cut-offs on HOLD points. The Pikaia paired subset contains 1,287 EOT / 413 HOLD; LiveKit contains 699 / 143. These are audio-timeline delays, not model inference time.</p><a href="/report/figure-data.json" download>Curve data <Download size={15}/></a></div>
+        <p className="v2-intro">Each pair is one decision point evaluated at 300 and 600 ms. Drag any horizontal line to update the false-cut-off budget for all three charts. Lower-left is better.</p>
+        <div id="figure-2"><CascadeFrontiers compact includeOriginalLiveKit scopes={scopes}/></div>
+        <div className="v2-chart-source"><p>Mean wait uses the EOT points and actual cut-offs use the HOLD points. EOT / HOLD counts are 1,287 / 413 for Pikaia, 716 / 342 for original LiveKit, and 699 / 143 for Response-ready LiveKit. The two LiveKit views differ in both labeling and which points are included.</p><a href="/report/figure-data.json" download>Curve data <Download size={15}/></a></div>
       </section>
 
       <section className="report-section" id="ablations">
@@ -107,7 +110,7 @@ export default function FocusedReport() {
           <div className="v2-detail-copy">
             <p>With the same 3,195 training examples, Pikaia-Turn reaches 81.5% recall versus 60.7% for fine-tuned unmodified Turn-1 on LiveKit response-ready at 600 ms and ≤5% FPR.</p>
             <p>On Pikaia, Nano’s reported architecture sequence goes from 729.8 ms after audio-only fine-tuning to 706.9 ms with prosody/utterance state and 657.0 ms with prompt conditioning. This training-and-architecture comparison differs from removing question text at inference above.</p>
-            <p>A separate Smart Turn control uses 3,891 training examples and three seeds: public-test recall improves from 40.23% to 63.79% at ≤5% FPR. Its larger training pool includes internal validation/test material, so those internal splits cannot evaluate that arm.</p>
+            <p>The <a className="v2-data-link" href="#smart-turn-transfer">Smart Turn transfer experiment</a> uses a larger training pool that overlaps the separate internal validation and test splits. It is evaluated on the Pikaia benchmark and the external LiveKit data.</p>
             <a className="text-link" href="/report/v2-supplementary.json" download>Complete experiment controls <Download size={15}/></a>
           </div>
         </details>

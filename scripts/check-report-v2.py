@@ -57,7 +57,7 @@ def main():
     page = FocusedParser()
     page.feed(html)
     assert page.sections == ["models", "benchmark", "results", "latency", "ablations", "paper"]
-    assert page.frontiers == {"pikaia": "5", "livekit": "5"}
+    assert list(page.frontiers.items()) == [("pikaia", "5"), ("livekit_floor_end", "5"), ("livekit", "5")]
     assert page.edition_links == {"/": None, "/v2/": "page"}
     ids = set(page.ids)
     assert all(count == 1 for count in Counter(page.ids).values())
@@ -74,6 +74,7 @@ def main():
     assert page.result_tables == v1.result_tables
     assert page.ablation_rows == v1.ablation_rows
     assert len(page.ablation_rows) == 6
+    assert "smart-turn-transfer" in ids
 
     report = json.loads((ROOT / "app/report-data.json").read_text())
     supplement = json.loads((ROOT / "public/report/v2-supplementary.json").read_text())
