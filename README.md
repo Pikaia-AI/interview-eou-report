@@ -6,7 +6,7 @@ The primary benchmark paper (*Pikaia Interview EOU Benchmark: Evaluating Respons
 
 ## Compare report editions
 
-The original edition remains at `/`. The focused edition is available at `/v2/`; the edition switch links both pages without replacing either. V1's report content and figures are preserved. V2 reuses the approved artwork, shared results, timing curves and input ablation, with six sections: family, data, main results, timing, ablations, and resources.
+The original edition remains at `/`. The focused edition is available at `/v2/`; the edition switch links all three versions. The particle edition at `/v3/` shares V2’s report sections and metrics. Hover over the hero specimen, scroll, or use the **Disperse specimen** button to see its sampled glass highlights drift apart. The button also reassembles it. Reduced-motion and script-free views retain the original photograph. V1's report content and figures are preserved. V2 reuses the approved artwork, shared results, timing curves and input ablation, with six sections: family, data, main results, timing, ablations, and resources.
 
 V2 makes the timing explorer visible by default and removes the duplicate cascade controls, ranking-change banners and eight-chapter transcript from its reading path. It keeps the public/full result pair, the Response-ready ablation with confidence intervals, collapsed Floor-end details, and explicit data/threshold limitations. Model cards show comparable specifications; training history and external controls are supplementary. The original experiment values are unchanged.
 
@@ -14,7 +14,7 @@ V2 links three timing charts to the same budget: our Pikaia benchmark's paired s
 
 The benchmark PDF and companion experiment tables have separate scopes and numbering. `public/report/v2-supplementary.json` preserves calibration, transfer and training controls plus the additional paired cohorts. `public/report/v2-source-manifest.json` pins the displayed sources by checksum and records the unresolved Turn-1 full-pool Wait@5% discrepancy (archived main table: 412.7 ms; sampled curve: 411.4 ms). Both editions retain the curve source; this presentation change does not silently reconcile historical values.
 
-Run `python3 scripts/check-report-v2.py http://127.0.0.1:5188` alongside the original report check to verify the six-section route, default-visible timing plots, value parity with V1, resources and source checksums. These are HTTP/data checks, not browser visual or pointer-interaction acceptance tests.
+Run `python3 scripts/check-report-v2.py http://127.0.0.1:5188` alongside the original report check to verify the focused report route, default-visible timing plots, value parity with V1, resources and source checksums. These are HTTP/data checks, not browser visual or pointer-interaction acceptance tests.
 
 ## Benchmark Tiers & Access
 
