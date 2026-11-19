@@ -27,10 +27,16 @@ class FocusedParser(base.PageParser):
         self.frontiers = {}
         self.closed_details = []
         self.edition_links = {}
+        self.scripts = []
+        self.transfer_figures = 0
 
     def handle_starttag(self, tag, attrs):
         super().handle_starttag(tag, attrs)
         attrs = dict(attrs)
+        if tag == "script" and attrs.get("src"):
+            self.scripts.append(attrs["src"])
+        if tag == "figure" and "v2-transfer-figure" in attrs.get("class", "").split():
+            self.transfer_figures += 1
         if tag == "details":
             self.closed_details.append("open" not in attrs)
         if tag == "section" and "report-section" in attrs.get("class", "").split():
@@ -96,7 +102,29 @@ def main():
             json.loads(res.read())
         elif asset.endswith(".pdf"):
             assert res.read(4) == b"%PDF"
+    # A stale preview can serve valid HTML and still return empty WebPs or
+    # 404s for the scripts that hydrate its plots. Check the actual V3 GETs.
+    v3 = FocusedParser()
+    v3.feed(fetch.open(origin + "/v3", timeout=30).read().decode())
+    assert v3.result_tables == page.result_tables and v3.frontiers == page.frontiers
+    assert v3.ablation_rows == page.ablation_rows and v3.transfer_figures == 2
+    urls = set(v3.assets + v3.scripts + [u for u in v3.links if u.startswith("/_next/")])
+    assert {"/art/brand-mark.webp", "/art/hero-art.webp"} <= urls
+    assert any(u.endswith(".css") for u in urls) and any(u.endswith(".js") for u in urls)
+    for u in sorted(urls):
+        res = fetch.open(origin + u, timeout=30)
+        payload = res.read()
+        assert res.status == 200 and payload, f"Missing or empty V3 resource: {u}"
+        mime = res.headers.get_content_type()
+        if u.endswith(".webp"):
+            assert mime == "image/webp" and payload == (ROOT / "public" / u.lstrip("/")).read_bytes(), u
+        elif u.endswith(".css"):
+            assert mime == "text/css", u
+        elif u.endswith(".js"):
+            assert mime in {"text/javascript", "application/javascript"}, u
+
     result = {
+        "v3_resources_checked": len(urls), "v3_transfer_figures": v3.transfer_figures,
         "v2_sections": len(page.sections), "visible_frontiers": len(page.frontiers),
         "exact_result_tables_match_v1": len(page.result_tables),
         "ablation_rows_match_v1": len(page.ablation_rows),
