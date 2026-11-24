@@ -1,5 +1,0 @@
-.specimen-field{position:absolute;inset:0;z-index:-1;width:100%;height:100%;pointer-events:none}
-.specimen-control{position:absolute;right:max(5vw,calc((100vw - 1440px)/2 + 44px));bottom:8%;z-index:1;display:inline-flex;min-height:44px;align-items:center;gap:12px;padding:0 16px;border:1px solid #83798e80;border-radius:32px;background:#0c0a11df;color:#ede6f2;font:inherit;font-size:13px;cursor:pointer;letter-spacing:.01em}
-.specimen-control[hidden]{display:none}.specimen-control:hover,.specimen-control:focus-visible{border-color:#c5b4df;background:#211a2c}.specimen-control:focus-visible{outline:2px solid #bba7d9;outline-offset:4px}.specimen-control svg{color:#d2bce6}
-@media(max-width:760px){.specimen-control{left:20px;right:auto;top:345px;bottom:auto}}
-@media(prefers-reduced-motion:reduce),print{.specimen-field,.specimen-control{display:none!important}}

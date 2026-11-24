@@ -5,7 +5,10 @@ HTTP/HTML checks only; this does not exercise browser layout or pointer events.
 from __future__ import annotations
 
 import hashlib
+from array import array
 import importlib.util
+import io
+import wave
 import json
 import re
 import sys
@@ -105,11 +108,20 @@ def main():
     # A stale preview can serve valid HTML and still return empty WebPs or
     # 404s for the scripts that hydrate its plots. Check the actual V3 GETs.
     v3 = FocusedParser()
-    v3.feed(fetch.open(origin + "/v3", timeout=30).read().decode())
+    response = fetch.open(origin + "/v3", timeout=30)
+    assert "/art/hero-art.webp" not in response.headers.get("Link", ""), "V3 still preloads the photographic cover"
+    v3.feed(response.read().decode())
+    assert v3.sections == ["results", "latency", "models", "benchmark", "ablations", "paper"]
+    assert "desk-heading" in v3.ids and len(v3.ids) == len(set(v3.ids))
+    assert all(href[1:] in v3.ids for href in v3.links if href.startswith("#") and href != "#")
     assert v3.result_tables == page.result_tables and v3.frontiers == page.frontiers
     assert v3.ablation_rows == page.ablation_rows and v3.transfer_figures == 2
     urls = set(v3.assets + v3.scripts + [u for u in v3.links if u.startswith("/_next/")])
-    assert {"/art/brand-mark.webp", "/art/hero-art.webp"} <= urls
+    assert "/art/brand-mark.webp" in urls and "/art/hero-art.webp" not in v3.assets
+    assert "/art/hero-art.webp" in page.assets  # The focused edition still has its original cover.
+    exercise = json.loads((ROOT / "app/v3/listening-examples.json").read_text())
+    assert {sample["label"] for sample in exercise["examples"]} == {"Hold", "Respond"}
+    urls.update(sample["src"] for sample in exercise["examples"])
     assert any(u.endswith(".css") for u in urls) and any(u.endswith(".js") for u in urls)
     for u in sorted(urls):
         res = fetch.open(origin + u, timeout=30)
@@ -118,6 +130,20 @@ def main():
         mime = res.headers.get_content_type()
         if u.endswith(".webp"):
             assert mime == "image/webp" and payload == (ROOT / "public" / u.lstrip("/")).read_bytes(), u
+        elif u.endswith(".wav"):
+            sample = next(s for s in exercise["examples"] if s["src"] == u)
+            assert payload == (ROOT / "public" / u.lstrip("/")).read_bytes() and mime.startswith("audio/"), u
+            with wave.open(io.BytesIO(payload)) as audio:
+                assert (audio.getnchannels(), audio.getsampwidth(), audio.getframerate()) == (1, 2, 16000)
+                assert exercise["sampleRate"] == 16000 and exercise["silenceSamples"] == 4800
+                assert audio.getnframes() == sample["speechSamples"] + 4800
+                # Amplitude envelope and cutoff match the actual file that listeners hear.
+                speech = array("h", audio.readframes(sample["speechSamples"]))
+                if sys.byteorder != "little":
+                    speech.byteswap()
+                assert speech[-1] != 0 and audio.readframes(4800) == bytes(9600)
+                peaks = [max(map(abs, speech[i*len(speech)//100:(i+1)*len(speech)//100])) for i in range(100)]
+                assert sample["peaks"] == [round(100 * value / max(peaks)) for value in peaks]
         elif u.endswith(".css"):
             assert mime == "text/css", u
         elif u.endswith(".js"):

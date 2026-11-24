@@ -11,6 +11,7 @@ import { SmartTurnTransfer } from './smart-turn-transfer';
 import '../report-v2.css';
 
 const navigation = [['models', 'The family'], ['benchmark', 'Data'], ['results', 'Results'], ['smart-turn-transfer', 'Transfer'], ['latency', 'Timing'], ['ablations', 'Ablations'], ['paper', 'Resources']];
+const researchNavigation = [['results', 'Results'], ['smart-turn-transfer', 'Transfer'], ['latency', 'Timing'], ['models', 'Models'], ['benchmark', 'Data'], ['ablations', 'Ablations'], ['paper', 'Resources']];
 const headerLinks = [['models', 'The family'], ['results', 'Results'], ['latency', 'Timing']];
 const PDF = '/report/pikaia-interview-eou-benchmark.pdf';
 const scopes = {
@@ -29,27 +30,17 @@ function Title({ index, label, children }: { index: string; label: string; child
   return <div className="section-title"><p className="eyebrow">{index} / {label}</p><h2>{children}</h2></div>;
 }
 
-export function FocusedReport({ edition = 'v2', heroEffect }: { edition?: 'v2' | 'v3'; heroEffect?: React.ReactNode }) {
-  return <div className="report-v2">
-    <ReportVersionSwitch version={edition}/>
-    <a href="#models" className="skip-link">Skip to research</a>
-    <DisclosureLinks/>
-    <div className="hero" id="top">
-      <img className="hero-art" src="/art/hero-art.webp" alt="A slender Pikaia suspended in iridescent glass, flowing horizontally through a dark field" fetchPriority="high" width="1419" height="1108"/>
-      {heroEffect}
-      <Header links={headerLinks}/>
-      <div className="hero-copy shell">
-        <p className="eyebrow">Pikaia-Turn / Technical report / November 2026</p>
-        <h1>Knowing when<br/>to respond.</h1>
-        <p className="hero-subtitle">One family. Three compute budgets.</p>
-        <p className="hero-description">Audio, context, and the moment a conversation can move on.</p>
-        <div className="hero-actions"><a className="button primary" href="#results">Explore the results <ArrowUpRight size={18}/></a><a className="text-link" href="#models">Meet the family <ArrowUpRight size={16}/></a></div>
-      </div>
-    </div>
-    <Contents items={navigation}/>
-
-    <main className="shell">
+export function FocusedReport({ edition = 'v2', opening }: { edition?: 'v2' | 'v3'; opening?: React.ReactNode }) {
+  const research = edition === 'v3';
+  const methods = <>
       <section className="report-section" id="models">
+        {research ? <>
+          <Title index="03" label="Model configurations">Models in this evaluation</Title>
+          <div className="study-configs"><table><caption className="sr-only">Architectures and execution environments</caption>
+            <thead><tr><th scope="col">Model</th><th scope="col">Parameters</th><th scope="col">Architecture</th><th scope="col">Execution</th></tr></thead>
+            <tbody>{family.map(model => <tr key={model.name}><th scope="row">{model.name}</th><td>{model.size}{model.unit}</td><td>{model.description}</td><td>{model.runtime}</td></tr>)}</tbody>
+          </table></div>
+        </> : <>
         <div className="v2-section-lead"><Title index="01" label="The family">A pause is a decision.</Title><p>Can the listener naturally respond now? Pikaia-Turn combines user audio with the preceding question to distinguish a finished thought from a thinking pause, without waiting for user ASR.</p></div>
         <div className="model-grid v2-models">
           {family.map(model => <article key={model.name}>
@@ -59,11 +50,12 @@ export function FocusedReport({ edition = 'v2', heroEffect }: { edition?: 'v2' |
             <dl><dt>Architecture</dt><dd>{model.architecture}</dd><dt>Execution</dt><dd>{model.runtime}</dd></dl>
           </article>)}
         </div>
+        </>}
         <p className="source-note">All three use audio and preceding-question context; empty-question inputs are evaluated below. Model weights and the training corpus remain private.</p>
       </section>
 
       <section className="report-section" id="benchmark">
-        <div className="v2-section-lead"><Title index="02" label="Data & scope">Know what is being measured.</Title><p>Training examples, public research tests and full-pool analyses have different roles. The two result charts below keep those evaluation scopes visible.</p></div>
+        <div className="v2-section-lead"><Title index={research ? "04" : "02"} label="Data & scope">{research ? "Training and evaluation sets" : "Know what is being measured."}</Title><p>Training examples, public research tests and full-pool analyses have different roles. The two result charts keep those evaluation scopes separate.</p></div>
         <div className="v2-data-roles">
           <article id="training-data"><div><span className="micro-label">PRIVATE / TRAINING</span><h3>Pikaia family training corpus</h3></div><strong>{number(training.expanded_count)}</strong><p>Pauses from our own real interviews: {number(training.languages.zh)} Mandarin and {number(training.languages.en)} English. Includes human-reviewed and machine-consensus labels for when a listener can respond. <a className="v2-data-link" href="#smart-turn-transfer">See the separate Smart Turn training run</a>.</p></article>
           <article><div><span className="micro-label">HUGGING FACE / EVALUATION</span><h3>Pikaia research test</h3></div><strong>1,100</strong><p>500 Mandarin and 600 English decisions from 65 speaker clusters. This gated test comes from our benchmark and excludes development and calibration points.</p></article>
@@ -82,20 +74,42 @@ export function FocusedReport({ edition = 'v2', heroEffect }: { edition?: 'v2' |
           </div>
         </details>
       </section>
-
+  </>;
+  const measurements = <>
       <section className="report-section" id="results">
-        <Title index="03" label="Main results">Compare on the same terms.</Title>
+        <Title index={research ? "01" : "03"} label="Main results">{research ? "Response-ready recall" : "Compare on the same terms."}</Title>
         <p className="v2-intro">Public research test and full evaluation pool, with shared filters and model order. Recall measures how often a true response opportunity is detected within the selected false-positive budget.</p>
         <ResultsExplorer models={report.models}/>
         <SmartTurnTransfer/>
       </section>
 
       <section className="report-section" id="latency">
-        <Title index="04" label="Waiting time & interruptions">How fast, at what risk?</Title>
+        <Title index={research ? "02" : "04"} label="Waiting time & interruptions">{research ? "Waiting time at a fixed interruption budget" : "How fast, at what risk?"}</Title>
         <p className="v2-intro">Each pair is one decision point evaluated at 300 and 600 ms. Drag any horizontal line to update the false-cut-off budget for all three charts. Lower-left is better.</p>
         <div id="figure-2"><CascadeFrontiers compact includeOriginalLiveKit scopes={scopes}/></div>
         <div className="v2-chart-source"><p>Mean wait uses the EOT points and actual cut-offs use the HOLD points. EOT / HOLD counts are 1,287 / 413 for Pikaia, 716 / 342 for original LiveKit, and 699 / 143 for Response-ready LiveKit. The two LiveKit views differ in both labeling and which points are included.</p><a href="/report/figure-data.json" download>Curve data <Download size={15}/></a></div>
       </section>
+  </>;
+
+  return <div className={research ? "report-v2 study-report" : "report-v2"}>
+    {!research && <ReportVersionSwitch version={edition}/>}
+    <a href={research ? "#results" : "#models"} className="skip-link">Skip to research</a>
+    <DisclosureLinks/>
+    {opening ?? <div className="hero" id="top">
+      <img className="hero-art" src="/art/hero-art.webp" alt="A slender Pikaia suspended in iridescent glass, flowing horizontally through a dark field" fetchPriority="high" width="1419" height="1108"/>
+      <Header links={headerLinks}/>
+      <div className="hero-copy shell">
+        <p className="eyebrow">Pikaia-Turn / Technical report / November 2026</p>
+        <h1>Knowing when<br/>to respond.</h1>
+        <p className="hero-subtitle">One family. Three compute budgets.</p>
+        <p className="hero-description">Audio, context, and the moment a conversation can move on.</p>
+        <div className="hero-actions"><a className="button primary" href="#results">Explore the results <ArrowUpRight size={18}/></a><a className="text-link" href="#models">Meet the family <ArrowUpRight size={16}/></a></div>
+      </div>
+    </div>}
+    <Contents items={research ? researchNavigation : navigation}/>
+
+    <main className="shell">
+      {research ? <>{measurements}{methods}</> : <>{methods}{measurements}</>}
 
       <section className="report-section" id="ablations">
         <Title index="05" label="Ablations & transfer">What does context change?</Title>
@@ -140,5 +154,6 @@ export function FocusedReport({ edition = 'v2', heroEffect }: { edition?: 'v2' |
       </section>
       <footer><a className="brand" href="#top"><img src="/art/brand-mark.webp" alt="" width="56" height="24"/><span><b>Pikaia</b> Research</span></a><p>Pikaia-Turn · November 2026<br/><span>Technical report / {edition.toUpperCase()}</span></p><Link className="text-link" href={edition === 'v3' ? '/v2/' : '/'} prefetch={false}>Compare with {edition === 'v3' ? 'V2' : 'V1'} <ArrowUpRight size={16}/></Link></footer>
     </main>
+    {research && <ReportVersionSwitch version={edition}/>}
   </div>;
 }

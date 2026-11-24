@@ -1,13 +1,13 @@
 import type { Metadata } from 'next';
 import { FocusedReport } from '../v2/focused-report';
-import { ParticleField } from './particle-field';
-import './motion.css';
+import { StudyOpening } from './study-opening';
+import './study.css';
 
 export const metadata: Metadata = {
-  title: 'Pikaia-Turn — Particle Study / Technical Report V3',
-  description: 'Explore the Pikaia-Turn technical report, with an interactive particle study of the Pikaia specimen.',
+  title: 'Pikaia-Turn — Wait or respond? / Technical Report',
+  description: 'Study response readiness at a pause, then explore bilingual recall, waiting time and false cut-offs for the Pikaia-Turn family.',
 };
 
 export default function Page() {
-  return <FocusedReport edition="v3" heroEffect={<ParticleField/>}/>;
+  return <FocusedReport edition="v3" opening={<StudyOpening/>}/>;
 }
