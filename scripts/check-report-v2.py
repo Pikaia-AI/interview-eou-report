@@ -121,6 +121,8 @@ def main():
     assert "/art/hero-art.webp" in page.assets  # The focused edition still has its original cover.
     exercise = json.loads((ROOT / "app/v3/listening-examples.json").read_text())
     assert {sample["label"] for sample in exercise["examples"]} == {"Hold", "Respond"}
+    assert exercise["source"]["page"] in v3.links and exercise["source"]["licenseUrl"] in v3.links
+    assert exercise["pauseMs"] == 300
     urls.update(sample["src"] for sample in exercise["examples"])
     assert any(u.endswith(".css") for u in urls) and any(u.endswith(".js") for u in urls)
     for u in sorted(urls):
@@ -135,14 +137,16 @@ def main():
             assert payload == (ROOT / "public" / u.lstrip("/")).read_bytes() and mime.startswith("audio/"), u
             with wave.open(io.BytesIO(payload)) as audio:
                 assert (audio.getnchannels(), audio.getsampwidth(), audio.getframerate()) == (1, 2, 16000)
-                assert exercise["sampleRate"] == 16000 and exercise["silenceSamples"] == 4800
-                assert audio.getnframes() == sample["speechSamples"] + 4800
-                # Amplitude envelope and cutoff match the actual file that listeners hear.
-                speech = array("h", audio.readframes(sample["speechSamples"]))
+                assert hashlib.sha256(payload).hexdigest() == sample["sha256"]
+                rate = exercise["sampleRate"]
+                length_ms = sample["pauseStartMs"] - sample["startMs"] + exercise["pauseMs"]
+                assert audio.getframerate() == rate and audio.getnframes() == length_ms * rate // 1000
+                pcm = array("h", audio.readframes(audio.getnframes()))
                 if sys.byteorder != "little":
-                    speech.byteswap()
-                assert speech[-1] != 0 and audio.readframes(4800) == bytes(9600)
-                peaks = [max(map(abs, speech[i*len(speech)//100:(i+1)*len(speech)//100])) for i in range(100)]
+                    pcm.byteswap()
+                pause = pcm[-(exercise["pauseMs"] * rate // 1000):]
+                assert any(pause), "The natural pause was replaced with digital silence"
+                peaks = [max(map(abs, pcm[i*len(pcm)//100:(i+1)*len(pcm)//100])) for i in range(100)]
                 assert sample["peaks"] == [round(100 * value / max(peaks)) for value in peaks]
         elif u.endswith(".css"):
             assert mime == "text/css", u

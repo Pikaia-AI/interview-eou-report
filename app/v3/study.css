@@ -44,6 +44,7 @@
 .desk-readout p, .desk-error { font-size: 13px; color: #cec8d4; line-height: 1.6; }
 .desk-readout strong { color: var(--cyan); font-weight: 550; }
 .desk-note { margin-top: 4px; color: var(--muted); font-size: 11px; line-height: 1.55; }
+.desk-note a, .desk-readout a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
 .desk-error { margin-top: 8px; }
 .study-report .report-section { padding-block: clamp(44px, 5vw, 70px); }
 .study-configs { overflow-x: auto; }

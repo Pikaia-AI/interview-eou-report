@@ -8,7 +8,6 @@ type Example = (typeof study.examples)[number];
 type Decision = 'Hold' | 'Respond';
 const decisions = { Hold: 'Keep listening', Respond: 'Respond now' } as const;
 const W = 560;
-const gapMs = 1000 * study.silenceSamples / study.sampleRate;
 
 function DecisionCase({ example }: { example: Example }) {
   const audio = useRef<HTMLAudioElement>(null);
@@ -16,11 +15,12 @@ function DecisionCase({ example }: { example: Example }) {
   const [playing, setPlaying] = useState(false);
   const [unavailable, setUnavailable] = useState(false);
   const [choice, setChoice] = useState<Decision | null>(null);
-  const totalSamples = example.speechSamples + study.silenceSamples;
-  const duration = totalSamples / study.sampleRate;
-  const speechEnd = W * example.speechSamples / totalSamples;
+  const beforePauseMs = example.pauseStartMs - example.startMs;
+  const durationMs = beforePauseMs + study.pauseMs;
+  const duration = durationMs / 1000;
+  const pauseX = W * beforePauseMs / durationMs;
   const trace = example.peaks.map((peak, i) => {
-    const x = (i + .5) / example.peaks.length * speechEnd;
+    const x = (i + .5) / example.peaks.length * W;
     const h = Math.max(.6, 31 * peak / 100);
     return `M${x.toFixed(1)} ${(40 - h).toFixed(1)}v${(2 * h).toFixed(1)}`;
   }).join(' ');
@@ -59,7 +59,7 @@ function DecisionCase({ example }: { example: Example }) {
   return <>
     <div className="desk-columns">
       <div className="desk-transcript">
-        <p className="desk-label">Interviewer</p><p className="desk-question">{study.prompt}</p>
+        <p className="desk-label">Conversation</p><p className="desk-question">{study.context}</p>
         <p className="desk-label">Speaker</p><blockquote>“{example.transcript}”</blockquote>
       </div>
       <div className="desk-reader">
@@ -74,14 +74,14 @@ function DecisionCase({ example }: { example: Example }) {
           <div className="desk-wave">
             <div className="desk-clock"><span>0.00 s</span><span>{duration.toFixed(2)} s</span></div>
             <svg viewBox={`0 0 ${W} 80`} preserveAspectRatio="none" aria-hidden="true" focusable="false">
-              <rect x={speechEnd} width={W - speechEnd} height="80" fill="#a5d8dc" opacity=".09"/>
+              <rect x={pauseX} width={W - pauseX} height="80" fill="#a5d8dc" opacity=".09"/>
               <path d={`M0 40H${W}`} stroke="#687075" strokeWidth=".8"/>
               <path d={trace} stroke="#c6b7df" strokeWidth="1.8" strokeLinecap="round"/>
-              <path d={`M${speechEnd} 2V78`} stroke="#a5d8dc" strokeDasharray="2 4"/>
+              <path d={`M${pauseX} 2V78`} stroke="#a5d8dc" strokeDasharray="2 4"/>
               <path d={`M${W - 1} 2V78`} stroke="#a5d8dc"/>
               <g ref={cursor}><path d="M0 0V80" stroke="#fff" strokeWidth="2"/></g>
             </svg>
-            <div className="desk-clock"><span>Speech</span><span>{gapMs} ms silence → decision</span></div>
+            <div className="desk-clock"><span>Speech</span><span>{study.pauseMs} ms pause → decision</span></div>
           </div>
         </div>
         {unavailable && <p className="desk-error" role="status">Audio unavailable. You can use the transcript to make the same choice.</p>}
@@ -92,7 +92,8 @@ function DecisionCase({ example }: { example: Example }) {
       </div>
     </div>
     <div className="desk-readout" aria-live="polite" aria-atomic="true">
-      {choice ? <p><strong>Example label: {example.label === 'Hold' ? 'HOLD' : 'Response-ready'}.</strong> {example.why}</p>
+      {choice ? <p><strong>{example.label === 'Hold' ? 'HOLD' : 'Response-ready'}.</strong> {example.why}{' '}
+        <a href={study.source.audio} target="_blank" rel="noreferrer">Hear the full exchange</a></p>
         : <p>Listen or read, then choose what you would do at the pause.</p>}
     </div>
   </>;
@@ -108,6 +109,6 @@ export function ListeningDesk() {
       </div>
     </div>
     <DecisionCase key={index} example={study.examples[index]}/>
-    <p className="desk-note">Authored examples with synthesized speech. These illustrate the labels; neither clip is benchmark data or a model prediction.</p>
+    <p className="desk-note">Recording from <a href={study.source.page}>{study.source.collection}</a> by {study.source.author} (<a href={study.source.licenseUrl}>{study.source.license}</a>). Pikaia clipped and labeled the two pauses for this exercise.</p>
   </section>;
 }
