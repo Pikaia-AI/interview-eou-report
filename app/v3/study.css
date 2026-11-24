@@ -36,11 +36,22 @@
 .desk-wave svg { display: block; height: clamp(47px, 4.2vw, 64px); width: 100%; overflow: visible; margin-block: 2px; }
 .desk-clock { display: flex; justify-content: space-between; gap: 8px; font-size: 10px; font-weight: 400; letter-spacing: .025em; color: var(--muted); font-variant-numeric: tabular-nums; }
 .desk-clock:last-child span:last-child { color: var(--cyan); }
+.desk-wave[data-revealed=true] { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 8px; }
+.desk-speakers { grid-column: 1; grid-row: 1; display: grid; grid-template-rows: 1fr 1fr; align-items: center; font-size: 11px; line-height: 1.5; white-space: nowrap; }
+.desk-speakers span { color: #c6b7df; }
+.desk-speakers span:last-child { color: #a5d8dc; }
+.desk-wave[data-revealed=true] svg { grid-column: 2; grid-row: 1; height: 70px; }
+.desk-axis { grid-column: 2; position: relative; }
+.desk-axis span:nth-child(2) { position: absolute; transform: translateX(-50%); color: var(--cyan); }
+.desk-wave[data-audio-error=true] .desk-reveal-wave { clip-path: none; }
 .desk-choices { gap: 8px; flex-wrap: wrap; margin-top: 19px; }
 .desk-choices > span { margin-right: auto; text-transform: uppercase; color: var(--muted); }
 .desk-choices button { padding: 8px 14px; min-height: 44px; font: 400 13px/1.4 var(--body); border-color: #4d4757; color: var(--soft, #d3cddc); }
 .desk-choices button[aria-pressed=true] { background: #2b2436; color: #f1e8fb; border-color: var(--accent); }
-.desk-readout { padding-top: 13px; border-top: 1px solid var(--line); min-height: 36px; }
+.desk-readout { display: flex; flex-wrap: wrap; align-items: center; gap: 5px 18px; padding-top: 13px; border-top: 1px solid var(--line); min-height: 36px; }
+.desk-readout [role=status]:not(:empty) { flex: 1 1 270px; }
+.desk-follow { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 8px 14px; border: 1px solid #736a80; border-radius: 4px; background: transparent; color: var(--accent); font: 500 13px/1.4 var(--body); cursor: pointer; }
+.desk-follow:hover { border-color: var(--accent); background: #231f2a; }
 .desk-readout p, .desk-error { font-size: 13px; color: #cec8d4; line-height: 1.6; }
 .desk-readout strong { color: var(--cyan); font-weight: 550; }
 .desk-note { margin-top: 4px; color: var(--muted); font-size: 11px; line-height: 1.55; }
@@ -72,4 +83,8 @@
 @media print {
   .study-opening .site-header, .study-links, .desk-examples, .desk-play, .desk-choices, .desk-readout { display: none; }
   .listening-desk { break-inside: avoid; background: transparent; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .desk-playhead { display: none; }
+  .desk-reveal-wave { clip-path: none; }
 }

@@ -13,6 +13,7 @@ import json
 import re
 import sys
 from collections import Counter
+from math import ceil
 from pathlib import Path
 from urllib.request import ProxyHandler, build_opener
 
@@ -32,12 +33,15 @@ class FocusedParser(base.PageParser):
         self.edition_links = {}
         self.scripts = []
         self.transfer_figures = 0
+        self.audio_sources = []
 
     def handle_starttag(self, tag, attrs):
         super().handle_starttag(tag, attrs)
         attrs = dict(attrs)
         if tag == "script" and attrs.get("src"):
             self.scripts.append(attrs["src"])
+        if tag == "source" and attrs.get("type") == "audio/wav":
+            self.audio_sources.append(attrs["src"])
         if tag == "figure" and "v2-transfer-figure" in attrs.get("class", "").split():
             self.transfer_figures += 1
         if tag == "details":
@@ -55,6 +59,12 @@ class FocusedParser(base.PageParser):
         super().handle_endtag(tag)
         if tag == "details":
             self.closed_details.pop()
+
+
+def measured_peaks(pcm, bins):
+    peaks = [max(map(abs, pcm[i*len(pcm)//bins:(i+1)*len(pcm)//bins])) for i in range(bins)]
+    scale = max(peaks)
+    return [round(100 * p / scale) for p in peaks]
 
 
 def main():
@@ -122,8 +132,11 @@ def main():
     exercise = json.loads((ROOT / "app/v3/listening-examples.json").read_text())
     assert {sample["label"] for sample in exercise["examples"]} == {"Hold", "Respond"}
     assert exercise["source"]["page"] in v3.links and exercise["source"]["licenseUrl"] in v3.links
-    assert exercise["pauseMs"] == 300
-    urls.update(sample["src"] for sample in exercise["examples"])
+    assert exercise["pauseMs"] == 300 and exercise["continuationMs"] == 2000
+    assert v3.audio_sources == [exercise["examples"][0]["src"]]
+    audio_assets = {part["src"]: part for example in exercise["examples"] for part in (example, example["continuation"])}
+    recordings = {}
+    urls.update(audio_assets)
     assert any(u.endswith(".css") for u in urls) and any(u.endswith(".js") for u in urls)
     for u in sorted(urls):
         res = fetch.open(origin + u, timeout=30)
@@ -133,25 +146,34 @@ def main():
         if u.endswith(".webp"):
             assert mime == "image/webp" and payload == (ROOT / "public" / u.lstrip("/")).read_bytes(), u
         elif u.endswith(".wav"):
-            sample = next(s for s in exercise["examples"] if s["src"] == u)
             assert payload == (ROOT / "public" / u.lstrip("/")).read_bytes() and mime.startswith("audio/"), u
             with wave.open(io.BytesIO(payload)) as audio:
                 assert (audio.getnchannels(), audio.getsampwidth(), audio.getframerate()) == (1, 2, 16000)
-                assert hashlib.sha256(payload).hexdigest() == sample["sha256"]
-                rate = exercise["sampleRate"]
-                length_ms = sample["pauseStartMs"] - sample["startMs"] + exercise["pauseMs"]
-                assert audio.getframerate() == rate and audio.getnframes() == length_ms * rate // 1000
+                assert hashlib.sha256(payload).hexdigest() == audio_assets[u]["sha256"]
                 pcm = array("h", audio.readframes(audio.getnframes()))
                 if sys.byteorder != "little":
                     pcm.byteswap()
-                pause = pcm[-(exercise["pauseMs"] * rate // 1000):]
-                assert any(pause), "The natural pause was replaced with digital silence"
-                peaks = [max(map(abs, pcm[i*len(pcm)//100:(i+1)*len(pcm)//100])) for i in range(100)]
-                assert sample["peaks"] == [round(100 * value / max(peaks)) for value in peaks]
+                recordings[u] = pcm
         elif u.endswith(".css"):
             assert mime == "text/css", u
         elif u.endswith(".js"):
             assert mime in {"text/javascript", "application/javascript"}, u
+
+    rate = exercise["sampleRate"]
+    for example in exercise["examples"]:
+        clip = recordings[example["src"]]
+        follow = example["continuation"]
+        tail = recordings[follow["src"]]
+        assert len(clip) == (example["pauseStartMs"] - example["startMs"] + exercise["pauseMs"]) * rate // 1000
+        assert len(tail) == exercise["continuationMs"] * rate // 1000
+        assert any(clip[-(exercise["pauseMs"] * rate // 1000):]), "Missing natural pause"
+        assert measured_peaks(clip, 100) == example["peaks"]
+        left, right = follow["speaker1Peaks"], follow["speaker2Peaks"]
+        assert len(left) == len(right) == 160
+        # The speakers take separate turns in these clips. The louder channel tracks the audible mix.
+        assert [max(a, b) for a, b in zip(left, right)] == measured_peaks(clip + tail, 160)
+        after_cutoff = ceil(len(clip) * len(left) / (len(clip) + len(tail)))
+        assert (max(left[after_cutoff:]) > max(right[after_cutoff:])) == (example["label"] == "Hold")
 
     result = {
         "v3_resources_checked": len(urls), "v3_transfer_figures": v3.transfer_figures,

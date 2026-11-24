@@ -10,7 +10,11 @@ The original edition remains at `/`, the focused edition at `/v2/`, and the rese
 
 The V3 listening task uses the same speaker at two points in a real English conversation about travel. The Agentic Data Company published the recording in Open Yap 1K. Pikaia selected and labeled these excerpts for the listening exercise. [Original recording and annotations](https://theagenticdatacompany.com/research/turn-taking#why-turn-taking-is-hard) · [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
-Both WAVs in `public/report/examples/` are continuous excerpts of the original speaker channel. Case A runs from 0.000 to 1.824 s, ending inside a hesitation. Case B runs from 7.000 to 10.572 s, ending before the listener answers. Each includes 300 ms of the recorded pause. To reproduce the audio, decode the source AAC with FFmpeg’s `pan=mono|c0=c0,aresample=16000` filter to 16-bit PCM, then slice by sample index. `app/v3/listening-examples.json` records the source URL, checksums, clip and pause start times, and 100 peak amplitudes across each complete clip.
+The two decision clips in `public/report/examples/` come from the original speaker channel. Case A covers 0.000–1.824 s, ending inside a hesitation. Case B covers 7.000–10.572 s, ending before the listener answers. Each includes 300 ms of the recorded pause.
+
+After choosing, readers can hear the next two seconds of the same recording. Each continuation starts at the first sample after its decision clip. Both voices play in the center. The expanded timeline shows the two original speaker channels at the same amplitude scale, with playback revealing the waveform past the decision. The reduced-motion view shows both tracks immediately.
+
+`app/v3/listening-examples.json` holds the source link, checksums, timing and measured waveforms. To reproduce the continuations and channel peaks, run `python3 scripts/import-listening-continuations.py path/to/turn-end-question.m4a` with FFmpeg installed. The script checks the published recording's hash and each decision clip against the original speaker channel.
 
 V2 makes the timing explorer visible by default and removes the duplicate cascade controls, ranking-change banners and eight-chapter transcript from its reading path. It keeps the public/full result pair, the Response-ready ablation with confidence intervals, collapsed Floor-end details, and explicit data/threshold limitations. Model cards show comparable specifications; training history and external controls are supplementary. The original experiment values are unchanged.
 
