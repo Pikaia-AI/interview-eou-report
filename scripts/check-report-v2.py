@@ -225,8 +225,20 @@ def main():
             assert res.status == 200 and res.read(1)
             assert res.headers.get_content_type() != "text/html", asset
 
+    # The access cards use CSS backgrounds, which the HTML image check cannot see.
+    styles = []
+    for href in sorted({u for u in v4.links if u.startswith("/") and urlsplit(u).path.endswith(".css")}):
+        with fetch.open(origin + href, timeout=30) as res:
+            assert res.headers.get_content_type() == "text/css", href
+            styles.append(res.read().decode())
+    for material in ["/art/access-seaglass.webp", "/art/access-amber.webp"]:
+        assert any(material in css for css in styles), f"Missing V4 material in served CSS: {material}"
+        with fetch.open(origin + material, timeout=30) as res:
+            assert res.headers.get_content_type() == "image/webp", material
+            assert res.read() == (ROOT / "public" / material.lstrip("/")).read_bytes(), material
+
     result = {
-        "v4_verified_outcomes": 2, "v4_sections": len(v4.sections),
+        "v4_verified_outcomes": 2, "v4_sections": len(v4.sections), "v4_access_materials": 2,
         "v3_resources_checked": len(urls), "v3_transfer_figures": v3.transfer_figures,
         "v3_access_destinations": len(v3.access_links),
         "v2_sections": len(page.sections), "visible_frontiers": len(page.frontiers),

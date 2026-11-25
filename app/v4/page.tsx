@@ -7,6 +7,7 @@ import { ListeningDesk } from '../v3/listening-desk';
 import { OutcomeReadout } from './outcome-readout';
 import '../v3/study.css';
 import './study.css';
+import './resource-cards.css';
 
 export const metadata: Metadata = {
   title: 'Pikaia-Turn — Listening study / Technical report V4',
