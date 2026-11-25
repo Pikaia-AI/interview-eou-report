@@ -5,6 +5,7 @@ import { ResearchEditionSwitch } from '../report-version-switch';
 import { FocusedReport } from '../v2/focused-report';
 import { ListeningDesk } from '../v3/listening-desk';
 import { OutcomeReadout } from './outcome-readout';
+import { V4ResourceAccess } from './resource-access-fusion';
 import '../v3/study.css';
 import './study.css';
 
@@ -46,5 +47,5 @@ function Colophon() {
 }
 
 export default function Page() {
-  return <FocusedReport edition="v4" opening={<Opening/>} overview={<OutcomeReadout/>} colophon={<Colophon/>}/>;
+  return <FocusedReport edition="v4" opening={<Opening/>} overview={<OutcomeReadout/>} access={<V4ResourceAccess/>} colophon={<Colophon/>}/>;
 }

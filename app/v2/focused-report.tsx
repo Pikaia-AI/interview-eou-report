@@ -37,10 +37,11 @@ type FocusedReportProps = {
   edition?: 'v2' | 'v3' | 'v4';
   opening?: React.ReactNode;
   overview?: React.ReactNode;
+  access?: React.ReactNode;
   colophon?: React.ReactNode;
 };
 
-export function FocusedReport({ edition = 'v2', opening, overview, colophon }: FocusedReportProps) {
+export function FocusedReport({ edition = 'v2', opening, overview, access, colophon }: FocusedReportProps) {
   const research = edition !== 'v2';
   const methods = <>
       <section className="report-section" id="models">
@@ -163,7 +164,7 @@ export function FocusedReport({ edition = 'v2', opening, overview, colophon }: F
         </details>
         {!research && <p className="source-note">Public audio is gated for non-commercial spoken-dialogue evaluation. Training data and model weights remain private.</p>}
       </section>
-      {research && <ResourceAccess/>}
+      {research && (access ?? <ResourceAccess/>)}
       {colophon ?? <footer><a className="brand" href="#top"><img src="/art/brand-mark.webp" alt="" width="56" height="24"/><span><b>Pikaia</b> Research</span></a><p>Pikaia-Turn · November 2026<br/><span>Technical report / {edition.toUpperCase()}</span></p><Link className="text-link" href={edition === 'v3' ? '/v2/' : '/'} prefetch={false}>Compare with {edition === 'v3' ? 'V2' : 'V1'} <ArrowUpRight size={16}/></Link></footer>}
     </main>
     {research && <ReportVersionSwitch version={edition}/>}
