@@ -19,12 +19,13 @@ function peakPath(peaks: number[], center: number, height: number) {
   }).join(' ');
 }
 
-function DecisionCase({ example }: { example: Example }) {
+function DecisionCase({ example, optical = false }: { example: Example; optical?: boolean }) {
   const audio = useRef<HTMLAudioElement>(null);
   const active = useRef<Segment>('clip');
   const cursor = useRef<SVGGElement>(null);
   const visibleWave = useRef<SVGRectElement>(null);
   const maskId = useId();
+  const gradId = useId();
   const [playing, setPlaying] = useState<Segment | null>(null);
   const [unavailable, setUnavailable] = useState<Segment | null>(null);
   const [choice, setChoice] = useState<Decision | null>(null);
@@ -105,20 +106,29 @@ function DecisionCase({ example }: { example: Example }) {
               ? <div className="desk-speakers"><span>Speaker 1</span><span>Speaker 2</span></div>
               : <div className="desk-clock"><span>0.00 s</span><span>{leadSeconds.toFixed(2)} s</span></div>}
             <svg viewBox={`0 0 ${W} 80`} preserveAspectRatio="none" aria-hidden="true" focusable="false">
-              <rect x={pauseX} width={cutoffX - pauseX} height="80" fill="#a5d8dc" opacity=".09"/>
+              {optical && <defs>
+                <linearGradient id={gradId} x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stopColor="#9e8cc9"/>
+                  <stop offset="72%" stopColor="#d8cbf8"/>
+                  <stop offset="100%" stopColor="#a5d8dc"/>
+                </linearGradient>
+              </defs>}
+              {optical && [0.25, 0.5, 0.75].map(f => <line key={f} x1={W * f} y1="0" x2={W * f} y2="80" stroke="rgba(240,237,245,0.05)" strokeDasharray="2 4"/>)}
+              <rect x={pauseX} y={optical ? 2 : 0} width={cutoffX - pauseX} height={optical ? 76 : 80} rx={optical ? 4 : 0} fill="#a5d8dc" opacity={optical ? '.11' : '.09'} stroke={optical ? 'rgba(165,216,220,0.28)' : undefined} strokeWidth={optical ? '.8' : undefined}/>
               {revealed ? <>
                 <defs><clipPath id={maskId}><rect ref={visibleWave} width={cutoffX} height="80"/></clipPath></defs>
-                <path d={`M0 20H${W}M0 60H${W}`} stroke="#687075" strokeWidth=".7"/>
+                <path d={`M0 20H${W}M0 60H${W}`} stroke={optical ? 'rgba(240,237,245,0.12)' : '#687075'} strokeWidth=".7"/>
                 <g className="desk-reveal-wave" clipPath={`url(#${maskId})`} strokeWidth="1.8" strokeLinecap="round">
                   <path d={peakPath(example.continuation.speaker1Peaks, 20, 17)} stroke="#c6b7df"/>
                   <path d={peakPath(example.continuation.speaker2Peaks, 60, 17)} stroke="#a5d8dc"/>
                 </g>
               </> : <>
-                <path d={`M0 40H${W}`} stroke="#687075" strokeWidth=".8"/>
-                <path d={peakPath(example.peaks, 40, 31)} stroke="#c6b7df" strokeWidth="1.8" strokeLinecap="round"/>
+                <path d={`M0 40H${W}`} stroke={optical ? 'rgba(240,237,245,0.12)' : '#687075'} strokeWidth=".8"/>
+                <path d={peakPath(example.peaks, 40, 31)} stroke={optical ? `url(#${gradId})` : '#c6b7df'} strokeWidth={optical ? '2' : '1.8'} strokeLinecap="round"/>
               </>}
-              <path d={`M${pauseX} 2V78`} stroke="#a5d8dc" strokeDasharray="2 4"/>
-              <path d={`M${Math.min(cutoffX, W - 1)} 2V78`} stroke="#a5d8dc"/>
+              <path d={`M${pauseX} 2V78`} stroke="#a5d8dc" strokeDasharray={optical ? '3 3' : '2 4'}/>
+              <path d={`M${Math.min(cutoffX, W - 1)} 2V78`} stroke="#a5d8dc" strokeWidth={optical ? '1.4' : undefined}/>
+              {optical && <circle cx={Math.min(cutoffX, W - 1)} cy="4" r="2.4" fill="#a5d8dc"/>}
               <g ref={cursor} className="desk-playhead"><path d="M0 0V80" stroke="#fff" strokeWidth="2"/></g>
             </svg>
             {revealed
@@ -138,7 +148,7 @@ function DecisionCase({ example }: { example: Example }) {
         {playing === 'continuation' ? <Pause size={15} aria-hidden="true"/> : <Play size={15} aria-hidden="true"/>}
         {playing === 'continuation' ? 'Pause continuation' : revealed ? 'Play continuation' : 'Hear the next 2 seconds'}
       </button> : <p>Listen or read, then choose what you would do at the pause.</p>}
-      <div role="status">
+      <div role="status" data-verdict={revealed ? example.label.toLowerCase() : undefined}>
         {revealed && <p><strong>{example.label === 'Hold' ? 'HOLD' : 'Response-ready'}.</strong> {example.why}{' '}
           <a href={study.source.audio} target="_blank" rel="noreferrer">Hear the full exchange</a></p>}
         {unavailable === 'continuation' && <p className="desk-error">Continuation audio unavailable.</p>}
@@ -147,16 +157,19 @@ function DecisionCase({ example }: { example: Example }) {
   </>;
 }
 
-export function ListeningDesk() {
+export function ListeningDesk({ optical = false }: { optical?: boolean } = {}) {
   const [index, setIndex] = useState(0);
-  return <section className="listening-desk" aria-labelledby="desk-heading">
+  return <section className={optical ? 'listening-desk listening-desk-optical' : 'listening-desk'} aria-labelledby="desk-heading">
     <div className="desk-topline">
-      <div className="desk-id"><Headphones size={17} aria-hidden="true"/><h2 id="desk-heading">The listening task</h2></div>
+      <div className="desk-id">
+        {optical ? <i className="desk-pulse" aria-hidden="true"/> : <Headphones size={17} aria-hidden="true"/>}
+        <h2 id="desk-heading">{optical ? 'The listening task · Acoustic gate' : 'The listening task'}</h2>
+      </div>
       <div className="desk-examples" role="group" aria-label="Choose an illustrative example">
         {study.examples.map((e, i) => <button type="button" key={e.src} aria-pressed={index === i} onClick={() => setIndex(i)}>Case {i === 0 ? 'A' : 'B'}</button>)}
       </div>
     </div>
-    <DecisionCase key={index} example={study.examples[index]}/>
+    <DecisionCase key={index} example={study.examples[index]} optical={optical}/>
     <p className="desk-note">Recording from <a href={study.source.page}>{study.source.collection}</a> by {study.source.author} (<a href={study.source.licenseUrl}>{study.source.license}</a>). Pikaia clipped and labeled the two pauses for this exercise.</p>
   </section>;
 }

@@ -37,11 +37,13 @@ type FocusedReportProps = {
   edition?: 'v2' | 'v3' | 'v4';
   opening?: React.ReactNode;
   overview?: React.ReactNode;
+  results?: React.ReactNode;
+  frontiers?: React.ReactNode;
   access?: React.ReactNode;
   colophon?: React.ReactNode;
 };
 
-export function FocusedReport({ edition = 'v2', opening, overview, access, colophon }: FocusedReportProps) {
+export function FocusedReport({ edition = 'v2', opening, overview, results, frontiers, access, colophon }: FocusedReportProps) {
   const research = edition !== 'v2';
   const methods = <>
       <section className="report-section" id="models">
@@ -90,14 +92,14 @@ export function FocusedReport({ edition = 'v2', opening, overview, access, colop
       <section className="report-section" id="results">
         <Title index={research ? "01" : "03"} label="Main results">{research ? "Response-ready recall" : "Compare on the same terms."}</Title>
         <p className="v2-intro">Public research test and full evaluation pool, with shared filters and model order. Recall measures how often a true response opportunity is detected within the selected false-positive budget.</p>
-        <ResultsExplorer models={report.models}/>
+        {results ?? <ResultsExplorer models={report.models}/>}
         <SmartTurnTransfer modelAccessHref={research ? '#access-model' : undefined}/>
       </section>
 
       <section className="report-section" id="latency">
         <Title index={research ? "02" : "04"} label="Waiting time & interruptions">{research ? "Waiting time at a fixed interruption budget" : "How fast, at what risk?"}</Title>
         <p className="v2-intro">Each pair is one decision point evaluated at 300 and 600 ms. Drag any horizontal line to update the false-cut-off budget for all three charts. Lower-left is better.</p>
-        <div id="figure-2"><CascadeFrontiers compact includeOriginalLiveKit scopes={scopes}/></div>
+        <div id="figure-2">{frontiers ?? <CascadeFrontiers compact includeOriginalLiveKit scopes={scopes}/>}</div>
         <div className="v2-chart-source"><p>Mean wait uses the EOT points and actual cut-offs use the HOLD points. EOT / HOLD counts are 1,287 / 413 for Pikaia, 716 / 342 for original LiveKit, and 699 / 143 for Response-ready LiveKit. The two LiveKit views differ in both labeling and which points are included.</p><a href="/report/figure-data.json" download>Curve data <Download size={15}/></a></div>
       </section>
   </>;

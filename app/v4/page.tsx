@@ -1,10 +1,13 @@
 import type { Metadata } from 'next';
-import { ArrowDown, ArrowUpRight } from 'lucide-react';
+import { ArrowDown, ArrowDownRight, ArrowUpRight } from 'lucide-react';
+import report from '../report-data.json';
 import { Header } from '../report-ui';
 import { ResearchEditionSwitch } from '../report-version-switch';
 import { FocusedReport } from '../v2/focused-report';
 import { ListeningDesk } from '../v3/listening-desk';
 import { OutcomeReadout } from './outcome-readout';
+import { ResultsExplorerV4 } from './results-explorer-v4';
+import { CascadeFrontiersV4 } from './cascade-frontiers-v4';
 import { V4ResourceAccess } from './resource-access-fusion';
 import '../v3/study.css';
 import './study.css';
@@ -12,6 +15,12 @@ import './study.css';
 export const metadata: Metadata = {
   title: 'Pikaia-Turn — Listening study / Technical report V4',
   description: 'Listen at a real conversational pause, then compare response opportunities, false cut-offs and waiting time in Pikaia’s bilingual turn-taking benchmarks.',
+};
+
+const frontierScopes = {
+  pikaia: { title: 'Our Pikaia benchmark', note: '1,700 paired decisions across Mandarin & English interviews (75 dev, 788 public test, 837 private holdout).' },
+  livekit_floor_end: { title: 'LiveKit · original Floor-end', note: '1,058 external LiveKit EOT Bench pairs with original speaker-finished labels.' },
+  livekit: { title: 'LiveKit · Response-ready', note: '842 eligible LiveKit pairs relabeled by Pikaia for natural response readiness.' },
 };
 
 function Opening() {
@@ -24,12 +33,20 @@ function Opening() {
       </div>
       <div className="v4-opening-grid">
         <div className="v4-title-copy">
-          <p className="eyebrow">Pikaia-Turn</p>
+          <p className="eyebrow">Pikaia-Turn · Technical Report</p>
           <h1>Wait or <br/><em>respond?</em></h1>
           <p>Two pauses from the same conversation. Listen to each one and decide whether the other person can take a turn.</p>
-          <a className="v4-results-link" href="#readout">See measured results <ArrowDown size={16} aria-hidden="true"/></a>
+          <div className="v4-hero-specs" aria-label="Study specifications">
+            <span>16 kHz mono</span>
+            <span>300 ms pause cutoff</span>
+            <span>1,100 research test</span>
+          </div>
+          <div className="v4-hero-actions">
+            <a className="v4-pill-cta" href="#readout">See measured results <ArrowDown size={15} aria-hidden="true"/></a>
+            <a className="v4-results-link" href="#latency">Waiting-time curves <ArrowDownRight size={15} aria-hidden="true"/></a>
+          </div>
         </div>
-        <div className="v4-listening-stage" id="listen"><ListeningDesk/></div>
+        <div className="v4-listening-stage" id="listen"><ListeningDesk optical/></div>
       </div>
     </div>
   </div>;
@@ -47,5 +64,15 @@ function Colophon() {
 }
 
 export default function Page() {
-  return <FocusedReport edition="v4" opening={<Opening/>} overview={<OutcomeReadout/>} access={<V4ResourceAccess/>} colophon={<Colophon/>}/>;
+  return (
+    <FocusedReport
+      edition="v4"
+      opening={<Opening/>}
+      overview={<OutcomeReadout/>}
+      results={<ResultsExplorerV4 models={report.models}/>}
+      frontiers={<CascadeFrontiersV4 scopes={frontierScopes}/>}
+      access={<V4ResourceAccess/>}
+      colophon={<Colophon/>}
+    />
+  );
 }
