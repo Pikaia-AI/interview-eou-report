@@ -8,10 +8,11 @@ import { CascadeFrontiers } from '../research-figures';
 import { ContextAblation } from '../context-ablation';
 import { ReportVersionSwitch } from '../report-version-switch';
 import { SmartTurnTransfer } from './smart-turn-transfer';
+import { ResourceAccess } from '../v3/resource-access';
 import '../report-v2.css';
 
 const navigation = [['models', 'The family'], ['benchmark', 'Data'], ['results', 'Results'], ['smart-turn-transfer', 'Transfer'], ['latency', 'Timing'], ['ablations', 'Ablations'], ['paper', 'Resources']];
-const researchNavigation = [['results', 'Results'], ['smart-turn-transfer', 'Transfer'], ['latency', 'Timing'], ['models', 'Models'], ['benchmark', 'Data'], ['ablations', 'Ablations'], ['paper', 'Resources']];
+const researchNavigation = [['results', 'Results'], ['smart-turn-transfer', 'Transfer'], ['latency', 'Timing'], ['models', 'Models'], ['benchmark', 'Data'], ['ablations', 'Ablations'], ['paper', 'Sources'], ['access', 'Access']];
 const headerLinks = [['models', 'The family'], ['results', 'Results'], ['latency', 'Timing']];
 const PDF = '/report/pikaia-interview-eou-benchmark.pdf';
 const scopes = {
@@ -51,7 +52,7 @@ export function FocusedReport({ edition = 'v2', opening }: { edition?: 'v2' | 'v
           </article>)}
         </div>
         </>}
-        <p className="source-note">All three use audio and preceding-question context; empty-question inputs are evaluated below. Model weights and the training corpus remain private.</p>
+        <p className="source-note">All three use audio and preceding-question context. The ablation below evaluates empty-question inputs. The Pikaia-Turn family weights and training corpus remain private.</p>
       </section>
 
       <section className="report-section" id="benchmark">
@@ -80,7 +81,7 @@ export function FocusedReport({ edition = 'v2', opening }: { edition?: 'v2' | 'v
         <Title index={research ? "01" : "03"} label="Main results">{research ? "Response-ready recall" : "Compare on the same terms."}</Title>
         <p className="v2-intro">Public research test and full evaluation pool, with shared filters and model order. Recall measures how often a true response opportunity is detected within the selected false-positive budget.</p>
         <ResultsExplorer models={report.models}/>
-        <SmartTurnTransfer/>
+        <SmartTurnTransfer modelAccessHref={research ? '#access-model' : undefined}/>
       </section>
 
       <section className="report-section" id="latency">
@@ -134,11 +135,11 @@ export function FocusedReport({ edition = 'v2', opening }: { edition?: 'v2' | 'v
       </section>
 
       <section className="report-section v2-resources" id="paper">
-        <div className="v2-section-lead"><Title index="06" label="Limits & resources">Keep the evidence close.</Title><p>This page documents the Pikaia family experiments. The benchmark paper covers the public dataset and open-weight baselines. Sources are listed by experiment below.</p></div>
+        <div className="v2-section-lead"><Title index="06" label="Limits & resources">{research ? 'Limitations and sources' : 'Keep the evidence close.'}</Title><p>This page documents the Pikaia family experiments. The benchmark paper covers the public dataset and open-weight baselines. Sources are listed by experiment below.</p></div>
         <div className="v2-limits" id="discussion"><p><strong>Recorded decisions.</strong> These tests do not measure live interruption repair or end-to-end conversation quality.</p><p><strong>Deployment calibration.</strong> A low observed FPR on a small calibration pool does not guarantee that rate on new speakers.</p><p><strong>Domain boundaries.</strong> Human overlap, synthetic prosody and explicit wait requests need separate validation.</p></div>
         <div className="v2-resource-grid">
           <a href={PDF} target="_blank" rel="noreferrer"><span className="micro-label">BENCHMARK PAPER / PDF</span><h3>Public dataset & baselines <ArrowUpRight size={18}/></h3><p>1,200 public examples across development and research-test splits.</p></a>
-          <a href="https://huggingface.co/datasets/pikaia-ai/interview-eou-benchmark-research" target="_blank" rel="noreferrer"><span className="micro-label">HUGGING FACE / GATED ACCESS</span><h3>Research test data <ArrowUpRight size={18}/></h3><p>1,100 evaluation points. Academic access terms apply.</p></a>
+          {!research && <a href="https://huggingface.co/datasets/pikaia-ai/interview-eou-benchmark-research" target="_blank" rel="noreferrer"><span className="micro-label">HUGGING FACE / GATED ACCESS</span><h3>Research test data <ArrowUpRight size={18}/></h3><p>1,100 evaluation points. Academic access terms apply.</p></a>}
           <a href="https://github.com/Pikaia-AI/interview-eou-report" target="_blank" rel="noreferrer"><span className="micro-label">GITHUB / REPORT REPOSITORY</span><h3>Code & report assets <ArrowUpRight size={18}/></h3><p>Source materials and reproducibility resources.</p></a>
           <a href="/report/v2-supplementary.json" download><span className="micro-label">TECHNICAL EXPERIMENTS / JSON</span><h3>Controls & supplementary results <Download size={18}/></h3><p>Calibration, transfer, training controls and additional cascade cohorts.</p></a>
         </div>
@@ -147,11 +148,12 @@ export function FocusedReport({ edition = 'v2', opening }: { edition?: 'v2' | 'v
           <div className="v2-detail-copy">
             <p>Main results use the November 2026 metrics snapshot. Timing curves retain the six-model supplement’s sampled policies; question ablations come from the 15 November paired-input experiment. The benchmark PDF has its own table numbering and does not include the proprietary Pikaia family experiments.</p>
             <p>One archive discrepancy remains unresolved: Turn-1’s full-pool Wait@5% is 412.7 ms in the archived main table and 411.4 ms in the sampled curve. The report editions use the latter curve data; this layout comparison does not recompute predictions or reconcile those records.</p>
-            <div className="v2-inline-links"><a href="/report/v2-source-manifest.json" download>Source manifest <Download size={14}/></a><a href="/report/metrics.json" download>Main metrics archive <Download size={14}/></a><a href="/report/citation.bib" download>BibTeX <Download size={14}/></a><a href="https://huggingface.co/datasets/pikaia-ai/interview-eou-benchmark" target="_blank" rel="noreferrer">Development data <ArrowUpRight size={14}/></a></div>
+            <div className="v2-inline-links"><a href="/report/v2-source-manifest.json" download>Source manifest <Download size={14}/></a><a href="/report/metrics.json" download>Main metrics archive <Download size={14}/></a><a href="/report/citation.bib" download>BibTeX <Download size={14}/></a>{!research && <a href="https://huggingface.co/datasets/pikaia-ai/interview-eou-benchmark" target="_blank" rel="noreferrer">Development data <ArrowUpRight size={14}/></a>}</div>
           </div>
         </details>
-        <p className="source-note">Public audio is gated for non-commercial spoken-dialogue evaluation. Training data and model weights remain private.</p>
+        {!research && <p className="source-note">Public audio is gated for non-commercial spoken-dialogue evaluation. Training data and model weights remain private.</p>}
       </section>
+      {research && <ResourceAccess/>}
       <footer><a className="brand" href="#top"><img src="/art/brand-mark.webp" alt="" width="56" height="24"/><span><b>Pikaia</b> Research</span></a><p>Pikaia-Turn · November 2026<br/><span>Technical report / {edition.toUpperCase()}</span></p><Link className="text-link" href={edition === 'v3' ? '/v2/' : '/'} prefetch={false}>Compare with {edition === 'v3' ? 'V2' : 'V1'} <ArrowUpRight size={16}/></Link></footer>
     </main>
     {research && <ReportVersionSwitch version={edition}/>}

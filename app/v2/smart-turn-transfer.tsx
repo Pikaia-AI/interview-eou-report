@@ -102,7 +102,7 @@ function TransferMetric({ title, scope, unit, original, fineTuned, rank, note }:
   );
 }
 
-export function SmartTurnTransfer() {
+export function SmartTurnTransfer({ modelAccessHref }: { modelAccessHref?: string }) {
   return (
     <section className="v2-transfer" id="smart-turn-transfer" aria-labelledby="smart-turn-transfer-title">
       <h3 id="smart-turn-transfer-title">Does interview training transfer?</h3>
@@ -127,6 +127,7 @@ export function SmartTurnTransfer() {
         The LiveKit ranks are local comparisons against the archived leaderboard.
       </p>
       <div className="v2-inline-links">
+        {modelAccessHref && <a href={modelAccessHref}>Get the interview checkpoint <ArrowRight size={14}/></a>}
         <a href="/report/metrics.json" download>Report tables and metrics <Download size={14}/></a>
         <a href="https://github.com/livekit/eot-bench/blob/dd85cd5af2284638dde9b18b52b90d06dd79b8c4/site/src/turn-detector/data.ts" target="_blank" rel="noreferrer">
           LiveKit leaderboard snapshot <ArrowUpRight size={14}/>

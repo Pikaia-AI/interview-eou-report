@@ -15,6 +15,7 @@ import sys
 from collections import Counter
 from math import ceil
 from pathlib import Path
+from urllib.parse import parse_qs, urlsplit
 from urllib.request import ProxyHandler, build_opener
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -34,6 +35,8 @@ class FocusedParser(base.PageParser):
         self.scripts = []
         self.transfer_figures = 0
         self.audio_sources = []
+        self.open_sections = []
+        self.access_links = []
 
     def handle_starttag(self, tag, attrs):
         super().handle_starttag(tag, attrs)
@@ -46,6 +49,11 @@ class FocusedParser(base.PageParser):
             self.transfer_figures += 1
         if tag == "details":
             self.closed_details.append("open" not in attrs)
+        if tag == "section":
+            self.open_sections.append(attrs.get("id"))
+        if tag == "a" and "access" in self.open_sections:
+            assert not any(self.closed_details), "Access links must be visible without opening a disclosure"
+            self.access_links.append(attrs["href"])
         if tag == "section" and "report-section" in attrs.get("class", "").split():
             self.sections.append(attrs.get("id"))
         if tag == "figure" and attrs.get("data-frontier"):
@@ -59,6 +67,8 @@ class FocusedParser(base.PageParser):
         super().handle_endtag(tag)
         if tag == "details":
             self.closed_details.pop()
+        if tag == "section":
+            self.open_sections.pop()
 
 
 def measured_peaks(pcm, bins):
@@ -121,12 +131,24 @@ def main():
     response = fetch.open(origin + "/v3", timeout=30)
     assert "/art/hero-art.webp" not in response.headers.get("Link", ""), "V3 still preloads the photographic cover"
     v3.feed(response.read().decode())
-    assert v3.sections == ["results", "latency", "models", "benchmark", "ablations", "paper"]
+    assert v3.sections == ["results", "latency", "models", "benchmark", "ablations", "paper", "access"]
     assert "desk-heading" in v3.ids and len(v3.ids) == len(set(v3.ids))
     assert all(href[1:] in v3.ids for href in v3.links if href.startswith("#") and href != "#")
     assert v3.result_tables == page.result_tables and v3.frontiers == page.frontiers
     assert v3.ablation_rows == page.ablation_rows and v3.transfer_figures == 2
+    assert "#access" in v3.links and "#access-model" in v3.links and not page.access_links
+    development = "https://huggingface.co/datasets/pikaia-ai/interview-eou-benchmark"
+    model = "https://huggingface.co/pikaia-ai/smart-turn-v3.2-interview"
+    assert {development, development + "-research", model}.issubset(v3.access_links)
+    files = [u for u in v3.access_links if u.startswith(model + "/resolve/")]
+    assert len(files) == 2 and len({u.rsplit("/", 1)[0] for u in files}) == 1
+    assert all(re.fullmatch(r"[a-f0-9]{40}", u.split("/")[-2]) for u in files)
+    assert {u.rsplit("/", 1)[1] for u in files} == {"smart-turn-v3.2-interview.onnx?download=true", "model.safetensors?download=true"}
+    inquiry, = [urlsplit(u) for u in v3.access_links if urlsplit(u).hostname == "github.com"]
+    assert inquiry.path == "/Pikaia-AI/interview-eou-report/issues/new"
+    assert "Pikaia-Turn" in parse_qs(inquiry.query)["title"][0] and len(v3.access_links) == 6
     urls = set(v3.assets + v3.scripts + [u for u in v3.links if u.startswith("/_next/")])
+    urls.add("/art/waveform-art.webp")
     assert "/art/brand-mark.webp" in urls and "/art/hero-art.webp" not in v3.assets
     assert "/art/hero-art.webp" in page.assets  # The focused edition still has its original cover.
     exercise = json.loads((ROOT / "app/v3/listening-examples.json").read_text())
@@ -177,6 +199,7 @@ def main():
 
     result = {
         "v3_resources_checked": len(urls), "v3_transfer_figures": v3.transfer_figures,
+        "v3_access_destinations": len(v3.access_links),
         "v2_sections": len(page.sections), "visible_frontiers": len(page.frontiers),
         "exact_result_tables_match_v1": len(page.result_tables),
         "ablation_rows_match_v1": len(page.ablation_rows),

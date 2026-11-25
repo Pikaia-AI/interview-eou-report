@@ -26,6 +26,8 @@ Run `python3 scripts/check-report-v2.py http://127.0.0.1:5188` alongside the ori
 
 ## Benchmark Tiers & Access
 
+The access section at `/v3#access` links both gated Hugging Face splits and the ONNX and safetensors files for Pikaia’s released Smart Turn v3.2-Interview checkpoint. Pikaia-Turn family inquiries open a public issue draft in this report’s GitHub repository.
+
 | Tier | Split | Access | ZH | EN | Total | Clusters | 600 ms Pairs | WAV Files | Link |
 | :--- | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
 | **Tier 1** | `dev` | Auto-gated | 50 | 50 | 100 | 11 | 75 | 237 | [Hugging Face](https://huggingface.co/datasets/pikaia-ai/interview-eou-benchmark) |

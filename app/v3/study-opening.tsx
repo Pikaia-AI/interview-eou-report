@@ -4,7 +4,7 @@ import { ListeningDesk } from './listening-desk';
 
 export function StudyOpening() {
   return <div id="top" className="study-opening">
-    <Header links={[['results', 'Results'], ['latency', 'Timing'], ['protocol', 'Protocol']]}/>
+    <Header links={[['results', 'Results'], ['latency', 'Timing'], ['protocol', 'Protocol'], ['access', 'Access']]}/>
     <div className="shell">
       <div className="study-byline"><span>Pikaia-Turn <i>/</i> Technical report</span><span>November 2026</span></div>
       <div className="study-intro">
