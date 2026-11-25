@@ -37,6 +37,7 @@ class FocusedParser(base.PageParser):
         self.audio_sources = []
         self.open_sections = []
         self.access_links = []
+        self.readout_text = []
 
     def handle_starttag(self, tag, attrs):
         super().handle_starttag(tag, attrs)
@@ -69,6 +70,11 @@ class FocusedParser(base.PageParser):
             self.closed_details.pop()
         if tag == "section":
             self.open_sections.pop()
+
+    def handle_data(self, data):
+        super().handle_data(data)
+        if "readout" in self.open_sections:
+            self.readout_text.append(data)
 
 
 def measured_peaks(pcm, bins):
@@ -197,7 +203,30 @@ def main():
         after_cutoff = ceil(len(clip) * len(left) / (len(clip) + len(tail)))
         assert (max(left[after_cutoff:]) > max(right[after_cutoff:])) == (example["label"] == "Hold")
 
+    v4 = FocusedParser()
+    v4.feed(fetch.open(origin + "/v4/", timeout=30).read().decode())
+    assert v4.sections == ["readout", *v3.sections]
+    assert len(v4.ids) == len(set(v4.ids))
+    assert all(href[1:] in v4.ids for href in v4.links if href.startswith("#") and href != "#")
+    assert v3.result_tables == v4.result_tables and v3.frontiers == v4.frontiers
+    assert v3.ablation_rows == v4.ablation_rows and v4.transfer_figures == 2
+    assert v3.access_links == v4.access_links and v3.audio_sources == v4.audio_sources
+    assert "/v4/" in v3.links and "/v3/" in v4.links and "#listen" in v4.links
+    readout = "".join(v4.readout_text)
+    flagship = next(model for model in report["models"] if model["name"] == "Pikaia-Turn")
+    sample = flagship["splits"]["test_1100"]["300ms"]["overall"]
+    operating = sample["operating"]["5"]
+    for count, total, label in [(operating["tp"], sample["eot"], "detected"),
+                                (operating["fp"], sample["hold"], "early responses")]:
+        assert f"{100*count/total:.2f}%of {total} " in readout
+        assert f"{count} {label}" in readout
+    for asset in set(v4.assets + v4.scripts) - urls:
+        with fetch.open(origin + asset, timeout=30) as res:
+            assert res.status == 200 and res.read(1)
+            assert res.headers.get_content_type() != "text/html", asset
+
     result = {
+        "v4_verified_outcomes": 2, "v4_sections": len(v4.sections),
         "v3_resources_checked": len(urls), "v3_transfer_figures": v3.transfer_figures,
         "v3_access_destinations": len(v3.access_links),
         "v2_sections": len(page.sections), "visible_frontiers": len(page.frontiers),

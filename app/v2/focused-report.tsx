@@ -31,8 +31,17 @@ function Title({ index, label, children }: { index: string; label: string; child
   return <div className="section-title"><p className="eyebrow">{index} / {label}</p><h2>{children}</h2></div>;
 }
 
-export function FocusedReport({ edition = 'v2', opening }: { edition?: 'v2' | 'v3'; opening?: React.ReactNode }) {
-  const research = edition === 'v3';
+const studyNavigation = [['readout', 'Overview'], ...researchNavigation];
+
+type FocusedReportProps = {
+  edition?: 'v2' | 'v3' | 'v4';
+  opening?: React.ReactNode;
+  overview?: React.ReactNode;
+  colophon?: React.ReactNode;
+};
+
+export function FocusedReport({ edition = 'v2', opening, overview, colophon }: FocusedReportProps) {
+  const research = edition !== 'v2';
   const methods = <>
       <section className="report-section" id="models">
         {research ? <>
@@ -92,7 +101,7 @@ export function FocusedReport({ edition = 'v2', opening }: { edition?: 'v2' | 'v
       </section>
   </>;
 
-  return <div className={research ? "report-v2 study-report" : "report-v2"}>
+  return <div className={edition === 'v4' ? 'report-v2 study-report report-v4' : research ? 'report-v2 study-report' : 'report-v2'}>
     {!research && <ReportVersionSwitch version={edition}/>}
     <a href={research ? "#results" : "#models"} className="skip-link">Skip to research</a>
     <DisclosureLinks/>
@@ -107,9 +116,10 @@ export function FocusedReport({ edition = 'v2', opening }: { edition?: 'v2' | 'v
         <div className="hero-actions"><a className="button primary" href="#results">Explore the results <ArrowUpRight size={18}/></a><a className="text-link" href="#models">Meet the family <ArrowUpRight size={16}/></a></div>
       </div>
     </div>}
-    <Contents items={research ? researchNavigation : navigation}/>
+    <Contents items={edition === 'v4' ? studyNavigation : research ? researchNavigation : navigation}/>
 
     <main className="shell">
+      {overview}
       {research ? <>{measurements}{methods}</> : <>{methods}{measurements}</>}
 
       <section className="report-section" id="ablations">
@@ -154,7 +164,7 @@ export function FocusedReport({ edition = 'v2', opening }: { edition?: 'v2' | 'v
         {!research && <p className="source-note">Public audio is gated for non-commercial spoken-dialogue evaluation. Training data and model weights remain private.</p>}
       </section>
       {research && <ResourceAccess/>}
-      <footer><a className="brand" href="#top"><img src="/art/brand-mark.webp" alt="" width="56" height="24"/><span><b>Pikaia</b> Research</span></a><p>Pikaia-Turn · November 2026<br/><span>Technical report / {edition.toUpperCase()}</span></p><Link className="text-link" href={edition === 'v3' ? '/v2/' : '/'} prefetch={false}>Compare with {edition === 'v3' ? 'V2' : 'V1'} <ArrowUpRight size={16}/></Link></footer>
+      {colophon ?? <footer><a className="brand" href="#top"><img src="/art/brand-mark.webp" alt="" width="56" height="24"/><span><b>Pikaia</b> Research</span></a><p>Pikaia-Turn · November 2026<br/><span>Technical report / {edition.toUpperCase()}</span></p><Link className="text-link" href={edition === 'v3' ? '/v2/' : '/'} prefetch={false}>Compare with {edition === 'v3' ? 'V2' : 'V1'} <ArrowUpRight size={16}/></Link></footer>}
     </main>
     {research && <ReportVersionSwitch version={edition}/>}
   </div>;

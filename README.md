@@ -6,7 +6,11 @@ The primary benchmark paper (*Pikaia Interview EOU Benchmark: Evaluating Respons
 
 ## Compare report editions
 
-The original edition remains at `/`, the focused edition at `/v2/`, and the research edition at `/v3/`. The original photographic cover is retained on the first two editions. V3 opens with a short listening task, then goes directly to the measured results and the timing explorer. Architecture and dataset details follow; the underlying report sources, slices, controls and downloads are shared with V2. The V3 edition switch is in the footer.
+The original edition opens at `/`, the focused edition at `/v2/`, the research report at `/v3/` and the listening study at `/v4/`. The V3 and V4 headers let readers switch between the two. All editions are available in the footer navigation.
+
+V4 pairs the real listening exercise with a public-test readout. Each dot represents one labeled decision for Pikaia-Turn on the bilingual 300 ms slice at a 5% HOLD false-positive budget. The readout uses `app/report-data.json`. The full result tables, interactive timing curves, ablations, transfer measurements and access links use the same components as V3.
+
+To pair the report with a local V4 homepage, run `NEXT_PUBLIC_COMPANY_V4_URL=http://127.0.0.1:5197/v4/ npm run build` and `npm start -- --port 5198`. Open `http://127.0.0.1:5198/v4`. Selecting V3 returns to the previous edition on the same server.
 
 The V3 listening task uses the same speaker at two points in a real English conversation about travel. The Agentic Data Company published the recording in Open Yap 1K. Pikaia selected and labeled these excerpts for the listening exercise. [Original recording and annotations](https://theagenticdatacompany.com/research/turn-taking#why-turn-taking-is-hard) · [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 

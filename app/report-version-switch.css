@@ -7,3 +7,10 @@
 .report-version-switch a:hover{color:var(--text);background:#1a1621}
 @media(max-width:600px){.report-version-switch>.shell{width:calc(100% - 36px);gap:8px;min-height:52px}.report-version-switch>.shell>span{font-size:10px}.report-version-switch a{min-height:44px;padding-inline:10px}.report-version-switch a>span{display:none}}
 @media print{.report-version-switch{display:none}}
+.research-editions { display: inline-flex; flex: none; align-items: center; border: 1px solid var(--line); padding: 0 3px; border-radius: 24px; }
+.research-editions a { display: grid; place-items: center; position: relative; isolation: isolate; min-height: 42px; min-width: 38px; font: 400 12px/1 var(--body); letter-spacing: 0; color: var(--muted); }
+.research-editions a[aria-current="page"] { color: var(--text); }
+.research-editions a[aria-current="page"]::before { content: ''; position: absolute; z-index: -1; inset: 5px 0; border-radius: 20px; background: #2c2535; }
+.research-editions a:hover { color: var(--cyan); }
+.study-edition-meta { display: flex; align-items: center; gap: clamp(10px, 2vw, 27px); }
+@media print { .research-editions { display: none; } }
