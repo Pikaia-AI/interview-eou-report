@@ -18,7 +18,7 @@ type ResultRow = {
   family: boolean;
 };
 
-const FAMILY = new Set(['Pikaia-Turn', 'Pikaia-Turn-Mini', 'Pikaia-Turn-Nano']);
+const FAMILY = new Set(['Pikaia-Turn', 'Pikaia-Turn-Mini', 'Smart Turn + Interview FT']);
 
 const SPLITS = {
   test_1100: {

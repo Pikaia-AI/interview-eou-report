@@ -8,7 +8,7 @@ type FamilyCard = {
   size: string;
   unit: string;
   role: string;
-  tone: 'lilac' | 'cyan' | 'coral';
+  tone: 'lilac' | 'cyan' | 'mint';
   architecture: string;
   fit: string;
   stats: { value: string; label: string; delta: string }[];
@@ -36,7 +36,7 @@ const FAMILY_CARDS: FamilyCard[] = [
     name: 'Pikaia-Turn',
     size: '2.3',
     unit: 'B',
-    role: 'FLAGSHIP · SERVER',
+    role: 'FLAGSHIP · SERVER · PRIVATE',
     tone: 'lilac',
     architecture: 'Dual-backbone audio and preceding-question fusion built for multi-clause spoken interviews without waiting for user ASR.',
     fit: 'Best fit: maximum recall and strict low-interruption control on long-form server deployments.',
@@ -52,7 +52,7 @@ const FAMILY_CARDS: FamilyCard[] = [
     name: 'Pikaia-Turn-Mini',
     size: '0.6',
     unit: 'B',
-    role: 'COMPACT · SERVER',
+    role: 'COMPACT · SERVER · PRIVATE',
     tone: 'cyan',
     architecture: 'Standalone single-backbone server detector at roughly one-fifth the active parameters of 2.8B open baselines.',
     fit: 'Best fit: high-concurrency GPU inference delivering the shortest mean wait across Pikaia interviews.',
@@ -63,19 +63,19 @@ const FAMILY_CARDS: FamilyCard[] = [
     ],
   },
   {
-    id: 'pikaia-turn-nano',
+    id: 'smart-turn-interview',
     index: '03',
-    name: 'Pikaia-Turn-Nano',
-    size: '6.7',
+    name: 'Smart Turn v3.2-Interview',
+    size: '8.0',
     unit: 'M',
-    role: 'STREAMING · CPU',
-    tone: 'coral',
-    architecture: 'Frame-synchronous audio encoder with prompt conditioning and running utterance state for continuous CPU decisions.',
-    fit: 'Best fit: edge and zero-GPU voice pipelines requiring sub-10M footprint and streaming execution.',
+    role: 'OPEN-WEIGHT · AUDIO-ONLY · BSD-2',
+    tone: 'mint',
+    architecture: 'Open-weight 8M Whisper audio-only turn detector fine-tuned on 3,891 bilingual interview pauses; seed 29 weights released in ONNX and safetensors.',
+    fit: 'Best fit: lightweight audio-only deployments with zero prompt dependency and immediate open download.',
     stats: [
-      { value: metricPct('Pikaia-Turn-Nano', 'test_1100', '300ms', '5'), label: 'Research test 300 ms R@5%', delta: '+15.80 pp vs Smart Turn 8M' },
-      { value: '657.0 ms', label: 'Pikaia Wait@5% (1,700 pairs)', delta: '−192.3 ms vs Turn-1-Mini' },
-      { value: '89.81%', label: 'TurnBench Dev duplex OOF', delta: '597.0 ms median latency' },
+      { value: metricPct('Smart Turn + Interview FT', 'test_1100', '300ms', '5'), label: 'Research test 300 ms R@5%', delta: `+23.56 pp vs v3.2 · AUC ${metricAuc('Smart Turn + Interview FT', 'test_1100', '300ms')}` },
+      { value: '630.8 ms', label: 'Pikaia Wait@5% (1,700 pairs)', delta: '−104.4 ms vs Smart Turn v3.2' },
+      { value: '674.2 / 597.8 ms', label: 'LiveKit EN / ZH wait (≤10%)', delta: '−49.1 ms (#7) / −60.6 ms (#3)' },
     ],
   },
 ];
@@ -85,11 +85,11 @@ export function ModelFamilyV4() {
     <section className="report-section v4m-section" id="models" aria-labelledby="models-title">
       <div className="v4-result-head">
         <div>
-          <p className="eyebrow">01 / Pikaia-Turn model family</p>
-          <h2 id="models-title">Three compute budgets.<br/>One causal architecture.</h2>
+          <p className="eyebrow">01 / Pikaia models &amp; open release</p>
+          <h2 id="models-title">Two private server models.<br/>One open-weight release.</h2>
         </div>
         <p>
-          Every Pikaia-Turn model combines causal interviewee audio with the interviewer’s preceding question to separate a completed thought from a mid-sentence pause — scaling from a 2.3B dual-backbone flagship down to 6.7M CPU streaming.
+          Pikaia-Turn (2.3B) and Pikaia-Turn-Mini (0.6B) fuse causal interviewee audio with the preceding question on servers. Alongside them, we release open-weight Smart Turn v3.2-Interview (8.0M), fine-tuned on our bilingual interview training corpus under BSD 2-Clause.
         </p>
       </div>
 
@@ -124,8 +124,8 @@ export function ModelFamilyV4() {
       <div className="v4m-proof-deck" id="architecture-controls" aria-labelledby="arch-proof-title">
         <div className="v4m-proof-head">
           <div>
-            <p className="v4m-proof-eyebrow">ARCHITECTURE VS. DATA CONTROLS · VERIFIED SUPPLEMENT</p>
-            <h3 id="arch-proof-title">Why the gains come from architecture, not just training volume</h3>
+            <p className="v4m-proof-eyebrow">ARCHITECTURE, TRAINING &amp; CALIBRATION · VERIFIED SUPPLEMENT</p>
+            <h3 id="arch-proof-title">Architecture controls, interview fine-tuning, and frozen transfer</h3>
           </div>
           <a className="v4m-proof-dl" href="/report/v2-supplementary.json" download>
             Complete controls JSON <Download size={13} aria-hidden="true"/>
@@ -154,25 +154,21 @@ export function ModelFamilyV4() {
 
           <article className="v4m-proof-chamber">
             <div className="v4m-proof-topline">
-              <span>02 · NANO STEPWISE</span>
-              <strong className="tone-coral">−72.8 ms · +10.6 pp</strong>
+              <span>02 · 3,891-CLIP INTERVIEW FT</span>
+              <strong className="tone-mint">+23.56 pp · −104.4 ms</strong>
             </div>
-            <h4>Each Nano component cuts pause waiting time</h4>
+            <h4>Open-weight Smart Turn v3.2 before &amp; after training</h4>
             <div className="v4m-mini-bars">
-              <div className="v4m-mini-row">
-                <div className="v4m-mini-meta"><span>Turn-1-Mini + FT (audio baseline)</span><b>729.8 ms · 41.5%</b></div>
-                <div className="v4m-mini-track"><i style={{ width: '73%' }}/></div>
+              <div className="v4m-mini-row is-mint">
+                <div className="v4m-mini-meta"><span>Smart Turn v3.2-Interview (8M)</span><b>63.79% · 630.8 ms</b></div>
+                <div className="v4m-mini-track"><i style={{ width: '63.79%' }}/></div>
               </div>
               <div className="v4m-mini-row">
-                <div className="v4m-mini-meta"><span>+ Prosody &amp; utterance state</span><b>706.9 ms · 43.0%</b></div>
-                <div className="v4m-mini-track"><i style={{ width: '70.7%' }}/></div>
-              </div>
-              <div className="v4m-mini-row is-coral">
-                <div className="v4m-mini-meta"><span>Pikaia-Turn-Nano (+Prompt)</span><b>657.0 ms · 52.1%</b></div>
-                <div className="v4m-mini-track"><i style={{ width: '65.7%' }}/></div>
+                <div className="v4m-mini-meta"><span>Smart Turn v3.2 (zero-shot)</span><b>40.23% · 735.2 ms</b></div>
+                <div className="v4m-mini-track"><i style={{ width: '40.23%' }}/></div>
               </div>
             </div>
-            <p className="v4m-proof-note">Pikaia Wait@5% (↓) &amp; 300 ms R@5% (↑) across identical 3,195 training clips.</p>
+            <p className="v4m-proof-note">3-seed mean on Pikaia Research Test 300 ms &amp; 1,700-pair cascade; also lifts LiveKit Floor-end AUC from 0.7998 to 0.8474.</p>
           </article>
 
           <article className="v4m-proof-chamber">
@@ -201,8 +197,11 @@ export function ModelFamilyV4() {
       </div>
 
       <div className="v4m-footer">
-        <p>All three models accept causal audio and preceding-question context; inference ablations with empty questions appear in Section 04. Model weights and the 3,195-clip training corpus remain private.</p>
-        <a href="#access-family">Request Pikaia-Turn evaluation <ArrowDownRight size={15} aria-hidden="true"/></a>
+        <p>Pikaia-Turn and Pikaia-Turn-Mini weights and the interview training corpus remain private. Smart Turn v3.2-Interview (8.0M, seed 29) is open-weight under BSD 2-Clause.</p>
+        <div className="v4-source-links">
+          <a href="#access-model">Download Smart Turn v3.2-Interview <ArrowDownRight size={15} aria-hidden="true"/></a>
+          <a href="#access-family">Request Pikaia-Turn evaluation <ArrowDownRight size={15} aria-hidden="true"/></a>
+        </div>
       </div>
     </section>
   );

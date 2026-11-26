@@ -11,9 +11,10 @@ const ticks = [-30, 0, 30];
 const position = (value: number) => ((value + 30) / 60) * 100;
 const signed = (value: number) => `${value > 0 ? '+' : value < 0 ? '−' : ''}${Math.abs(value).toFixed(2)}`;
 
-function IntervalChart({ cohortKey, cutoff }: { cohortKey: Cohort; cutoff: Cutoff }) {
+function IntervalChart({ cohortKey, cutoff, excludeModels = [] }: { cohortKey: Cohort; cutoff: Cutoff; excludeModels?: string[] }) {
   const cohort = data.cohorts[cohortKey];
-  const rows = cohort.cutoffs[cutoff];
+  const excluded = new Set(excludeModels);
+  const rows = excluded.size ? cohort.cutoffs[cutoff].filter(row => !excluded.has(row.model)) : cohort.cutoffs[cutoff];
   const titleId = `ablation-${cohortKey}-title`;
 
   return <figure className="context-ablation-chart" aria-labelledby={titleId} data-ablation-cohort={cohortKey} data-cutoff={cutoff}>
@@ -47,8 +48,9 @@ function IntervalChart({ cohortKey, cutoff }: { cohortKey: Cohort; cutoff: Cutof
   </figure>;
 }
 
-export function ContextAblation() {
+export function ContextAblation({ excludeModels = [] }: { excludeModels?: string[] } = {}) {
   const [cutoff, setCutoff] = useState<Cutoff>('300ms');
+  const hidesNano = excludeModels.includes('Pikaia-Turn-Nano');
 
   return <section className="context-ablation" id="context-ablation" aria-labelledby="context-ablation-title">
     <div className="subsection-heading">
@@ -60,18 +62,18 @@ export function ContextAblation() {
       <a className="quiet-button" href="/report/context-ablation.json" download>Download ablation data <Download size={14}/></a>
     </div>
     <p className="sr-only" role="status">Showing {cutoff === '300ms' ? '300 ms' : '600 ms'} for both evaluation objectives.</p>
-    <IntervalChart cohortKey="response_ready" cutoff={cutoff}/>
+    <IntervalChart cohortKey="response_ready" cutoff={cutoff} excludeModels={excludeModels}/>
     <div className="ablation-takeaway">
       <h4>Differences remain uncertain.</h4>
-      <p>Removing the question lowers recall point estimates for Turn and Mini at both cutoffs; Nano changes little. All six response-ready confidence intervals cross zero. These results establish neither a reliable benefit from the question nor equivalence between the two inputs.</p>
+      <p>{hidesNano ? 'Removing the question lowers recall point estimates for Pikaia-Turn and Pikaia-Turn-Mini at both cutoffs, while all four response-ready confidence intervals cross zero. These results establish neither a reliable benefit from the question nor equivalence between the two inputs.' : 'Removing the question lowers recall point estimates for Turn and Mini at both cutoffs; Nano changes little. All six response-ready confidence intervals cross zero. These results establish neither a reliable benefit from the question nor equivalence between the two inputs.'}</p>
     </div>
     <p className="source-note ablation-method">Metric: recall at an empirical ≤5% HOLD false-positive rate. Each input condition and cutoff selects its own ROC threshold. Intervals are paired session-cluster bootstrap estimates (2,000 resamples; 95% percentile intervals; no language stratification). The 300 / 600 ms settings describe the audio cutoff, not inference time.</p>
     <details className="report-detail ablation-floor-detail" id="ablation-floor-end">
       <summary><span><span className="detail-index">SUPPLEMENTARY</span>Floor-end · the retrospective turn-ending objective</span><ChevronDown size={18}/></summary>
       <p className="body-note">Floor-end asks whether the observed speaking turn ended here. Response-ready asks whether a listener could naturally respond at this point. The floor-end cohort contains 1,058 items; the response-ready cohort contains 842 eligible items. Label objective and cohort membership both differ, so their absolute scores are not directly comparable.</p>
-      <IntervalChart cohortKey="floor_end" cutoff={cutoff}/>
-      <p className="source-note">The same cutoff control, scale and bootstrap method apply here. All six floor-end recall-difference intervals also cross zero across the two cutoffs.</p>
+      <IntervalChart cohortKey="floor_end" cutoff={cutoff} excludeModels={excludeModels}/>
+      <p className="source-note">{hidesNano ? 'The same cutoff control, scale and bootstrap method apply here. All four floor-end recall-difference intervals also cross zero across the two cutoffs.' : 'The same cutoff control, scale and bootstrap method apply here. All six floor-end recall-difference intervals also cross zero across the two cutoffs.'}</p>
     </details>
-    <p className="source-note ablation-provenance">Additional experiment · 15 November 2026 · Pikaia-Turn / Mini / Nano · <a href="/report/context-ablation.json" download>Paired values, observed FPRs and source checksum <Download size={13}/></a></p>
+    <p className="source-note ablation-provenance">Additional experiment · 15 November 2026 · {hidesNano ? 'Pikaia-Turn / Pikaia-Turn-Mini' : 'Pikaia-Turn / Mini / Nano'} · <a href="/report/context-ablation.json" download>Paired values, observed FPRs and source checksum <Download size={13}/></a></p>
   </section>;
 }

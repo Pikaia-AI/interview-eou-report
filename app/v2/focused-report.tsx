@@ -46,6 +46,7 @@ type FocusedReportProps = {
   colophon?: React.ReactNode;
   modelsFirst?: boolean;
   hidePaperPdf?: boolean;
+  ablationExcludeModels?: string[];
 };
 
 export function FocusedReport({
@@ -60,6 +61,7 @@ export function FocusedReport({
   colophon,
   modelsFirst = false,
   hidePaperPdf = false,
+  ablationExcludeModels,
 }: FocusedReportProps) {
   const research = edition !== 'v2';
   const modelBlock = modelsSection ?? (
@@ -127,7 +129,7 @@ export function FocusedReport({
   const ablationsBlock = (
       <section className="report-section" id="ablations">
         <Title index={modelsFirst ? "04" : "05"} label="Ablations & transfer">{modelsFirst ? "Context, generalization & transfer" : "What does context change?"}</Title>
-        <ContextAblation/>
+        <ContextAblation excludeModels={ablationExcludeModels}/>
         {generalizationSection}
         {modelsFirst && <SmartTurnTransfer modelAccessHref={research ? '#access-model' : undefined}/>}
         {!modelsFirst && <details className="report-detail v2-methods" id="training-controls">

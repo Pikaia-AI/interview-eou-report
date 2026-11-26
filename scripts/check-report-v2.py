@@ -203,14 +203,21 @@ def main():
         after_cutoff = ceil(len(clip) * len(left) / (len(clip) + len(tail)))
         assert (max(left[after_cutoff:]) > max(right[after_cutoff:])) == (example["label"] == "Hold")
 
+    v4_html = fetch.open(origin + "/v4/", timeout=30).read().decode()
     v4 = FocusedParser()
-    v4.feed(fetch.open(origin + "/v4/", timeout=30).read().decode())
+    v4.feed(v4_html)
+    v4_visible = re.sub(r"<script\b[^>]*>.*?</script>", "", v4_html, flags=re.S)
+    assert "Pikaia-Turn-Nano" not in v4_visible
     assert v4.sections == ["readout", "models", "results", "latency", "ablations", "benchmark", "paper", "access"]
     assert len(v4.ids) == len(set(v4.ids))
     assert all(href[1:] in v4.ids for href in v4.links if href.startswith("#") and href != "#")
-    assert v3.result_tables == v4.result_tables and v3.frontiers == v4.frontiers
-    assert v3.ablation_rows == v4.ablation_rows and v4.transfer_figures == 2
-    assert set(v3.access_links) == set(v4.access_links) and len(v4.access_links) == len(v3.access_links) and v3.audio_sources == v4.audio_sources
+    no_nano = lambda rows: [r for r in rows if r[0] != "Pikaia-Turn-Nano"]
+    assert {k: no_nano(v) for k, v in v3.result_tables.items()} == v4.result_tables
+    assert v3.frontiers == v4.frontiers
+    assert {k: v for k, v in v3.ablation_rows.items() if k[1] != "Pikaia-Turn-Nano"} == v4.ablation_rows
+    assert v4.transfer_figures == 2
+    assert len(v4.access_links) == 6 and v3.audio_sources == v4.audio_sources
+    assert set(u for u in v3.access_links if "issues/new" not in u) == set(u for u in v4.access_links if "issues/new" not in u)
     assert "/v4/" in v3.links and "/v3/" not in v4.links and "#listen" in v4.links
     assert "/report/pikaia-interview-eou-benchmark.pdf" not in v4.links
     assert "/report/citation.bib" not in v4.links

@@ -2,6 +2,7 @@
 .report-v4 {
   --v4-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
   --v4-coral: #e7bdaa;
+  --v4-mint: #a6c6b0;
   --v4-lilac-pill: #e7dff4;
   --v4-lilac-ink: #16121c;
   --v4-border: rgba(240, 237, 245, 0.12);
@@ -415,6 +416,7 @@
 .v4-tier-dot.tone-lilac { background: var(--accent); }
 .v4-tier-dot.tone-cyan { background: var(--cyan); }
 .v4-tier-dot.tone-coral { background: var(--v4-coral); }
+.v4-tier-dot.tone-mint { background: var(--v4-mint); }
 .v4-readout-switch button[aria-pressed="true"] .v4-tier-dot { background: var(--v4-lilac-ink); }
 
 /* =========================================================================
@@ -442,6 +444,7 @@
 
 .v4m-card.tone-cyan { --tone: var(--cyan); }
 .v4m-card.tone-coral { --tone: var(--v4-coral); }
+.v4m-card.tone-mint { --tone: var(--v4-mint); }
 
 .v4m-card::before {
   content: '';
@@ -652,6 +655,7 @@
 .v4m-proof-topline strong.tone-lilac { color: var(--accent); }
 .v4m-proof-topline strong.tone-cyan { color: var(--cyan); }
 .v4m-proof-topline strong.tone-coral { color: var(--v4-coral); }
+.v4m-proof-topline strong.tone-mint { color: var(--v4-mint); }
 
 .v4m-proof-chamber h4,
 .v4g-chamber h4 {
@@ -667,9 +671,11 @@
 .v4m-mini-row.is-pikaia .v4m-mini-meta span,
 .v4m-mini-row.is-cyan .v4m-mini-meta span,
 .v4m-mini-row.is-coral .v4m-mini-meta span,
+.v4m-mini-row.is-mint .v4m-mini-meta span,
 .v4m-mini-row.is-pikaia .v4m-mini-meta b,
 .v4m-mini-row.is-cyan .v4m-mini-meta b,
-.v4m-mini-row.is-coral .v4m-mini-meta b { color: #ffffff; font-weight: 500; }
+.v4m-mini-row.is-coral .v4m-mini-meta b,
+.v4m-mini-row.is-mint .v4m-mini-meta b { color: #ffffff; font-weight: 500; }
 
 .v4m-mini-track {
   height: 8px;
@@ -688,6 +694,7 @@
 .v4m-mini-row.is-pikaia .v4m-mini-track i { background: linear-gradient(90deg, rgba(185, 163, 237, 0.45), var(--accent)); }
 .v4m-mini-row.is-cyan .v4m-mini-track i { background: linear-gradient(90deg, rgba(165, 216, 220, 0.42), var(--cyan)); }
 .v4m-mini-row.is-coral .v4m-mini-track i { background: linear-gradient(90deg, rgba(231, 189, 170, 0.42), var(--v4-coral)); }
+.v4m-mini-row.is-mint .v4m-mini-track i { background: linear-gradient(90deg, rgba(166, 198, 176, 0.42), var(--v4-mint)); }
 
 .v4m-proof-note {
   margin: 13px 0 0;

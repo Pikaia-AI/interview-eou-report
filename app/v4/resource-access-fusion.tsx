@@ -13,8 +13,8 @@ const LINKS = {
   safetensors: 'https://huggingface.co/pikaia-ai/smart-turn-v3.2-interview/resolve/3ae0f8039a3d619b8e00c456e2ab27ce435d3398/model.safetensors?download=true',
   inquiry: (() => {
     const url = new URL('https://github.com/Pikaia-AI/interview-eou-report/issues/new');
-    url.searchParams.set('title', 'Model access inquiry for the Pikaia-Turn family');
-    url.searchParams.set('body', 'I would like to ask about evaluation access.\n\n**Model of interest**\nPikaia-Turn / Pikaia-Turn-Mini / Pikaia-Turn-Nano\n\n**Planned evaluation**\n');
+    url.searchParams.set('title', 'Model access inquiry for Pikaia-Turn');
+    url.searchParams.set('body', 'I would like to ask about evaluation access.\n\n**Model of interest**\nPikaia-Turn (2.3B) / Pikaia-Turn-Mini (0.6B)\n\n**Planned evaluation**\n');
     return url.href;
   })(),
 };
@@ -51,14 +51,14 @@ const TIERS = [
   {
     key: 'family' as const,
     num: '03',
-    railLabel: 'Pikaia-Turn family',
-    railMeta: '2.3B · 0.6B · 6.7M',
+    railLabel: 'Pikaia-Turn servers',
+    railMeta: '2.3B · 0.6B',
     tone: 'coral' as const,
-    ticksRight: 'DUAL SERVER · COMPACT SERVER · CPU STREAMING',
+    ticksRight: 'DUAL-BACKBONE FLAGSHIP · COMPACT SERVER',
     badge: 'PRIVATE WEIGHTS',
-    statementLead: 'Three compute budgets for long-form speech',
-    statementRest: ' — flagship 2.3B (84.48% R@5%), compact 0.6B (395.3 ms wait), and 6.7M frame-synchronous CPU streaming.',
-    code: 'Pikaia-Turn (2.3B) · Mini (0.6B) · Nano (6.7M)',
+    statementLead: 'Two private server models for long-form speech',
+    statementRest: ' — flagship Pikaia-Turn 2.3B (84.48% R@5%) and compact Mini 0.6B (395.3 ms wait), paired with open-weight Smart Turn v3.2-Interview (8.0M).',
+    code: 'Pikaia-Turn (2.3B) · Pikaia-Turn-Mini (0.6B)',
     copyable: false,
     shiftX: 10,
   },
@@ -220,13 +220,12 @@ export function V4ResourceAccess() {
             <span className="v4a-row-tag coral">Private family</span>
           </div>
           <div className="v4a-row-main">
-            <h3 id="access-family">Pikaia-Turn family</h3>
-            <p>Pikaia-Turn, Pikaia-Turn-Mini and Pikaia-Turn-Nano have private weights. Dual-backbone server, compact server, and frame-synchronous CPU streaming.</p>
+            <h3 id="access-family">Pikaia-Turn server models</h3>
+            <p>Pikaia-Turn and Pikaia-Turn-Mini have private weights: dual-backbone flagship and compact single-backbone server turn detectors.</p>
           </div>
-          <dl className="v4a-metrics three">
+          <dl className="v4a-metrics">
             <div><dt>Flagship</dt><dd>2.3B</dd></div>
             <div><dt>Mini</dt><dd>0.6B</dd></div>
-            <div><dt>Nano CPU</dt><dd>6.7M</dd></div>
           </dl>
           <div className="v4a-actions">
             <a className="v4a-pill-outline" href={LINKS.inquiry} target="_blank" rel="noreferrer">

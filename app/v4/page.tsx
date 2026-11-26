@@ -14,8 +14,8 @@ import '../v3/study.css';
 import './study.css';
 
 export const metadata: Metadata = {
-  title: 'Pikaia-Turn — Model family & technical report',
-  description: 'Explore Pikaia-Turn (2.3B), Mini (0.6B), and Nano (6.7M CPU streaming): causal turn detection, listening study, architecture controls, and waiting-time frontiers.',
+  title: 'Pikaia-Turn — Models, open release & technical report',
+  description: 'Explore Pikaia-Turn (2.3B), Pikaia-Turn-Mini (0.6B), and open-weight Smart Turn v3.2-Interview (8.0M): causal turn detection, listening study, architecture controls, and waiting-time frontiers.',
 };
 
 const companyUrl = process.env.NEXT_PUBLIC_COMPANY_V4_URL || 'https://www.pikaia.ai/';
@@ -25,6 +25,8 @@ const frontierScopes = {
   livekit_floor_end: { title: 'LiveKit · original Floor-end', note: '1,058 external LiveKit EOT Bench pairs with original speaker-finished labels.' },
   livekit: { title: 'LiveKit · Response-ready', note: '842 eligible LiveKit pairs relabeled by Pikaia for natural response readiness.' },
 };
+
+const EXCLUDED_MODELS = ['Pikaia-Turn-Nano'];
 
 function Opening() {
   return <div className="v4-titlepage" id="top">
@@ -39,16 +41,16 @@ function Opening() {
       </div>
       <div className="v4-opening-grid">
         <div className="v4-title-copy">
-          <p className="eyebrow">Pikaia-Turn · 2.3B / 0.6B / 6.7M</p>
+          <p className="eyebrow">Pikaia-Turn · 2.3B / 0.6B / 8.0M Open</p>
           <h1>Wait or <br/><em>respond?</em></h1>
-          <p>Two pauses from the same conversation. Listen to each one, then see how the Pikaia-Turn family separates finished thoughts from thinking pauses across three compute budgets.</p>
+          <p>Two pauses from the same conversation. Listen to each one, then compare our private server models and open-weight Smart Turn v3.2-Interview across bilingual spoken interviews.</p>
           <div className="v4-hero-specs" aria-label="Study specifications">
-            <span>2.3B · 0.6B · 6.7M CPU</span>
+            <span>2.3B · 0.6B · 8.0M open</span>
             <span>300 ms pause cutoff</span>
             <span>1,100 research test</span>
           </div>
           <div className="v4-hero-actions">
-            <a className="v4-pill-cta" href="#models">Meet Pikaia-Turn <ArrowDown size={15} aria-hidden="true"/></a>
+            <a className="v4-pill-cta" href="#models">Explore the models <ArrowDown size={15} aria-hidden="true"/></a>
             <a className="v4-results-link" href="#readout">1,100-pause readout <ArrowDownRight size={15} aria-hidden="true"/></a>
           </div>
         </div>
@@ -62,24 +64,27 @@ function Colophon() {
   return <footer className="v4-ending">
     <a className="v4-signature" href={companyUrl} aria-label="Pikaia Research, visit the company homepage">Pikaia<span>Research</span><ArrowUpRight size={21} aria-hidden="true"/></a>
     <nav aria-label="Research footer">
-      <div><h2>Report</h2><a href="#listen">Listening task</a><a href="#models">Model family</a><a href="#results">Results &amp; timing</a></div>
+      <div><h2>Report</h2><a href="#listen">Listening task</a><a href="#models">Models &amp; release</a><a href="#results">Results &amp; timing</a></div>
       <div><h2>Resources</h2><a href="#access">Dataset and models</a><a href="#paper">Limits &amp; archives</a><a href={companyUrl}>Company homepage ↗</a></div>
     </nav>
   </footer>;
 }
 
 export default function Page() {
-  const models = report.models.map(m => (m.name === 'Turn-1' ? { ...m, spec: '2.8B · zero-shot' } : m));
+  const models = report.models
+    .filter(m => !EXCLUDED_MODELS.includes(m.name))
+    .map(m => (m.name === 'Turn-1' ? { ...m, spec: '2.8B · zero-shot' } : m));
   return (
     <FocusedReport
       edition="v4"
       modelsFirst
       hidePaperPdf
+      ablationExcludeModels={EXCLUDED_MODELS}
       opening={<Opening/>}
       overview={<OutcomeReadout/>}
       modelsSection={<ModelFamilyV4/>}
       results={<ResultsExplorerV4 models={models}/>}
-      frontiers={<CascadeFrontiersV4 scopes={frontierScopes}/>}
+      frontiers={<CascadeFrontiersV4 scopes={frontierScopes} excludeModels={EXCLUDED_MODELS}/>}
       generalizationSection={<GeneralizationV4/>}
       access={<V4ResourceAccess/>}
       colophon={<Colophon/>}

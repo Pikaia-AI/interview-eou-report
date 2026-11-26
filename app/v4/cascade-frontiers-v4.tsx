@@ -170,12 +170,16 @@ function OpticalFrontierPanel({ dataset, active, budget, onBudgetChange, scope }
   );
 }
 
-export function CascadeFrontiersV4({ scopes }: { scopes: Record<string, FrontierScope> }) {
+export function CascadeFrontiersV4({ scopes, excludeModels = [] }: { scopes: Record<string, FrontierScope>; excludeModels?: string[] }) {
   const [active, setActive] = useState<string | null>(null);
   const [budget, setBudget] = useState(5);
   const [draft, setDraft] = useState<string | null>(null);
   const changeBudget = (v: number) => setBudget(snapBudget(v));
   const fillPct = ((budget - minBudget) / (maxBudget - minBudget)) * 100;
+  const excluded = new Set(excludeModels);
+  const frontiers = excluded.size
+    ? data.frontiers.map(ds => ({ ...ds, models: ds.models.filter(m => !excluded.has(m.name)) }))
+    : data.frontiers;
 
   return (
     <div className="v4p-wrap">
@@ -238,7 +242,7 @@ export function CascadeFrontiersV4({ scopes }: { scopes: Record<string, Frontier
           <div className="v4p-models-row">
             <div className="v4p-models" role="group" aria-label="Highlight a model in all three charts">
               <button type="button" className="v4p-pill" aria-pressed={active === null} onClick={() => setActive(null)}>All models</button>
-              {data.frontiers[0].models.map(model => (
+              {frontiers[0].models.map(model => (
                 <button
                   key={model.name}
                   type="button"
@@ -250,12 +254,12 @@ export function CascadeFrontiersV4({ scopes }: { scopes: Record<string, Frontier
                 </button>
               ))}
             </div>
-            <p id="v4p-budget-help" className="v4p-help">Solid = Pikaia family · Dashed = baselines · Lower-left is better</p>
+            <p id="v4p-budget-help" className="v4p-help">Solid = Pikaia server models · Dashed = zero-shot baselines · Lower-left is better</p>
           </div>
         </div>
 
         <div className="v4p-grid">
-          {data.frontiers.map(ds => (
+          {frontiers.map(ds => (
             <OpticalFrontierPanel
               key={ds.id}
               dataset={ds}
@@ -269,7 +273,7 @@ export function CascadeFrontiersV4({ scopes }: { scopes: Record<string, Frontier
       </div>
 
       <p className="native-chart-note">
-        A decision is made at 300 ms, reconsidered at 600 ms, then falls back to 1,000 ms. Mean waiting time is measured on true EOT examples and includes fallback. Each budget uses its recorded operating point; values are not interpolated. Actual cut-offs can be below the budget, and some steps share the same result because each dataset has a finite number of HOLD examples. The downloadable data includes all sampled budgets up to 20%.
+        A decision is made at 300 ms, reconsidered at 600 ms, then falls back to 1,000 ms. Mean waiting time is measured on true EOT examples and includes fallback. Each budget uses its recorded operating point; values are not interpolated. Open-weight Smart Turn v3.2-Interview (8.0M) is evaluated at the ≤5% operating point (630.8 ms on Pikaia 1,700 pairs; 758.9 ms on LiveKit Response-ready) rather than the sampled 79-step curve grid. The downloadable data includes all sampled budgets up to 20%.
       </p>
     </div>
   );

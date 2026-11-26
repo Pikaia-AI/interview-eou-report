@@ -8,9 +8,9 @@ const columns = 48;
 const pitch = 6;
 
 const FAMILY_OPTIONS = [
-  { name: 'Pikaia-Turn', short: 'Pikaia-Turn · 2.3B', tone: 'lilac' },
-  { name: 'Pikaia-Turn-Mini', short: 'Mini · 0.6B', tone: 'cyan' },
-  { name: 'Pikaia-Turn-Nano', short: 'Nano · 6.7M', tone: 'coral' },
+  { name: 'Pikaia-Turn', short: 'Pikaia-Turn · 2.3B', displayName: 'Pikaia-Turn', tone: 'lilac' },
+  { name: 'Pikaia-Turn-Mini', short: 'Mini · 0.6B', displayName: 'Pikaia-Turn-Mini', tone: 'cyan' },
+  { name: 'Smart Turn + Interview FT', short: 'Smart Turn FT · 8.0M', displayName: 'Smart Turn v3.2-Interview', tone: 'mint' },
 ] as const;
 
 // A single repeated mark per decision. The last row stops at the exact count.
@@ -59,6 +59,7 @@ function Outcome({ id, title, count, total, population, marked, other }: Outcome
 
 export function OutcomeReadout() {
   const [selected, setSelected] = useState<(typeof FAMILY_OPTIONS)[number]['name']>('Pikaia-Turn');
+  const activeOption = FAMILY_OPTIONS.find(option => option.name === selected) ?? FAMILY_OPTIONS[0];
   const active = report.models.find(model => model.name === selected);
   if (!active) throw new Error(`The ${selected} measurement is missing`);
   const sample = active.splits.test_1100['300ms'].overall;
@@ -67,16 +68,16 @@ export function OutcomeReadout() {
   return <section className="report-section v4-readout" id="readout" aria-labelledby="readout-title">
     <div className="v4-result-head">
       <div>
-        <p className="eyebrow">Pikaia-Turn family · Public research test</p>
+        <p className="eyebrow">Pikaia models · Public research test</p>
         <h2 id="readout-title">At a 5% cut-off budget</h2>
       </div>
       <p>
-        At the 300 ms cutoff, each Pikaia-Turn model decides whether to respond or keep listening across {sample.n.toLocaleString('en-US')} labeled pauses in Mandarin and English. Switch tiers below to inspect all three models on the same test slice.
+        At the 300 ms cutoff, each model decides whether to respond or keep listening across {sample.n.toLocaleString('en-US')} labeled pauses in Mandarin and English. Switch between Pikaia-Turn, Mini, and open-weight Smart Turn v3.2-Interview below.
       </p>
     </div>
     <div className="v4-readout-chamber">
       <div className="v4-chamber-ticks v4-chamber-bar">
-        <div className="v4-readout-switch" role="group" aria-label="Select Pikaia-Turn model tier">
+        <div className="v4-readout-switch" role="group" aria-label="Select evaluated model tier">
           {FAMILY_OPTIONS.map(option => (
             <button
               key={option.name}
@@ -97,10 +98,10 @@ export function OutcomeReadout() {
       </div>
     </div>
     <div className="outcome-source">
-      <p>Each dot is one labeled pause for <strong>{active.name}</strong> ({active.spec}), grouped by outcome. The threshold is selected on this test slice to cap early responses at 5% of HOLD decisions.</p>
+      <p>Each dot is one labeled pause for <strong>{activeOption.displayName}</strong> ({active.spec}), grouped by outcome. The threshold is selected on this test slice to cap early responses at 5% of HOLD decisions.</p>
       <div className="v4-source-links">
-        <a href="#models">Explore the model family <ArrowDownRight size={15} aria-hidden="true"/></a>
-        <a href="#results">Compare all 7 models <ArrowDownRight size={15} aria-hidden="true"/></a>
+        <a href="#models">Explore the models <ArrowDownRight size={15} aria-hidden="true"/></a>
+        <a href="#results">Compare all 6 models <ArrowDownRight size={15} aria-hidden="true"/></a>
       </div>
     </div>
   </section>;

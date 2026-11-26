@@ -2,15 +2,14 @@ import { Download } from 'lucide-react';
 
 const TURNBENCH_ROWS = [
   { model: 'Pikaia-Turn-Mini (0.6B)', oof: '91.28%', p50: '617.5 ms', r5: '84.72%', family: true },
-  { model: 'Pikaia-Turn-Nano (6.7M)', oof: '89.81%', p50: '597.0 ms', r5: '84.09%', family: true },
   { model: 'Turn-1-Mini (5.3M)', oof: '90.39%', p50: '629.0 ms', r5: '84.61%', family: false },
   { model: 'Turn-1 (2.8B, legacy Dev)', oof: '85.14%*', p50: '1,055.0 ms', r5: '—', family: false },
+  { model: 'Smart Turn v3.2 (8.0M, legacy Dev)', oof: '80.09%*', p50: '—', r5: '—', family: false },
 ];
 
 const EASYTURN_ROWS = [
   { model: 'Pikaia-Turn (Curated / Exp FT)', realAuc: '.9606 / .9573', synthAuc: '.9353 / .9150', waitHold: '42.0% / 30.0%', family: true },
-  { model: 'Pikaia-Turn-Mini (Exp FT)', realAuc: '.9460', synthAuc: '.8623', waitHold: '67.0%', family: true },
-  { model: 'Pikaia-Turn-Nano (Curated / Exp)', realAuc: '.7662* / .6634*', synthAuc: '.8216 / .6137', waitHold: '75.0% / 88.0%', family: true },
+  { model: 'Pikaia-Turn-Mini (Curated / Exp FT)', realAuc: '.9441 / .9460', synthAuc: '.8617 / .8623', waitHold: '60.0% / 67.0%', family: true },
   { model: 'Turn-1 (2.8B, zero-shot)', realAuc: '.9571', synthAuc: '.9340', waitHold: '28.0%', family: false },
 ];
 
@@ -31,7 +30,7 @@ export function GeneralizationV4() {
         <article className="v4g-chamber">
           <div className="v4m-proof-topline">
             <span>TURNBENCH DEV · 38 ENGLISH STUDIO DYADS</span>
-            <strong className="tone-cyan">91.28% OOF · 597 ms Nano</strong>
+            <strong className="tone-cyan">91.28% OOF · 617.5 ms p50</strong>
           </div>
           <h4>Full-duplex dialogue stress test</h4>
           <p className="v4g-sub">
@@ -59,7 +58,7 @@ export function GeneralizationV4() {
               </tbody>
             </table>
           </div>
-          <p className="v4g-footnote">*Turn-1 (2.8B) evaluated on legacy Dev protocol without the duplex partner-VAD layer.</p>
+          <p className="v4g-footnote">*Turn-1 (2.8B) and Smart Turn v3.2 evaluated on the legacy Dev protocol without the duplex partner-VAD layer.</p>
         </article>
 
         <article className="v4g-chamber">
@@ -93,7 +92,7 @@ export function GeneralizationV4() {
               </tbody>
             </table>
           </div>
-          <p className="v4g-footnote">*Nano columns show All AUC; expanded interview fine-tuning trades synthetic-speech AUC (.8216 → .6137) for higher explicit wait-hold (75% → 88%).</p>
+          <p className="v4g-footnote">Both Pikaia server checkpoints preserve strong real-speech discrimination; synthetic TTS prosody and explicit “wait” hold prompts remain harder out-of-domain regimes.</p>
         </article>
       </div>
     </div>
