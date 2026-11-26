@@ -7,7 +7,9 @@ import { ListeningDesk } from '../v3/listening-desk';
 import { OutcomeReadout } from './outcome-readout';
 import { ModelFamilyV4 } from './model-family-v4';
 import { ResultsExplorerV4 } from './results-explorer-v4';
+import { CaseStudiesV4 } from './case-studies-v4';
 import { CascadeFrontiersV4 } from './cascade-frontiers-v4';
+import { DiagnosticsV4 } from './diagnostics-v4';
 import { GeneralizationV4 } from './generalization-v4';
 import { V4ResourceAccess } from './resource-access-fusion';
 import '../v3/study.css';
@@ -83,8 +85,8 @@ export default function Page() {
       opening={<Opening/>}
       overview={<OutcomeReadout/>}
       modelsSection={<ModelFamilyV4/>}
-      results={<ResultsExplorerV4 models={models}/>}
-      frontiers={<CascadeFrontiersV4 scopes={frontierScopes} excludeModels={EXCLUDED_MODELS}/>}
+      results={<><ResultsExplorerV4 models={models}/><CaseStudiesV4/></>}
+      frontiers={<><CascadeFrontiersV4 scopes={frontierScopes} excludeModels={EXCLUDED_MODELS}/><DiagnosticsV4/></>}
       generalizationSection={<GeneralizationV4/>}
       access={<V4ResourceAccess/>}
       colophon={<Colophon/>}

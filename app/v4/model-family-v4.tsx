@@ -1,5 +1,6 @@
 import { ArrowDownRight, Download } from 'lucide-react';
 import report from '../report-data.json';
+import { ArchitectureV4 } from './architecture-v4';
 
 type FamilyCard = {
   id: string;
@@ -195,6 +196,8 @@ export function ModelFamilyV4() {
           </article>
         </div>
       </div>
+
+      <ArchitectureV4/>
 
       <div className="v4m-footer">
         <p>Pikaia-Turn and Pikaia-Turn-Mini weights and the interview training corpus remain private. Smart Turn v3.2-Interview (8.0M, seed 29) is open-weight under BSD 2-Clause.</p>
