@@ -205,13 +205,15 @@ def main():
 
     v4 = FocusedParser()
     v4.feed(fetch.open(origin + "/v4/", timeout=30).read().decode())
-    assert v4.sections == ["readout", *v3.sections]
+    assert v4.sections == ["readout", "models", "results", "latency", "ablations", "benchmark", "paper", "access"]
     assert len(v4.ids) == len(set(v4.ids))
     assert all(href[1:] in v4.ids for href in v4.links if href.startswith("#") and href != "#")
     assert v3.result_tables == v4.result_tables and v3.frontiers == v4.frontiers
     assert v3.ablation_rows == v4.ablation_rows and v4.transfer_figures == 2
     assert set(v3.access_links) == set(v4.access_links) and len(v4.access_links) == len(v3.access_links) and v3.audio_sources == v4.audio_sources
     assert "/v4/" in v3.links and "/v3/" not in v4.links and "#listen" in v4.links
+    assert "/report/pikaia-interview-eou-benchmark.pdf" not in v4.links
+    assert "/report/citation.bib" not in v4.links
     readout = "".join(v4.readout_text)
     flagship = next(model for model in report["models"] if model["name"] == "Pikaia-Turn")
     sample = flagship["splits"]["test_1100"]["300ms"]["overall"]

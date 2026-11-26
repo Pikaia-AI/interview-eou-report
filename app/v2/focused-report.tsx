@@ -32,20 +32,37 @@ function Title({ index, label, children }: { index: string; label: string; child
 }
 
 const studyNavigation = [['readout', 'Overview'], ...researchNavigation];
+const modelsFirstNavigation = [['readout', 'Overview'], ['models', 'Models'], ['results', 'Results'], ['latency', 'Timing'], ['ablations', 'Ablations'], ['smart-turn-transfer', 'Transfer'], ['benchmark', 'Data'], ['paper', 'Sources'], ['access', 'Access']];
 
 type FocusedReportProps = {
   edition?: 'v2' | 'v3' | 'v4';
   opening?: React.ReactNode;
   overview?: React.ReactNode;
+  modelsSection?: React.ReactNode;
   results?: React.ReactNode;
   frontiers?: React.ReactNode;
+  generalizationSection?: React.ReactNode;
   access?: React.ReactNode;
   colophon?: React.ReactNode;
+  modelsFirst?: boolean;
+  hidePaperPdf?: boolean;
 };
 
-export function FocusedReport({ edition = 'v2', opening, overview, results, frontiers, access, colophon }: FocusedReportProps) {
+export function FocusedReport({
+  edition = 'v2',
+  opening,
+  overview,
+  modelsSection,
+  results,
+  frontiers,
+  generalizationSection,
+  access,
+  colophon,
+  modelsFirst = false,
+  hidePaperPdf = false,
+}: FocusedReportProps) {
   const research = edition !== 'v2';
-  const methods = <>
+  const modelBlock = modelsSection ?? (
       <section className="report-section" id="models">
         {research ? <>
           <Title index="03" label="Model configurations">Models in this evaluation</Title>
@@ -66,9 +83,10 @@ export function FocusedReport({ edition = 'v2', opening, overview, results, fron
         </>}
         <p className="source-note">All three use audio and preceding-question context. The ablation below evaluates empty-question inputs. The Pikaia-Turn family weights and training corpus remain private.</p>
       </section>
-
+  );
+  const benchmarkBlock = (
       <section className="report-section" id="benchmark">
-        <div className="v2-section-lead"><Title index={research ? "04" : "02"} label="Data & scope">{research ? "Training and evaluation sets" : "Know what is being measured."}</Title><p>Training examples, public research tests and full-pool analyses have different roles. The two result charts keep those evaluation scopes separate.</p></div>
+        <div className="v2-section-lead"><Title index={modelsFirst ? "05" : research ? "04" : "02"} label="Data & scope">{research ? "Training and evaluation sets" : "Know what is being measured."}</Title><p>Training examples, public research tests and full-pool analyses have different roles. The two result charts keep those evaluation scopes separate.</p></div>
         <div className="v2-data-roles">
           <article id="training-data"><div><span className="micro-label">PRIVATE / TRAINING</span><h3>Pikaia family training corpus</h3></div><strong>{number(training.expanded_count)}</strong><p>Pauses from our own real interviews: {number(training.languages.zh)} Mandarin and {number(training.languages.en)} English. Includes human-reviewed and machine-consensus labels for when a listener can respond. <a className="v2-data-link" href="#smart-turn-transfer">See the separate Smart Turn training run</a>.</p></article>
           <article><div><span className="micro-label">HUGGING FACE / EVALUATION</span><h3>Pikaia research test</h3></div><strong>1,100</strong><p>500 Mandarin and 600 English decisions from 65 speaker clusters. This gated test comes from our benchmark and excludes development and calibration points.</p></article>
@@ -87,26 +105,54 @@ export function FocusedReport({ edition = 'v2', opening, overview, results, fron
           </div>
         </details>
       </section>
-  </>;
-  const measurements = <>
+  );
+  const methods = <>{modelBlock}{benchmarkBlock}</>;
+  const resultsBlock = (
       <section className="report-section" id="results">
-        <Title index={research ? "01" : "03"} label="Main results">{research ? "Response-ready recall" : "Compare on the same terms."}</Title>
+        <Title index={modelsFirst ? "02" : research ? "01" : "03"} label="Main results">{research ? "Response-ready recall" : "Compare on the same terms."}</Title>
         <p className="v2-intro">Public research test and full evaluation pool, with shared filters and model order. Recall measures how often a true response opportunity is detected within the selected false-positive budget.</p>
         {results ?? <ResultsExplorer models={report.models}/>}
-        <SmartTurnTransfer modelAccessHref={research ? '#access-model' : undefined}/>
+        {!modelsFirst && <SmartTurnTransfer modelAccessHref={research ? '#access-model' : undefined}/>}
       </section>
-
+  );
+  const latencyBlock = (
       <section className="report-section" id="latency">
-        <Title index={research ? "02" : "04"} label="Waiting time & interruptions">{research ? "Waiting time at a fixed interruption budget" : "How fast, at what risk?"}</Title>
+        <Title index={modelsFirst ? "03" : research ? "02" : "04"} label="Waiting time & interruptions">{research ? "Waiting time at a fixed interruption budget" : "How fast, at what risk?"}</Title>
         <p className="v2-intro">Each pair is one decision point evaluated at 300 and 600 ms. Drag any horizontal line to update the false-cut-off budget for all three charts. Lower-left is better.</p>
         <div id="figure-2">{frontiers ?? <CascadeFrontiers compact includeOriginalLiveKit scopes={scopes}/>}</div>
         <div className="v2-chart-source"><p>Mean wait uses the EOT points and actual cut-offs use the HOLD points. EOT / HOLD counts are 1,287 / 413 for Pikaia, 716 / 342 for original LiveKit, and 699 / 143 for Response-ready LiveKit. The two LiveKit views differ in both labeling and which points are included.</p><a href="/report/figure-data.json" download>Curve data <Download size={15}/></a></div>
       </section>
-  </>;
+  );
+  const measurements = <>{resultsBlock}{latencyBlock}</>;
+  const ablationsBlock = (
+      <section className="report-section" id="ablations">
+        <Title index={modelsFirst ? "04" : "05"} label="Ablations & transfer">{modelsFirst ? "Context, generalization & transfer" : "What does context change?"}</Title>
+        <ContextAblation/>
+        {generalizationSection}
+        {modelsFirst && <SmartTurnTransfer modelAccessHref={research ? '#access-model' : undefined}/>}
+        {!modelsFirst && <details className="report-detail v2-methods" id="training-controls">
+          <summary><span>Training and architecture controls</span><ChevronDown size={18}/></summary>
+          <div className="v2-detail-copy">
+            <p>With the same 3,195 training examples, Pikaia-Turn reaches 81.5% recall versus 60.7% for fine-tuned unmodified Turn-1 on LiveKit response-ready at 600 ms and ≤5% FPR.</p>
+            <p>On Pikaia, Nano’s reported architecture sequence goes from 729.8 ms after audio-only fine-tuning to 706.9 ms with prosody/utterance state and 657.0 ms with prompt conditioning. This training-and-architecture comparison differs from removing question text at inference above.</p>
+            <p>The <a className="v2-data-link" href="#smart-turn-transfer">Smart Turn transfer experiment</a> uses a larger training pool that overlaps the separate internal validation and test splits. It is evaluated on the Pikaia benchmark and the external LiveKit data.</p>
+            <a className="text-link" href="/report/v2-supplementary.json" download>Complete experiment controls <Download size={15}/></a>
+          </div>
+        </details>}
+        {!generalizationSection && <details className="report-detail v2-methods" id="transfer">
+          <summary><span>External evaluation & failure modes</span><ChevronDown size={18}/></summary>
+          <div className="v2-detail-copy">
+            <h3>TurnBench Dev</h3><p>On 38 English studio dyads, Mini reaches 91.28% conversation-grouped out-of-fold recall with 617.5 ms median event latency at a ≤10% FPR budget. This setup adds a causal duplex partner-VAD control layer to frozen model weights. It is a local Dev stress test, not a held-out test leaderboard entry.</p>
+            <h3>EasyTurn and objective changes</h3><p>Synthetic-speech transfer and explicit “wait” requests remain difficult. Nano’s expanded training checkpoint has lower synthetic-speech AUC than its smaller-data control. Floor-end and response-ready evaluations also change both labels and eligible samples; their score differences do not measure a model improvement.</p>
+            <a className="text-link" href="/report/v2-supplementary.json" download>Transfer results & full controls <Download size={15}/></a>
+          </div>
+        </details>}
+      </section>
+  );
 
   return <div className={edition === 'v4' ? 'report-v2 study-report report-v4' : research ? 'report-v2 study-report' : 'report-v2'}>
     {!research && <ReportVersionSwitch version={edition}/>}
-    <a href={research ? "#results" : "#models"} className="skip-link">Skip to research</a>
+    <a href={modelsFirst ? "#models" : research ? "#results" : "#models"} className="skip-link">Skip to research</a>
     <DisclosureLinks/>
     {opening ?? <div className="hero" id="top">
       <img className="hero-art" src="/art/hero-art.webp" alt="A slender Pikaia suspended in iridescent glass, flowing horizontally through a dark field" fetchPriority="high" width="1419" height="1108"/>
@@ -119,39 +165,17 @@ export function FocusedReport({ edition = 'v2', opening, overview, results, fron
         <div className="hero-actions"><a className="button primary" href="#results">Explore the results <ArrowUpRight size={18}/></a><a className="text-link" href="#models">Meet the family <ArrowUpRight size={16}/></a></div>
       </div>
     </div>}
-    <Contents items={edition === 'v4' ? studyNavigation : research ? researchNavigation : navigation}/>
+    <Contents items={modelsFirst ? modelsFirstNavigation : edition === 'v4' ? studyNavigation : research ? researchNavigation : navigation}/>
 
     <main className="shell">
       {overview}
-      {research ? <>{measurements}{methods}</> : <>{methods}{measurements}</>}
-
-      <section className="report-section" id="ablations">
-        <Title index="05" label="Ablations & transfer">What does context change?</Title>
-        <ContextAblation/>
-        <details className="report-detail v2-methods" id="training-controls">
-          <summary><span>Training and architecture controls</span><ChevronDown size={18}/></summary>
-          <div className="v2-detail-copy">
-            <p>With the same 3,195 training examples, Pikaia-Turn reaches 81.5% recall versus 60.7% for fine-tuned unmodified Turn-1 on LiveKit response-ready at 600 ms and ≤5% FPR.</p>
-            <p>On Pikaia, Nano’s reported architecture sequence goes from 729.8 ms after audio-only fine-tuning to 706.9 ms with prosody/utterance state and 657.0 ms with prompt conditioning. This training-and-architecture comparison differs from removing question text at inference above.</p>
-            <p>The <a className="v2-data-link" href="#smart-turn-transfer">Smart Turn transfer experiment</a> uses a larger training pool that overlaps the separate internal validation and test splits. It is evaluated on the Pikaia benchmark and the external LiveKit data.</p>
-            <a className="text-link" href="/report/v2-supplementary.json" download>Complete experiment controls <Download size={15}/></a>
-          </div>
-        </details>
-        <details className="report-detail v2-methods" id="transfer">
-          <summary><span>External evaluation & failure modes</span><ChevronDown size={18}/></summary>
-          <div className="v2-detail-copy">
-            <h3>TurnBench Dev</h3><p>On 38 English studio dyads, Mini reaches 91.28% conversation-grouped out-of-fold recall with 617.5 ms median event latency at a ≤10% FPR budget. This setup adds a causal duplex partner-VAD control layer to frozen model weights. It is a local Dev stress test, not a held-out test leaderboard entry.</p>
-            <h3>EasyTurn and objective changes</h3><p>Synthetic-speech transfer and explicit “wait” requests remain difficult. Nano’s expanded training checkpoint has lower synthetic-speech AUC than its smaller-data control. Floor-end and response-ready evaluations also change both labels and eligible samples; their score differences do not measure a model improvement.</p>
-            <a className="text-link" href="/report/v2-supplementary.json" download>Transfer results & full controls <Download size={15}/></a>
-          </div>
-        </details>
-      </section>
+      {modelsFirst ? <>{modelBlock}{measurements}{ablationsBlock}{benchmarkBlock}</> : <>{research ? <>{measurements}{methods}</> : <>{methods}{measurements}</>}{ablationsBlock}</>}
 
       <section className="report-section v2-resources" id="paper">
-        <div className="v2-section-lead"><Title index="06" label="Limits & resources">{research ? 'Limitations and sources' : 'Keep the evidence close.'}</Title><p>This page documents the Pikaia family experiments. The benchmark paper covers the public dataset and open-weight baselines. Sources are listed by experiment below.</p></div>
+        <div className="v2-section-lead"><Title index="06" label="Limits & resources">{research ? 'Limitations and sources' : 'Keep the evidence close.'}</Title><p>{hidePaperPdf ? 'This report documents the Pikaia-Turn model family, architecture controls, and evaluation results. Machine-readable archives and reproducibility assets are listed below.' : 'This page documents the Pikaia family experiments. The benchmark paper covers the public dataset and open-weight baselines. Sources are listed by experiment below.'}</p></div>
         <div className="v2-limits" id="discussion"><p><strong>Recorded decisions.</strong> These tests do not measure live interruption repair or end-to-end conversation quality.</p><p><strong>Deployment calibration.</strong> A low observed FPR on a small calibration pool does not guarantee that rate on new speakers.</p><p><strong>Domain boundaries.</strong> Human overlap, synthetic prosody and explicit wait requests need separate validation.</p></div>
         <div className="v2-resource-grid">
-          <a href={PDF} target="_blank" rel="noreferrer"><span className="micro-label">BENCHMARK PAPER / PDF</span><h3>Public dataset & baselines <ArrowUpRight size={18}/></h3><p>1,200 public examples across development and research-test splits.</p></a>
+          {!hidePaperPdf && <a href={PDF} target="_blank" rel="noreferrer"><span className="micro-label">BENCHMARK PAPER / PDF</span><h3>Public dataset & baselines <ArrowUpRight size={18}/></h3><p>1,200 public examples across development and research-test splits.</p></a>}
           {!research && <a href="https://huggingface.co/datasets/pikaia-ai/interview-eou-benchmark-research" target="_blank" rel="noreferrer"><span className="micro-label">HUGGING FACE / GATED ACCESS</span><h3>Research test data <ArrowUpRight size={18}/></h3><p>1,100 evaluation points. Academic access terms apply.</p></a>}
           <a href="https://github.com/Pikaia-AI/interview-eou-report" target="_blank" rel="noreferrer"><span className="micro-label">GITHUB / REPORT REPOSITORY</span><h3>Code & report assets <ArrowUpRight size={18}/></h3><p>Source materials and reproducibility resources.</p></a>
           <a href="/report/v2-supplementary.json" download><span className="micro-label">TECHNICAL EXPERIMENTS / JSON</span><h3>Controls & supplementary results <Download size={18}/></h3><p>Calibration, transfer, training controls and additional cascade cohorts.</p></a>
@@ -159,9 +183,9 @@ export function FocusedReport({ edition = 'v2', opening, overview, results, fron
         <details className="report-detail v2-methods" id="experiment-sources">
           <summary><span>Experiment sources, versions & citation</span><ChevronDown size={18}/></summary>
           <div className="v2-detail-copy">
-            <p>Main results use the November 2026 metrics snapshot. Timing curves retain the six-model supplement’s sampled policies; question ablations come from the 15 November paired-input experiment. The benchmark PDF has its own table numbering and does not include the proprietary Pikaia family experiments.</p>
+            <p>{hidePaperPdf ? 'Main results use the November 2026 metrics snapshot. Timing curves retain the six-model supplement’s sampled policies; question ablations come from the 15 November paired-input experiment.' : 'Main results use the November 2026 metrics snapshot. Timing curves retain the six-model supplement’s sampled policies; question ablations come from the 15 November paired-input experiment. The benchmark PDF has its own table numbering and does not include the proprietary Pikaia family experiments.'}</p>
             <p>One archive discrepancy remains unresolved: Turn-1’s full-pool Wait@5% is 412.7 ms in the archived main table and 411.4 ms in the sampled curve. The report editions use the latter curve data; this layout comparison does not recompute predictions or reconcile those records.</p>
-            <div className="v2-inline-links"><a href="/report/v2-source-manifest.json" download>Source manifest <Download size={14}/></a><a href="/report/metrics.json" download>Main metrics archive <Download size={14}/></a><a href="/report/citation.bib" download>BibTeX <Download size={14}/></a>{!research && <a href="https://huggingface.co/datasets/pikaia-ai/interview-eou-benchmark" target="_blank" rel="noreferrer">Development data <ArrowUpRight size={14}/></a>}</div>
+            <div className="v2-inline-links"><a href="/report/v2-source-manifest.json" download>Source manifest <Download size={14}/></a><a href="/report/metrics.json" download>Main metrics archive <Download size={14}/></a>{!hidePaperPdf && <a href="/report/citation.bib" download>BibTeX <Download size={14}/></a>}{!research && <a href="https://huggingface.co/datasets/pikaia-ai/interview-eou-benchmark" target="_blank" rel="noreferrer">Development data <ArrowUpRight size={14}/></a>}</div>
           </div>
         </details>
         {!research && <p className="source-note">Public audio is gated for non-commercial spoken-dialogue evaluation. Training data and model weights remain private.</p>}

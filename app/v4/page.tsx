@@ -5,15 +5,17 @@ import { Header } from '../report-ui';
 import { FocusedReport } from '../v2/focused-report';
 import { ListeningDesk } from '../v3/listening-desk';
 import { OutcomeReadout } from './outcome-readout';
+import { ModelFamilyV4 } from './model-family-v4';
 import { ResultsExplorerV4 } from './results-explorer-v4';
 import { CascadeFrontiersV4 } from './cascade-frontiers-v4';
+import { GeneralizationV4 } from './generalization-v4';
 import { V4ResourceAccess } from './resource-access-fusion';
 import '../v3/study.css';
 import './study.css';
 
 export const metadata: Metadata = {
-  title: 'Pikaia-Turn — Listening study / Technical report V4',
-  description: 'Listen at a real conversational pause, then compare response opportunities, false cut-offs and waiting time in Pikaia’s bilingual turn-taking benchmarks.',
+  title: 'Pikaia-Turn — Model family & technical report',
+  description: 'Explore Pikaia-Turn (2.3B), Mini (0.6B), and Nano (6.7M CPU streaming): causal turn detection, listening study, architecture controls, and waiting-time frontiers.',
 };
 
 const companyUrl = process.env.NEXT_PUBLIC_COMPANY_V4_URL || 'https://www.pikaia.ai/';
@@ -26,25 +28,28 @@ const frontierScopes = {
 
 function Opening() {
   return <div className="v4-titlepage" id="top">
-    <Header links={[['listen', 'Listen'], ['readout', 'Results'], ['latency', 'Timing'], ['access', 'Access']]}/>
+    <Header
+      links={[['listen', 'Listen'], ['models', 'Models'], ['results', 'Results'], ['latency', 'Timing'], ['access', 'Access']]}
+      showPaper={false}
+    />
     <div className="shell">
       <div className="v4-folio">
-        <p>Technical report <span>/</span> November 2026</p>
+        <p>Pikaia-Turn Technical Report <span>/</span> November 2026</p>
         <a className="v4-folio-home" href={companyUrl}>Pikaia homepage <ArrowUpRight size={13} aria-hidden="true"/></a>
       </div>
       <div className="v4-opening-grid">
         <div className="v4-title-copy">
-          <p className="eyebrow">Pikaia-Turn · Technical Report</p>
+          <p className="eyebrow">Pikaia-Turn · 2.3B / 0.6B / 6.7M</p>
           <h1>Wait or <br/><em>respond?</em></h1>
-          <p>Two pauses from the same conversation. Listen to each one and decide whether the other person can take a turn.</p>
+          <p>Two pauses from the same conversation. Listen to each one, then see how the Pikaia-Turn family separates finished thoughts from thinking pauses across three compute budgets.</p>
           <div className="v4-hero-specs" aria-label="Study specifications">
-            <span>16 kHz mono</span>
+            <span>2.3B · 0.6B · 6.7M CPU</span>
             <span>300 ms pause cutoff</span>
             <span>1,100 research test</span>
           </div>
           <div className="v4-hero-actions">
-            <a className="v4-pill-cta" href="#readout">See measured results <ArrowDown size={15} aria-hidden="true"/></a>
-            <a className="v4-results-link" href="#latency">Waiting-time curves <ArrowDownRight size={15} aria-hidden="true"/></a>
+            <a className="v4-pill-cta" href="#models">Meet Pikaia-Turn <ArrowDown size={15} aria-hidden="true"/></a>
+            <a className="v4-results-link" href="#readout">1,100-pause readout <ArrowDownRight size={15} aria-hidden="true"/></a>
           </div>
         </div>
         <div className="v4-listening-stage" id="listen"><ListeningDesk optical/></div>
@@ -57,20 +62,25 @@ function Colophon() {
   return <footer className="v4-ending">
     <a className="v4-signature" href={companyUrl} aria-label="Pikaia Research, visit the company homepage">Pikaia<span>Research</span><ArrowUpRight size={21} aria-hidden="true"/></a>
     <nav aria-label="Research footer">
-      <div><h2>Report</h2><a href="#listen">Listening task</a><a href="#readout">Results overview</a><a href="#latency">Waiting time</a></div>
-      <div><h2>Resources</h2><a href="#access">Dataset and models</a><a href="/report/pikaia-interview-eou-benchmark.pdf">Benchmark paper</a><a href={companyUrl}>Company homepage ↗</a></div>
+      <div><h2>Report</h2><a href="#listen">Listening task</a><a href="#models">Model family</a><a href="#results">Results &amp; timing</a></div>
+      <div><h2>Resources</h2><a href="#access">Dataset and models</a><a href="#paper">Limits &amp; archives</a><a href={companyUrl}>Company homepage ↗</a></div>
     </nav>
   </footer>;
 }
 
 export default function Page() {
+  const models = report.models.map(m => (m.name === 'Turn-1' ? { ...m, spec: '2.8B · zero-shot' } : m));
   return (
     <FocusedReport
       edition="v4"
+      modelsFirst
+      hidePaperPdf
       opening={<Opening/>}
       overview={<OutcomeReadout/>}
-      results={<ResultsExplorerV4 models={report.models}/>}
+      modelsSection={<ModelFamilyV4/>}
+      results={<ResultsExplorerV4 models={models}/>}
       frontiers={<CascadeFrontiersV4 scopes={frontierScopes}/>}
+      generalizationSection={<GeneralizationV4/>}
       access={<V4ResourceAccess/>}
       colophon={<Colophon/>}
     />
