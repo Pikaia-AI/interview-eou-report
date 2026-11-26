@@ -12,6 +12,9 @@
 .v4-folio { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding-top: 12px; border-top: 1px solid var(--line); }
 .v4-folio p { color: var(--muted); font: 500 11px/1.5 var(--body); letter-spacing: .08em; text-transform: uppercase; }
 .v4-folio p span { color: var(--accent); margin-inline: 7px; }
+.v4-folio-home { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); font: 500 11px/1.5 var(--body); letter-spacing: .08em; text-transform: uppercase; text-decoration: none; transition: color .18s ease; }
+.v4-folio-home:hover { color: var(--text); }
+.v4-folio-home svg { color: var(--accent); }
 
 /* =========================================================================
    00 · OPENING LISTENING STAGE (#top / #listen)

@@ -110,6 +110,9 @@ export function ResultsExplorerV4({ models }: { models: Model[] }) {
 
   const activeMeta = SPLITS[split];
   const rows = rowsFor(split);
+  const otherSplit: SplitKey = split === 'test_1100' ? 'full_2338' : 'test_1100';
+  const otherMeta = SPLITS[otherSplit];
+  const otherRows = rowsFor(otherSplit);
   const privateRows = rowsFor('test_private_1138');
   const focusedRow = rows.find(r => r.name === hovered) ?? rows[0];
   const ticks = isAuc ? ['0.0', '0.25', '0.50', '0.75', '1.0'] : ['0%', '25%', '50%', '75%', '100%'];
@@ -246,8 +249,9 @@ export function ResultsExplorerV4({ models }: { models: Model[] }) {
         </div>
 
         <details className="v4r-details">
-          <summary>View exact values · {activeMeta.title}</summary>
+          <summary>View exact values · Public research test &amp; Full evaluation pool</summary>
           <ResultsTable rows={rows} split={split} caption={`${activeMeta.title} · ${selectionLabel} · N=${rows[0].n.toLocaleString('en-US')}`} metric={metric}/>
+          <ResultsTable rows={otherRows} split={otherSplit} caption={`${otherMeta.title} · ${selectionLabel} · N=${otherRows[0].n.toLocaleString('en-US')}`} metric={metric}/>
         </details>
       </article>
 

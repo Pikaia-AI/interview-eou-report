@@ -210,20 +210,25 @@ def main():
     assert all(href[1:] in v4.ids for href in v4.links if href.startswith("#") and href != "#")
     assert v3.result_tables == v4.result_tables and v3.frontiers == v4.frontiers
     assert v3.ablation_rows == v4.ablation_rows and v4.transfer_figures == 2
-    assert v3.access_links == v4.access_links and v3.audio_sources == v4.audio_sources
-    assert "/v4/" in v3.links and "/v3/" in v4.links and "#listen" in v4.links
+    assert set(v3.access_links) == set(v4.access_links) and len(v4.access_links) == len(v3.access_links) and v3.audio_sources == v4.audio_sources
+    assert "/v4/" in v3.links and "/v3/" not in v4.links and "#listen" in v4.links
     readout = "".join(v4.readout_text)
     flagship = next(model for model in report["models"] if model["name"] == "Pikaia-Turn")
     sample = flagship["splits"]["test_1100"]["300ms"]["overall"]
     operating = sample["operating"]["5"]
     for count, total, label in [(operating["tp"], sample["eot"], "detected"),
                                 (operating["fp"], sample["hold"], "early responses")]:
-        assert f"{100*count/total:.2f}%of {total} " in readout
+        assert f"{100*count/total:.2f}%" in readout and f"of {total} " in readout
         assert f"{count} {label}" in readout
-    for asset in set(v4.assets + v4.scripts) - urls:
+    v4_art = {"/art/listening-prism.webp", "/art/access-filament.webp"}
+    for asset in (set(v4.assets + v4.scripts) | v4_art) - urls:
         with fetch.open(origin + asset, timeout=30) as res:
-            assert res.status == 200 and res.read(1)
+            payload = res.read()
+            assert res.status == 200 and payload
             assert res.headers.get_content_type() != "text/html", asset
+            if asset in v4_art:
+                assert res.headers.get_content_type() == "image/webp"
+                assert payload == (ROOT / "public" / asset.lstrip("/")).read_bytes(), asset
 
     result = {
         "v4_verified_outcomes": 2, "v4_sections": len(v4.sections),

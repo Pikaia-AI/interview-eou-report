@@ -6,11 +6,11 @@ The primary benchmark paper (*Pikaia Interview EOU Benchmark: Evaluating Respons
 
 ## Compare report editions
 
-The original edition opens at `/`, the focused edition at `/v2/`, the research report at `/v3/` and the listening study at `/v4/`. The V3 and V4 headers let readers switch between the two. All editions are available in the footer navigation.
+The finalized technical report opens at `/v4/` (with archival editions preserved at `/`, `/v2/`, and `/v3/`). V4 drops temporary edition switchers and pairs directly with the V3 company homepage (`NEXT_PUBLIC_COMPANY_V4_URL`, defaulting to `https://www.pikaia.ai/`).
 
-V4 pairs the real listening exercise with a public-test readout. Each dot represents one labeled decision for Pikaia-Turn on the bilingual 300 ms slice at a 5% HOLD false-positive budget. The readout uses `app/report-data.json`. The full result tables, interactive timing curves, ablations, transfer measurements and access links use the same components as V3.
+V4 pairs the optical listening exercise with a twin-chamber public-test readout (`84.48%` detected / `4.95%` early responses at `5%` HOLD FPR), segmented-pill optical recall explorer, interactive three-panel Pareto telemetry console, and the optical specimen console + precision ledger `#access` section. All displayed metrics read directly from `app/report-data.json` and `public/report/figure-data.json`.
 
-To pair the report with a local V4 homepage, run `NEXT_PUBLIC_COMPANY_V4_URL=http://127.0.0.1:5197/v4/ npm run build` and `npm start -- --port 5198`. Open `http://127.0.0.1:5198/v4`. Selecting V3 returns to the previous edition on the same server.
+To pair the report with a local V3 homepage, run `NEXT_PUBLIC_COMPANY_V4_URL=http://127.0.0.1:5194/ npm run build` and `npm start -- --port 5199`. Open `http://127.0.0.1:5199/v4`.
 
 The V3 listening task uses the same speaker at two points in a real English conversation about travel. The Agentic Data Company published the recording in Open Yap 1K. Pikaia selected and labeled these excerpts for the listening exercise. [Original recording and annotations](https://theagenticdatacompany.com/research/turn-taking#why-turn-taking-is-hard) · [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
