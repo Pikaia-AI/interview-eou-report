@@ -1,0 +1,49 @@
+{
+  "title": "Pikaia family training corpus overview",
+  "source": {
+    "manifest": "split2085_expanded.json",
+    "sha256": "9cce75c6787bc357911392de52f875be7b6468e5fd8166f32ecfc81c833631ec"
+  },
+  "access": "Private training corpus; this summary contains aggregate statistics only.",
+  "models": [
+    "Pikaia-Turn",
+    "Pikaia-Turn-Mini",
+    "Pikaia-Turn-Nano"
+  ],
+  "curated_count": 2025,
+  "added_mandarin_count": 1170,
+  "expanded_count": 3195,
+  "languages": {
+    "en": 900,
+    "zh": 2295
+  },
+  "labels": {
+    "EOT": 2396,
+    "HOLD": 799
+  },
+  "sources": [
+    {
+      "name": "Earlier human-reviewed pool",
+      "description": "Examples drawn from the earlier manually reviewed interview pool.",
+      "n": 167,
+      "zh": 93,
+      "en": 74
+    },
+    {
+      "name": "Consensus-reviewed bilingual pool",
+      "description": "Existing Mandarin and English examples reviewed with ASR-assisted transcripts and three-model label checks.",
+      "n": 1858,
+      "zh": 1032,
+      "en": 826
+    },
+    {
+      "name": "New Mandarin expansion",
+      "description": "Additional Mandarin interview examples retained with unanimous three-model labels.",
+      "n": 1170,
+      "zh": 1170,
+      "en": 0
+    }
+  ],
+  "internal_validation_count": 448,
+  "internal_test_count": 447
+}

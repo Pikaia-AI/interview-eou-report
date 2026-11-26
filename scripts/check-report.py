@@ -166,6 +166,75 @@ def verify_data() -> Dict[str, Any]:
     }
 
 
+def verify_ablation() -> dict:
+    data = json.loads((ROOT / "public/report/context-ablation.json").read_text())
+    assert re.fullmatch(r"[a-f0-9]{64}", data["source"]["sha256"])
+    ci = data["protocol"]["confidence_interval"]
+    assert ci["level"] == 0.95 and ci["resamples"] == 2000
+    assert ci["seed"] == 20261115 and not ci["language_stratified"]
+    expected_models = ["Pikaia-Turn", "Pikaia-Turn-Mini", "Pikaia-Turn-Nano"]
+    count = 0
+    for key, n in (("response_ready", 842), ("floor_end", 1058)):
+        cohort = data["cohorts"][key]
+        assert cohort["n"] == n == cohort["eot"] + cohort["hold"]
+        assert set(cohort["cutoffs"]) == {"300ms", "600ms"}
+        for rows in cohort["cutoffs"].values():
+            assert [row["model"] for row in rows] == expected_models
+            for row in rows:
+                for condition in ("with_text", "audio_only"):
+                    point = row[condition]
+                    assert point["eot"] == cohort["eot"] and point["hold"] == cohort["hold"]
+                    assert abs(point["recall_pct"] - point["tp"] / point["eot"] * 100) <= 0.0051
+                    assert abs(point["fpr_pct"] - point["fp"] / point["hold"] * 100) <= 0.0051
+                    assert point["fp"] <= point["allowed_fp"] == int(point["hold"] * 0.05)
+                delta = row["audio_only"]["recall_pct"] - row["with_text"]["recall_pct"]
+                assert abs(delta - row["delta_recall_pp"]) <= 0.011
+                lo, hi = row["ci95_pp"]
+                assert -30 <= lo <= row["delta_recall_pp"] <= hi <= 30, "Interval is clipped by the chart domain"
+                assert lo < 0 < hi, "Update the zero-crossing takeaway if new evidence changes it"
+                count += 1
+    assert count == 12
+    print("Ablation verified: 12 paired results, bootstrap metadata, FP budgets, delta signs and full interval bounds.")
+    return {"ablation_paired_results": count}
+
+
+def verify_frontiers() -> dict:
+    figures = json.loads((ROOT / "public/report/figure-data.json").read_text())
+    report = json.loads((ROOT / "app/report-data.json").read_text())
+    datasets = {
+        "pikaia": "v1_paired_1700",
+        "livekit_floor_end": "livekit_orig_paired_1058",
+        "livekit": "livekit_clean_paired_842",
+    }
+    budgets = [0.5 + i * 0.25 for i in range(79)]
+    count = 0
+    assert {d["id"] for d in figures["frontiers"]} == set(datasets)
+    for dataset in figures["frontiers"]:
+        cascade = report["cascades"][datasets[dataset["id"]]]
+        assert dataset["n"] == cascade["n"]
+        assert len(dataset["models"]) == len(cascade["models"]) == 6
+        source = {m["name"]: m for m in cascade["models"]}
+        for model in dataset["models"]:
+            points = model["points"]
+            assert [p["budget"] for p in points] == budgets, "Missing or duplicate sampled budgets"
+            for point in points:
+                assert 300 <= point["wait"] <= 1000
+                assert 0 <= point["error"] <= point["budget"]
+                count += 1
+            for previous, current in zip(points, points[1:]):
+                assert current["wait"] <= previous["wait"], "Relaxing a budget should not increase minimum wait"
+            for budget in (1, 2, 3, 5, 10):
+                point = next(p for p in points if p["budget"] == budget)
+                operating = source[model["name"]]["operating"][f"{budget}pct"]
+                assert point["wait"] == operating["mean_wait_ms"]
+                assert point["error"] == operating["cum_fir_pct"]
+                if budget == 5:
+                    assert point["wait"] == model["at5"]["wait"] and point["error"] == model["at5"]["error"]
+    assert count == 1422
+    print("Frontiers verified: 1,422 empirical points, complete 0.25 pp budget grid, 90 report operating-point matches.")
+    return {"frontier_points": count, "frontier_budget_steps_per_model": len(budgets)}
+
+
 class PageParser(HTMLParser):
     def __init__(self):
         super().__init__()
@@ -174,9 +243,38 @@ class PageParser(HTMLParser):
         self.assets: List[str] = []
         self.skip = 0
         self.text: List[str] = []
+        self.result_tables = {}
+        self.result_split = None
+        self.result_row = None
+        self.result_cell = None
+        self.ablation_panels = {}
+        self.ablation_rows = {}
+        self.ablation_cohort = None
+        self.ablation_model = None
+        self.ablation_depth = 0
+        self.ablation_text = []
+        self.detail_open = {}
 
     def handle_starttag(self, tag: str, attrs: List[tuple[str, str | None]]) -> None:
         a = dict(attrs)
+        if tag == "details" and a.get("id"):
+            self.detail_open[a["id"]] = "open" in a
+        if tag == "figure" and a.get("data-ablation-cohort"):
+            self.ablation_cohort = a["data-ablation-cohort"]
+            self.ablation_panels[self.ablation_cohort] = a["data-cutoff"]
+        if tag == "div" and self.ablation_depth:
+            self.ablation_depth += 1
+        if a.get("data-ablation-model"):
+            self.ablation_model = a["data-ablation-model"]
+            self.ablation_text = []
+            self.ablation_depth = 1
+        if tag == "table" and a.get("data-results-split"):
+            self.result_split = a["data-results-split"]
+            self.result_tables[self.result_split] = []
+        if self.result_split and tag == "tr":
+            self.result_row = []
+        if self.result_split and tag in ("td", "th"):
+            self.result_cell = []
         if tag in ["script", "style"]:
             self.skip += 1
         if "id" in a and a["id"]:
@@ -187,10 +285,29 @@ class PageParser(HTMLParser):
             self.assets.append(a["src"])
 
     def handle_endtag(self, tag: str) -> None:
+        if tag == "div" and self.ablation_depth:
+            self.ablation_depth -= 1
+            if not self.ablation_depth:
+                self.ablation_rows[(self.ablation_cohort, self.ablation_model)] = "".join(self.ablation_text)
+        if tag == "figure":
+            self.ablation_cohort = None
+        if self.result_split:
+            if tag in ("td", "th") and self.result_cell is not None:
+                self.result_row.append("".join(self.result_cell).strip())
+                self.result_cell = None
+            elif tag == "tr" and self.result_row is not None:
+                self.result_tables[self.result_split].append(self.result_row)
+                self.result_row = None
+            elif tag == "table":
+                self.result_split = None
         if tag in ["script", "style"]:
             self.skip = max(0, self.skip - 1)
 
     def handle_data(self, data: str) -> None:
+        if self.ablation_depth:
+            self.ablation_text.append(data)
+        if self.result_cell is not None:
+            self.result_cell.append(data)
         if not self.skip:
             self.text.append(data)
 
@@ -231,6 +348,32 @@ def verify_server(origin: str) -> Dict[str, Any]:
     for i in range(1, 5):
         assert f"figure-{i}" in id_set, f"Missing figure-{i} in page IDs"
 
+    # Two visible cohort panels and the retained private-holdout table must
+    # render the source values for their own split, in the same model order.
+    for panel in ("results-research-test", "results-full-pool"):
+        assert panel in id_set, f"Missing evaluation chart panel: {panel}"
+    assert "100 development items" in full_text
+    source = json.loads((ROOT / "app/report-data.json").read_text())
+    models = sorted(source["models"], key=lambda m: -m["splits"]["test_1100"]["300ms"]["overall"]["operating"]["5"]["recall"])
+    for split in ("test_1100", "full_2338", "test_private_1138"):
+        expected = []
+        for model in models:
+            point = model["splits"][split]["300ms"]["overall"]
+            op = point["operating"]["5"]
+            expected.append([model["name"], f"{point['auc']:.4f}", f"{op['recall'] * 100:.2f}%", f"{op['fpr'] * 100:.2f}%"])
+        assert parser.result_tables.get(split, [])[1:] == expected, f"Rendered result values or model order differ for {split}"
+
+    # The main ablation and collapsed supplement must both contain exact
+    # values before hydration; interval interpretation must not rely on hover.
+    assert parser.ablation_panels == {"response_ready": "300ms", "floor_end": "300ms"}
+    assert parser.detail_open.get("ablation-floor-end") is False
+    ablation = json.loads((ROOT / "public/report/context-ablation.json").read_text())
+    for key, cohort in ablation["cohorts"].items():
+        for row in cohort["cutoffs"]["300ms"]:
+            rendered = parser.ablation_rows[(key, row["model"])]
+            numbers = [float(s.replace("−", "-")) for s in re.findall(r"[+−]?\d+\.\d{2}", rendered)]
+            assert numbers == [row["with_text"]["recall_pct"], row["audio_only"]["recall_pct"], row["delta_recall_pp"], *row["ci95_pp"]]
+
     # 5. Check all assets
     assets = set(parser.assets + [h for h in parser.links if h.startswith("/report/") or h.startswith("/fonts/") or h.startswith("/art/")])
     # Add explicit assets
@@ -262,6 +405,11 @@ def verify_server(origin: str) -> Dict[str, Any]:
     return {
         "origin": origin,
         "assets_verified": len(assets),
+        "evaluation_chart_panels": 2,
+        "result_tables_verified": len(parser.result_tables),
+        "ablation_chart_panels": len(parser.ablation_panels),
+        "ablation_rows_verified": len(parser.ablation_rows),
+        "floor_end_collapsed": True,
         "duplicate_ids": 0,
         "broken_internal_links": 0,
     }
@@ -273,6 +421,8 @@ def main():
     print("=== Running Pikaia Report Verification ===")
     scanned_files = verify_hygiene()
     data_summary = verify_data()
+    ablation_summary = verify_ablation()
+    frontier_summary = verify_frontiers()
 
     server_summary = {}
     if origin:
@@ -281,6 +431,8 @@ def main():
     summary = {
         "scanned_files": scanned_files,
         **data_summary,
+        **ablation_summary,
+        **frontier_summary,
         **server_summary,
     }
 
