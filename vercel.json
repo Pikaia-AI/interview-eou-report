@@ -1,0 +1,12 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "nextjs",
+  "buildCommand": "npx next build",
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "https://www.pikaia.ai/research/pikaia-turn/",
+      "permanent": false
+    }
+  ]
+}
